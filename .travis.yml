@@ -1,7 +1,9 @@
 before_install:
  - sudo apt-get install hunspell hunspell-fr
  - sudo apt-get install cppcheck
-install: "pip3 install -q -r requirements.txt"
+install:
+ - pip3 install -U sphinx
+ - pip3 install sphinxcontrib.spelling
 language: python
 python:
   - "3.6"
