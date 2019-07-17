@@ -1,3 +1,6 @@
+before_install:
+ - sudo apt-get install hunspell hunspell-fr
+ - sudo apt-get install cppcheck
 install: "pip install -q -r requirements.txt"
 language: python
 python:

@@ -10,13 +10,14 @@ set -e
 cd Theorie
 echo "**** Theorie ****"
 sphinx-build  -nWNT --keep-going -b html . /tmp
+sphinx-build -b spelling . /tmp
 cd ../Outils
 echo "**** Outils ****"
 sphinx-build  -nWNT --keep-going -b html . /tmp
 cd ../Exercices
 echo "**** Exercices ****"
 #sphinx-build  -nWNT --keep-going -b html . /tmp
-cd QCM
-echo "**** QCM ****"
+#cd QCM
+#echo "**** QCM ****"
 #make
 cd ../..
