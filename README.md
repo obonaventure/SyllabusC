@@ -27,15 +27,7 @@ Vous êtes maintenant en mesure de compiler le projet sous différents formats (
 
 Finalement, lorsque que vous avez terminé de travailler sur le projet, vous pouvez exécuter la commande `vagrant destroy` pour supprimer toutes les traces de la machine virtuelle précédemment créée.
 
-Comment créer de nouvelles questions à choix multiples
-------------------------------------------------------
+Intégration continue
+--------------------
 
-Une des améliorations récentes aux notes du cours reprises sur ce repository git est le support de questions à choix multiples. Ces questions à choix multiples sont écrites grâce à une petite extension à [https://www.sphinx-doc.org](sphinx) qui est intégrée au projet. Plusieurs dizaines de questions à choix multiples ont déjà étés écrites et les étudiants sont invités à proposer de nouvelles questions en s'appuyant sur les difficultés qu'ils ont rencontré en préparant les travaux pratiques du cours ou en révisant la théorie.
-
-Une bonne question à choix multiples doit répondre à plusieurs critères :
-
- - elle doit être bien formulée et facilement compréhensible par les étudiants qui vont la lire
- - elle doit avoir plusieurs réponses correctes possibles. Ce point est nécessaire car les questions à choix multiples affichées à travers un script javascript dans les pages HTML qui présente une réponse positive et n réponses négatives au lecteur. La réponse positive et les réponses négatives sont à chaque fois choisies et présentées dans un ordre aléatoire.
- - les réponses négatives (au minimum de trois) doivent si possible être accompagnées de commentaires qui permettent à l'étudiant(e) qui les lit de bien comprendre l'erreur qu'il(elle) a fait et donc apprendre de ses erreurs
-
-De nombreux exemples de questions sont disponibles dans le répertoire [Exercices/mcq-ex](https://github.com/obonaventure/SystemesInformatiques/tree/master/Exercices/mcq-ex). Un exemple illustrant la façon dont il faut écrire les questions en restructured text est disponible dans le fichier [Exercices/mcq-ex/revision.rst](https://github.com/obonaventure/SystemesInformatiques/tree/master/Exercices/mcq-ex/revision.rst). Les étudiants sont invités à repartir de cet exemple pour proposer de nouvelles questions.
+Le syllabus utilise [travis](https://travis-ci.com/) comme système d'intégration continue. Si vous soumettez une proposition de modification au syllabus, tout le syllabus sera recompilé pour vérifier si votre modification est correcte au niveau de la syntaxe et de l'orthographe. Pensez à mettre des commentaires dans vos pull-requests en expliquant la raison de vos modifications. Essayez également de regrouper vos modifications pour faciliter leur relecture avant une intégration. Vous pouvez accéder aux résultats des tests d'intégration continue via [https://travis-ci.com/UCL-INGI/SyllabusC](https://travis-ci.com/UCL-INGI/SyllabusC)
