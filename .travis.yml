@@ -1,6 +1,7 @@
 before_install:
  - sudo apt-get install hunspell hunspell-fr
  - sudo apt-get install cppcheck
+ - sudo apt-get install enchant
 install:
  - pip3 install -U sphinx
  - pip3 install sphinxcontrib.spelling
