@@ -10,23 +10,23 @@ Bibliographie
 
 .. [AdelsteinLubanovic2007] Adelstein, T., Lubanovic, B., `Linux System Administration`, OReilly, 2007, http://books.google.be/books?id=-jYe2k1p5tIC
 
-.. [Alagarsamy2003] Alagarsamy, K., `Some myths about famous mutual exclusion algorithms`. SIGACT News 34, 3 (September 2003), 94-103.  http://doi.acm.org/10.1145/945526.945527
+.. .. [Alagarsamy2003] Alagarsamy, K., `Some myths about famous mutual exclusion algorithms`. SIGACT News 34, 3 (September 2003), 94-103.  http://doi.acm.org/10.1145/945526.945527
 
 .. [Amdahl1967] Amdahl, G., `Validity of the Single-Processor Approach to Achieving Large-Scale Computing Capabilities`,  Proc.  Am. Federation of Information Processing Societies Conf., AFIPS Press, 1967, pp. 483-485, http://dx.doi.org/10.1145/1465482.1465560
 
-.. [Bashar1997] Bashar, N., `Ariane 5: Who Dunnit?`, IEEE Software 14(3): 15–16. May 1997. doi:10.1109/MS.1997.589224.
+.. [Bashar1997] Bashar, N., `Ariane 5: Who Dunnit?`, IEEE Software 14(3): 15–16. May 1997. https://doi.ieeecomputersociety.org/10.1109/MS.1997.589224
 
 
-.. [BryantOHallaron2011] Bryant, R. and O'Hallaron, D., `Computer Systems : A programmer's perspective`, Second Edition, Pearson, 2011, http://www.amazon.com/Computer-Systems-Programmers-Perspective-2nd/dp/0136108040/ref=sr_1_1?s=books&ie=UTF8&qid=1329058781&sr=1-1
+.. .. [BryantOHallaron2011] Bryant, R. and O'Hallaron, D., `Computer Systems : A programmer's perspective`, Second Edition, Pearson, 2011, http://www.amazon.com/Computer-Systems-Programmers-Perspective-2nd/dp/0136108040/ref=sr_1_1?s=books&ie=UTF8&qid=1329058781&sr=1-1
 
 
 .. [C99] http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
 
-.. [Card+1994] Card, R., Ts’o, T., Tweedie, S, `Design and implementation of the second extended filesystem`. Proceedings of the First Dutch International Symposium on Linux. ISBN 90-367-0385-9. http://web.mit.edu/tytso/www/linux/ext2intro.html
+.. .. [Card+1994] Card, R., Ts’o, T., Tweedie, S, `Design and implementation of the second extended filesystem`. Proceedings of the First Dutch International Symposium on Linux. ISBN 90-367-0385-9. http://web.mit.edu/tytso/www/linux/ext2intro.html
 
 .. [Cooper2011] Cooper, M., `Advanced Bash-Scripting Guide`, http://tldp.org/LDP/abs/html/, 2011
 
-.. [Courtois+1971] Courtois, P., Heymans, F. and Parnas, D., `Concurrent control with “readers” and “writers”`. Commun. ACM 14, 10 (October 1971), 667-668. http://doi.acm.org/10.1145/362759.362813
+.. .. [Courtois+1971] Courtois, P., Heymans, F. and Parnas, D., `Concurrent control with “readers” and “writers”`. Commun. ACM 14, 10 (October 1971), 667-668. http://doi.acm.org/10.1145/362759.362813
 
 
 .. [CPP] C preprocessor manual, http://gcc.gnu.org/onlinedocs/cpp/
@@ -35,9 +35,9 @@ Bibliographie
 
 .. [Dijkstra1965] Dijkstra, E.,  `Solution of a problem in concurrent programming control`. Commun. ACM 8, 9 (September 1965), 569 http://doi.acm.org/10.1145/365559.365617
 
-.. [Dijkstra1968] Dijkstra, E., `Go To Statement Considered Harmful`, Communications of the ACM, 11, March 1968, http://www.cs.utexas.edu/~EWD/transcriptions/EWD02xx/EWD215.html Voir aussi [Tribble2005]_
+.. .. [Dijkstra1968] Dijkstra, E., `Go To Statement Considered Harmful`, Communications of the ACM, 11, March 1968, http://www.cs.utexas.edu/~EWD/transcriptions/EWD02xx/EWD215.html Voir aussi [Tribble2005]_
 
-.. [Downey2008] Downey, A., `The Little Book of Semaphores`, Second Edition, Green Tea Press, 2008,
+.. [Downey2008] Downey, A., `The Little Book of Semaphores`, Second Edition, Green Tea Press, 2008, https://greenteapress.com/wp/semaphores/
 
 .. [Drepper2007] Drepper, U., `What every programmer should know about memory`, 2007, http://www.akkadia.org/drepper/cpumemory.pdf
 
@@ -48,17 +48,17 @@ Bibliographie
 
 .. [Gove2011] Gove, D., `Multicore Application Programming for Windows, Linux and Oracle Solaris`, Addison-Wesley, 2011, http://books.google.be/books?id=NF-C2ZQZXekC
 
-.. [GNUMake] http://www.gnu.org/software/make/manual/make.html
+.. .. [GNUMake] http://www.gnu.org/software/make/manual/make.html
 
 .. [GNUPTH] Engelschall, R., `GNU Portable Threads`, http://www.gnu.org/software/pth/
 
 .. [Graham+1982] Graham, S., Kessler, P. and Mckusick, M., `Gprof: A call graph execution profiler`. SIGPLAN Not. 17, 6 (June 1982), 120-126. http://doi.acm.org/10.1145/872726.806987
 
-.. [HennessyPatterson] Hennessy, J. and Patterson, D., `Computer Architecture: A Quantitative Approach`, Morgan Kauffmann, http://books.google.be/books?id=gQ-fSqbLfFoC
+.. .. [HennessyPatterson] Hennessy, J. and Patterson, D., `Computer Architecture: A Quantitative Approach`, Morgan Kauffmann, http://books.google.be/books?id=gQ-fSqbLfFoC
 
-.. [HP] HP, `Memory technology evolution: an overview of system memory technologies`, http://h20000.www2.hp.com/bc/docs/support/SupportManual/c00256987/c00256987.pdf
+.. .. [HP] HP, `Memory technology evolution: an overview of system memory technologies`, http://h20000.www2.hp.com/bc/docs/support/SupportManual/c00256987/c00256987.pdf
 
-.. [Hyde2010] Hyde, R., `The Art of Assembly Language`, 2nd edition, No Starch Press, http://webster.cs.ucr.edu/AoA/Linux/HTML/AoATOC.html
+.. .. [Hyde2010] Hyde, R., `The Art of Assembly Language`, 2nd edition, No Starch Press, http://webster.cs.ucr.edu/AoA/Linux/HTML/AoATOC.html
 
 .. [IA32] intel, `Intel® 64 and IA-32 Architectures : Software Developer’s Manual`, Combined Volumes: 1, 2A, 2B, 2C, 3A, 3B and 3C, December 2011,  http://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-manual-325462.pdf
 
@@ -78,14 +78,14 @@ Bibliographie
 
 .. [McKenney2005] McKenney, P., `Memory Ordering in Modern Microprocessors, Part I`, Linux Journal, August 2005, http://www.linuxjournal.com/article/8211
 
-.. [Mecklenburg+2004] Mechklenburg, R., Mecklenburg, R. W., Oram, A., `Managing projects with GNU make`, O'Reilly, 2004, http://books.google.be/books?id=rL4GthWj9kcC
+.. .. [Mecklenburg+2004] Mechklenburg, R., Mecklenburg, R. W., Oram, A., `Managing projects with GNU make`, O'Reilly, 2004, http://books.google.be/books?id=rL4GthWj9kcC
 
 .. [Mitchell+2001] Mitchell, M., Oldham, J. and Samuel, A., `Advanced Linux Programming`, New Riders Publishing, ISBN 0-7357-1043-0, June 2001, http://www.advancedlinuxprogramming.com/
 
 
 .. [Nemeth+2010] Nemeth, E., Hein, T., Snyder, G., Whaley, B., `Unix and Linux System Administration Handbook`, Prentice Hall, 2010, http://books.google.be/books?id=rgFIAnLjb1wC
 
-.. [Peterson1981] Peterson, G., `Myths about the mutual exclusion problem`, Inform. Process. Lett. 12 (3) (1981) 115-116
+.. .. [Peterson1981] Peterson, G., `Myths about the mutual exclusion problem`, Inform. Process. Lett. 12 (3) (1981) 115-116
 
 .. [Stallings2011] Stallings, W., `Operating Systems : Internals and Design Principles`, Prentice Hall, 2011, http://williamstallings.com/OperatingSystems/index.html
 
@@ -93,10 +93,83 @@ Bibliographie
 
 .. [Stokes2008] Stokes, J., `Classic.Ars: Understanding Moore's Law`, http://arstechnica.com/hardware/news/2008/09/moore.ars
 
-.. [Tanenbaum+2009] Tanenbaum, A., Woodhull, A., `Operating systems: design and implementation`, Prentice Hall, 2009
+.. [Tanenbaum+2009] Tanenbaum, A., Woodhull, A., `Operating systems: design and implementation`, Prentice Hall, 2009, https://www.pearson.com/us/higher-education/program/Tanenbaum-Operating-Systems-Design-and-Implementation-3rd-Edition/PGM228096.html
 
 
-.. [Tribble2005] Tribble, D., `Go To Statement Considered Harmful: A Retrospective`, 2005, http://david.tribble.com/text/goto.html
+.. .. [Tribble2005] Tribble, D., `Go To Statement Considered Harmful: A Retrospective`, 2005, http://david.tribble.com/text/goto.html
 
 .. [Walls2006] Walls, D., `How to Use the restrict Qualifier in C`. Sun Microsystems, 2006, http://developers.sun.com/solaris/articles/cc_restrict.html
 
+.. spelling::
+
+   Cooper
+   Adelstein
+   Lubanovic
+   OReilly
+   Amdahl
+   Proc
+   Am
+   Federation
+   of
+   Processing
+   Societies
+   Press
+   pp
+   Bashar
+   May
+   doi
+   Cooper
+   preprocessor
+   manual
+   Dijkstra
+   September
+   Downey
+   Edition
+   Tea
+   Drepper
+   Molnar
+   Goldberg
+   Surv
+   March
+   Gove
+   Engelschall
+   Graham
+   Kessler
+   Mckusick
+   Not
+   intel
+   Combined
+   December
+   Kamp
+   July
+   Kerrisk
+   Starch
+   Press
+   Kernighan
+   Ritchie
+   Norton
+   company
+   Krakowiak
+   Leroy
+   August
+   Mitchell
+   Oldham
+   Samuel
+   New
+   Riders
+   Publishing
+   June
+   Nemeth
+   Snyder
+   Whaley
+   Stallings
+   Stevens
+   Rago
+   Addison
+   Wesley
+   Stokes
+   Tanenbaum
+   Woodhull
+   Prentice
+   Walls
+   Microsystems

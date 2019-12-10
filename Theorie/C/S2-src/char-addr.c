@@ -9,9 +9,6 @@
 #include <stdlib.h>
 
 
-
-
-
 ///BBB
 int main(int argc, char *argv[]) {
 

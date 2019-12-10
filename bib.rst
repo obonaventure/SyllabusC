@@ -18,7 +18,7 @@ Bibliographie
 
 .. [BovetCesati2005] Bovet, D., Cesati, M, `Understanding the Linux Kernel, Third Edition`, O'Reilly, 2005, http://my.safaribooksonline.com/book/operating-systems-and-server-administration/linux/0596005652
 
-.. [BryantOHallaron2011] Bryant, R. and O'Hallaron, D., `Computer Systems : A programmer's perspective`, Second Edition, Pearson, 2011, http://www.amazon.com/Computer-Systems-Programmers-Perspective-2nd/dp/0136108040/ref=sr_1_1?s=books&ie=UTF8&qid=1329058781&sr=1-1
+.. .. [BryantOHallaron2011] Bryant, R. and O'Hallaron, D., `Computer Systems : A programmer's perspective`, Second Edition, Pearson, 2011, http://www.amazon.com/Computer-Systems-Programmers-Perspective-2nd/dp/0136108040/ref=sr_1_1?s=books&ie=UTF8&qid=1329058781&sr=1-1
 
 
 .. [C99] http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
@@ -37,7 +37,7 @@ Bibliographie
 
 .. [DeveloppezMake] Introduction à Makefile, http://gl.developpez.com/tutoriel/outil/makefile/
 
-.. [Dijkstra1965b] Dijkstra, E., `Cooperating sequential processes`, 1965, http://www.cs.utexas.edu/users/EWD/transcriptions/EWD01xx/EWD123.html
+.. .. [Dijkstra1965b] Dijkstra, E., `Cooperating sequential processes`, 1965, http://www.cs.utexas.edu/users/EWD/transcriptions/EWD01xx/EWD123.html
 
 .. [Dijkstra1965] Dijkstra, E.,  `Solution of a problem in concurrent programming control`. Commun. ACM 8, 9 (September 1965), 569 http://doi.acm.org/10.1145/365559.365617
 
@@ -62,13 +62,13 @@ Bibliographie
 
 .. [Graham+1982] Graham, S., Kessler, P. and Mckusick, M., `Gprof: A call graph execution profiler`. SIGPLAN Not. 17, 6 (June 1982), 120-126. http://doi.acm.org/10.1145/872726.806987
 
-.. [HennessyPatterson] Hennessy, J. and Patterson, D., `Computer Architecture: A Quantitative Approach`, Morgan Kauffmann, http://books.google.be/books?id=gQ-fSqbLfFoC
+.. .. [HennessyPatterson] Hennessy, J. and Patterson, D., `Computer Architecture: A Quantitative Approach`, Morgan Kauffmann, http://books.google.be/books?id=gQ-fSqbLfFoC
 
 .. [Honeyford2006] Honeyford, M., `Speed your code with the GNU profiler`, http://www.ibm.com/developerworks/library/l-gnuprof.html
 
-.. [HP] HP, `Memory technology evolution: an overview of system memory technologies`, http://h20000.www2.hp.com/bc/docs/support/SupportManual/c00256987/c00256987.pdf
+.. .. [HP] HP, `Memory technology evolution: an overview of system memory technologies`, http://h20000.www2.hp.com/bc/docs/support/SupportManual/c00256987/c00256987.pdf
 
-.. [Hyde2010] Hyde, R., `The Art of Assembly Language`, 2nd edition, No Starch Press, http://webster.cs.ucr.edu/AoA/Linux/HTML/AoATOC.html
+.. .. [Hyde2010] Hyde, R., `The Art of Assembly Language`, 2nd edition, No Starch Press, http://webster.cs.ucr.edu/AoA/Linux/HTML/AoATOC.html
 .. [IA32] intel, `Intel® 64 and IA-32 Architectures : Software Developer’s Manual`, Combined Volumes: 1, 2A, 2B, 2C, 3A, 3B and 3C, December 2011,  http://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-manual-325462.pdf
 
 .. [Kamp2011] Kamp, P., `The Most Expensive One-byte Mistake`, ACM Queue, July 2011, http://queue.acm.org/detail.cfm?id=2010365

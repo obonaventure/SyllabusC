@@ -1,12 +1,12 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Copyright |copy| 2012, 2019 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
 Types de données
 ================
 
-Durant la première semaine, nous avons abordé quelques types de
+Dans les sections précédentes, nous avons abordé quelques types de
 données de base dont les ``int`` et les ``char``. Pour utiliser ces types de données à bon escient, il est important de comprendre en détail la façon dont ils sont supportés par le compilateur et leurs limitations. Celles-ci dépendent souvent de leur représentation en mémoire et durant cette semaine nous allons commencer à analyser de façon plus détaillée comment la mémoire d'un ordinateur est structurée.
 
 
@@ -29,8 +29,8 @@ nombre entier :math:`\sum_{i=0}^{n-1} b_i \times 2^i`. Par convention, le bit
 est appelé le :term:`bit de poids faible`. Les suites de bits sont communément
 écrites dans l'ordre descendant des indices :math:`b_{n-1} ... b_i ... b_0`. À titre
 d'exemple, la suite de bits ``0101`` correspond à l'entier non signé représentant
-la valeur cinq. Le bit de poids fort (resp. faible) de cette séquence de quatre bits
-(ou :term:`nibble`) est ``0`` (resp. ``1``). La table ci-dessous reprend les
+la valeur cinq. Le bit de poids fort de cette séquence de quatre bits
+(ou :term:`nibble`) est ``0``. Le bit de poids faible est ``1``. La table ci-dessous reprend les
 différentes valeurs décimales correspondant à toutes les séquences de quatre bits consécutifs.
 
 =======      =====  ===========  =======
@@ -54,7 +54,6 @@ binaire      octal  hexadécimal  décimal
 1111         17     F            15
 =======      =====  ===========  =======
 
-.. todo cafe, deadbeef adresses ipv6    http://www.qa.com/about-qa/blogs/2011/november/ipv6-the-return-of-badbeef-and-5adcafe/
 
 Écrire une séquence de bits sous la forme d'une suite de
 ``0`` et de ``1`` peut s'avérer fastidieux. La représentation décimale
@@ -150,7 +149,7 @@ pourrait se convertir via la formule
 :math:`(-1)^{b_{n-1}} \times \sum_{i=0}^{n-2} b_i \times 2^i`.
 
 En pratique, cette notation est rarement utilisée pour les nombres
-entiers car elle rend l'implémentation des circuits électroniques de
+entiers car elle rend la réalisation des circuits électroniques de
 calcul plus compliquée. Un autre inconvénient de cette notation est
 qu'elle utilise deux séquences de bits différentes pour représenter la
 valeur zéro (``00...0`` et ``10...0``). La représentation la plus courante pour les
@@ -323,7 +322,7 @@ En langage C, les tableaux permettent d'agréger des données d'un même type. I
    :start-after: ///AAA
    :end-before: ///BBB
 
-Les premières versions du langage C ne permettaient que la définition de tableaux dont la taille est connue à la compilation. Cette restriction était nécessaire pour permettre au compilateur de réserver la zone mémoire pour stocker le tableau. Face à cette limitation, de nombreux programmeurs définissaient la taille du tableau via une directive ``#define`` du pré-processeur comme dans l'exemple ci-dessus. Cette directive permet d'associer une chaîne de caractères quelconque à un symbole. Dans l'exemple ci-dessus, la chaîne ``10`` est associée au symbole ``N``. Lors de chaque compilation, le préprocesseur remplace toutes les occurences de ``N`` par ``10``. Cela permet au compilateur de ne traiter que des tableaux de taille fixe.
+Les premières versions du langage C ne permettaient que la définition de tableaux dont la taille est connue à la compilation. Cette restriction était nécessaire pour permettre au compilateur de réserver la zone mémoire pour stocker le tableau. Face à cette limitation, de nombreux programmeurs définissaient la taille du tableau via une directive ``#define`` du pré-processeur comme dans l'exemple ci-dessus. Cette directive permet d'associer une chaîne de caractères quelconque à un symbole. Dans l'exemple ci-dessus, la chaîne ``10`` est associée au symbole ``N``. Lors de chaque compilation, le préprocesseur remplace toutes les occurrences de ``N`` par ``10``. Cela permet au compilateur de ne traiter que des tableaux de taille fixe.
 
 Un tableau à une dimension peut s'utiliser avec une syntaxe similaire à celle utilisée par Java. Dans un tableau contenant ``n`` éléments, le premier se trouve à l'indice ``0`` et le dernier à l'indice ``n-1``. L'exemple ci-dessous présente le calcul de la somme des éléments d'un vecteur.
 
@@ -362,9 +361,7 @@ bits et des caractères. :rfc:`20` contient la table des caractères
 ASCII représentés sur 7 bits. À titre d'exemple, le chiffre `0`
 correspond à l'octet `0b00110000` et le chiffre `9` à l'octet
 `0b00111001`. La lettre `a` correspond à l'octet `0b01100001` et la
-lettre `A` à l'octet `0b01000001`.
-
-.. todo:: inclure table ASCII
+lettre `A` à l'octet `0b01000001`. De nombreux détails sur la table ASCII sont disponibles sur la page Wikipedia: https://en.wikipedia.org/wiki/ASCII
 
 Les inventeurs du C se sont appuyés sur la table ASCII et ont choisi
 de représenter un caractère en utilisant un octet. Cela correspond au
@@ -383,7 +380,6 @@ caractère représentant la majuscule correspondante peut s'écrire :
    :start-after: ///AAA
    :end-before: ///BBB
 
-.. todo:: ref unicode
 
 En pratique, l'utilisation de la table ASCII pour représenter des
 caractères souffre d'une limitation majeure. Avec `7` ou `8` bits il
@@ -391,9 +387,9 @@ n'est pas possible de représenter exactement tous les caractères
 écrits de toutes les langues. Une table des caractères sur `7` bits
 est suffisante pour les langues qui utilisent peu de caractères
 accentués comme l'anglais. Pour le français et de nombreuses langues
-d'Europe occidentale, la table sur `8` bits est suffisante et la norme
+en Europe occidentale, la table sur `8` bits est suffisante et la norme
 ISO-8859_ contient des tables de caractères `8` bits pour de
-nombreuses langues. La norme Unicode va plus loin en permettant de
+nombreuses langues. La norme :term:`Unicode` va plus loin en permettant de
 représenter les caractères écrits de toutes les langues connues
 sur Terre. Une description détaillée du support de ces types de
 caractères sort du cadre de ce cours sur les systèmes
@@ -401,25 +397,24 @@ informatiques. Il est cependant important que vous soyez conscient de
 cette problématique pour pouvoir la prendre en compte lorsque vous
 développerez des applications qui doivent traiter du texte dans
 différentes langues.
+
 À titre d'exemple, la fonction `toupper(3)`_ qui est implémentée dans
-les versions actuelles de Linux est nettement plus complexe que celle
+les versions récentes de Linux est nettement plus complexe que celle
 que nous avons vue ci-dessus. Tout d'abord, la fonction `toupper(3)`_
 prend comme argument un ``int`` et non un ``char``. Cela lui permet
 d'accepter des caractères dans n'importe quel encodage. Ensuite, le
 traitement qu'elle effectue dépend du type d'encodage qui a été
 défini via `setlocale(3)`_  (voir `locale(7)`_).
 
-.. todo:: fournir un exemple plus tard
-
 
 .. see http://en.wikipedia.org/wiki/List_of_binary_codes
 
-Dans la suite du cours, nous supposerons qu'un caractère
+Dans la suite de ce document, nous supposerons qu'un caractère
 est toujours représentable en utilisant le type ``char`` permettant de
 stocker un octet.
 
 En C, les chaînes de caractères sont représentées sous la forme d'un
-tableau de caractères. Une chaîne de caractères peut s'initialiser de
+tableau de caractères. Une chaîne de caractères peut être initialisée de
 différentes façons reprises ci-dessous.
 
 .. code-block:: c
@@ -429,8 +424,6 @@ différentes façons reprises ci-dessous.
    char name3[] = "Unix";
 
 
-.. todo:: gcc ne semble pas poser de problème pour    char wrong[4] =
-.. { 'U', 'n', 'i', 'x' }; mais certains compilateurs pourraient
 
 Lorsque la taille de la chaîne de caractères n'est pas indiquée à
 l'initialisation (c'est-à-dire dans les deux dernières lignes
@@ -490,7 +483,7 @@ stockés en mémoire et le :term:`garbage collector` retire de la
 mémoire les objets qui ne sont plus utilisés. En C, un programme peut
 aussi réserver des zones pour stocker de l'information en
 mémoire. Cependant, comme nous le verrons plus tard, c'est le
-programmeur qui doit explicitement allouer et désallouer la mémoire.
+programmeur qui doit explicitement allouer et libérer la mémoire.
 
 Les `pointeurs` sont une des caractéristiques principales du langage C
 par rapport à de nombreux autres langages. Un :term:`pointeur` est
@@ -501,7 +494,7 @@ un ordinateur. D'un point de vue abstrait, la mémoire d'un ordinateur
 peut être vue sous la forme d'une zone de stockage dans laquelle il
 est possible de lire ou d'écrire de l'information. Chaque zone
 permettant de stocker de l'information est identifiée par une
-:term:`adresse`. La mémoire peut être vue comme l'implémentation de
+:term:`adresse`. La mémoire peut être vue comme une implémentation de
 deux fonctions C :
 
  - ``data read(addr)`` est une fonction qui, sur base
@@ -521,7 +514,7 @@ figure et elles croîtront vers le haut.
 
 Considérons l'initialisation ci-dessous et supposons qu'elle est
 stockée dans une mémoire où les adresses sont encodées sur `3`
-bits. Une telle mémoire dispose de huit slots permettant chacun de
+bits. Une telle mémoire dispose de huit zones permettant chacune de
 stocker un octet.
 
 .. code-block:: c
@@ -681,7 +674,7 @@ L'exécution de ce fragment de code produit une sortie qu'il est intéressant d'
    2 est à l'adresse 0x7fff5fbff752
    1 est à l'adresse 0x7fff5fbff753
 
-Tout d'abord, l'initialisation du pointeur ``ptr_char`` a bien stocké dans ce pointeur l'adresse en mémoire du premier élément du tableau. Ensuite, comme ``ptr_char`` est un pointeur de type ``unsigned char *``, l'expression  ``*ptr_char`` a retourné la valeur de l'octet se trouvant à l'adresse ``0x7fff5fbff750``. L'incrémentation du pointeur ``ptr_char`` s'est faite en respectant l'arithmétique des pointeurs. Comme ``sizeof(unsigned char)`` retourne ``1``, la valeur stockée dans ``ptr_char`` a été incrémentée d'une seule unité par l'instruction ``ptr_char++``. En analysant les quatre ``unsigned char`` se trouvant aux adresses ``0x7fff5fbff750`` à ``0x7fff5fbff753``, on retrouve bien l'entier ``0x01020304`` qui avait été placé dans ``tab[0]``.
+Tout d'abord, l'initialisation du pointeur ``ptr_char`` a bien stocké dans ce pointeur l'adresse en mémoire du premier élément du tableau. Ensuite, comme ``ptr_char`` est un pointeur de type ``unsigned char *``, l'expression  ``*ptr_char`` a retourné la valeur de l'octet se trouvant à l'adresse ``0x7fff5fbff750``. Le pointeur ``ptr_char`` a été incrémenté en respectant l'arithmétique des pointeurs. Comme ``sizeof(unsigned char)`` retourne ``1``, la valeur stockée dans ``ptr_char`` a été incrémentée d'une seule unité par l'instruction ``ptr_char++``. En analysant les quatre ``unsigned char`` se trouvant aux adresses ``0x7fff5fbff750`` à ``0x7fff5fbff753``, on retrouve bien l'entier ``0x01020304`` qui avait été placé dans ``tab[0]``.
 
 .. todo:: exemples
 
@@ -716,7 +709,7 @@ Dans les premières versions du langage C, une structure devait nécessairement 
 
 Les structures sont utilisées dans différentes librairies et appels système sous Unix et Linux. Un exemple classique est la gestion du temps sur un système Unix. Un système informatique contient généralement une horloge dite `temps-réel` qui est en pratique construite autour d'un cristal qui oscille à une fréquence fixée. Ce cristal est piloté par un circuit électronique qui compte ses oscillations, ce qui permet de mesurer le passage du temps. Le système d'exploitation utilise cette horloge `temps réel` pour diverses fonctions et notamment la mesure du temps du niveau des applications.
 
-Un système de type Unix maintient différentes structures qui sont associées à la mesure du temps [#ftimelibc]_. La première sert à mesurer le nombre de secondes et de microsecondes qui se sont écoulées depuis le 1er janvier 1970. Cette structure, baptisée ``struct timeval`` est définie dans `sys/time.h`_ comme suit :
+Un système de type Unix maintient différentes structures qui sont associées à la mesure du temps [#ftimelibc]_. La première sert à mesurer le nombre de secondes et de microsecondes qui se sont écoulées depuis le premier janvier 1970. Cette structure, baptisée ``struct timeval`` est définie dans `sys/time.h`_ comme suit :
 
 .. code-block:: c
 
@@ -725,11 +718,11 @@ Un système de type Unix maintient différentes structures qui sont associées �
     suseconds_t  tv_usec;  /* and microseconds */
   };
 
-Cette structure est utilisée par des appels système tels que `gettimeofday(2)`_ pour notamment récupérer l'heure courante ou les appels de manipulation de timers tels que `getitimer(2)`_ / `setitimer(2)`_. Elle est aussi utilisée par la fonction `time(3posix)`_ de la librairie standard et est très utile pour mesurer les performances d'un programme.
+Cette structure est utilisée par des appels système tels que `gettimeofday(2)`_ pour notamment récupérer l'heure courante ou les appels de manipulation de temporisateurs (`timers` en anglais) tels que `getitimer(2)`_ / `setitimer(2)`_. Elle est aussi utilisée par la fonction `time(3posix)`_ de la librairie standard et est très utile pour mesurer les performances d'un programme.
 
 Les structures sont également fréquemment utilisées pour représenter des formats de données spéciaux sur disque comme le format des répertoires [#fdirent]_ ou les formats de paquets qui sont échangés sur le réseau [#freseau]_.
 
-La définition de ``struct timeval`` utilise une fonctionnalité fréquemment utilisée du C : la possibilité de définir des alias pour des noms de type de données existants. Cela se fait en utilisant l'opérateur ``typedef``. En C, il est possible de renommer des types de données existants. Ainsi, l'exemple ci-dessous utilise ``typedef`` pour définir l'alias ``Entier`` pour le type ``int`` et l'alias ``Fraction`` pour la structure ``struct fraction``.
+La définition de ``struct timeval`` utilise une fonctionnalité fréquemment utilisée du C : la possibilité de définir des alias pour des noms de type de données existants. Cela se fait en utilisant l'opérateur ``typedef``. En C, il est possible de renommer des types de données existants. Ainsi, l'exemple ci-dessous utilise ``typedef`` pour définir ``Entier`` comme alias pour le type ``int`` et ``Fraction`` pour la structure ``struct fraction``.
 
 .. literalinclude:: /C/S2-src/typedef.c
    :encoding: utf-8
@@ -742,9 +735,9 @@ Les types ``Entier`` et ``int`` peuvent être utilisés de façon interchangeabl
 
 .. note:: ``typedef`` en pratique
 
- Le renommage de types de données a des avantages et des inconvénients dont il faut être conscient pour pouvoir l'utiliser à bon escient. L'utilisation de ``typedef`` peut faciliter la lecture et la portabilité de certains programmes. Lorsqu'un ``typedef`` est associé à une structure, cela facilite la déclaration de variables de ce type et permet le cas échéant de modifier la structure de données ultérieurement sans pour autant devoir modifier l'ensemble du programme. Cependant, contrairement aux langages orientés objet, des méthodes ne sont pas directement associées aux structures et la modification d'une structure oblige souvent à vérifier toutes les fonctions qui utilisent cette structure. L'utilisation de ``typedef`` permet de clarifier le rôle de certains types de données ou valeurs de retour de fonctions. À titre d'exemple, l'appel système `read(2)`_ qui permet notamment de lire des données dans un fichier retourne le nombre d'octets qui ont été lus après chaque appel. Cette valeur de retour est de type ``ssize_t``. L'utilisation de ces types permet au compilateur de vérifier que les bons types de données sont utilisés lors des appels de fonctions.
+ Renommer des types de données a des avantages et des inconvénients dont il faut être conscient pour pouvoir l'utiliser à bon escient. L'utilisation de ``typedef`` peut faciliter la lecture et la portabilité de certains programmes. Lorsqu'un ``typedef`` est associé à une structure, cela facilite la déclaration de variables de ce type et permet le cas échéant de modifier la structure de données ultérieurement sans pour autant devoir modifier l'ensemble du programme. Cependant, contrairement aux langages orientés objet, des méthodes ne sont pas directement associées aux structures et la modification d'une structure oblige souvent à vérifier toutes les fonctions qui utilisent cette structure. L'utilisation de ``typedef`` permet de clarifier le rôle de certains types de données ou valeurs de retour de fonctions. À titre d'exemple, l'appel système `read(2)`_ qui permet notamment de lire des données dans un fichier retourne le nombre d'octets qui ont été lus après chaque appel. Cette valeur de retour est de type ``ssize_t``. L'utilisation de ces types permet au compilateur de vérifier que les bons types de données sont utilisés lors des appels de fonctions.
 
- ``typedef`` est souvent utilisé pour avoir des identifiants de type de données plus court. Par exemple, il est très courant d'abrévier les types ``unsigned`` comme ci-dessous.
+ ``typedef`` est souvent utilisé pour avoir des identifiants de types de données plus courts. Par exemple, il est très courant de remplacer le types ``unsigned`` par les abréviations ci-dessous.
 
   .. literalinclude:: /C/S2-src/typedef.c
      :encoding: utf-8
@@ -752,7 +745,7 @@ Les types ``Entier`` et ``int`` peuvent être utilisés de façon interchangeabl
      :start-after: ///EEE
      :end-before: ///FFF
 
- Soyez prudent si vous utilisez des ``typedef`` pour redéfinir des pointeurs. En C, il est tout à fait valide d'écrire les lignes suivantes.
+ Soyez prudents si vous utilisez des ``typedef`` pour redéfinir des pointeurs. En C, il est tout à fait valide d'écrire les lignes suivantes.
 
   .. literalinclude:: /C/S2-src/typedef.c
      :encoding: utf-8
@@ -777,7 +770,7 @@ Les pointeurs sont fréquemment utilisés en combinaison avec des structures et 
 Les fonctions
 -------------
 
-Comme la plupart des langages, le C permet de modulariser un programme
+Comme la plupart des langages, le C permet de faciliter la compréhension d'un programme
 en le découpant en de nombreuses fonctions. Chacune réalise une
 tâche simple. Tout comme Java, C permet la définition de fonctions qui ne retournent aucun résultat. Celles-ci sont de type ``void`` comme l'exemple trivial ci-dessous.
 
@@ -825,7 +818,11 @@ Les fonctions peuvent évidemment recevoir également des tableaux comme argumen
    :start-after: ///AAA
    :end-before: ///BBB
 
-Tout comme cette fonction peut accéder au ième caractère de la chaîne passée en argument, elle peut également et sans aucune restriction modifier chacun des caractères de cette chaîne. Par contre, comme le pointeur vers la chaîne de caractères est passé par valeur, la fonction ne peut pas modifier la zone mémoire qui est pointée par l'argument.
+.. spelling::
+
+   ième
+                
+Tout comme cette fonction peut accéder au `ième` caractère de la chaîne passée en argument, elle peut également et sans aucune restriction modifier chacun des caractères de cette chaîne. Par contre, comme le pointeur vers la chaîne de caractères est passé par valeur, la fonction ne peut pas modifier la zone mémoire qui est pointée par l'argument.
 
 Un autre exemple de fonctions qui manipulent les tableaux sont des fonctions mathématiques qui traitent des vecteurs par exemple.
 
@@ -862,7 +859,7 @@ Ces deux fonctions peuvent être utilisées par le fragment de code ci-dessous :
      warning: passing argument 1 of ‘plusun’ makes integer from pointer without a cast
      warning: passing argument 2 of ‘plusun’ makes pointer from integer without a cast
 
- De nombreux programmeurs débutants ignorent souvent les warnings émis par le compilateur et se contentent d'avoir un programme compilable. C'est la source de nombreuses erreurs et de nombreux problèmes. Dans l'exemple ci-dessus, l'exécution de l'appel ``plusun(vecteur,N)`` provoquera une tentative d'accès à la mémoire dans une zone qui n'est pas allouée au processus. Dans ce cas, la tentative d'accès est bloquée par le système et provoque l'arrêt immédiat du programme sur une :term:`segmentation fault`. Dans d'autres cas, des erreurs plus subtiles mais du même type ont provoqué des problèmes graves de sécurité dans des programmes écrits en langage C. Nous y reviendrons ultérieurement.
+ De nombreux programmeurs débutants ignorent souvent les warnings émis par le compilateur et se contentent d'avoir un programme compilé. C'est la source de nombreuses erreurs et de nombreux problèmes. Dans l'exemple ci-dessus, l'exécution de l'appel ``plusun(vecteur,N)`` provoquera une tentative d'accès à la mémoire dans une zone qui n'est pas allouée au processus. Dans ce cas, la tentative d'accès est bloquée par le système et provoque l'arrêt immédiat du programme sur une :term:`segmentation fault`. Dans d'autres cas, des erreurs plus subtiles mais du même type ont provoqué des problèmes graves de sécurité dans des programmes écrits en langage C. Nous y reviendrons ultérieurement.
 
 Pour terminer, mentionnons que les fonctions écrites en C peuvent utiliser des structures et des pointeurs vers des structures comme arguments. Elles peuvent aussi retourner des structures comme résultat. Ceci est illustré par deux variantes de fonctions permettant d'initialiser une fraction et de déterminer si deux fractions sont égales [#fegal]_.
 
@@ -932,6 +929,11 @@ A     B      A XOR B
 1     1	     0
 ===   ===    ============
 
+.. spelling::
+
+   De Morgan
+   
+
 Ces opérations peuvent être combinées entre elles. Pour des raisons technologiques, les circuits logiques implémentent plutôt les opérations NAND (qui équivaut à AND suivi de NOT) ou NOR (qui équivaut à OR suivi de NOT). Il est également important de mentionner les lois formulées par De Morgan qui peuvent se résumer par les équations suivantes :
 
  - :math:`\neg{(A \wedge B)}=\neg{A} \vee \neg{B}`
@@ -943,7 +945,7 @@ Ces opérations binaires peuvent s'étendre à des séquences de bits. Voici que
    :encoding: utf-8
    :language: console
 
-En C, ces expressions logiques s'utilisent comme dans le fragment de code suivant. En général, elles s'utilisent sur des representations non signées, souvent des ``unsigned char`` ou des ``unsigned int``.
+En C, ces expressions logiques s'utilisent comme dans le fragment de code suivant. En général, elles s'utilisent sur des représentations non signées, souvent des ``unsigned char`` ou des ``unsigned int``.
 
 .. literalinclude:: /C/S2-src/exprbin.c
    :encoding: utf-8
@@ -959,6 +961,10 @@ En pratique, les opérations logiques sont utiles pour effectuer des manipulatio
    :start-after: ///CCC
    :end-before: ///DDD
 
+.. spelling::
+
+   Vernam
+                
 L'opération XOR joue un rôle important dans certaines applications. La plupart des méthodes de chiffrement et de déchiffrement utilisent de façon extensive cette opération. Une des propriétés intéressantes de l'opération XOR est que :math:`(A \oplus B) \oplus B=A`. Cette propriété est largement utilisée par les méthodes de chiffrement. La méthode développée par Vernam au début du vingtième siècle s'appuie sur l'opération XOR. Pour transmettre un message `M` de façon sûre, elle applique l'opération XOR bit à bit entre tous les bits du message `M` et une clé `K` doit avoir au moins le même nombre de bits que `M`. Si cette clé `K` est totalement aléatoire et n'est utilisée qu'une seule fois, alors on parle de *one-time-pad*. On peut montrer que dans ce cas, la méthode de chiffrement est totalement sûre. En pratique, il est malheureusement difficile d'avoir une clé totalement aléatoire qui soit aussi longue que le message à transmettre. Le programme ci-dessous implémente cette méthode de façon triviale. La fonction `memfrob(3)`_ de la librairie :term:`GNU` utilise également un chiffrement via un XOR.
 
 .. literalinclude:: /C/S2-src/xor.c
@@ -1007,6 +1013,10 @@ Ces opérations de décalage permettent différentes manipulations de bits. À t
 
 .. [#fdirent] Voir notamment `fs(5)`_ pour des exemples relatifs aux systèmes de fichiers. Une analyse détaillée des systèmes de fichiers sort du cadre de ce cours.
 
-.. [#freseau] Parmi les exemples simples, on peut citer la structure ``struct ipv6hdr`` qui correspond à l'entête IPv6 et est définie dans `linux/ipv6.h`_.
+.. spelling::
+
+   IP
+              
+.. [#freseau] Parmi les exemples simples, on peut citer la structure ``struct ipv6hdr`` qui correspond à l'entête du protocole IP version 6 et est définie dans `linux/ipv6.h`_.
 
 .. [#fegal] Cette définition de l'égalité entre fractions suppose que les fractions à comparer sont sous forme irréductible. Le lecteur est invité à écrire la fonction générale permettant de tester l'égalité entre fractions réductibles.

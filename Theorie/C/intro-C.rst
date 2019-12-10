@@ -1,5 +1,5 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Copyright |copy| 2012, 2019 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 Le langage C
@@ -10,7 +10,7 @@ Différents langages permettent au programmeur de construire des programmes qui 
 
 .. commentaire  Sur certains processeurs, ces séquences ont une taille fixe (par exemple 32 ou 64 bits). C'est le cas par exemple sur certains processeurs de type :term:`RISC`. D'autres processeurs supportent des instructions en langage machine qui sont encodées sous la forme d'un nombre variables de bits. C'est le cas de processeurs de type :term:`CISC` et notamment les processeurs de la famille :term:`x86` développés initialement par intel et qui sont largement utilisés de nos jours.
 
-Le langage machine est peu adapté aux humains et il est extrêmement rare qu'un informaticien doive manipuler des programmes directement en langage machine. Par contre, pour certaines tâches bien spécifiques, comme par exemple le développement de routines spéciales qui doivent être les plus rapides possibles ou qui doivent interagir directement avec le matériel, il est important de pouvoir efficacemment générer du langage machine. Cela peut se faire en utilisant un langage d'assemblage. Chaque famille de processeurs a un langage d'assemblage qui lui est propre. Le langage d'assemblage permet d'exprimer de façon symbolique les différentes instructions qu'un processeur doit exécuter. Nous aurons l'occasion de traiter à plusieurs reprises des exemples en langage d'assemblage dans le cadre de ce cours. Cela nous permettra de mieux comprendre la façon dont le processeur fonctionne et exécute les programmes. Le langage d'assemblage est converti en langage machine grâce à un :term:`assembleur`.
+Le langage machine est peu adapté aux humains et il est extrêmement rare qu'un informaticien doive manipuler des programmes directement en langage machine. Par contre, pour certaines tâches bien spécifiques, comme par exemple le développement de routines spéciales qui doivent être les plus rapides possibles ou qui doivent interagir directement avec le matériel, il est important de pouvoir efficacement générer du langage machine. Cela peut se faire en utilisant un langage d'assemblage. Chaque famille de processeurs a un langage d'assemblage qui lui est propre. Le langage d'assemblage permet d'exprimer de façon symbolique les différentes instructions qu'un processeur doit exécuter. Nous aurons l'occasion de traiter à plusieurs reprises des exemples en langage d'assemblage dans le cadre de ce cours. Cela nous permettra de mieux comprendre la façon dont le processeur fonctionne et exécute les programmes. Le langage d'assemblage est converti en langage machine grâce à un :term:`assembleur`.
 
 Le langage d'assemblage est le plus proche du processeur. Il permet d'écrire des programmes compacts et efficaces. C'est aussi souvent la seule façon d'utiliser des instructions spéciales du processeur qui permettent d'interagir directement avec le matériel pour par exemple commander les dispositifs d'entrée/sortie. C'est essentiellement dans les systèmes embarqués qui disposent de peu de mémoire et pour quelques fonctions spécifiques des systèmes d'exploitation que le langage d'assemblage est utilisé de nos jours. La plupart des programmes applicatifs et la grande majorité des systèmes d'exploitation sont écrits dans des langages de plus haut niveau.
 
@@ -69,7 +69,7 @@ Ensuite, un programme écrit en langage C comprend principalement des expression
            #define EXIT_FAILURE    1
            #define EXIT_SUCCESS    0
 
- - inclure du code sur base de la valeur d'une constante définie par un ``#define``. Ce contrôle de l'inclusion de code sur base de la valeur de constantes est fréquemment utilisé pour ajouter des lignes qui ne doivent être exécutées que lorsque l'on veut débugger un programme. C'est aussi souvent utilisé pour faciliter la portabilité d'un programme entre différentes variantes de Unix, mais cette utilisation sort du cadre de ce cours.
+ - inclure du code sur base de la valeur d'une constante définie par un ``#define``. Ce contrôle de l'inclusion de code sur base de la valeur de constantes est fréquemment utilisé pour ajouter des lignes qui ne doivent être exécutées que lorsque l'on veut déboguer un programme. C'est aussi souvent utilisé pour faciliter la portabilité d'un programme entre différentes variantes de Unix, mais cette utilisation sort du cadre de ce cours.
 
     .. code-block:: c
 
@@ -82,7 +82,7 @@ Ensuite, un programme écrit en langage C comprend principalement des expression
 Il est également possible de définir des macros qui prennent un ou plusieurs paramètres [CPP]_.
 
 
-Les headers standards sont placés dans des répertoires bien connus du système. Sur la plupart des variantes de Unix ils se trouvent dans le répertoire ``/usr/include/``. Nous aurons l'occasion d'utiliser régulièrement ces fichiers standards dans le cadre du cours.
+Les `headers` standards sont placés dans des répertoires bien connus du système. Sur la plupart des variantes de Unix ils se trouvent dans le répertoire ``/usr/include/``. Nous aurons l'occasion d'utiliser régulièrement ces fichiers standards dans le cadre du cours.
 
 Le langage Java a été largement inspiré du langage C et de nombreuses constructions syntaxiques sont similaires en Java et en C. Un grand nombre de mots clés en C ont le même rôle qu'en Java. Les principaux types de données primitifs supportés par le C sont  :
 
@@ -106,7 +106,7 @@ Les compilateurs récents qui supportent le type booléen permettent de déclare
 
 Au-delà des types de données primitifs, Java et C diffèrent et nous aurons l'occasion d'y revenir dans un prochain chapitre. Le langage C n'est pas un langage orienté objet et il n'est donc pas possible de définir d'objet avec des méthodes spécifiques en C. C permet la définition de structures, d'unions et d'énumérations sur lesquelles nous reviendrons.
 
-En Java, les chaînes de caractères sont représentées grâce à l'objet ``String``. En C, une chaîne de caractères est représentée sous la forme d'un tableau de caractères dont le dernier élément contient la valeur ``\0``. Alors que Java stocke les chaînes de caractères dans un objet avec une indication de leur longueur, en C il n'y a pas de longueur explicite pour les chaînes de caractères mais le caractère ``\0`` sert de marqueur de fin de chaîne de caractères. Lorsque le language C a été développé, ce choix semblait pertinent, notamment pour des raisons de performance. Avec le recul, ce choix pose question [Kamp2011]_ et nous y reviendrons lorsque nous aborderons certains problèmes de sécurité.
+En Java, les chaînes de caractères sont représentées grâce à l'objet ``String``. En C, une chaîne de caractères est représentée sous la forme d'un tableau de caractères dont le dernier élément contient la valeur ``\0``. Alors que Java stocke les chaînes de caractères dans un objet avec une indication de leur longueur, en C il n'y a pas de longueur explicite pour les chaînes de caractères mais le caractère ``\0`` sert de marqueur de fin de chaîne de caractères. Lorsque le langage C a été développé, ce choix semblait pertinent, notamment pour des raisons de performance. Avec le recul, ce choix pose question [Kamp2011]_ et nous y reviendrons lorsque nous aborderons certains problèmes de sécurité.
 
 .. literalinclude:: src/string.c
    :language: c
@@ -144,7 +144,7 @@ Par convention, en C le premier argument (se trouvant à l'indice ``0`` du table
 .. literalinclude:: src/cmdline.out
         :language: console
 
-Outre le traitement des arguments, une autre différence importante entre Java et C est la valeur de retour de la fonction ``main``. En C, la fonction ``main`` retourne un entier. Cette valeur de retour est passée par le système d'exploitation au programme (typiquemment un :term:`shell` ou interpréteur de commandes) qui a demandé l'exécution du programme. Grâce à cette valeur de retour il est possible à un programme d'indiquer s'il s'est exécuté correctement ou non. Par convention, un programme qui s'exécute sous Unix doit retourner ``EXIT_SUCCESS`` lorsqu'il se termine correctement et ``EXIT_FAILURE`` en cas d'échec. La plupart des programmes fournis avec un Unix standard respectent cette convention. Dans certains cas, d'autres valeurs de retour non nulles sont utilisées pour fournir plus d'informations sur la raison de l'échec.
+Outre le traitement des arguments, une autre différence importante entre Java et C est la valeur de retour de la fonction ``main``. En C, la fonction ``main`` retourne un entier. Cette valeur de retour est passée par le système d'exploitation au programme (typiquement un :term:`shell` ou interpréteur de commandes) qui a demandé l'exécution du programme. Grâce à cette valeur de retour il est possible à un programme d'indiquer s'il s'est exécuté correctement ou non. Par convention, un programme qui s'exécute sous Unix doit retourner ``EXIT_SUCCESS`` lorsqu'il se termine correctement et ``EXIT_FAILURE`` en cas d'échec. La plupart des programmes fournis avec un Unix standard respectent cette convention. Dans certains cas, d'autres valeurs de retour non nulles sont utilisées pour fournir plus d'informations sur la raison de l'échec.
 En pratique, l'échec d'un programme peut être dû aux arguments incorrects fournis par l'utilisateur ou à des fichiers qui sont inaccessibles.
 
 À titre d'illustration, le programme :download:`src/failure.c` est le programme le plus simple qui échoue lors de son exécution.
@@ -200,9 +200,14 @@ Toutes les tables de caractères placent les chiffres ``0`` à ``9`` à des posi
    - les pages de manuel de `FreeBSD <http://www.freebsd.org/cgi/man.cgi>`_
    - les pages de manuel de `MacOS <http://developer.apple.com/documentation/Darwin/Reference/ManPages/index.html>`_
 
-  Dans la version online de ces notes, toutes les références vers un programme Unix, un appel système ou une fonction de la librairie pointent vers la page de manuel Linux correspondante.
+  Dans la version en-ligne de ces notes, toutes les références vers un programme Unix, un appel système ou une fonction de la librairie pointent vers la page de manuel Linux correspondante.
 
-Il existe de nombreux livres consacrés au langage C. La référence la plus classique est [KernighanRitchie1998]_, mais certains éléments comments à dater. Un tutorial intéressant a été publié par Brian Kernighan [Kernighan]_. [King2008]_ propose une présentation plus moderne du langage C.
+.. spelling::
+
+   Kernighan
+   Ritchie
+  
+Il existe de nombreux livres consacrés au langage C. La référence la plus classique est [KernighanRitchie1998]_, mais certains éléments commencent à dater. Un tutoriel intéressant a été publié par Brian Kernighan [Kernighan]_. [King2008]_ propose une présentation plus moderne du langage C.
 
 .. rubric:: Footnotes
 
@@ -212,6 +217,12 @@ Il existe de nombreux livres consacrés au langage C. La référence la plus cla
 .. [#fbool] Formellement, le standard [C99]_ ne définit pas de type ``bool`` mais un type ``_Bool`` qui est en pratique renommé en type ``bool`` dans la plupart des compilateurs. La définition précise et complète se trouve dans `stdbool.h`_
 
 .. [#fmain] Il est également possible d'utiliser dans un programme C une fonction ``main`` qui ne prend pas d'argument. Sa signature sera alors ``int main (void)``.
+
+.. spelling::
+
+   Darwin
+   MacOS
+   Windows
 
 .. [#fenvp] En pratique, le système d'exploitation passe également les variables d'environnement à la fonction ``main``. Nous verrons plus tard comment ces variables d'environnement sont passées du système au programme et comment celui-ci peut y accéder. Sachez cependant que sous certaines variantes de Unix, et notamment Darwin/MacOS ainsi que sous certaines versions de Windows, le prototype de la fonction ``main`` inclut explicitement ces variables d'environnement (``int main(int argc, char *argv[], char *envp[])``)
 

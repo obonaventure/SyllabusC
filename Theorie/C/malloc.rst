@@ -1,5 +1,5 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Copyright |copy| 2012, 2019 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
@@ -8,7 +8,7 @@ Déclarations
 
 Durant les chapitres précédents, nous avons principalement utilisé des variables locales. Celles-ci sont déclarées à l'intérieur des fonctions où elles sont utilisées. La façon dont les variables sont déclarées est importante dans un programme écrit en langage C. Dans cette section nous nous concentrerons sur des programmes C qui sont écrits sous la forme d'un seul fichier source. Nous verrons plus tard comment découper un programme en plusieurs modules qui sont répartis dans des fichiers différents et comment les variables peuvent y être déclarées.
 
-La première notion importante concernant la déclaration des variables est leur :term:`portée`. La portée d'une variable peut être définie comme étant la partie du programme où la variable est accesible et où sa valeur peut être modifiée. Le langage C définit deux types de portée à l'intérieur d'un fichier C. La première est la :term:`portée globale`. Une variable qui est définie en dehors de toute définition de fonction a une portée globale. Une telle variable est accessible dans toutes les fonctions présentes dans le fichier. La variable ``g`` dans l'exemple ci-dessous a une portée globale.
+La première notion importante concernant la déclaration des variables est leur :term:`portée`. La portée d'une variable peut être définie comme étant la partie du programme où la variable est accessible et où sa valeur peut être modifiée. Le langage C définit deux types de portée à l'intérieur d'un fichier C. La première est la :term:`portée globale`. Une variable qui est définie en dehors de toute définition de fonction a une portée globale. Une telle variable est accessible dans toutes les fonctions présentes dans le fichier. La variable ``g`` dans l'exemple ci-dessous a une portée globale.
 
 .. code-block:: c
 
@@ -59,7 +59,7 @@ Les versions récentes de C [C99]_ permettent également de définir des variabl
    :end-before: ///BBB
 
 
-Il y a deux façons de définir des constantes dans les versions récentes de C [C99]_. La première est via la macro ``#define`` du préprocesseur. Cette macro permet de remplacer une chaîne de caractères (par exemple ``M_PI`` qui provient de `math.h`_) par un nombre ou une autre chaîne de caractères. Ce remplacement s'effectue avant la compilation. Dans le cas de ``M_PI`` ci-dessus, le préprocesseur remplace toute les occurences de cette chaîne de caractères par la valeur numérique de :math:`\pi`. Lorsqu'une variable ``const`` est utilisée, la situation est un peu différente. Le préprocesseur n'intervient pas. Par contre, le compilateur réserve une zone mémoire pour la variable qui a été définie comme constante. Cela a deux avantages par rapport à l'utilisation de ``#define``. Premièrement, il est possible de définir comme constante n'importe quel type de données en C, y compris des structures ou des pointeurs alors qu'avec un ``#define`` on ne peut définir que des nombres ou des chaînes de caractères. Ensuite, comme une ``const`` est stockée en mémoire, il est possible d'obtenir son adresse et de l'examiner via un :term:`debugger`.
+Il y a deux façons de définir des constantes dans les versions récentes de C [C99]_. La première est via la macro ``#define`` du préprocesseur. Cette macro permet de remplacer une chaîne de caractères (par exemple ``M_PI`` qui provient de `math.h`_) par un nombre ou une autre chaîne de caractères. Ce remplacement s'effectue avant la compilation. Dans le cas de ``M_PI`` ci-dessus, le préprocesseur remplace toute les occurrences de cette chaîne de caractères par la valeur numérique de :math:`\pi`. Lorsqu'une variable ``const`` est utilisée, la situation est un peu différente. Le préprocesseur n'intervient pas. Par contre, le compilateur réserve une zone mémoire pour la variable qui a été définie comme constante. Cela a deux avantages par rapport à l'utilisation de ``#define``. Premièrement, il est possible de définir comme constante n'importe quel type de données en C, y compris des structures ou des pointeurs alors qu'avec un ``#define`` on ne peut définir que des nombres ou des chaînes de caractères. Ensuite, comme une ``const`` est stockée en mémoire, il est possible d'obtenir son adresse et de l'examiner via un :term:`debugger`.
 
 
 Unions et énumérations
@@ -109,7 +109,7 @@ Le compilateur C alloue la taille pour l'``union`` de façon à ce qu'elle puiss
    :start-after: ///EEE
    :end-before: ///FFF
 
-Lors de son exécution, la zone mémoire correspondant à l'union ``u`` sera simplement interprétée comme contenant un ``char``, même si on vient d'y stocker un entier. En pratique, lorsqu'une ``union`` est vraiment nécessaire pour des raisons d'économie de mémoire, on l'encapsulera dans une ``struct`` en utilisant un type énuméré qui permet de spécifier le type de données qui est présent dans l'``union``.
+Lors de son exécution, la zone mémoire correspondant à l'union ``u`` sera simplement interprétée comme contenant un ``char``, même si on vient d'y stocker un entier. En pratique, lorsqu'une ``union`` est vraiment nécessaire pour des raisons d'économie de mémoire, on préférera la placer dans une ``struct`` en utilisant un type énuméré qui permet de spécifier le type de données qui est présent dans l'``union``.
 
 .. literalinclude:: /C/S3-src/union.c
    :encoding: utf-8
@@ -197,8 +197,8 @@ La troisième zone est le :term:`segment des données non-initialisées`, réser
 
 
 
-Le tas (ou heap)
-----------------
+Le tas (ou `heap`)
+------------------
 
 La quatrième zone de la mémoire est le :term:`tas` (ou :term:`heap` en anglais). Vu l'importance pratique de la terminologie anglaise, c'est celle-ci que nous utiliserons dans le cadre de ce document. C'est une des deux zones dans laquelle un programme peut obtenir de la mémoire supplémentaire pour stocker de l'information. Un programme peut y réserver une zone permettant de stocker des données et y associer un pointeur.
 
@@ -208,7 +208,11 @@ En C, la plupart des processus allouent et libèrent de la mémoire en utilisant
 
 La fonction `malloc(3)`_ prend comme argument la taille (en bytes) de la zone mémoire à allouer. La signature de la fonction `malloc(3)`_ demande que cette taille soit de type ``size_t``, c'est-à-dire le type retourné par l'expression ``sizeof``. Il est important de toujours utiliser ``sizeof`` lors du calcul de la taille d'une zone mémoire à allouer. `malloc(3)`_ retourne normalement un pointeur de type ``(void *)``. Ce type de pointeur est le type par défaut pour représenter dans un programme C une zone mémoire qui ne pointe pas vers un type de données particulier. En pratique, un programme va généralement utiliser `malloc(3)`_ pour allouer de la mémoire pour stocker différents types de données et le pointeur retourné par `malloc(3)`_ sera `casté` dans un pointeur du bon type.
 
-.. note:: typecast en langage C
+.. spelling::
+
+   typecast
+
+.. note:: ``typecast`` en langage C
 
  Comme le langage Java, le langage C supporte des conversions implicites et explicites entre les différents types de données. Ces conversions sont possibles entre les types primitifs et les pointeurs. Nous les rencontrerons régulièrement, par exemple lorsqu'il faut récupérer un pointeur alloué par `malloc(3)`_ ou le résultat de ``sizeof``. Contrairement au compilateur Java, le compilateur C n'émet pas toujours de message de :term:`warning` lors de l'utilisation de  typecast qui risque d'engendrer une perte de précision. Ce problème est illustré par l'exemple suivant avec les nombres.
 
@@ -229,7 +233,7 @@ Le programme ci-dessous illustre l'utilisation de `malloc(3)`_ et `free(3)`_.
    :start-after: ///AAA
    :end-before: ///BBB
 
-Ce programme alloue trois zones mémoires. Le pointeur vers la première est sauvé dans le pointeur ``string``. Elle est destinée à contenir une chaîne de ``size`` caractères (avec un caractère supplémentaire pour stocker le caractère ``\0`` de fin de chaîne). Il y a deux points à remarquer concernant cette allocation. Tout d'abord, le pointeur retourné par `malloc(3)`_ est casté en un ``char *``. Cela indique au compilateur que ``string`` va bien contenir un pointeur vers une chaîne de caractères. Ce cast explicite rend le programme plus clair. Ensuite, la valeur de retour de `malloc(3)`_  est systématiquement testée. `malloc(3)`_ peut en effet retourner ``NULL`` lorsque la mémoire est remplie. Cela a peu de chance d'arriver dans un programme de test tel que celui-ci, mais tester les valeurs de retour des fonctions de la librairie est une bonne habitude à prendre lorsque l'on programme sous Unix. Le second pointeur, ``vector`` pointe vers une zone destiné à contenir un tableau d'entiers. Le dernier pointeur, ``fract_vect`` pointe vers une zone qui pourra stocker un tableau de ``Fraction``. Lors de son exécution, le programme affiche la sortie suivante.
+Ce programme alloue trois zones mémoires. Le pointeur vers la première est sauvé dans le pointeur ``string``. Elle est destinée à contenir une chaîne de ``size`` caractères (avec un caractère supplémentaire pour stocker le caractère ``\0`` de fin de chaîne). Il y a deux points à remarquer concernant cette allocation. Tout d'abord, le pointeur retourné par `malloc(3)`_ est "casté" en un ``char *``. Cela indique au compilateur que ``string`` va bien contenir un pointeur vers une chaîne de caractères. Cette conversion explicite rend le programme plus clair. Ensuite, la valeur de retour de `malloc(3)`_  est systématiquement testée. `malloc(3)`_ peut en effet retourner ``NULL`` lorsque la mémoire est remplie. Cela a peu de chance d'arriver dans un programme de test tel que celui-ci, mais tester les valeurs de retour des fonctions de la librairie est une bonne habitude à prendre lorsque l'on programme sous Unix. Le second pointeur, ``vector`` pointe vers une zone destiné à contenir un tableau d'entiers. Le dernier pointeur, ``fract_vect`` pointe vers une zone qui pourra stocker un tableau de ``Fraction``. Lors de son exécution, le programme affiche la sortie suivante.
 
 .. literalinclude:: /C/S3-src/malloc.out
    :encoding: utf-8
@@ -246,7 +250,7 @@ Un autre exemple d'utilisation de `malloc(3)`_ est la fonction ``duplicate`` ci-
    :start-after: ///AAA
    :end-before: ///BBB
 
-`malloc(3)`_ et `free(3)`_ sont fréquemment utilisés dans des programmes qui manipulent des structures de données dont la taille varie dans le temps. C'est le cas pour les différents sortes de listes chaînées, les piles, les queues, les arbres, ... L'exemple ci-dessous (:download:`/C/S3-src/stack.c`) illustre l'implémentation d'une pile simple en C. Le pointeur vers le sommet de la pile est défini comme une variable globale. Chaque élément de la pile est représenté comme un pointeur vers une structure qui contient un pointeur vers la donnée stockée (dans cet exemple des fractions) et l'élément suivant sur la pile. Les fonctions ``push`` et ``pop`` permettent respectivement d'ajouter un élément et de retirer un élément au sommet de la pile. La fonction ``push`` alloue la mémoire nécessaire avec `malloc(3)`_ tandis que la fonction ``pop`` utilise `free(3)`_ pour libérer la mémoire dès qu'un élément est retiré.
+`malloc(3)`_ et `free(3)`_ sont fréquemment utilisés dans des programmes qui manipulent des structures de données dont la taille varie dans le temps. C'est le cas pour les différents sortes de listes chaînées, les piles, les queues, les arbres, ... L'exemple ci-dessous (:download:`/C/S3-src/stack.c`) illustre une implémentation d'une pile simple en C. Le pointeur vers le sommet de la pile est défini comme une variable globale. Chaque élément de la pile est représenté comme un pointeur vers une structure qui contient un pointeur vers la donnée stockée (dans cet exemple des fractions) et l'élément suivant sur la pile. Les fonctions ``push`` et ``pop`` permettent respectivement d'ajouter un élément et de retirer un élément au sommet de la pile. La fonction ``push`` alloue la mémoire nécessaire avec `malloc(3)`_ tandis que la fonction ``pop`` utilise `free(3)`_ pour libérer la mémoire dès qu'un élément est retiré.
 
 
 .. literalinclude:: /C/S3-src/stack.c
@@ -286,7 +290,7 @@ Le tas (ou :term:`heap`) joue un rôle très important dans les programmes C. Le
  Un programmeur ne doit cependant `jamais` compter sur cet appel implicite à `free(3)`_. Ne pas libérer la mémoire lorsqu'elle n'est plus utilisée est un problème courant qui est généralement baptisé :term:`memory leak`. Ce problème est particulièrement gênant pour les processus tels que les serveurs Internet qui ne se terminent pas ou des processus qui s'exécutent longtemps. Une petite erreur de programmation peut causer un :term:`memory leak` qui peut après quelque temps consommer une grande partie de l'espace mémoire inutilement. Il est important d'être bien attentif à l'utilisation correcte de `malloc(3)`_ et de `free(3)`_ pour toutes les opérations d'allocation et de libération de la mémoire.
 
 
-`malloc(3)` est la fonction d'allocation de mémoire la plus fréquemment utilisée [#fothermalloc]_. La librairie standard contient cependant d'autres fonctions permettant l'allocation et la réallocation de mémoire. `calloc(3)`_ est nettement moins utilisée que `malloc(3)`_. Elle a pourtant un avantage majeur par rapport à `malloc(3)`_ puisqu'elle initialise à zéro la zone de mémoire allouée. `malloc(3)`_ se contente d'allouer la zone de mémoire mais n'effectue aucune initialisation. Cela permet à `malloc(3)`_ d'être plus rapide, mais le programmeur ne doit jamais oublier qu'il ne peut pas utiliser `malloc(3)`_ sans initialiser la zone mémoire allouée. Cela peut s'observer en pratique avec le programme ci-dessous. Il alloue une zone mémoire pour ``v1``, l'initialise puis la libère. Ensuite, le programme alloue une nouvelle zone mémoire pour ``v2`` et y retrouve les valeurs qu'il avait stocké pour ``v1`` précédemment. En pratique, n'importe quelle valeur pourrait se trouver dans la zone retournée par `malloc(3)`.
+`malloc(3)` est la fonction d'allocation de mémoire la plus fréquemment utilisée [#fothermalloc]_. La librairie standard contient cependant d'autres fonctions permettant d'allouer de la mémoire mais aussi de modifier des allocations antérieures. `calloc(3)`_ est nettement moins utilisée que `malloc(3)`_. Elle a pourtant un avantage majeur par rapport à `malloc(3)`_ puisqu'elle initialise à zéro la zone de mémoire allouée. `malloc(3)`_ se contente d'allouer la zone de mémoire mais n'effectue aucune initialisation. Cela permet à `malloc(3)`_ d'être plus rapide, mais le programmeur ne doit jamais oublier qu'il ne peut pas utiliser `malloc(3)`_ sans initialiser la zone mémoire allouée. Cela peut s'observer en pratique avec le programme ci-dessous. Il alloue une zone mémoire pour ``v1``, l'initialise puis la libère. Ensuite, le programme alloue une nouvelle zone mémoire pour ``v2`` et y retrouve les valeurs qu'il avait stocké pour ``v1`` précédemment. En pratique, n'importe quelle valeur pourrait se trouver dans la zone retournée par `malloc(3)`.
 
 .. literalinclude:: /C/S3-src/mallocinit.c
    :encoding: utf-8
@@ -378,6 +382,10 @@ Un étudiant pourrait vouloir éviter d'utiliser `malloc(3)`_ et écrire plutôt
    :start-after: ///BBB
    :end-before: ///CCC
 
+.. spelling::
+
+   warning
+                
 Lors de la compilation, `gcc(1)`_ affiche le :term:`warning` ``In function ‘duplicate2’: warning: function returns address of local variable``. Ce warning indique que la ligne ``return str2;`` retourne l'adresse d'une variable locale qui n'est plus accessible à la fin de la fonction ``duplicate2``. En effet, l'utilisation de tableaux alloués dynamiquement sur la pile est équivalent à une utilisation implicite de `alloca(3)`_. La déclaration ``char str2[len];`` est équivalente à ``char *str2 =(char *)alloca(len*sizeof(char));`` et la zone mémoire allouée sur la pile pour ``str2`` est libérée lors de l'exécution de ``return str2;`` puisque toute mémoire allouée sur la pile est implicitement libérée à la fin de l'exécution de la fonction durant laquelle elle a été allouée. Donc, une fonction qui appelle ``duplicate2`` ne peut pas récupérer les données se trouvant dans la zone mémoire qui a été allouée par ``duplicate2``.
 
 
@@ -386,11 +394,11 @@ Lors de la compilation, `gcc(1)`_ affiche le :term:`warning` ``In function ‘du
 
 .. [#fpossible] Pour des raisons de performance, le compilateur C ne génère pas de code permettant de vérifier automatiquement qu'un accès via un pointeur pointe vers une zone de mémoire qui est libre. Il est donc parfois possible d'accéder à une zone mémoire qui a été libérée, mais le programme n'a aucune garantie sur la valeur qu'il y trouvera. Ce genre d'accès à des zones mémoires libérées doit bien entendu être complètement proscrit.
 
-.. [#ggetrlimit] Sur de nombreuses variantes de Unix, cette limite à la taille du stack dépend du matériel utilisé et est configurable par l'administrateur système. Un processus peut connaître la taille maximale de son stack en utilisant l'appel système `getrlimit(2)`_. L'administrateur système peut modifier ces limites via l'appel système `setrlimit(2)`_. La commande ``ulimit`` de `bash(1)`_ permet également de manipuler ces limites.
+.. [#ggetrlimit] Sur de nombreuses variantes de Unix, cette limite à la taille du stack dépend du matériel utilisé et peut être configurée par l'administrateur système. Un processus peut connaître la taille maximale de son stack en utilisant l'appel système `getrlimit(2)`_. L'administrateur système peut modifier ces limites via l'appel système `setrlimit(2)`_. La commande ``ulimit`` de `bash(1)`_ permet également de manipuler ces limites.
 
 .. [#fetext] Dans de nombreuses variantes de Unix, il est possible de connaître le sommet du segment :term:`text` d'un processus grâce à la variable :term:`etext`. Cette variable, de type ``char`` est initialisée par le système au chargement du processus. Elle doit être déclarée comme variable de type ``extern char etext`` et son adresse (``&etext``) correspond au sommet du segment text.
 
-.. [#fvmem] Nous verrons ultérieurement que grâce à l'utilisation de la mémoire virtuelle, il est possible pour un processus d'utiliser des zones de mémoire qui ne sont pas contigües.
+.. [#fvmem] Nous verrons ultérieurement que grâce à l'utilisation de la mémoire virtuelle, il est possible pour un processus d'utiliser des zones de mémoire qui ne sont pas contiguës.
 
 .. [#fothermalloc] Il existe différentes alternatives à l'utilisation de `malloc(3)`_ pour l'allocation de mémoire comme `Hoard <http://www.hoard.org/>`_ ou `gperftools <http://code.google.com/p/gperftools/>`_
 

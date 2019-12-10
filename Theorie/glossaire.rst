@@ -1,5 +1,5 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Copyright |copy| 2012, 2019 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
@@ -40,7 +40,7 @@ Glossaire
 
    microprocesseur
    processeur
-    à compléter
+    Unité centrale de l'ordinateur qui exécute les instructions en langage machine et interagit avec la mémoire. 
 
    CPU
     Central Processing Unit. Voir :term:`microprocesseur`
@@ -55,13 +55,10 @@ Glossaire
     Sortie d'erreur standard sur un système Unix (par défaut l'écran)
 
    X11
-    à compléter
+    Interface graphique développée au MIT pour Unix. Voir https://en.wikipedia.org/wiki/X_Window_System
 
    Gnome
-    à compléter
-
-   CDE
-    à compléter
+    Environnement graphique utilisé par de nombreuses distributions Linux. Voir https://en.wikipedia.org/wiki/GNOME
 
    shell
     Interpréteur de commandes sur un système Unix. `bash(1)`_ est l'interpréteur de commandes le plus utilisé de nos jours.
@@ -86,7 +83,7 @@ Glossaire
     Variante de BSD Unix disponible depuis http://www.openbsd.org
 
    MacOS
-    Système d'exploitation développé par Apple Inc. comprenant de nombreux composantes provenant de :term:`FreeBSD`
+    Système d'exploitation développé par Apple Inc. comprenant de nombreux composantes provenant de :term:`FreeBSD`.
 
    Minix
     Famille de noyaux de systèmes d'exploitation inspiré de :term:`Unix` développée notamment par :term:`Andrew Tanenbaum`. Voir http://www.minix3.org pour la dernière version de Minix.
@@ -115,7 +112,7 @@ Glossaire
     Linus Torvalds est le créateur et le mainteneur principal du noyau :term:`Linux`.
 
    Aqua
-    Aqua est une interface graphique spécifique à :term:`MacOS`.
+    Aqua est une interface graphique spécifique à :term:`MacOS`. Voir https://en.wikipedia.org/wiki/Aqua_(user_interface)
 
    pipe
     Mécanisme de redirection des entrées-sorties permettant de relier la sortie standard d'un programme à l'entrée standard d'un autre pour créer des pipelines de traitement.
@@ -139,22 +136,22 @@ Glossaire
     Représentation de nombre réels en virgule flottante (type ``double`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 64 bits.
 
    buffer overflow
-    Problème à compléter
+    Erreur dans laquelle un programme informatique cherche à stocker plus de données en mémoire que la capacité de la zone réservée en mémoire. Donne généralement lieu à des problèmes, parfois graves, de sécurité. https://en.wikipedia.org/wiki/Buffer_overflow
 
    garbage collector
     Algorithme permettant de libérer la mémoire qui n'est plus utilisée notamment dans des langages tels que Java
 
    pointeur
-    à compléter
+    Adresse d'une variable ou fonction en mémoire.
 
    adresse
-    à compléter
+    Position d'un donnée en mémoire.
 
    C99
     Standard international définissant le langage C [C99]_
 
    fichier header
-    à compléter
+    Fichier contenant des signatures de fonctions, des déclarations de types de données, des variables globales, permettant d'utiliser une librairie ou un API.
 
    segmentation fault
     Erreur à l'exécution à compléter
@@ -181,44 +178,38 @@ Glossaire
    FSF
     Free Software Foundation, http://www.fsf.org
 
-   buffer overflow
-    à compléter
-
    portée
-    à compléter
+    Zone d'un programme dans laquelle une variable est déclarée. 
 
    portée locale
-    à compléter
+    Une variable ayant une portée locale est accessible uniquement dans le bloc dans lequelle elle est définie.
 
    portée globale
-    à compléter
+        Une variable ayant une portée globale est accessible dans tout le programme. 
 
    debugger
-    à compléter
+    Logiciel 
 
    text
    segment text
-    à compléter
+    Partie de la mémoire d'un programme contenant les instructions en langage machine à exécuter. 
 
    segment des données initialisées
-    à compléter
+    Partie de la mémoire d'un programme contenant les données initialisées dans le code source du programme ainsi que les chaînes de caractères.
 
    segment des données non-initialisées
-    à compléter
+    Partie de la mémoire d'un programme contenant les données (tableaux notamment) qui sont déclarés mais pas explicitement initialisés dans le code source du programme.
 
    heap
    tas
-    à compléter
-
+    Partie de la mémoire d'un programme gérée par `malloc(3)`_ et `free(3)`_.
+    
    stack
    pile
-    à compléter
-
-   etext
-    à compléter
+    Partie de la mémoire d'un programme contenant les variables locales et adresses de retour des fonctions durant leur exécution.
 
    memory leak
-    à compléter
+    Fuite de mémoire. Erreur concernant un programme qui a alloué de la mémoire avec `malloc(3)`_ et ne l'utilise plus sans avoir fait appel à  `free(3)`_
 
    processus
     Ensemble cohérent d'instructions utilisant une partie de la mémoire, initié par le système d'exploitation et exécuté sur un des processeurs du système. Le système d'exploitation libère les ressources qui lui sont allouées à la fin de son exécution.
@@ -240,7 +231,7 @@ Glossaire
     Un des inventaires des premiers ordinateurs. A défini l'architecture de base des premiers ordinateurs qui est maintenant connue comme le modèle de von Neumann [Krakowiak2011]_
 
    mémoire
-    à compléter
+    Dispositif électronique permettant de stocker 
 
    SRAM
    static RAM
@@ -264,47 +255,11 @@ Glossaire
    mémoire cache
     Mémoire rapide de faible capacité. La mémoire cache peut stocker des données provenant de mémoires de plus grande capacité mais qui sont plus lentes, et exploite le :term:`principe de localité` en stockant de manière transparente les instructions et les données les plus récemment utilisées. Elle fait office d'interface entre le processeur et la mémoire principale et toutes les demandes d'accès à la mémoire principale passent par la mémoire cache, ce qui permet d'améliorer les performances de nombreux systèmes informatiques.
 
-   principe de localité
-    Voir :term:`localité spatiale` et :term:`localité temporelle`.
-
-   localité spatiale
-    à compléter
-
-   localité temporelle
-    à compléter
-
-   lignes de cache
-    à compléter
-
-   write through
-    Technique d'écriture dans les mémoires caches. Toute écriture est faite simultanément en mémoire cache et en mémoire principale. Cela garantit la cohérence entre les deux mémoires mais réduit les performances.
-
-   write back
-    Technique d'écriture dans les mémoires caches.  Toute écriture est faite en mémoire cache. La mémoire principale n'est mise à jour que lorsque la donnée modifiée doit être retirée de la cache. Cette technique permet d'avoir de meilleures performances que :term:`write through` mais il faut faire parfois attention aux problèmes qui pourraient survenir sachant que la mémoire cache et la mémoire principale ne contiennent pas toujours exactement la même information.
-
    eip
    pc
    compteur de programme
    instruction pointer
     Registre spécial du processeur qui contient en permanence l'adresse de l'instruction en cours d'exécution. Le contenu de ce registre est incrémenté après chaque instruction et modifié par les instructions de saut.
-
-   mode d'adressage
-    à compléter
-
-   accumulateur
-    Registre utilisé dans les premiers processeurs comme destination pour la plupart des opérations arithmétiques et logiques. Sur l'architecture [IA32]_, le registre ``%eax`` est le successeur de cet accumulateur.
-
-   bus
-    à compléter
-
-   ligne de cache
-    à compléter. Voir notamment [McKenney2005]_ et  [Drepper2007]_
-
-   write-back
-    à compléter
-
-   program counter
-    à compléter
 
    makefile
     à compléter
@@ -342,16 +297,16 @@ Glossaire
    multi-coeurs
     à compléter
 
-   multi-threadé
-    à compléter
+   multithreadé
+    Programme utilisant plusieurs threads. 
 
    section critique
-    à compléter
+    Partie de programme ne pouvant pas être exécutée simultanément par deux threads différents.
 
    exclusion mutuelle
     à compléter
 
-   sureté
+   sûreté
    safety
     à compléter
 
@@ -390,9 +345,6 @@ Glossaire
    mutex
     à compléter
 
-   problème des philosophes
-    à compléter
-
    appel système
     à compléter
 
@@ -400,18 +352,6 @@ Glossaire
     à compléter
 
    sémaphore
-    à compléter
-
-   problèmes des readers-writers
-    à compléter
-
-   inode
-    à compléter
-
-   segment de données
-    à compléter
-
-   problème des readers-writers
     à compléter
 
    thread-safe
@@ -429,38 +369,10 @@ Glossaire
    librairie partagée
     à compléter
 
-   kernel
-    à compléter
-
-   mode utilisateur
-    à compléter
-
-   mode protégé
-    à compléter
-
-   processus père
-    à compléter
-
-   processus fils
-    à compléter
-
-   processus orphelin
-    à compléter
-
-   processus zombie
-    à compléter
-
-   filesystem
-   système de fichiers
-    à compléter
-
    descripteur de fichier
     à compléter
 
    répertoire
-    à compléter
-
-   secteur
     à compléter
 
    répertoire courant
@@ -478,118 +390,19 @@ Glossaire
    lien symbolique
     à compléter
 
-   lock
-    à compléter
-
-   advisory lock
-   advisory locking
-    à compléter
-
-   mandatory lock
-   mandatory locking
-    à compléter
-
-   open file object
-    à compléter
-
-   sémaphore nommé
-    à compléter
-
    appel système lent
     à compléter
 
-   handler
-    à compléter
-
-   signal synchrone
-    à compléter
-
-   signal asynchrone
-    à compléter
-
-   interpréteur
-    à compléter
-
-   MMU
-   Memory Management Unit
-    à compléter
-
-   adresse virtuelle
-    à compléter
-
-   mémoire virtuelle
-    à compléter
 
    SSD
    Solid State Drive
     Système de stockage de données s'appuyant uniquement sur de la mémoire flash.
-
-   stratégie de remplacement de pages
-    à compléter 
-
-   page
-    à compléter
-
-   table des pages
-    à compléter
-
-   bit de validité
-    à compléter
-
-   TLB
-   Translation Lookaside Buffer
-    à compléter
-
-   Mémoire partagée
-    à compléter
-
-   copy-on-write
-    à compléter
-
-   adresse physique
-    à compléter
-
-   page fault
-   défaut de page
-    à compléter
-
-   file FIFO
-    De "First In, First Out". Le premier élement à entrer dans la file sera le premier à en sortir. (!= LIFO, "Last In First Out")
-
-   dirty bit
-   bit de modification
-    à compléter
-
-   reference bit
-   bit de référence
-    à compléter
-
-   swapping
-    à compléter
-
-   pagination
-    à compléter
-
-   stdio
-    à compléter
-
-   fifo
-    à compléter
-
-   gnuth
-    à compléter
-
-   partition de swap
-    à compléter
-
-   stratégie de remplacement de pages
-    à compléter
-
-   2^64
-    à compléter
 
    root
     à compléter
 
    userid
     à compléter
+
+   Unicode
+    Norme d'encodage de caractères supportant l'ensemble des langues écrites, voir notamment https://en.wikipedia.org/wiki/Unicode 

@@ -1,5 +1,5 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Copyright |copy| 2012, 2019 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. _complementsC:
@@ -17,7 +17,7 @@ Pointeurs
 
 Les pointeurs sont très largement utilisés dans les programmes écrits en langage C. Nous avons utilisé des pointeurs vers des types de données primitifs tel que les ``int``, ``char`` ou ``float`` et des pointeurs vers des structures. En pratique, il est possible en C de définir des pointeurs vers n'importe quel type d'information qui est manipulée par un programme C.
 
-Un premier exemple sont les pointeurs vers des fonctions. Comme nous l'avons vu dans le chapitre précédent, une fonction est une séquence d'instructions assembleur qui sont stockées à un endroit bien précis de la mémoire. Cette localisation précise des instructions qui implémentent la fonction permet d'appeler une fonction avec l'instruction ``calll``. En C, il est parfois aussi souhaitable de pouvoir appeler une fonction via un pointeur vers cette fonction plutôt qu'en nommant la fonction directement. Cela peut rendre le code plus flexible et plus facile à adapter. Nous avons déjà utilisé des pointeurs vers des fonctions sans le savoir lorsque nous avons utilisé ``printf("fct : %p\n",f)`` où ``f`` est un nom de fonction. L'exemple ci-dessous montre une autre utilisation intéressante des pointeurs vers des fonctions. Lorsque l'on écrit du code C, il est parfois utile d'ajouter des commandes qui permettent d'afficher à l'écran des informations de debugging. L'exemple ci-dessous est une application qui supporte trois niveaux de debugging. Rien n'est affiché au niveau ``0``, une ligne s'affiche au niveau ``1`` et des informations plus détaillées sont affichées au niveau ``2``. Lors de son exécution , l'application affiche la sortie suivante.
+Un premier exemple sont les pointeurs vers des fonctions. Comme nous l'avons vu dans le chapitre précédent, une fonction est une séquence d'instructions assembleur qui sont stockées à un endroit bien précis de la mémoire. Cette localisation précise des instructions qui implémentent la fonction permet d'appeler une fonction avec l'instruction ``calll``. En C, il est parfois aussi souhaitable de pouvoir appeler une fonction via un pointeur vers cette fonction plutôt qu'en nommant la fonction directement. Cela peut rendre le code plus flexible et plus facile à adapter. Nous avons déjà utilisé des pointeurs vers des fonctions sans le savoir lorsque nous avons utilisé ``printf("fct : %p\n",f)`` où ``f`` est un nom de fonction. L'exemple ci-dessous montre une autre utilisation intéressante des pointeurs vers des fonctions. Lorsque l'on écrit du code C, il est parfois utile d'ajouter des commandes qui permettent d'afficher à l'écran des informations de débogage. L'exemple ci-dessous est une application qui supporte trois niveaux de débogage. Rien n'est affiché au niveau ``0``, une ligne s'affiche au niveau ``1`` et des informations plus détaillées sont affichées au niveau ``2``. Lors de son exécution , l'application affiche la sortie suivante.
 
 .. code-block:: console
 
@@ -31,7 +31,7 @@ Un premier exemple sont les pointeurs vers des fonctions. Comme nous l'avons vu 
   debug: Hello
   g=1
 
-Cette application qui supporte plusieurs niveaux de debugging utilise pourtant toujours le même appel pour afficher l'information de debugging : ``(debug_print[debug_level])(...);``. Cet appel profite des pointeurs vers les fonctions. Le tableau ``debug_print`` est un tableau de pointeurs vers des fonctions qui chacune prend comme argument un ``char *``. La variable globale ``debug_level`` est initialisée sur base de l'argument passé au programme.
+Cette application qui supporte plusieurs niveaux de débogage utilise pourtant toujours le même appel pour afficher l'information de débogage : ``(debug_print[debug_level])(...);``. Cet appel profite des pointeurs vers les fonctions. Le tableau ``debug_print`` est un tableau de pointeurs vers des fonctions qui chacune prend comme argument un ``char *``. La variable globale ``debug_level`` est initialisée sur base de l'argument passé au programme.
 
 .. literalinclude:: /C/S5-src/fctptr.c
    :encoding: utf-8
@@ -55,11 +55,10 @@ Le premier est un pointeur vers le début de la zone mémoire à trier. Le secon
    :start-after: ///AAA
    :end-before: ///BBB
 
-Il est utile d'analyser en détails les arguments de la fonction de comparaison utilisée par `qsort(3)`_. Celle-ci prend deux arguments de type ``const void *``. L'utilisation de pointeurs ``void *`` est nécessaire car la fonction doit être générique et pouvoir traiter n'importe quel type de pointeurs. ``void *`` est un pointeur vers une zone quelconque de mémoire qui peut être casté vers n'importe quel type de pointeur par la fonction de comparaison. Le qualificatif ``const`` indique que la fonction n'a pas le droit de modifier la donnée référencée par ce pointeur, même si elle reçoit un pointeur vers cette donnée. On retrouvera régulièrement cette utilisation de ``const`` dans les signatures des fonctions de la librairie pour spécifier des contraintes sur les arguments passés à une fonction [#frestrict]_.
+Il est utile d'analyser en détails les arguments de la fonction de comparaison utilisée par `qsort(3)`_. Celle-ci prend deux arguments de type ``const void *``. L'utilisation de pointeurs ``void *`` est nécessaire car la fonction doit être générique et pouvoir traiter n'importe quel type de pointeurs. ``void *`` est un pointeur vers une zone quelconque de mémoire qui peut être casté vers n'importe quel type de pointeur par la fonction de comparaison. ``const`` indique que la fonction n'a pas le droit de modifier la donnée référencée par ce pointeur, même si elle reçoit un pointeur vers cette donnée. On retrouvera régulièrement cette utilisation de ``const`` dans les signatures des fonctions de la librairie pour spécifier des contraintes sur les arguments passés à une fonction [#frestrict]_.
 
-.. todo:: restrict
 
-Le second type de pointeurs que nous n'avons pas encore abordé en détails sont les pointeurs vers des pointeurs. En fait, nous les avons utilisés sans vraiment le savoir dans la fonction ``main``. En effet, le second argument de cette fonction est un tableau de pointeurs qui pointent chacun vers des chaînes de caractères différentes. La notation ``char *argv[]`` est équivalente à la notation ``char **argv``. ``**argv`` est donc un pointeur vers une zone qui contient des pointeurs vers des chaînes de caractères. Ce pointeur vers un pointeur doit être utilisé avec précaution. ``argv[0]`` est un pointeur vers une chaîne de caractères. La construction ``&(argv[0])`` permet donc d'obtenir un pointeur vers un pointeur vers une chaîne de caractères, ce qui correspond bien à la déclaration ``char **``. Ensuite, l'utilisation de ``*p`` pourrait surprendre. ``*p`` est un pointeur vers une chaîne de caractères. Il peut donc être comparé à ``NULL`` qui est aussi un pointeur, incrémenté et la chaîne de caractères qu'il référencie peut être affichée par `printf(3)`_.
+Le second type de pointeurs que nous n'avons pas encore abordé en détails sont les pointeurs vers des pointeurs. En fait, nous les avons utilisés sans vraiment le savoir dans la fonction ``main``. En effet, le second argument de cette fonction est un tableau de pointeurs qui pointent chacun vers des chaînes de caractères différentes. La notation ``char *argv[]`` est équivalente à la notation ``char **argv``. ``**argv`` est donc un pointeur vers une zone qui contient des pointeurs vers des chaînes de caractères. Ce pointeur vers un pointeur doit être utilisé avec précaution. ``argv[0]`` est un pointeur vers une chaîne de caractères. La construction ``&(argv[0])`` permet donc d'obtenir un pointeur vers un pointeur vers une chaîne de caractères, ce qui correspond bien à la déclaration ``char **``. Ensuite, l'utilisation de ``*p`` pourrait surprendre. ``*p`` est un pointeur vers une chaîne de caractères. Il peut donc être comparé à ``NULL`` qui est aussi un pointeur, incrémenté et la chaîne de caractères qu'il référence peut être affichée par `printf(3)`_.
 
 .. literalinclude:: /C/S5-src/ptrptr.c
    :encoding: utf-8
@@ -69,7 +68,6 @@ Le second type de pointeurs que nous n'avons pas encore abordé en détails sont
 
 En pratique, ces pointeurs vers des pointeurs se retrouveront lorsque l'on doit manipuler des structures multidimensionnelles, mais aussi lorsqu'il faut qu'une fonction puisse modifier une adresse qu'elle a reçue en argument.
 
-.. C'est notamment le cas lorsqu'il faut mettre à jour une structure chaînée. Lorsque nous avons construit une structure chaînée permettant de manipuler une pile, les fonctions ``push`` et ``pop`` récupéraient le sommet de la pile dans une variable globale. Cet aspect sera couvert par un des exercices.
 
 
 Un autre exemple d'utilisation de pointeurs vers des pointeurs est la fonction `strtol(3)`_ de la librairie standard. Cette fonction est une généralisation des fonctions comme `atoi(3)`_. Elle permet de convertir une chaîne de caractères en un nombre. La fonction `strtol(3)`_ prend trois arguments et retourne un ``long``. Le premier argument est un pointeur vers la chaîne de caractères à convertir. Le troisième argument est la base utilisée pour cette conversion.
@@ -109,11 +107,7 @@ Cette partie de code utilise la fonction `isdigit(3)`_ pour vérifier si les car
 
 Il existe d'autres fonctions de la librairie standard qui utilisent des pointeurs vers des pointeurs comme arguments dont notamment `strsep(3)`_ et `strtok_r(3)`_.
 
-.. .. note: Le qualificateur ``restrict``
 
-..  Explication de ``restrict``
-
-.. todo:: mettre plus de détails
 
 De grands programmes en C
 -------------------------
@@ -148,7 +142,7 @@ Un module d'un programme C est en général décomposé en deux parties. Tout d'
 
  Un programmeur C peut utiliser deux types de fichiers header. Il y a tout d'abord les fichiers headers standards qui sont fournis avec le système. Ce sont ceux que nous avons utilisés jusque maintenant. Ces headers standards se reconnaissent car ils sont entourés des caractères ``<`` et ``>`` dans la directive ``#include``. Ceux-ci se trouvent dans des répertoires connus par le compilateur, normalement ``/usr/include``. Les fichiers headers qui accompagnent un module se trouvent eux généralement dans le même répertoire que le module. Dans l'exemple ci-dessus, le header ``min.h`` est inclus via la directive ``#include "min.h"``. Lorsque le préprocesseur rencontre une telle directive, il cherche le fichier dans le répertoire courant. Il est possible de spécifier des répertoires qui contiennent des fichiers headers via l'argument ``-I`` de `gcc(1)`_  ou en utilisant les variables d'environnement ``GCC_INCLUDE_DIR`` ou ``CPATH``.
 
-Lorsque l'on doit compiler un programme qui fait appel à plusieurs modules, quelle que soit sa taille, il est préférable d'utiliser `make(1)`_ pour automatiser sa compilation. Le fichier ci-dessous est un exemple minimaliste de :term:`Makefile` utilisable pour un tel projet.
+Lorsque l'on doit compiler un programme qui fait appel à plusieurs modules, quelle que soit sa taille, il est préférable d'utiliser `make(1)`_ pour automatiser sa compilation. Le fichier ci-dessous est un petit exemple de :term:`Makefile` utilisable pour un tel projet.
 
 .. literalinclude:: /C/S5-src/Makefile2
    :encoding: utf-8
@@ -171,14 +165,14 @@ Lorsque plusieurs modules, potentiellement développés par des programmeurs qui
 
 Tout d'abord, les variables locales sont locales au bloc dans lequel elles sont définies. Ce principe permet d'utiliser le même nom de variable dans plusieurs blocs d'un même fichier. Il s'étend naturellement à l'utilisation de variables locales dans des fichiers différents.
 
-Pour les variables globales, la situation est différente. Si une variable est définie en dehors d'un bloc dans un fichier, cette variable est considérée comme étant globale. Par défaut, elle est donc accessible depuis tous les modules qui composent le programme. Cela peut en pratique poser des difficultés si le même nom de variable est utilisé dans deux modules différents. Pour contourner ce problème, le langage C utilise le qualificateur ``static``. Lorsque ce qualificateur est placé devant une déclaration de variable en dehors d'un bloc dans un module, il indique que la variable doit être accessible à toutes les fonctions du module mais pas en dehors du module. Lorsqu'un module utilise des variables qui sont communes à plusieurs fonctions mais ne doivent pas être visibles en dehors du module, il est important de les déclarer comme étant ``static``. Le deuxième qualificateur relatif aux variables globales est ``extern``. Lorsqu'une déclaration de variable globale est préfixée par ``extern``, cela indique au compilateur que la variable est définie dans un autre module qui sera linké ultérieurement. Le compilateur réserve une place pour cette variable dans la table des symboles du fichier objet, mais cette place ne pourra être liée à la zone mémoire qui correspond à cette variable que lorsque l'éditeur de liens combinera les différents fichiers objet entre eux.
+Pour les variables globales, la situation est différente. Si une variable est définie en dehors d'un bloc dans un fichier, cette variable est considérée comme étant globale. Par défaut, elle est donc accessible depuis tous les modules qui composent le programme. Cela peut en pratique poser des difficultés si le même nom de variable est utilisé dans deux modules différents. Pour contourner ce problème, le langage C utilise ``static``. Lorsque ``static`` est placé devant une déclaration de variable en dehors d'un bloc dans un module, il indique que la variable doit être accessible à toutes les fonctions du module mais pas en dehors du module. Lorsqu'un module utilise des variables qui sont communes à plusieurs fonctions mais ne doivent pas être visibles en dehors du module, il est important de les déclarer comme étant ``static``. Lorsqu'une déclaration de variable globale est préfixée par ``extern``, cela indique au compilateur que la variable est définie dans un autre module qui sera lié ultérieurement. Le compilateur réserve une place pour cette variable dans la table des symboles du fichier objet, mais cette place ne pourra être liée à la zone mémoire qui correspond à cette variable que lorsque l'éditeur de liens combinera les différents fichiers objet entre eux.
 
 .. note:: Les deux utilisations de ``static`` pour des variables
 
- La qualificateur ``static`` peut être utilisé à la fois pour des variables qui sont définies en dehors d'un bloc et dans un bloc. Lorsqu'une variable est définie comme étant ``static`` hors d'un bloc dans un module, elle n'est accessible qu'aux fonctions de ce module. Par contre, lorsqu'une variable est définie comme étant ``static`` à l'intérieur d'un bloc, par exemple dans une fonction, le qualificatif indique que cette variable doit toujours se trouver à la même localisation en mémoire, quel que soit le moment où elle est appelée. Ces variables ``static`` sont placées par le compilateur dans le bas de la mémoire, avec les variables globales. Contrairement aux variables locales traditionnelles, une variable locale ``static`` garde sa valeur d'une invocation de la fonction à l'autre. En pratique, les variables locales ``static`` doivent être utilisées avec précaution et bien documentées. Un de leurs intérêt est qu'elles ne sont initialisées qu'au lancement du programme et pas à chaque invocation de la fonction où elles sont définies.
+ ``static`` peut être utilisé à la fois pour des variables qui sont définies en dehors d'un bloc et dans un bloc. Lorsqu'une variable est définie comme étant ``static`` hors d'un bloc dans un module, elle n'est accessible qu'aux fonctions de ce module. Par contre, lorsqu'une variable est définie comme étant ``static`` à l'intérieur d'un bloc, par exemple dans une fonction, cela indique que cette variable doit toujours se trouver à la même localisation en mémoire, quel que soit le moment où elle est appelée. Ces variables ``static`` sont placées par le compilateur dans le bas de la mémoire, avec les variables globales. Contrairement aux variables locales traditionnelles, une variable locale ``static`` garde sa valeur d'une invocation de la fonction à l'autre. En pratique, les variables locales ``static`` doivent être utilisées avec précaution et bien documentées. Un de leurs intérêt est qu'elles ne sont initialisées qu'au lancement du programme et pas à chaque invocation de la fonction où elles sont définies.
 
 
-La qualificateur ``static`` peut aussi précéder des déclarations de fonctions. Dans ce cas, il indique que la fonction ne doit pas être visible en dehors du module dans lequel elle est définie. Sans le qualificateur ``static``, une fonction déclarée dans un module est accessible depuis n'importe quel autre module.
+Il faut noter que ``static`` peut aussi précéder des déclarations de fonctions. Dans ce cas, il indique que la fonction ne doit pas être visible en dehors du module dans lequel elle est définie. Sans ``static``, une fonction déclarée dans un module est accessible depuis n'importe quel autre module.
 
 Afin d'illustrer l'utilisation de ``static`` et ``extern``, considérons le programme ``prog.c`` ci-dessous qui inclut le module ``module.c`` et également le module ``min.c`` présenté plus haut.
 
@@ -190,7 +184,7 @@ Afin d'illustrer l'utilisation de ``static`` et ``extern``, considérons le prog
    :encoding: utf-8
    :language: c
 
-Ce module contient deux fonctions, ``vmin`` et ``min``. ``vmin`` est déclarée sans qualificatif. Elle est donc accessible depuis n'importe quel module. Sa signature est reprise dans le :term:`fichier header` ``module.h``. La fonction ``min`` par contre est déclarée avec le qualificatif ``static``. Cela implique qu'elle n'est utilisable qu'à l'intérieur de ce module et invisible de tout autre module. La variable globale ``num1`` est accessible depuis n'importe quel module. La variable ``num2`` également, mais elle est initialisée dans un autre module. Enfin, la variable ``num3`` n'est accessible qu'à l'intérieur de ce module.
+Ce module contient deux fonctions, ``vmin`` et ``min``. ``vmin`` est accessible depuis n'importe quel module. Sa signature est reprise dans le :term:`fichier header` ``module.h``. La fonction ``min`` par contre est déclarée comme étant ``static``. Cela implique qu'elle n'est utilisable qu'à l'intérieur de ce module et invisible de tout autre module. La variable globale ``num1`` est accessible depuis n'importe quel module. La variable ``num2`` également, mais elle est initialisée dans un autre module. Enfin, la variable ``num3`` n'est accessible qu'à l'intérieur de ce module.
 
 .. literalinclude:: /C/S5-src/prog.c
    :encoding: utf-8
@@ -205,7 +199,7 @@ La fonction ``f`` mérite que l'on s'y attarde un peu. Cette fonction contient l
    :encoding: utf-8
    :language: console
 
-Le dernier point à mentionner concernant cet exemple est relatif à la fonction ``min`` qui est utilisée dans la fonction ``main``. Le module ``prog.c`` étant linké avec ``module.c`` et ``min.c``, le linker associe à ce nom de fonction la déclaration qui se trouve dans le fichier ``min.c``. La déclaration de la fonction ``min`` qui se trouve dans ``module.c`` est ``static``, elle ne peut donc pas être utilisée en dehors de ce module.
+Le dernier point à mentionner concernant cet exemple est relatif à la fonction ``min`` qui est utilisée dans la fonction ``main``. Le module ``prog.c`` étant lié avec ``module.c`` et ``min.c``, le linker associe à ce nom de fonction la déclaration qui se trouve dans le fichier ``min.c``. La déclaration de la fonction ``min`` qui se trouve dans ``module.c`` est ``static``, elle ne peut donc pas être utilisée en dehors de ce module.
 
 
 Traitement des erreurs
@@ -242,12 +236,12 @@ A titre d'exemple, le programme ci-dessous utilise `strerror(3)`_ pour afficher 
      fprintf(stderr,"Erreur : errno=%d %s\n",errno,strerror(errno));
    }
 
-.. linker : gcc -v pour voir ce qu'il se passe dans gcc, montrer cpp et les include
+
 
 .. rubric:: Footnotes
 
 
-.. [#frestrict] La qualificateur ``restrict`` est également parfois utilisé pour indiquer des contraintes sur les pointeurs passés en argument à une fonction [Walls2006]_.
+.. [#frestrict] ``restrict`` est également parfois utilisé pour indiquer des contraintes sur les pointeurs passés en argument à une fonction [Walls2006]_.
 
 
 
