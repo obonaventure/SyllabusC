@@ -39,7 +39,7 @@ Bibliographie
 
 .. [Downey2008] Downey, A., `The Little Book of Semaphores`, Second Edition, Green Tea Press, 2008, https://greenteapress.com/wp/semaphores/
 
-.. [Drepper2007] Drepper, U., `What every programmer should know about memory`, 2007, http://www.akkadia.org/drepper/cpumemory.pdf
+.. .. [Drepper2007] Drepper, U., `What every programmer should know about memory`, 2007, http://www.akkadia.org/drepper/cpumemory.pdf
 
 .. [DrepperMolnar2005] Drepper, U., Molnar, I., `The Native POSIX Thread Library for Linux`, http://www.akkadia.org/drepper/nptl-design.pdf
 
