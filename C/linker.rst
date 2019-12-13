@@ -9,6 +9,8 @@ Compléments de C
 ================
 
 
+.. todo: think about purpose of the whole section
+
 Dans les sections précédentes, nous n'avons pas pu couvrir l'ensemble des concepts avancés qui sont relatifs à une bonne utilisation du langage C. Cette section contient quelques notions plus avancées qui sont importantes en pratique.
 
 
@@ -242,6 +244,3 @@ A titre d'exemple, le programme ci-dessous utilise `strerror(3)`_ pour afficher 
 
 
 .. [#frestrict] ``restrict`` est également parfois utilisé pour indiquer des contraintes sur les pointeurs passés en argument à une fonction [Walls2006]_.
-
-
-
