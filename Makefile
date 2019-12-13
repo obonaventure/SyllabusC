@@ -152,10 +152,4 @@ doctest:
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
 
-qcm:
-	@for dir in Exercices/QCM/S*; do make -C $${dir}; done
-
-projets:
-	@for dir in Projets/P*; do [ -e $${dir}/Makefile ] && make -C $${dir}; true; done
-
-sinf1252: qcm projets html latexpdf epub
+lepl1503: html latexpdf epub

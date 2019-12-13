@@ -46,7 +46,7 @@ Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |vb|
      # Display the VirtualBox GUI when booting the machine
      vb.gui = false
-  
+
      # Customize the amount of memory on the VM:
      vb.memory = "2048"
   end
@@ -69,6 +69,10 @@ Vagrant.configure(2) do |config|
      sudo apt-get install -y python-sphinx
      sudo apt-get install -y make
      sudo apt-get install -y git
+     sudo apt-get install -y texlive-latex-base
+     sudo apt-get install -y texlive-latex-extra
+     sudo apt-get install -y texlive-fonts-recommended
+     sudo apt-get install -y python-sphinxcontrib.spelling
   SHELL
    #     sudo apt-get install -y python-setuptools
    #     sudo apt-get install -y mscgen
