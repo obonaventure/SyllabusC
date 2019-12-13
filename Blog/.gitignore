@@ -1,7 +1,0 @@
-# Ignore all _build directories
-_build
-# Ignore all files ending with ~
-*~
-*.o
-\#*
-blog/*
