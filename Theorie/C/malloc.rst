@@ -129,6 +129,8 @@ Le programmeur pourra alors utiliser cette structure en indiquant explicitement 
 Organisation de la mémoire
 ==========================
 
+.. todo: rewrite without all segments but stack variables <-> heap variables + malloc
+
 Lors de l'exécution d'un programme en mémoire, le système d'exploitation charge depuis le système de fichier le programme en langage machine et le place à un endroit convenu en mémoire. Lorsqu'un programme s'exécute sur un système Unix, la mémoire peut être vue comme étant divisée en six zones principales. Ces zones sont représentées schématiquement dans la figure ci-dessous.
 
 .. figure:: /C/figures/figures-001-c.png
@@ -385,7 +387,7 @@ Un étudiant pourrait vouloir éviter d'utiliser `malloc(3)`_ et écrire plutôt
 .. spelling::
 
    warning
-                
+
 Lors de la compilation, `gcc(1)`_ affiche le :term:`warning` ``In function ‘duplicate2’: warning: function returns address of local variable``. Ce warning indique que la ligne ``return str2;`` retourne l'adresse d'une variable locale qui n'est plus accessible à la fin de la fonction ``duplicate2``. En effet, l'utilisation de tableaux alloués dynamiquement sur la pile est équivalent à une utilisation implicite de `alloca(3)`_. La déclaration ``char str2[len];`` est équivalente à ``char *str2 =(char *)alloca(len*sizeof(char));`` et la zone mémoire allouée sur la pile pour ``str2`` est libérée lors de l'exécution de ``return str2;`` puisque toute mémoire allouée sur la pile est implicitement libérée à la fin de l'exécution de la fonction durant laquelle elle a été allouée. Donc, une fonction qui appelle ``duplicate2`` ne peut pas récupérer les données se trouvant dans la zone mémoire qui a été allouée par ``duplicate2``.
 
 
@@ -403,6 +405,3 @@ Lors de la compilation, `gcc(1)`_ affiche le :term:`warning` ``In function ‘du
 .. [#fothermalloc] Il existe différentes alternatives à l'utilisation de `malloc(3)`_ pour l'allocation de mémoire comme `Hoard <http://www.hoard.org/>`_ ou `gperftools <http://code.google.com/p/gperftools/>`_
 
 .. [#fenvbash] Il possible de lister les définitions actuelles des variables d'environnement via la commande `printenv(1)`_. Les interpréteurs de commande tels que `bash(1)`_ permettent de facilement modifier les valeurs de ces variables. La plupart d'entre elles sont initialisées par le système ou via les fichiers qui sont chargés automatiquement au démarrage de l'interpréteur comme ``/etc/profile`` qui contient les variables fixées par l'administrateur système ou le fichier ``.profile`` du répertoire d'accueil de l'utilisateur qui contient les variables d'environnement propres à cet utilisateur.
-
-
-

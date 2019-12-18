@@ -205,6 +205,8 @@ De nombreux programmes découpés en threads fonctionnent avec un ensemble de pr
 Compléments sur les threads POSIX
 =================================
 
+.. todo: look if it is useful
+
 Il existe différentes implémentations des threads POSIX. Les mécanismes de coordination utilisables varient parfois d'une implémentation à l'autre. Dans les sections précédentes, nous nous sommes focalisés sur les fonctions principales qui sont en général bien implémentées. Une discussion plus détaillée des fonctions implémentées sous Linux peut se trouver dans [Kerrisk2010]_. [Gove2011]_ présente de façon détaillée les mécanismes de coordination utilisables sous Linux, Windows et Oracle Solaris. [StevensRago2008]_ comprend également une description des threads POSIX mais présente des exemples sur des versions plus anciennes de Linux, FreeBSD, Solaris et MacOS.
 
 Il reste cependant quelques concepts qu'il est utile de connaître lorsque l'on développe des programmes découpés en threads en langage C.
@@ -368,41 +370,6 @@ La fonction `strerror_r(3)`_ évite ce problème de tableau statique en utilisan
 
 Lorsque l'on intègre des fonctions provenant de la librairie standard ou d'une autre librairie dans un programme découpé en threads, il est important de vérifier que les fonctions utilisées sont bien :term:`thread-safe`. La page de manuel `pthreads(7)`_ liste les fonctions qui ne sont pas :term:`thread-safe` dans la librairie standard.
 
-.. spelling::
-
-   Gene
-   Amdahl
-
-Loi de Amdahl
-=============
-
-En découpant un programme en threads, il est théoriquement possible d'améliorer les performances du programme en lui permettant d'exécuter plusieurs threads d'exécution simultanément. Dans certains cas, la découpe d'un programme en différents threads est naturelle et relativement facile à réaliser. Dans d'autres cas, elle est nettement plus compliquée. Pour s'en convaincre, il suffit de considérer un grand tableau contenant plusieurs centaines de millions de nombres. Considérons un programme simple qui doit trouver dans ce tableau quel est l'élément du tableau pour lequel l'application d'une fonction complexe ``f`` donne le résultat minimal. Une implémentation purement séquentielle se contenterait de parcourir l'entièreté du tableau et d'appliquer la fonction ``f`` à chacun des éléments. A la fin de son exécution, le programme retournera l'élément qui donne la valeur minimale. Un tel problème est très facile à découper en threads. Il suffit de découper le tableau en ``N`` sous-tableaux, de lancer un thread de calcul sur chaque sous-tableau et ensuite de fusionner les résultats de chaque thread.
-
-Un autre problème est de trier le contenu d'un tel tableau dans l'ordre croissant. De nombreux algorithmes séquentiels de tri existent pour ordonner un tableau. La découpe de ce problème en thread est nettement moins évidente que dans le problème précédent et les algorithmes de tri adaptés à une utilisation dans plusieurs threads ne sont pas une simple extension des algorithmes séquentiels.
-
-Dans les années 1960s, à l'époque des premières réflexions sur l'utilisation de plusieurs processeurs pour résoudre un problème, Gene Amdahl [Amdahl1967]_ a analysé quelles étaient les gains que l'on pouvait attendre de l'utilisation de plusieurs processeurs. Dans sa réflexion, il considère un programme ``P`` qui peut être découpé en deux parties :
-
- - une partie purement séquentielle. Il s'agit par exemple de l'initialisation de l'algorithme utilisé, de la collecte des résultats, ...
- - une partie qui est peut être parallélisée. Il s'agit en général du coeur de l'algorithme.
-
-Plus les opérations réalisées à l'intérieur d'un programme sont indépendantes entre elles, plus le programme fonction en parallèle et inversement. Pour Amdahl, si le temps d'exécution d'un programme séquentiel est `T` et qu'une fraction `f` de ce programme peut être parallélisée, alors le gain qui peut être obtenu de la parallélisation est :math:`\frac{T}{T \times( (1-f)+\frac{f}{N})}=\frac{1}{ (1-f)+\frac{f}{N}}` lorsque le programme est découpé en `N` threads. Cette formule, connue sous le nom de la :term:`loi de Amdahl` fixe une limite théorique sur le gain que l'on peut obtenir en parallélisant un programme. La figure ci-dessous [#famdahl]_ illustre le gain théorique que l'on peut obtenir en parallélisant un programme en fonction du nombre de processeur et pour différentes fractions parallélisées.
-
-.. figure:: /Threads/figures/500px-AmdahlsLaw.png
-   :align: center
-   :scale: 80
-
-   Loi de Amdahl (source `wikipedia <http://en.wikipedia.org/wiki/Amdahl's_law>`_)
-
-.. spelling::
-
-   profiling
-
-La loi de Amdahl doit être considérée comme un maximum théorique qui est difficile d'atteindre. Elle suppose que la parallélisation est  parfaite, c'est-à-dire que la création et la terminaison de threads n'ont pas de coût en terme de performance. En pratique, c'est loin d'être le cas et il peut être difficile d'estimer a priori le gain qu'une parallélisation permettra d'obtenir. En pratique, avant de découper un programme séquentiel en threads, il est important de bien identifier la partie séquentielle et la partie du programme pouvant être parallélisée. Si la partie séquentielle est trop importante, le gain dû à la parallélisation risque d'être faible. Si par contre la partie purement séquentielle est faible, il est possible d'obtenir théoriquement des gains élevés. Le tout sera de trouver des solutions efficaces qui permettront aux threads de fonctionner le plus indépendamment possible.
-
-En pratique, avant de s'attaquer à la découpe d'un programme séquentiel en threads, il est important de bien comprendre quelles sont les parties du programme qui sont les plus consommatrices de temps CPU. Ce seront souvent les boucles ou les grandes structures de données. Si le programme séquentiel existe, il est utile d'analyser son exécution avec des outils de `profiling` tels que `gprof(1)`_  [Graham+1982]_ ou `oprofile <http://oprofile.sourceforge.net/>`_. Un profiler est un logiciel qui permet d'analyser l'exécution d'un autre logiciel de façon à pouvoir déterminer notamment quelles sont les fonctions ou parties du programmes les plus exécutées. Ces parties de programme sont celles sur lesquelles l'effort de parallélisation devra porter en pratique.
-
-Dans un programme découpé en threads, toute utilisation de fonctions de coordination comme des sémaphores ou des mutex, bien qu'elle soit nécessaire pour la correction du programme, risque d'avoir un impact négatif sur les performances. Pour s'en convaincre, il est intéressant de réfléchir au problème des producteurs-consommateurs. Il correspond à de nombreux programmes réels. Les performances d'une implémentation du problème des producteurs consommateurs dépendront fortement de la taille du buffer entre les producteurs et les consommateurs et de leur nombre et/ou vitesses relatives. Idéalement, il faudrait que le buffer soit en moyenne rempli à moitié. De cette façon, chaque producteur pourra déposer de l'information dans le buffer et chaque consommateur pourra en retirer. Si le buffer est souvent vide, cela indique que les consommateurs sont plus rapides que les producteurs. Ces consommateurs risquent d'être inutilement bloqués, ce qui affectera les performances. Il en va de même si le buffer était plein. Dans ce cas, les producteurs seraient souvent bloqués.
-
 .. rubric:: Footnotes
 
 .. [#fSysV] Les systèmes Unix supportent également des sémaphores dits `System V` du nom de la version de Unix dans laquelle ils ont été introduits. Dans ces notes, nous nous focalisons sur les sémaphores POSIX qui ont une API un peu plus simple que les es sémaphores `System V`. Les principales fonctions pour les sémaphores `System V` sont `semget(3posix)`_, `semctl(3posix)`_ et `semop(3posix)`_.
@@ -413,7 +380,3 @@ Dans un programme découpé en threads, toute utilisation de fonctions de coordi
 .. [#fstrerror] Cette implémentation est adaptée de http://opensource.apple.com/source/gcc/gcc-926/libiberty/strerror.c et est dans le domaine public.
 
 .. [#fstrerror_r] Cette implémentation est adaptée de https://www-asim.lip6.fr/trac/netbsdtsar/browser/vendor/netbsd/5/src/lib/libc/string/strerror_r.c?rev=2 et est `Copyright (c) 1988 Regents of the University of California.`
-
-.. [#famdahl] Source : http://en.wikipedia.org/wiki/Amdahl's_law
-
-

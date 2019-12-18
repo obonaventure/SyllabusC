@@ -14,7 +14,7 @@ ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
-.PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext qcm projets sinf1252
+.PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext qcm projets lepl1503
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -153,9 +153,9 @@ doctest:
 	      "results in $(BUILDDIR)/doctest/output.txt."
 
 qcm:
-	@for dir in Exercices/QCM/S*; do make -C $${dir}; done
+	@for dir in ../Exercices/QCM/S*; do make -C $${dir}; done
 
 projets:
-	@for dir in Projets/P*; do [ -e $${dir}/Makefile ] && make -C $${dir}; true; done
+	@for dir in ../Projets/P*; do [ -e $${dir}/Makefile ] && make -C $${dir}; true; done
 
-sinf1252: qcm projets html latexpdf epub
+lepl1503: qcm projets html latexpdf epub
