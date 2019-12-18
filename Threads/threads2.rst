@@ -187,7 +187,7 @@ Lorsqu'un thread est créé avec la fonction `pthread_create(3)`_, il est placé
    schedulers
    l'ordonnanceur
    l'implémentation
-   
+
 Les transitions entre les différents états d'un thread sont gérées par le système d'exploitation. Lorsque plusieurs threads d'exécution sont simultanément actifs, le système d'exploitation doit arbitrer les demandes d'utilisation du CPU de chaque thread. Cet arbitrage est réalisé par l'ordonnanceur (ou :term:`scheduler` en anglais). Le :term:`scheduler` est un ensemble d'algorithmes qui sont utilisés par le système d'exploitation pour sélectionner le ou les threads qui peuvent utiliser un processeur à un moment donné. Il y a souvent plus de threads qui sont dans l'état `Ready` que de processeurs disponibles et le scheduler doit déterminer quels sont les threads à exécuter.
 
 Une description détaillée du fonctionnement d'un scheduler relève plutôt d'un cours sur les systèmes d'exploitation que d'un premier cours sur le langage C, mais il est important de connaître les principes de base de fonctionnement de quelques schedulers.
@@ -318,4 +318,3 @@ Pour montrer que la propriété de vivacité est bien respectée, il faut montre
 .. [#fstaticinit] Linux supporte également la macro ``PTHREAD_MUTEX_INITIALIZER`` qui permet d'initialiser directement un ``pthread_mutex_t`` déclaré comme variable globale. Dans cet exemple, la déclaration aurait été : ``pthread_mutex_t global_mutex=PTHREAD_MUTEX_INITIALIZER;`` et l'appel à `pthread_mutex_init(3posix)`_ aurait été inutile. Comme il s'agit d'une extension spécifique à Linux, il est préférable de ne pas l'utiliser pour garantir la portabilité du code.
 
 .. [#fphilo] Le programme complet est :download:`/Threads/S6-src/pthread-philo.c`
-

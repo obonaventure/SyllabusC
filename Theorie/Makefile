@@ -5,7 +5,7 @@
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         = a4
-BUILDDIR      = _build
+BUILDDIR      = ../web/notes/Theorie
 
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
@@ -153,9 +153,9 @@ doctest:
 	      "results in $(BUILDDIR)/doctest/output.txt."
 
 qcm:
-	@for dir in Exercices/QCM/S*; do make -C $${dir}; done
+	@for dir in ../Exercices/QCM/S*; do make -C $${dir}; done
 
 projets:
-	@for dir in Projets/P*; do [ -e $${dir}/Makefile ] && make -C $${dir}; true; done
+	@for dir in ../Projets/P*; do [ -e $${dir}/Makefile ] && make -C $${dir}; true; done
 
 lepl1503: qcm projets html latexpdf epub
