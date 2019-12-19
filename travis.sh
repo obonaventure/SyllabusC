@@ -7,7 +7,7 @@ set -e
 #  -N   Do not emi colors
 #  -T   output full traceback
 # --keep-going continue the processing after a warning
-# cd Theorie
+cd Theorie
 echo "**** Theorie ****"
 sphinx-build  -nWNT --keep-going -b html . /tmp
 sphinx-build -b spelling . /tmp

@@ -7,10 +7,10 @@
 Systèmes informatiques
 ######################
 
-
+ 
 .. only:: html
 
-    Ce site web contient la partie théorique du support du cours `Projet P3 - LEPL1503 <https://uclouvain.be/cours-2019-lepl1503>`_ donné aux `étudiants ingénieurs et informaticiens <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <https://www.uclouvain.be>`_ (UCLouvain). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/UCL-INGI/SyllabusC .
+    Ce site web contient la partie théorique du support du cours `Projet P3 - LEPL1503 <https://uclouvain.be/cours-2019-lepl1503>`_ donné aux `étudiants ingénieurs et informaticiens <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <https://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/UCL-INGI/SyllabusC .
 
     La version HTML est la préférable car elle contient des liens hypertextes vers les pages de manuel Linux qui font partie de la matière. D'autres formats sont possibles pour ceux qui veulent lire le document hors ligne :
 
@@ -18,7 +18,7 @@ Systèmes informatiques
         - `format pdf <http://sites.uclouvain.be/SystInfo/distrib/SINF1252-Theorie.pdf>`_ pour lecture via les logiciels Adobe ou pour impression
 
 
-
+	  
 
 Introduction
 *************
@@ -40,7 +40,7 @@ Langage C
 
 
 
-
+   
 
 Systèmes Multiprocesseurs
 *************************
@@ -53,13 +53,13 @@ Systèmes Multiprocesseurs
 ..   Threads/processus
 
 
-Gestion des fichiers
+Gestion des fichiers 
 ********************
 
-.. toctree::
-   :maxdepth: 2
+.. toctree:: 
+   :maxdepth: 2 
 
-   Fichiers/fichiers
+   Fichiers/fichiers 
 
 *******
 Annexes
@@ -70,3 +70,4 @@ Annexes
 
    bib
    glossaire
+
