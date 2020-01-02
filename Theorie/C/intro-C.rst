@@ -57,7 +57,7 @@ Ensuite, un programme écrit en langage C comprend principalement des expression
         .. code-block:: c
 
            #define ZERO  0
-	   #define STRING "SINF1252"
+	   #define STRING "LEPL1503"
 
  - importer (directive ``#include``) un fichier. Ce fichier contient généralement des prototypes de fonctions et des constantes. En langage C, ces fichiers qui sont inclus dans un programme sont appelés des `header files` et ont par convention un nom se terminant par ``.h``. Le programme :download:`src/hello.c` ci-dessus importe deux fichiers `headers` standards :
 

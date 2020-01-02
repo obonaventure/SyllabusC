@@ -89,6 +89,7 @@ Annexes
 .. toctree::
    :maxdepth: 2
 
+   Annexes/prise-en-main-rasp
    bib
    glossaire
 

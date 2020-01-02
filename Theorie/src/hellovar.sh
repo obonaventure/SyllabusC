@@ -1,4 +1,4 @@
 #!/bin/bash
-PROG="SINF"
-COURS=1252
+PROG="LEPL"
+COURS=1503
 echo $PROG$COURS
