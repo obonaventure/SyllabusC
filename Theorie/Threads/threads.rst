@@ -66,7 +66,9 @@ Cette progression continue des performances en MIPS a été possible grâce à l
 
 
 
-La notion de thread d'exécution est très importante dans un système informatique. Elle permet non seulement de comprendre comme un ordinateur équipé d'un seul microprocesseur peut exécuter plusieurs programmes simultanément, mais aussi comment des programmes peuvent profiter des nouveaux processeurs capables d'exécuter plusieurs threads simultanément. Pour comprendre cette notion, il est intéressant de revenir à nouveau sur l'exécution d'une fonction en langage assembleur. Considérons la fonction ``f`` :
+La notion de thread d'exécution est très importante dans un système informatique. Elle permet non seulement de comprendre comme un ordinateur équipé d'un seul microprocesseur peut exécuter plusieurs programmes simultanément, mais aussi comment des programmes peuvent profiter des nouveaux processeurs capables d'exécuter plusieurs threads simultanément. 
+.. Pour comprendre cette notion, il est intéressant de revenir à nouveau sur l'exécution d'une fonction en langage assembleur. 
+Considérons la fonction ``f`` :
 
  .. code-block:: c
 
@@ -80,12 +82,12 @@ La notion de thread d'exécution est très importante dans un système informati
     return m;
   }
 
-En assembleur, cette fonction se traduit en :
+.. En assembleur, cette fonction se traduit en :
 
+..
 
-.. code-block:: nasm
-
-    f:
+	.. code-block:: nasm
+	f:
 	subl	$16, %esp
 	movl	24(%esp), %eax
 	movl	20(%esp), %ecx
@@ -93,11 +95,11 @@ En assembleur, cette fonction se traduit en :
 	movl	%eax, 8(%esp)
 	movl	$0, 4(%esp)
 	movl	$0, (%esp)
-   .LBB0_1:
+	.LBB0_1:
 	movl	(%esp), %eax
 	cmpl	8(%esp), %eax
 	jge	.LBB0_3
-
+..
 	movl	12(%esp), %eax
 	movl	4(%esp), %ecx
 	addl	%eax, %ecx
@@ -106,23 +108,26 @@ En assembleur, cette fonction se traduit en :
 	addl	$1, %eax
 	movl	%eax, (%esp)
 	jmp	.LBB0_1
-   .LBB0_3:
+	.LBB0_3:
 	movl	4(%esp), %eax
 	addl	$16, %esp
 	ret
 
 
-Pour qu'un processeur puisse exécuter cette séquence d'instructions, il faut non seulement qu'il implémente chacune de ces instructions, mais également qu'il puisse accéder :
+Pour qu'un processeur puisse exécuter cette séquence d'instructions, il faut qu'il puisse accéder :
+.. il faut non seulement qu'il implémente chacune de ces instructions, mais également qu'il puisse accéder :
 
  - à la mémoire contenant les instructions à exécuter
  - à la mémoire contenant les données manipulées par cette séquence d'instruction. Pour rappel, cette mémoire est divisée en plusieurs parties :
 
     - la zone contenant les variables globales
-    - le tas
+    - le tas 
     - la pile
 
- - aux registres et plus particulièrement, il doit accéder :
 
+ - aux registres, des zone de mémoire très rapide (mais peu nombreuses par soucis technique) se trouvant sur le processeur qui permettent de stocker entre autre : l'addresse de l'instruction à exécuter, des résultats intermédaires obtenus durant l'exécution d'un instruction ou encore des informations sur la pile.
+.. et plus particulièrement, il doit accéder :
+..
     - aux registres de données pour stocker les résultats de chacune des instructions
     - au registre ``%esp`` directement ou indirectement via les instructions ``push`` et ``pop`` qui permettent de manipuler la pile
     - au registre ``%eip`` qui contient l'adresse de l'instruction en cours d'exécution

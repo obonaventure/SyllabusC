@@ -205,23 +205,23 @@ De nombreux programmes découpés en threads fonctionnent avec un ensemble de pr
 Compléments sur les threads POSIX
 =================================
 
-.. todo: look if it is useful
-
 Il existe différentes implémentations des threads POSIX. Les mécanismes de coordination utilisables varient parfois d'une implémentation à l'autre. Dans les sections précédentes, nous nous sommes focalisés sur les fonctions principales qui sont en général bien implémentées. Une discussion plus détaillée des fonctions implémentées sous Linux peut se trouver dans [Kerrisk2010]_. [Gove2011]_ présente de façon détaillée les mécanismes de coordination utilisables sous Linux, Windows et Oracle Solaris. [StevensRago2008]_ comprend également une description des threads POSIX mais présente des exemples sur des versions plus anciennes de Linux, FreeBSD, Solaris et MacOS.
 
 Il reste cependant quelques concepts qu'il est utile de connaître lorsque l'on développe des programmes découpés en threads en langage C.
 
 
-Variables ``volatile``
-----------------------
 
-Normalement, dans un programme C, lorsqu'une variable est définie, ses accès sont contrôlés entièrement par le compilateur. Si la variable est utilisée dans plusieurs calculs successifs, il peut être utile d'un point de vue des performances de stocker la valeur de cette variable dans un registre pendant au moins le temps correspondant à l'exécution de quelques instructions [#fregister]_. Cette optimisation peut éventuellement poser des difficultés dans certains programmes utilisant des threads puisqu'une variable peut être potentiellement modifiée ou lue par plusieurs threads simultanément.
+.. Variables ``volatile``
+.. ----------------------
 
-Les premiers compilateurs C avaient pris en compte un problème similaire. Lorsqu'un programme ou un système d'exploitation interagit avec des dispositifs d'entrée-sortie, cela se fait parfois en permettant au dispositif d'écrire directement en mémoire à une adresse connue par le système d'exploitation. La valeur présente à cette adresse peut donc être modifiée par le dispositif d'entrée-sortie sans que le programme ne soit responsable de cette modification. Face à ce problème, les inventeurs du langage C ont introduit le qualificatif ``volatile``. Lorsqu'une variable est ``volatile``, cela indique au compilateur qu'il doit recharger la variable de la mémoire chaque fois qu'elle est utilisée.
+.. Normalement, dans un programme C, lorsqu'une variable est définie, ses accès sont contrôlés entièrement par le compilateur. Si la variable est utilisée dans plusieurs calculs successifs, il peut être utile d'un point de vue des performances de stocker la valeur de cette variable dans un registre pendant au moins le temps correspondant à l'exécution de quelques instructions [#fregister]_. Cette optimisation peut éventuellement poser des difficultés dans certains programmes utilisant des threads puisqu'une variable peut être potentiellement modifiée ou lue par plusieurs threads simultanément.
 
-Pour bien comprendre l'impact de ce qualificatif, il est intéressant d'analyser le code assembleur généré par un compilateur C dans l'exemple suivant.
+.. Les premiers compilateurs C avaient pris en compte un problème similaire. Lorsqu'un programme ou un système d'exploitation interagit avec des dispositifs d'entrée-sortie, cela se fait parfois en permettant au dispositif d'écrire directement en mémoire à une adresse connue par le système d'exploitation. La valeur présente à cette adresse peut donc être modifiée par le dispositif d'entrée-sortie sans que le programme ne soit responsable de cette modification. Face à ce problème, les inventeurs du langage C ont introduit le qualificatif ``volatile``. Lorsqu'une variable est ``volatile``, cela indique au compilateur qu'il doit recharger la variable de la mémoire chaque fois qu'elle est utilisée.
 
-.. code-block:: c
+.. Pour bien comprendre l'impact de ce qualificatif, il est intéressant d'analyser le code assembleur généré par un compilateur C dans l'exemple suivant.
+
+
+... code-block:: c
 
     int x=1;
     int v[2];
@@ -231,29 +231,29 @@ Pour bien comprendre l'impact de ce qualificatif, il est intéressant d'analyser
       v[1]=x;
     }
 
-Dans ce cas, la fonction ``f`` est traduite en la séquence d'instructions suivante :
+.. Dans ce cas, la fonction ``f`` est traduite en la séquence d'instructions suivante :
 
-.. code-block:: nasm
+... code-block:: nasm
 
    f:
- 	movl	x, %eax
+ ..
+	movl	x, %eax
 	movl	%eax, v
 	movl	%eax, v+4
 	ret
+.. Si par contre la variable ``x`` est déclarée comme étant ``volatile``, le compilateur ajoute une instruction ``movl x, %eax`` qui permet de recharger la valeur de ``x`` dans un registre avant la seconde utilisation.
 
-Si par contre la variable ``x`` est déclarée comme étant ``volatile``, le compilateur ajoute une instruction ``movl x, %eax`` qui permet de recharger la valeur de ``x`` dans un registre avant la seconde utilisation.
-
-.. code-block:: nasm
+... code-block:: nasm
 
    f:
+..
 	movl	x, %eax
 	movl	%eax, v
 	movl	x, %eax
 	movl	%eax, v+4
 	ret
 
-Le qualificatif ``volatile`` force le compilateur à recharger la variable depuis la mémoire avant chaque utilisation. Ce qualificatif est utile lorsque le contenu stocké à une adresse mémoire peut être modifié par une autre source que le programme lui-même. C'est le cas dans les threads, mais marquer les variables partagées par des threads comme ``volatile`` ne suffit pas. Si ces variables sont modifiées par certains threads, il est nécessaire d'utiliser des :term:`mutex` ou d'autres techniques de coordination pour réguler l'accès en ces variables partagées. En pratique, la documentation du programme devra spécifier quelles variables sont partagées entre les threads et la technique de coordination éventuelle qui est utilisée pour en réguler les accès. L'utilisation du qualificatif ``volatile`` permet de forcer le compilateur à recharger le contenu de la variable depuis la mémoire avant toute utilisation. C'est une règle de bonne pratique qu'il est utile de suivre. Il faut cependant noter que dans l'exemple ci-dessus, l'utilisation du qualificatif ``volatile`` augmente le nombre d'accès à la mémoire et peut donc dans certains cas réduire les performances.
-
+.. Le qualificatif ``volatile`` force le compilateur à recharger la variable depuis la mémoire avant chaque utilisation. Ce qualificatif est utile lorsque le contenu stocké à une adresse mémoire peut être modifié par une autre source que le programme lui-même. C'est le cas dans les threads, mais marquer les variables partagées par des threads comme ``volatile`` ne suffit pas. Si ces variables sont modifiées par certains threads, il est nécessaire d'utiliser des :term:`mutex` ou d'autres techniques de coordination pour réguler l'accès en ces variables partagées. En pratique, la documentation du programme devra spécifier quelles variables sont partagées entre les threads et la technique de coordination éventuelle qui est utilisée pour en réguler les accès. L'utilisation du qualificatif ``volatile`` permet de forcer le compilateur à recharger le contenu de la variable depuis la mémoire avant toute utilisation. C'est une règle de bonne pratique qu'il est utile de suivre. Il faut cependant noter que dans l'exemple ci-dessus, l'utilisation du qualificatif ``volatile`` augmente le nombre d'accès à la mémoire et peut donc dans certains cas réduire les performances. 
 
 Variables spécifiques à un thread
 ---------------------------------
