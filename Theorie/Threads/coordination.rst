@@ -221,11 +221,11 @@ Il reste cependant quelques concepts qu'il est utile de connaître lorsque l'on 
 .. Pour bien comprendre l'impact de ce qualificatif, il est intéressant d'analyser le code assembleur généré par un compilateur C dans l'exemple suivant.
 
 
-... code-block:: c
+..
 
+.. code-block:: c
     int x=1;
     int v[2];
-
     void f(void ) {
       v[0]=x;
       v[1]=x;
@@ -233,20 +233,20 @@ Il reste cependant quelques concepts qu'il est utile de connaître lorsque l'on 
 
 .. Dans ce cas, la fonction ``f`` est traduite en la séquence d'instructions suivante :
 
-... code-block:: nasm
+..
 
+.. code-block:: nasm
    f:
- ..
 	movl	x, %eax
 	movl	%eax, v
 	movl	%eax, v+4
 	ret
 .. Si par contre la variable ``x`` est déclarée comme étant ``volatile``, le compilateur ajoute une instruction ``movl x, %eax`` qui permet de recharger la valeur de ``x`` dans un registre avant la seconde utilisation.
 
-... code-block:: nasm
-
-   f:
 ..
+
+.. code-block:: nasm
+   f:
 	movl	x, %eax
 	movl	%eax, v
 	movl	x, %eax

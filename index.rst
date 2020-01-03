@@ -88,6 +88,7 @@ Annexes
 
 .. toctree::
    :maxdepth: 2
+
    bib
    glossaire
 
