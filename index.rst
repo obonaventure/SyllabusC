@@ -51,7 +51,7 @@ Systèmes Multiprocesseurs
    Theorie/Threads/threads
    Theorie/Threads/threads2
    Theorie/Threads/coordination
-  .. Theorie/Threads/processus
+.. Theorie/Threads/processus
 
 Fichiers
 ********
@@ -60,7 +60,7 @@ Fichiers
    :maxdepth: 2
 
    Theorie/Fichiers/fichiers
-   Theorie/Fichiers/fichiers-signaux
+..   Theorie/Fichiers/fichiers-signaux
 
 
 ******
@@ -88,6 +88,7 @@ Annexes
 
 .. toctree::
    :maxdepth: 2
+
    bib
    glossaire
 

@@ -201,7 +201,7 @@ Cette structure comprend le numéro de l'inode, c'est-à-dire la métadonnée qu
 
 L'extrait de code ci-dessous permet de lister tous les fichiers présents dans le répertoire ``name``.
 
-.. literalinclude:: /Fichiers/src/readdir.c
+.. literalinclude:: /_static/src/Fichiers/src/readdir.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -343,7 +343,7 @@ Ces deux appels systèmes prennent trois arguments. Le premier est le `descripte
 
 Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'écrire des séquences contiguës d'octets. Lorsque l'on écrit ou lit des chaînes de caractères dans lesquels chaque caractère est représenté sous la forme d'un byte, il est possible d'utiliser `read(2)`_ et `write(2)`_ pour lire et écrire d'autres types de données que des octets comme le montre l'exemple ci-dessous.
 
-.. literalinclude:: /Fichiers/src/read.c
+.. literalinclude:: /_static/src/Fichiers/src/read.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -351,7 +351,7 @@ Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'
 
 Lors de son exécution, ce programme affiche la sortie ci-dessous.
 
-.. literalinclude:: /Fichiers/src/read.out
+.. literalinclude:: /_static/src/Fichiers/src/read.out
    :encoding: utf-8
    :language: console
 

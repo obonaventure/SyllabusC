@@ -110,7 +110,7 @@ Les sémaphores permettent de résoudre de nombreux problèmes classiques. Le pr
 
 Les sémaphores peuvent être utilisés pour d'autres types de synchronisation. Par exemple, considérons une application découpée en threads dans laquelle la fonction ``after`` ne peut jamais être exécutée avant la fin de l'exécution de la fonction ``before``. Ce problème de coordination peut facilement être résolu en utilisant un sémaphore qui est initialisé à la valeur ``0``. La fonction ``after`` doit démarrer par un appel à `sem_wait(3)`_ sur ce sémaphore tandis que la fonction ``before`` doit se terminer par un appel à la fonction `sem_post(3)`_ sur ce sémaphore. De cette façon, si le thread qui exécute la fonction ``after`` est trop rapide, il sera bloqué sur l'appel à `sem_wait(3)`_. S'il arrive à cette fonction après la fin de la fonction ``before`` dans l'autre thread, il pourra passer sans être bloqué. Le programme ci-dessous illustre cette utilisation des sémaphores POSIX.
 
-.. literalinclude:: /Threads/S7-src/pthread-sem-before.c
+.. literalinclude:: /_static/src/Threads/S7-src/pthread-sem-before.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -205,46 +205,47 @@ De nombreux programmes découpés en threads fonctionnent avec un ensemble de pr
 Compléments sur les threads POSIX
 =================================
 
-.. todo: look if it is useful
-
 Il existe différentes implémentations des threads POSIX. Les mécanismes de coordination utilisables varient parfois d'une implémentation à l'autre. Dans les sections précédentes, nous nous sommes focalisés sur les fonctions principales qui sont en général bien implémentées. Une discussion plus détaillée des fonctions implémentées sous Linux peut se trouver dans [Kerrisk2010]_. [Gove2011]_ présente de façon détaillée les mécanismes de coordination utilisables sous Linux, Windows et Oracle Solaris. [StevensRago2008]_ comprend également une description des threads POSIX mais présente des exemples sur des versions plus anciennes de Linux, FreeBSD, Solaris et MacOS.
 
 Il reste cependant quelques concepts qu'il est utile de connaître lorsque l'on développe des programmes découpés en threads en langage C.
 
 
-Variables ``volatile``
-----------------------
 
-Normalement, dans un programme C, lorsqu'une variable est définie, ses accès sont contrôlés entièrement par le compilateur. Si la variable est utilisée dans plusieurs calculs successifs, il peut être utile d'un point de vue des performances de stocker la valeur de cette variable dans un registre pendant au moins le temps correspondant à l'exécution de quelques instructions [#fregister]_. Cette optimisation peut éventuellement poser des difficultés dans certains programmes utilisant des threads puisqu'une variable peut être potentiellement modifiée ou lue par plusieurs threads simultanément.
+.. Variables ``volatile``
+.. ----------------------
 
-Les premiers compilateurs C avaient pris en compte un problème similaire. Lorsqu'un programme ou un système d'exploitation interagit avec des dispositifs d'entrée-sortie, cela se fait parfois en permettant au dispositif d'écrire directement en mémoire à une adresse connue par le système d'exploitation. La valeur présente à cette adresse peut donc être modifiée par le dispositif d'entrée-sortie sans que le programme ne soit responsable de cette modification. Face à ce problème, les inventeurs du langage C ont introduit le qualificatif ``volatile``. Lorsqu'une variable est ``volatile``, cela indique au compilateur qu'il doit recharger la variable de la mémoire chaque fois qu'elle est utilisée.
+.. Normalement, dans un programme C, lorsqu'une variable est définie, ses accès sont contrôlés entièrement par le compilateur. Si la variable est utilisée dans plusieurs calculs successifs, il peut être utile d'un point de vue des performances de stocker la valeur de cette variable dans un registre pendant au moins le temps correspondant à l'exécution de quelques instructions [#fregister]_. Cette optimisation peut éventuellement poser des difficultés dans certains programmes utilisant des threads puisqu'une variable peut être potentiellement modifiée ou lue par plusieurs threads simultanément.
 
-Pour bien comprendre l'impact de ce qualificatif, il est intéressant d'analyser le code assembleur généré par un compilateur C dans l'exemple suivant.
+.. Les premiers compilateurs C avaient pris en compte un problème similaire. Lorsqu'un programme ou un système d'exploitation interagit avec des dispositifs d'entrée-sortie, cela se fait parfois en permettant au dispositif d'écrire directement en mémoire à une adresse connue par le système d'exploitation. La valeur présente à cette adresse peut donc être modifiée par le dispositif d'entrée-sortie sans que le programme ne soit responsable de cette modification. Face à ce problème, les inventeurs du langage C ont introduit le qualificatif ``volatile``. Lorsqu'une variable est ``volatile``, cela indique au compilateur qu'il doit recharger la variable de la mémoire chaque fois qu'elle est utilisée.
+
+.. Pour bien comprendre l'impact de ce qualificatif, il est intéressant d'analyser le code assembleur généré par un compilateur C dans l'exemple suivant.
+
+
+..
 
 .. code-block:: c
-
     int x=1;
     int v[2];
-
     void f(void ) {
       v[0]=x;
       v[1]=x;
     }
 
-Dans ce cas, la fonction ``f`` est traduite en la séquence d'instructions suivante :
+.. Dans ce cas, la fonction ``f`` est traduite en la séquence d'instructions suivante :
+
+..
 
 .. code-block:: nasm
-
    f:
- 	movl	x, %eax
+	movl	x, %eax
 	movl	%eax, v
 	movl	%eax, v+4
 	ret
+.. Si par contre la variable ``x`` est déclarée comme étant ``volatile``, le compilateur ajoute une instruction ``movl x, %eax`` qui permet de recharger la valeur de ``x`` dans un registre avant la seconde utilisation.
 
-Si par contre la variable ``x`` est déclarée comme étant ``volatile``, le compilateur ajoute une instruction ``movl x, %eax`` qui permet de recharger la valeur de ``x`` dans un registre avant la seconde utilisation.
+..
 
 .. code-block:: nasm
-
    f:
 	movl	x, %eax
 	movl	%eax, v
@@ -252,8 +253,7 @@ Si par contre la variable ``x`` est déclarée comme étant ``volatile``, le com
 	movl	%eax, v+4
 	ret
 
-Le qualificatif ``volatile`` force le compilateur à recharger la variable depuis la mémoire avant chaque utilisation. Ce qualificatif est utile lorsque le contenu stocké à une adresse mémoire peut être modifié par une autre source que le programme lui-même. C'est le cas dans les threads, mais marquer les variables partagées par des threads comme ``volatile`` ne suffit pas. Si ces variables sont modifiées par certains threads, il est nécessaire d'utiliser des :term:`mutex` ou d'autres techniques de coordination pour réguler l'accès en ces variables partagées. En pratique, la documentation du programme devra spécifier quelles variables sont partagées entre les threads et la technique de coordination éventuelle qui est utilisée pour en réguler les accès. L'utilisation du qualificatif ``volatile`` permet de forcer le compilateur à recharger le contenu de la variable depuis la mémoire avant toute utilisation. C'est une règle de bonne pratique qu'il est utile de suivre. Il faut cependant noter que dans l'exemple ci-dessus, l'utilisation du qualificatif ``volatile`` augmente le nombre d'accès à la mémoire et peut donc dans certains cas réduire les performances.
-
+.. Le qualificatif ``volatile`` force le compilateur à recharger la variable depuis la mémoire avant chaque utilisation. Ce qualificatif est utile lorsque le contenu stocké à une adresse mémoire peut être modifié par une autre source que le programme lui-même. C'est le cas dans les threads, mais marquer les variables partagées par des threads comme ``volatile`` ne suffit pas. Si ces variables sont modifiées par certains threads, il est nécessaire d'utiliser des :term:`mutex` ou d'autres techniques de coordination pour réguler l'accès en ces variables partagées. En pratique, la documentation du programme devra spécifier quelles variables sont partagées entre les threads et la technique de coordination éventuelle qui est utilisée pour en réguler les accès. L'utilisation du qualificatif ``volatile`` permet de forcer le compilateur à recharger le contenu de la variable depuis la mémoire avant toute utilisation. C'est une règle de bonne pratique qu'il est utile de suivre. Il faut cependant noter que dans l'exemple ci-dessus, l'utilisation du qualificatif ``volatile`` augmente le nombre d'accès à la mémoire et peut donc dans certains cas réduire les performances. 
 
 Variables spécifiques à un thread
 ---------------------------------
@@ -266,7 +266,7 @@ Une deuxième solution serait d'avoir un tableau global qui contiendrait des poi
 
 Pour résoudre ce problème, deux solutions sont possibles. La première combine une extension au langage C qui est supportée par `gcc(1)`_ avec la librairie threads POSIX. Il s'agit du qualificatif ``__thread`` qui peut être utilisé avant une déclaration de variable. Lorsqu'il est utilisé dans la déclaration d'une variable globale, il indique au compilateur et à la libraire POSIX qu'une copie de cette variable doit être créée pour chaque thread. Cette variable est initialisée au démarrage du thread et est utilisable uniquement à l'intérieur de ce thread. Le programme ci-dessous illustre cette utilisation du qualificatif ``__thread``.
 
-.. literalinclude:: /Threads/S7-src/pthread-specific.c
+.. literalinclude:: /_static/src/Threads/S7-src/pthread-specific.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -274,7 +274,7 @@ Pour résoudre ce problème, deux solutions sont possibles. La première combine
 
 Lors de son exécution, ce programme affiche la sortie suivante sur :term:`stdout`. Cette sortie illustre bien que les variables dont la déclaration est précédée du qualificatif ``__thread`` sont utilisables uniquement à l'intérieur d'un thread.
 
-.. literalinclude:: /Threads/S7-src/pthread-specific.out
+.. literalinclude:: /_static/src/Threads/S7-src/pthread-specific.out
    :encoding: utf-8
    :language: console
 
@@ -291,7 +291,7 @@ Il faut noter que la fonction `pthread_key_create(3posix)`_ associe en pratique 
 
 L'exemple ci-dessous illustre l'utilisation de cette API. Elle est nettement plus lourde à utiliser que le qualificatif ``__thread``. Dans ce code, chaque thread démarre par la fonction ``f``. Celle-ci crée une variable spécifique de type ``int`` qui joue le même rôle que la variable ``__thread int count;`` dans l'exemple précédent. La fonction ``g`` qui est appelée sans argument peut accéder à la zone mémoire créée en appelant ``pthread_getspecific(count)``. Elle peut ensuite exécuter ses calculs en utilisant le pointeur ``count_ptr``. Avant de se terminer, la fonction ``f`` libère la zone mémoire qui avait été allouée par `malloc(3)`_. Une alternative à l'appel explicite à `free(3)`_ aurait été de passer ``free`` comme second argument à `pthread_key_create(3posix)`_ lors de la création de la clé ``count``. En effet, ce second argument est la fonction à appeler à la fin du thread pour libérer la mémoire correspondant à cette clé.
 
-.. literalinclude:: /Threads/S7-src/pthread-specific2.c
+.. literalinclude:: /_static/src/Threads/S7-src/pthread-specific2.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -311,7 +311,7 @@ Dans un programme séquentiel, il n'y a qu'un thread d'exécution et de nombreux
 Pour comprendre le problème, il est intéressant de comparer plusieurs implémentations d'une fonction simple. Considérons le problème de déterminer l'élément maximum d'une structure de données contenant des entiers. Si la structure de données est un tableau, une solution simple est de le parcourir entièrement pour déterminer l'élément maximum. C'est ce que fait la fonction ``max_vector`` dans le programme ci-dessous. Dans un programme purement séquentiel dans lequel le tableau peut être modifié de temps en temps, parcourir tout le tableau pour déterminer son maximum n'est pas nécessairement la solution la plus efficace. Une alternative est de mettre à jour la valeur du maximum chaque fois qu'un élément du tableau est modifié. Les fonctions ``max_global`` et ``max_static`` sont deux solutions possibles. Chacune de ces fonctions doit être appelée chaque fois qu'un élément du tableau est modifié. ``max_global`` stocke dans une variable globale la valeur actuelle du maximum du tableau et met à jour cette valeur à chaque appel. La fonction ``max_static`` fait de même en utilisant une variable statique. Ces deux solutions sont équivalentes et elles pourraient très bien être intégrées à une librairie utilisée par de nombreux programmes.
 
 
-.. literalinclude:: /Threads/S7-src/reentrant.c
+.. literalinclude:: /_static/src/Threads/S7-src/reentrant.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
