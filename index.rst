@@ -51,7 +51,7 @@ Systèmes Multiprocesseurs
    Theorie/Threads/threads
    Theorie/Threads/threads2
    Theorie/Threads/coordination
-   Theorie/Threads/processus
+  .. Theorie/Threads/processus
 
 Fichiers
 ********
@@ -88,8 +88,6 @@ Annexes
 
 .. toctree::
    :maxdepth: 2
-
-   Annexes/prise-en-main-rasp
    bib
    glossaire
 
