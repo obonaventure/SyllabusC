@@ -12,8 +12,8 @@ Compléments de C
 Dans les sections précédentes, nous n'avons pas pu couvrir l'ensemble des concepts avancés qui sont relatifs à une bonne utilisation du langage C. Cette section contient quelques notions plus avancées qui sont importantes en pratique.
 
 
-Pointeurs
----------
+Pointeurs avancés
+-----------------
 
 Les pointeurs sont très largement utilisés dans les programmes écrits en langage C. Nous avons utilisé des pointeurs vers des types de données primitifs tel que les ``int``, ``char`` ou ``float`` et des pointeurs vers des structures. En pratique, il est possible en C de définir des pointeurs vers n'importe quel type d'information qui est manipulée par un programme C.
 
@@ -242,6 +242,3 @@ A titre d'exemple, le programme ci-dessous utilise `strerror(3)`_ pour afficher 
 
 
 .. [#frestrict] ``restrict`` est également parfois utilisé pour indiquer des contraintes sur les pointeurs passés en argument à une fonction [Walls2006]_.
-
-
-

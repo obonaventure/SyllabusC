@@ -117,7 +117,7 @@ Unix s'appuie sur la notion de processus. Une application est composée de un ou
 
 Dans le cadre de ce cours, nous aurons l'occasion de voir en détails de nombreuses librairies d'un système Unix et verrons le fonctionnement d'appels systèmes qui permettent aux logiciels d'interagir directement avec le noyau. Le système Unix étant majoritairement écrit en langage C, ce langage est le langage de choix pour de nombreuses applications. Nous le verrons donc en détails.
 
-Pour vous permettre de mettre vos apprentissages en pratique, vous recevrez durant le quadrimestre un raspberry pi. Il est possible d'installer différents systèmes d'exploitation sur celui-ci. Nous utiliserons raspbian  qui est lui aussi une variante de Unix.
+Pour vous permettre de mettre vos apprentissages en pratique, vous recevrez durant le quadrimestre un :term:`raspberry pi`. Il est possible d'installer différents systèmes d'exploitation sur celui-ci. Nous utiliserons :term:`raspbian` qui est une variante de GNU/Linux.
 
 Utilitaires
 ^^^^^^^^^^^

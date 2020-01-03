@@ -35,8 +35,6 @@ int fact(int n) {
 void compute() {
   int nombre=3;
   int f;
-  printf("La fonction fact est à l'adresse : %p\n",fact);
-  printf("La fonction times est à l'adresse : %p\n",times);
   printf("La variable nombre vaut %d et est à l'adresse %p\n",nombre,&nombre);
   f=fact(nombre);
   printf("La factorielle de %d vaut %d\n",nombre,f);
@@ -79,4 +77,3 @@ int main(int argc, char *argv[]) {
 
   return(EXIT_SUCCESS);
 }
-
