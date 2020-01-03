@@ -40,7 +40,7 @@ Glossaire
 
    microprocesseur
    processeur
-    Unité centrale de l'ordinateur qui exécute les instructions en langage machine et interagit avec la mémoire. 
+    Unité centrale de l'ordinateur qui exécute les instructions en langage machine et interagit avec la mémoire.
 
    CPU
     Central Processing Unit. Voir :term:`microprocesseur`
@@ -179,20 +179,20 @@ Glossaire
     Free Software Foundation, http://www.fsf.org
 
    portée
-    Zone d'un programme dans laquelle une variable est déclarée. 
+    Zone d'un programme dans laquelle une variable est déclarée.
 
    portée locale
     Une variable ayant une portée locale est accessible uniquement dans le bloc dans lequelle elle est définie.
 
    portée globale
-        Une variable ayant une portée globale est accessible dans tout le programme. 
+        Une variable ayant une portée globale est accessible dans tout le programme.
 
    debugger
-    Logiciel 
+    Logiciel
 
    text
    segment text
-    Partie de la mémoire d'un programme contenant les instructions en langage machine à exécuter. 
+    Partie de la mémoire d'un programme contenant les instructions en langage machine à exécuter.
 
    segment des données initialisées
     Partie de la mémoire d'un programme contenant les données initialisées dans le code source du programme ainsi que les chaînes de caractères.
@@ -203,7 +203,7 @@ Glossaire
    heap
    tas
     Partie de la mémoire d'un programme gérée par `malloc(3)`_ et `free(3)`_.
-    
+
    stack
    pile
     Partie de la mémoire d'un programme contenant les variables locales et adresses de retour des fonctions durant leur exécution.
@@ -231,7 +231,7 @@ Glossaire
     Un des inventaires des premiers ordinateurs. A défini l'architecture de base des premiers ordinateurs qui est maintenant connue comme le modèle de von Neumann [Krakowiak2011]_
 
    mémoire
-    Dispositif électronique permettant de stocker 
+    Dispositif électronique permettant de stocker
 
    SRAM
    static RAM
@@ -265,7 +265,7 @@ Glossaire
     à compléter
 
    fichier
-    à compléter 
+    à compléter
 
    fichier objet
     à compléter
@@ -298,7 +298,7 @@ Glossaire
     à compléter
 
    multithreadé
-    Programme utilisant plusieurs threads. 
+    Programme utilisant plusieurs threads.
 
    section critique
     Partie de programme ne pouvant pas être exécutée simultanément par deux threads différents.
@@ -405,4 +405,7 @@ Glossaire
     à compléter
 
    Unicode
-    Norme d'encodage de caractères supportant l'ensemble des langues écrites, voir notamment https://en.wikipedia.org/wiki/Unicode 
+    Norme d'encodage de caractères supportant l'ensemble des langues écrites, voir notamment https://en.wikipedia.org/wiki/Unicode
+
+   raspberry pi
+    Systèmes informatiques développés par la Raspberry Pi Foundation, voir https://www.raspberrypi.org

@@ -54,6 +54,10 @@ Le processeur et la mémoire ne sont pas les deux seuls composants d'un système
  - le haut-parleur avec lequel l'ordinateur peut diffuser différentes sortes de son
  - le microphone et la caméra qui permettent à l'ordinateur de capturer des informations sonores et visuelles pour les stocker ou les traiter
 
+Les systèmes informatiques peuvent prendre différentes formes, allant de minuscules systèmes embarqués à de gigantesques supercalculateurs.
+Les :term:`raspberry pi` sont un exemple d'un système embarqué. Il s'agit de nano-ordinateurs, de la taille d'une carte de crédit.
+Possédant les mêmes composants que décrits ci-dessus, ils fonctionnent de la même façon que des systèmes plus imposants comme les ordinateurs personnels que l'on utilise au quotidien, seulement avec moins de ressources.
+
 .. spelling::
 
    API
@@ -112,11 +116,6 @@ Un autre service est le partage de la mémoire et du processus. La plupart des s
 Unix s'appuie sur la notion de processus. Une application est composée de un ou plusieurs processus. Un processus peut être défini comme un ensemble cohérent d'instructions qui utilisent une partie de la mémoire et sont exécutées sur un des processeurs du système. L'exécution d'un processus est initiée par le système d'exploitation (généralement suite à une requête faite par un autre processus). Un processus peut s'exécuter pendant une fraction de secondes, quelques secondes ou des journées entières. Pendant son exécution, le processus peut potentiellement accéder aux différentes ressources (processeurs, mémoire, dispositifs d'entrées/sorties et de stockage) du système. A la fin de son exécution, le processus se termine [#ftermine]_ et libère les ressources qui lui ont été allouées par le système d'exploitation. Sous Unix, tout processus retourne au processus qui l'avait initié le résultat de son exécution qui est résumée en un nombre entier. Cette valeur de retour est utilisée en général pour déterminer si l'exécution d'un processus s'est déroulée correctement (zéro comme valeur de retour) ou non (valeur de retour différente de zéro).
 
 Dans le cadre de ce cours, nous aurons l'occasion de voir en détails de nombreuses librairies d'un système Unix et verrons le fonctionnement d'appels systèmes qui permettent aux logiciels d'interagir directement avec le noyau. Le système Unix étant majoritairement écrit en langage C, ce langage est le langage de choix pour de nombreuses applications. Nous le verrons donc en détails.
-
-Pour vous permettre de mettre vos apprentissages en pratique, vous recevrez durant le quadrimestre un raspberry pi. Le raspberry pi est un nano ordinateur de la taille d'une carte de crédit sur lequel vous pouvez connecter un écran, un clavier ou encore une souris. Il est possible d'installer différents systèmes d'exploitation sur celui-ci. Nous utiliserons ????  qui est lui aussi une variante de Unix.
-
-.. todo: Exemple unix system : raspberry pi
-
 
 Utilitaires
 ^^^^^^^^^^^

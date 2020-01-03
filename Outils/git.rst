@@ -2352,7 +2352,7 @@ travailler sur le dépôt.
 .. La commande ``svn commit`` permet de pousser les changements locaux et les nouveaux fichiers vers le serveur. La chaîne de charactères entre les ``"`` est le commentaire qu'il faut ajouter au commit. Il est important de commenter vos commits pour que vous puissiez vous retrouvez dans votre historique. L'historique de votre répertoire peut être affiché avec la commande ``svn log``.
 
 .. Les autres utilisateurs de votre répertoire (c'est-à-dire dans le cadre de ce cours: vôtre binôme du groupe) peuvent à partir de maintenant accéder à ce nouveau dossier en mettant à jour son répertoire local.
-Pour mettre à jour le répertoire local, on utilise la commande ``svn update``.
+.. Pour mettre à jour le répertoire local, on utilise la commande ``svn update``.
 
         .. code-block:: console
 
