@@ -86,7 +86,7 @@ Considérons la fonction ``f`` :
 
 ..
 
-	.. code-block:: nasm
+.. code-block:: nasm
 	f:
 	subl	$16, %esp
 	movl	24(%esp), %eax
