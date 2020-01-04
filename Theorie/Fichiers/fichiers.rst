@@ -177,99 +177,100 @@ Il existe plusieurs appels systèmes et fonctions de la librairie standard qui p
  - l'appel système `mkdir(2)`_ permet de créer un répertoire alors que l'appel système `rmdir(2)`_ permet d'en supprimer un
  - les fonctions de la librairie `opendir(3)`_, `closedir(3)`_, et `readdir(3)`_ permettent de consulter le contenu de répertoires.
 
-Les fonctions de manipulation des répertoires méritent que l'on s'y attarde un peu. Un répertoire est un fichier qui a une structure spéciale. Ces trois fonctions permettent d'en extraire de l'information en respectant le format d'un répertoire. Pour accéder à un répertoire, il faut d'abord l'ouvrir en utilisant `opendir(3)`_. La fonction `readdir(3)`_ permet d'accéder aux différentes entrées de ce répertoire et `closedir(3)`_ doit être utilisée lorsque l'accès n'est plus nécessaire. La fonction `readdir(3)`_ permet de manipuler la structure ``dirent`` qui est définie dans `bits/dirent.h`_.
+..
+	Les fonctions de manipulation des répertoires méritent que l'on s'y attarde un peu. Un répertoire est un fichier qui a une structure spéciale. Ces trois fonctions permettent d'en extraire de l'information en respectant le format d'un répertoire. Pour accéder à un répertoire, il faut d'abord l'ouvrir en utilisant `opendir(3)`_. La fonction `readdir(3)`_ permet d'accéder aux différentes entrées de ce répertoire et `closedir(3)`_ doit être utilisée lorsque l'accès n'est plus nécessaire. La fonction `readdir(3)`_ permet de manipuler la structure ``dirent`` qui est définie dans `bits/dirent.h`_.
 
-.. code-block:: c
+	.. code-block:: c
 
-          struct dirent {
-               ino_t          d_ino;       /* inode number */
-               off_t          d_off;       /* offset to the next dirent */
-               unsigned short d_reclen;    /* length of this record */
-               unsigned char  d_type;      /* type of file; not supported
-                                              by all file system types */
-               char           d_name[256]; /* filename */
-           };
+		  struct dirent {
+		       ino_t          d_ino;       /* inode number */
+		       off_t          d_off;       /* offset to the next dirent */
+		       unsigned short d_reclen;    /* length of this record */
+		       unsigned char  d_type;      /* type of file; not supported
+		                                      by all file system types */
+		       char           d_name[256]; /* filename */
+		   };
 
            
-.. spelling::
+	.. spelling::
 
-   l'inode
-   métadonnée
-   
-Cette structure comprend le numéro de l'inode, c'est-à-dire la métadonnée qui contient les informations relatives au fichier/répertoire, la position de l'entrée ``dirent`` qui suite, la longueur de l'entrée, son type et le nom de l'entrée dans le répertoire. Chaque appel à `readdir(3)`_ retourne un pointeur vers une structure de ce type.
-
-
-L'extrait de code ci-dessous permet de lister tous les fichiers présents dans le répertoire ``name``.
-
-.. literalinclude:: /_static/src/Fichiers/src/readdir.c
-   :encoding: utf-8
-   :language: c
-   :start-after: ///AAA
-   :end-before: ///BBB
-
-La lecture d'un répertoire avec `readdir(3)`_ commence au début de ce répertoire. A chaque appel à `readdir(3)`_, le programme appelant récupère un pointeur vers une zone mémoire contenant une structure ``dirent`` avec l'entrée suivante du répertoire ou ``NULL`` lorsque la fin du répertoire est atteinte. Si une fonction doit relire à nouveau un répertoire, cela peut se faire en utilisant `seekdir(3)`_ ou `rewinddir(3)`_.
+	   l'inode
+	   métadonnée
+	   
+	Cette structure comprend le numéro de l'inode, c'est-à-dire la métadonnée qui contient les informations relatives au fichier/répertoire, la position de l'entrée ``dirent`` qui suite, la longueur de l'entrée, son type et le nom de l'entrée dans le répertoire. Chaque appel à `readdir(3)`_ retourne un pointeur vers une structure de ce type.
 
 
-.. note:: `readdir(3)`_ et les threads
+	L'extrait de code ci-dessous permet de lister tous les fichiers présents dans le répertoire ``name``.
 
-  La fonction `readdir(3)`_ est un exemple de fonction non-réentrante qu'il faut éviter d'utiliser dans une application dont plusieurs threads doivent pouvoir parcourir le même répertoire. Ce problème est causé par l'utilisation d'une zone de mémoire ``static`` afin de stocker la structure dont le pointeur est retourné par `readdir(3)`_. Dans une application utilisant plusieurs threads, il faut utiliser la fonction `readdir_r(3)`_ :
+	.. literalinclude:: /_static/src/Fichiers/src/readdir.c
+	   :encoding: utf-8
+	   :language: c
+	   :start-after: ///AAA
+	   :end-before: ///BBB
 
-  .. code-block:: c
-
-     int  readdir_r(DIR *restrict dirp, struct dirent *restrict entry,
-                    struct dirent **restrict result);
-
-
-  Cette fonction prend comme arguments le pointeur ``entry`` vers un buffer propre à l'appelant qui permet de stocker le résultat de `readdir_r(3)`_.
+	La lecture d'un répertoire avec `readdir(3)`_ commence au début de ce répertoire. A chaque appel à `readdir(3)`_, le programme appelant récupère un pointeur vers une zone mémoire contenant une structure ``dirent`` avec l'entrée suivante du répertoire ou ``NULL`` lorsque la fin du répertoire est atteinte. Si une fonction doit relire à nouveau un répertoire, cela peut se faire en utilisant `seekdir(3)`_ ou `rewinddir(3)`_.
 
 
-Les appels systèmes `link(2)`_ et `unlink(2)`_ sont un peu particuliers et méritent une description plus détaillée. Sous Unix, un :term:`inode` est associé à chaque fichier mais l':term:`inode` ne contient pas le nom de fichier parmi les méta-données qu'il stocke. Par contre, chaque :term:`inode` contient un compteur (``nlinks``) du nombre de liens vers un fichier. Cela permet d'avoir une seule copie d'un fichier qui est accessible depuis plusieurs répertoires. Pour comprendre cette utilisation des liens sur un système de fichiers Unix, considérons le scénario suivant.
+	.. note:: `readdir(3)`_ et les threads
 
-.. code-block:: console
+	  La fonction `readdir(3)`_ est un exemple de fonction non-réentrante qu'il faut éviter d'utiliser dans une application dont plusieurs threads doivent pouvoir parcourir le même répertoire. Ce problème est causé par l'utilisation d'une zone de mémoire ``static`` afin de stocker la structure dont le pointeur est retourné par `readdir(3)`_. Dans une application utilisant plusieurs threads, il faut utiliser la fonction `readdir_r(3)`_ :
 
-   $ mkdir a
-   $ mkdir b
-   $ cd a
-   $ echo "test" > test.txt
-   $ cd ..
-   $ ln a/test.txt a/test2.txt
-   $ ls -li a
-   total 16
-   9624126 -rw-r--r--  2 obo  stafinfo  5 24 mar 21:14 test.txt
-   9624126 -rw-r--r--  2 obo  stafinfo  5 24 mar 21:14 test2.txt
-   $ ln a/test.txt b/test3.txt
-   $ stat --format "inode=%i nlinks=%h" b/test3.txt
-   inode=9624126 nlinks=3
-   $ ls -li b
-   total 8
-   9624126 -rw-r--r--  3 obo  stafinfo  5 24 mar 21:14 test3.txt
-   $ echo "complement" >> b/test3.txt
-   $ ls -li a
-   total 16
-   9624126 -rw-r--r--  3 obo  stafinfo  16 24 mar 21:15 test.txt
-   9624126 -rw-r--r--  3 obo  stafinfo  16 24 mar 21:15 test2.txt
-   $ ls -li b
-   total 8
-   9624126 -rw-r--r--  3 obo  stafinfo  16 24 mar 21:15 test3.txt
-   $ cat b/test3.txt
-   test
-   complement
-   $ cat a/test.txt
-   test
-   complement
-   $ rm a/test2.txt
-   $ ls -li a
-   total 8
-   9624126 -rw-r--r--  2 obo  stafinfo  16 24 mar 21:15 test.txt
-   $ rm a/test.txt
-   $ ls -li a
-   $ ls -li b
-   total 8
-   9624126 -rw-r--r--  1 obo  stafinfo  16 24 mar 21:15 test3.txt
+	  .. code-block:: c
 
-Dans ce scénario, deux répertoires sont créés avec la commande `mkdir(1)`_. Ensuite, la commande `echo(1)`_ est utilisée pour créer le fichier ``test.txt`` contenant la chaîne de caractères ``test`` dans le répertoire ``a``. Ce fichier est associé à l':term:`inode` ``9624126``. La commande `ln(1)`_ permet de rendre ce fichier accessible sous un autre nom depuis le même répertoire. La sortie produite par la commande `ls(1)`_ indique que ces deux fichiers qui sont présents dans le répertoire ``a`` ont tous les deux le même ``inode``. Ils correspondent donc aux mêmes données sur le disque. A ce moment, le compteur ``nlinks`` de l':term:`inode` ``9624126`` a la valeur ``2``. La commande `ln(1)`_ peut être utilisée pour créer un lien vers un fichier qui se trouve dans un autre répertoire [#flns]_ comme le montre la création du fichier ``test3.txt`` dans le répertoire ``b``. Ces trois fichiers correspondant au même :term:`inode`, toute modification à l'un des fichiers affecte et est visible dans n'importe lequel des liens vers ce fichier. C'est ce que l'on voit lorsque la commande ``echo "complement" >> b/test3.txt`` est exécutée. Cette commande affecte immédiatement les trois fichiers. La commande ``rm a/test2.txt`` efface la référence du fichier sous le nom ``a/test2.txt``, mais les deux autres liens restent accessibles. Le fichier ne sera réellement effacé qu'après que le dernier lien vers l':term:`inode` correspondant aie été supprimé. La commande `rm(1)`_ utilise en pratique l'appel système `unlink(2)`_ qui en toute généralité décrémente le compteur de liens de l'inode correspondant au fichier et l'efface lorsque ce compteur atteint la valeur ``0``.
+	     int  readdir_r(DIR *restrict dirp, struct dirent *restrict entry,
+		            struct dirent **restrict result);
 
-Une description détaillée du fonctionnement de ces appels systèmes et fonctions de la librairie standard peut se trouver dans les livres de référence sur la programmation en C sous Unix [Kerrisk2010]_, [Mitchell+2001]_, [StevensRago2008]_.
+
+	  Cette fonction prend comme arguments le pointeur ``entry`` vers un buffer propre à l'appelant qui permet de stocker le résultat de `readdir_r(3)`_.
+
+
+	Les appels systèmes `link(2)`_ et `unlink(2)`_ sont un peu particuliers et méritent une description plus détaillée. Sous Unix, un :term:`inode` est associé à chaque fichier mais l':term:`inode` ne contient pas le nom de fichier parmi les méta-données qu'il stocke. Par contre, chaque :term:`inode` contient un compteur (``nlinks``) du nombre de liens vers un fichier. Cela permet d'avoir une seule copie d'un fichier qui est accessible depuis plusieurs répertoires. Pour comprendre cette utilisation des liens sur un système de fichiers Unix, considérons le scénario suivant.
+
+	.. code-block:: console
+
+	   $ mkdir a
+	   $ mkdir b
+	   $ cd a
+	   $ echo "test" > test.txt
+	   $ cd ..
+	   $ ln a/test.txt a/test2.txt
+	   $ ls -li a
+	   total 16
+	   9624126 -rw-r--r--  2 obo  stafinfo  5 24 mar 21:14 test.txt
+	   9624126 -rw-r--r--  2 obo  stafinfo  5 24 mar 21:14 test2.txt
+	   $ ln a/test.txt b/test3.txt
+	   $ stat --format "inode=%i nlinks=%h" b/test3.txt
+	   inode=9624126 nlinks=3
+	   $ ls -li b
+	   total 8
+	   9624126 -rw-r--r--  3 obo  stafinfo  5 24 mar 21:14 test3.txt
+	   $ echo "complement" >> b/test3.txt
+	   $ ls -li a
+	   total 16
+	   9624126 -rw-r--r--  3 obo  stafinfo  16 24 mar 21:15 test.txt
+	   9624126 -rw-r--r--  3 obo  stafinfo  16 24 mar 21:15 test2.txt
+	   $ ls -li b
+	   total 8
+	   9624126 -rw-r--r--  3 obo  stafinfo  16 24 mar 21:15 test3.txt
+	   $ cat b/test3.txt
+	   test
+	   complement
+	   $ cat a/test.txt
+	   test
+	   complement
+	   $ rm a/test2.txt
+	   $ ls -li a
+	   total 8
+	   9624126 -rw-r--r--  2 obo  stafinfo  16 24 mar 21:15 test.txt
+	   $ rm a/test.txt
+	   $ ls -li a
+	   $ ls -li b
+	   total 8
+	   9624126 -rw-r--r--  1 obo  stafinfo  16 24 mar 21:15 test3.txt
+
+	Dans ce scénario, deux répertoires sont créés avec la commande `mkdir(1)`_. Ensuite, la commande `echo(1)`_ est utilisée pour créer le fichier ``test.txt`` contenant la chaîne de caractères ``test`` dans le répertoire ``a``. Ce fichier est associé à l':term:`inode` ``9624126``. La commande `ln(1)`_ permet de rendre ce fichier accessible sous un autre nom depuis le même répertoire. La sortie produite par la commande `ls(1)`_ indique que ces deux fichiers qui sont présents dans le répertoire ``a`` ont tous les deux le même ``inode``. Ils correspondent donc aux mêmes données sur le disque. A ce moment, le compteur ``nlinks`` de l':term:`inode` ``9624126`` a la valeur ``2``. La commande `ln(1)`_ peut être utilisée pour créer un lien vers un fichier qui se trouve dans un autre répertoire [#flns]_ comme le montre la création du fichier ``test3.txt`` dans le répertoire ``b``. Ces trois fichiers correspondant au même :term:`inode`, toute modification à l'un des fichiers affecte et est visible dans n'importe lequel des liens vers ce fichier. C'est ce que l'on voit lorsque la commande ``echo "complement" >> b/test3.txt`` est exécutée. Cette commande affecte immédiatement les trois fichiers. La commande ``rm a/test2.txt`` efface la référence du fichier sous le nom ``a/test2.txt``, mais les deux autres liens restent accessibles. Le fichier ne sera réellement effacé qu'après que le dernier lien vers l':term:`inode` correspondant aie été supprimé. La commande `rm(1)`_ utilise en pratique l'appel système `unlink(2)`_ qui en toute généralité décrémente le compteur de liens de l'inode correspondant au fichier et l'efface lorsque ce compteur atteint la valeur ``0``.
+
+	Une description détaillée du fonctionnement de ces appels systèmes et fonctions de la librairie standard peut se trouver dans les livres de référence sur la programmation en C sous Unix [Kerrisk2010]_, [Mitchell+2001]_, [StevensRago2008]_.
 
 
 Utilisation des fichiers
@@ -299,8 +300,7 @@ En plus de l'un des trois drapeaux ci-dessus, il est également possible de spé
  - ``O_CREAT`` : indique que si le fichier n'existe pas, il doit être créé lors de l'exécution de l'appel système `open(2)`_. L'appel système `creat(2)`_ peut également être utilisé pour créer un nouveau fichier. Lorsque le drapeau ``O_CREAT`` est spécifié, l'appel système `open(2)`_ prend comme troisième argument les permissions du fichier qui doit être créé. Celles-ci sont spécifiées de la même façon que pour l'appel système `chmod(2)`_. Si elles ne sont pas spécifiées, le fichier est ouvert avec comme permissions les permissions par défaut du processus définies par l'appel système `umask(2)`_
  - ``O_APPEND`` : indique que le fichier est ouvert de façon à ce que les données écrites dans le fichier par l'appel système `write(2)`_ s'ajoutent à la fin du fichier.
  - ``O_TRUNC`` : indique que si le fichier existe déjà et qu'il est ouvert en écriture, alors le contenu du fichier doit être supprimé avant que le processus ne commence à y accéder.
- 
-.. - ``O_CLOEXEC`` : ce drapeau qui est spécifique à Linux indique que le fichier doit être automatiquement fermé lors de l'exécution de l'appel système `execve(2)`_. Normalement, les fichiers qui ont été ouverts par `open(2)`_ restent ouverts lors de l'exécution de `execve(2)`_.
+ - ``O_CLOEXEC`` : ce drapeau qui est spécifique à Linux indique que le fichier doit être automatiquement fermé lors de l'exécution de l'appel système `execve(2)`_. Normalement, les fichiers qui ont été ouverts par `open(2)`_ restent ouverts lors de l'exécution de `execve(2)`_.
  - ``O_SYNC`` : ce drapeau indique que toutes les opérations d'écriture sur le fichier doivent être effectuées immédiatement sur le dispositif de stockage sans être mises en attente dans les buffers du noyau du système d'exploitation
 
 Ces différents drapeaux binaires doivent être combinés en utilisant une disjonction logique entre les différents drapeaux. Ainsi, ``O_CREAT|O_RDWR`` correspond à l'ouverture d'un fichier qui doit à la fois être créé si il n'existe pas et ouvert en lecture et écriture.
@@ -327,11 +327,9 @@ Toutes les opérations qui sont faites sur un fichier se font en utilisant le :t
 
       int close(int fd);
 
-Tout processus doit correctement fermer tous les fichiers qu'il a utilisé. Par défaut, le système d'exploitation ferme automatiquement les descripteurs de fichiers correspondant ``0``, ``1`` et ``2`` lorsqu'un processus se termine. Les autres descripteurs de fichiers doivent être explicitement fermés par le processus. Si nécessaire, cela peut se faire en enregistrant une fonction permettant de fermer correctement les fichiers ouverts via `atexit(3)`_. 
+Tout processus doit correctement fermer tous les fichiers qu'il a utilisé. Par défaut, le système d'exploitation ferme automatiquement les descripteurs de fichiers correspondant ``0``, ``1`` et ``2`` lorsqu'un processus se termine. Les autres descripteurs de fichiers doivent être explicitement fermés par le processus. Si nécessaire, cela peut se faire en enregistrant une fonction permettant de fermer correctement les fichiers ouverts via `atexit(3)`_. Il faut noter que par défaut un appel à `execve(2)`_ ne ferme pas les descripteurs de fichiers ouverts par le processus. C'est nécessaire pour permettre au programme exécuté d'avoir les entrées et sorties standard voulues.
 
-.. Il faut noter que par défaut un appel à `execve(2)`_ ne ferme pas les descripteurs de fichiers ouverts par le processus. C'est nécessaire pour permettre au programme exécuté d'avoir les entrées et sorties standard voulues.
-
-Lorsqu'un fichier a été ouvert, le noyau du système d'exploitation maintient un :term:`offset pointer`. Cet :term:`offset pointer` est la position actuelle de la tête de lecture/écriture du fichier. Lorsqu'un fichier est ouvert, son :term:`offset pointer` est positionné au premier octet du fichier, sauf si le drapeau ``O_APPEND`` a été spécifié lors de l'ouverture du fichier, dans ce cas l':term:`offset pointer` est positionné juste après le dernier octet du fichier de façon à ce qu'une écriture s'ajoute à la suite du fichier.
+Lorsqu'un fichier a été ouvert, le noyau du système d'exploitation maintient, outre les références vers l':term:`inode` du fichier, un :term:`offset pointer`. Cet :term:`offset pointer` est la position actuelle de la tête de lecture/écriture du fichier. Lorsqu'un fichier est ouvert, son :term:`offset pointer` est positionné au premier octet du fichier, sauf si le drapeau ``O_APPEND`` a été spécifié lors de l'ouverture du fichier, dans ce cas l':term:`offset pointer` est positionné juste après le dernier octet du fichier de façon à ce qu'une écriture s'ajoute à la suite du fichier.
 
 Les deux appels systèmes permettant de lire et d'écrire dans un fichier sont respectivement `read(2)`_ et `write(2)`_.
 
