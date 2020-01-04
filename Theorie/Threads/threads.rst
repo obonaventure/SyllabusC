@@ -84,37 +84,35 @@ Considérons la fonction ``f`` :
     }
     return m;
   }
-
-.. En assembleur, cette fonction se traduit en :
-
 ..
+	En assembleur, cette fonction se traduit en :
 
-.. code-block:: nasm
-	f:
-	subl	$16, %esp
-	movl	24(%esp), %eax
-	movl	20(%esp), %ecx
-	movl	%ecx, 12(%esp)
-	movl	%eax, 8(%esp)
-	movl	$0, 4(%esp)
-	movl	$0, (%esp)
-	.LBB0_1:
-	movl	(%esp), %eax
-	cmpl	8(%esp), %eax
-	jge	.LBB0_3
-..
-	movl	12(%esp), %eax
-	movl	4(%esp), %ecx
-	addl	%eax, %ecx
-	movl	%ecx, 4(%esp)
-	movl	(%esp), %eax
-	addl	$1, %eax
-	movl	%eax, (%esp)
-	jmp	.LBB0_1
-	.LBB0_3:
-	movl	4(%esp), %eax
-	addl	$16, %esp
-	ret
+	.. code-block:: nasm
+		f:
+		subl	$16, %esp
+		movl	24(%esp), %eax
+		movl	20(%esp), %ecx
+		movl	%ecx, 12(%esp)
+		movl	%eax, 8(%esp)
+		movl	$0, 4(%esp)
+		movl	$0, (%esp)
+		.LBB0_1:
+		movl	(%esp), %eax
+		cmpl	8(%esp), %eax
+		jge	.LBB0_3
+
+		movl	12(%esp), %eax
+		movl	4(%esp), %ecx
+		addl	%eax, %ecx
+		movl	%ecx, 4(%esp)
+		movl	(%esp), %eax
+		addl	$1, %eax
+		movl	%eax, (%esp)
+		jmp	.LBB0_1
+		.LBB0_3:
+		movl	4(%esp), %eax
+		addl	$16, %esp
+		ret
 
 
 Pour qu'un processeur puisse exécuter cette séquence d'instructions, il faut qu'il puisse accéder :
