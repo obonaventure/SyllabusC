@@ -136,7 +136,8 @@ Lors de l'exécution d'un programme en mémoire, le système d'exploitation char
 
    Organisation d'un programme Linux en mémoire
 
-La figure ci-dessus présente une vision schématique de la façon dont un processus Linux est organisé en mémoire centrale. Dans le cadre de ce cours, nous nous concentrerons sur les zones du Stack et du Heap.
+.. La figure ci-dessus présente une vision schématique de la façon dont un processus Linux est organisé en mémoire centrale. 
+Dans le cadre de ce cours, nous nous concentrerons sur les zones du Stack et du Heap.
 
 .. Il y a d'abord une partie de la mémoire qui est réservée au système d'exploitation (OS dans la figure). Cette zone est représentée en grisé dans la figure.
 
