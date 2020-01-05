@@ -17,7 +17,7 @@ Les performances des microprocesseurs se sont continuellement améliorées depui
    intel
 
 
-.. figure:: /Threads/figures/534px-Transistor_Count_and_Moore's_Law_-_2011.png
+.. figure:: /_static/figures/Threads/figures/534px-Transistor_Count_and_Moore's_Law_-_2011.png
    :align: center
 
    Evolution du nombre de transistors par microprocesseur
@@ -27,7 +27,7 @@ Cette évolution avait été prédite par Gordon Moore dans les années 1960s [S
 
 Le fonctionnement d'un microprocesseur est régulé par une horloge. Celle-ci rythme la plupart des opérations du processeur et notamment le chargement des instructions depuis la mémoire. Pendant de nombreuses années, les performances des microprocesseurs ont fortement dépendu de leur vitesse d'horloge. Les premiers microprocesseurs avaient des fréquences d'horloge de quelques centaines de :term:`kHz`. A titre d'exemple, le processeur intel 4004 avait une horloge à 740 kHz en 1971. Aujourd'hui, les processeurs rapides dépassent la fréquence de 3 :term:`GHz`. La figure ci-dessous présente l'évolution de la fréquence d'horloge des microprocesseurs depuis les années 1970s [#fperf]_. On remarque une évolution rapide jusqu'aux environs du milieu de la dernière décennie. La barrière des 10 MHz a été franchie à la fin des années 1970s. Les 100 :term:`MHz` ont étés atteints en 1994 et le GHz aux environs de l'an 2000.
 
-.. figure:: /Threads/figures/figures-001-c.png
+.. figure:: /_static/figures/Threads/figures/figures-001-c.png
    :align: center
 
    Evolution de la vitesse d'horloge des microprocesseurs
@@ -45,7 +45,7 @@ Si pendant longtemps la fréquence d'horloge d'un microprocesseur a été une bo
 Une autre façon de mesurer les performances d'un microprocesseur est de comptabiliser le nombre d'instructions qu'il exécute par seconde. On parle en général de Millions d'Instructions par Seconde (ou :term:`MIPS`). Si les premiers microprocesseurs effectuaient moins de 100.000 instructions par seconde, la barrière du MIPS a été franchie en 1979. Mesurées en MIPS, les performances des microprocesseurs ont continué à augmenter durant les dernières années malgré la barrière des 3 GHz comme le montre la figure ci-dessous.
 
 
-.. figure:: /Threads/figures/figures-002-c.png
+.. figure:: /_static/figures/Threads/figures/figures-002-c.png
    :align: center
 
    Evolution des performances des microprocesseurs en MIPS
@@ -67,9 +67,9 @@ Cette progression continue des performances en MIPS a été possible grâce à l
 
 
 La notion de thread d'exécution est très importante dans un système informatique. Elle permet non seulement de comprendre comme un ordinateur équipé d'un seul microprocesseur peut exécuter plusieurs programmes simultanément, mais aussi comment des programmes peuvent profiter des nouveaux processeurs capables d'exécuter plusieurs threads simultanément.
-
+ 
 ..
- Pour comprendre cette notion, il est intéressant de revenir à nouveau sur l'exécution d'une fonction en langage assembleur.
+ Pour comprendre cette notion, il est intéressant de revenir à nouveau sur l'exécution d'une fonction en langage assembleur. 
 
 Considérons la fonction ``f`` :
 
@@ -122,7 +122,7 @@ Pour qu'un processeur puisse exécuter cette séquence d'instructions, il faut q
  - à la mémoire contenant les données manipulées par cette séquence d'instruction. Pour rappel, cette mémoire est divisée en plusieurs parties :
 
     - la zone contenant les variables globales
-    - le tas
+    - le tas 
     - la pile
 
 
@@ -194,7 +194,7 @@ Le premier argument de `pthread_join(3)`_ est la structure ``pthread_t`` corresp
 
 L'exemple ci-dessous illustre une utilisation simple des fonctions `pthread_create(3)`_, `pthread_join(3)`_ et `pthread_exit(3)`_.
 
-.. literalinclude:: /Threads/S5-src/pthread.c
+.. literalinclude:: /_static/src/Threads/S5-src/pthread.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -203,7 +203,7 @@ Dans ce programme, la fonction ``main`` lance deux threads. Le premier exécute 
 
 Afin d'illustrer la possibilité de passer des arguments à un thread et d'en récupérer la valeur de retour, considérons l'exemple ci-dessous.
 
-.. literalinclude:: /Threads/S5-src/pthread-neg.c
+.. literalinclude:: /_static/src/Threads/S5-src/pthread-neg.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA

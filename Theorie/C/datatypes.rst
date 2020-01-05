@@ -85,7 +85,7 @@ convention préfixé par ``0x`` tandis qu'un nombre entier en notation
 binaire est préfixé par ``0b``. Ainsi, les déclarations ci-dessous
 correspondent toutes à la même valeur.
 
-.. literalinclude:: /C/S2-src/num.c
+.. literalinclude:: /_static/src/C/S2-src/num.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -109,7 +109,7 @@ contrairement à la notation hexadécimale qui fait partie du langage.
  ``65 et 53 sont différents`` car le compilateur C interprète la ligne
  ``j=065;`` comme contenant un entier en notation octale et non décimale.
 
- .. literalinclude:: /C/S2-src/octal.c
+ .. literalinclude:: /_static/src/C/S2-src/octal.c
     :encoding: utf-8
     :language: c
     :start-after: ///AAA
@@ -240,7 +240,7 @@ peut causer des erreurs dans certains calculs. Par exemple,
 voici un petit programme qui affiche les 10 premières puissances de
 cinq et dix.
 
-.. literalinclude:: /C/S2-src/short.c
+.. literalinclude:: /_static/src/C/S2-src/short.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -248,7 +248,7 @@ cinq et dix.
 
 Lorsqu'il est exécuté, ce programme affiche la sortie suivante.
 
-.. literalinclude:: /C/S2-src/short.out
+.. literalinclude:: /_static/src/C/S2-src/short.out
    :encoding: utf-8
    :language: console
 
@@ -281,7 +281,7 @@ est décomposée en trois parties [#fexemple]_ :
  - `e` bits sont réservés pour stocker l'exposant [#fexposant]_.
  - Les `f` bits de poids faible servent à stocker la partie fractionnaire du nombre réel.
 
-.. figure:: /C/svg/Float_example.png
+.. figure:: /_static/figures/C/svg/Float_example.png
    :align: center
    :scale: 100
 
@@ -316,7 +316,7 @@ Les tableaux
 
 En langage C, les tableaux permettent d'agréger des données d'un même type. Il est possible de définir des vecteurs et des matrices en utilisant la syntaxe ci-dessous.
 
-.. literalinclude:: /C/S2-src/array.c
+.. literalinclude:: /_static/src/C/S2-src/array.c
    :language: c
    :encoding: utf-8
    :start-after: ///AAA
@@ -326,7 +326,7 @@ Les premières versions du langage C ne permettaient que la définition de table
 
 Un tableau à une dimension peut s'utiliser avec une syntaxe similaire à celle utilisée par Java. Dans un tableau contenant ``n`` éléments, le premier se trouve à l'indice ``0`` et le dernier à l'indice ``n-1``. L'exemple ci-dessous présente le calcul de la somme des éléments d'un vecteur.
 
-.. literalinclude:: /C/S2-src/array.c
+.. literalinclude:: /_static/src/C/S2-src/array.c
    :language: c
    :encoding: utf-8
    :start-after: ///CCC
@@ -334,7 +334,7 @@ Un tableau à une dimension peut s'utiliser avec une syntaxe similaire à celle 
 
 Le langage C permet aussi la manipulation de matrices carrées ou rectangulaires qui sont composées d'éléments d'un même type. L'exemple ci-dessous calcule l'élément minimum d'une matrice rectangulaire. Il utilise la constante ``FLT_MAX`` qui correspond au plus grand nombre réel représentable avec un ``float`` et qui est définie dans `float.h`_.
 
-.. literalinclude:: /C/S2-src/array.c
+.. literalinclude:: /_static/src/C/S2-src/array.c
    :language: c
    :encoding: utf-8
    :start-after: ///EEE
@@ -374,7 +374,7 @@ caractères. À titre d'exemple, une fonction `toupper(3)`_ permettant
 de transformer un caractère représentant une minuscule dans le
 caractère représentant la majuscule correspondante peut s'écrire :
 
-.. literalinclude:: /C/S2-src/toupper.c
+.. literalinclude:: /_static/src/C/S2-src/toupper.c
    :language: c
    :encoding: utf-8
    :start-after: ///AAA
@@ -441,7 +441,7 @@ fonctions de manipulation de chaînes de
 caractères. À titre d'exemple, la fonction ci-dessous calcule
 la longueur d'une chaîne de caractères.
 
-.. literalinclude:: /C/S2-src/strlen.c
+.. literalinclude:: /_static/src/C/S2-src/strlen.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -556,7 +556,7 @@ donnée. Les adresses de données en mémoire sont rarement affichées,
 mais quand c'est le cas, on utilise la notation hexadécimale comme
 dans l'exemple ci-dessous.
 
-.. literalinclude:: /C/S2-src/ptr.c
+.. literalinclude:: /_static/src/C/S2-src/ptr.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -564,7 +564,7 @@ dans l'exemple ci-dessous.
 
 L'exécution de ce fragment de programme produit la sortie suivante.
 
-.. literalinclude:: /C/S2-src/ptr.out
+.. literalinclude:: /_static/src/C/S2-src/ptr.out
    :encoding: utf-8
    :language: console
 
@@ -591,7 +591,7 @@ l'expression ``*ptr``. Il est
 représenté dans l'exemple ci-dessous.
 
 
-.. literalinclude:: /C/S2-src/ptrex.c
+.. literalinclude:: /_static/src/C/S2-src/ptrex.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -599,7 +599,7 @@ représenté dans l'exemple ci-dessous.
 
 L'exécution de ce fragment de programme produit la sortie suivante.
 
-.. literalinclude:: /C/S2-src/ptrex.out
+.. literalinclude:: /_static/src/C/S2-src/ptrex.out
    :encoding: utf-8
    :language: console
 
@@ -609,7 +609,7 @@ En pratique en C, les notations ``char*`` et ``char[]`` sont
 les pointeurs, la fonction de calcul de la longueur d'une chaîne de
 caractères peut se réécrire comme suit.
 
-.. literalinclude:: /C/S2-src/strlenptr.c
+.. literalinclude:: /_static/src/C/S2-src/strlenptr.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -618,7 +618,7 @@ caractères peut se réécrire comme suit.
 
 Les pointeurs sont fréquemment utilisés dans les programmes écrits en langage C et il est important de bien comprendre leur fonctionnement. Un point important à bien comprendre est ce que l'on appelle l'`arithmétique des pointeurs`, c'est-à-dire la façon dont les opérations sur les pointeurs sont exécutées en langage C. Pour cela, il est intéressant de considérer la manipulation d'un tableau d'entiers à travers des pointeurs.
 
-.. literalinclude:: /C/src/ptr_arith.c
+.. literalinclude:: /_static/src/C/src/ptr_arith.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -626,7 +626,7 @@ Les pointeurs sont fréquemment utilisés dans les programmes écrits en langage
 
 En mémoire, ce tableau est stocké en utilisant trois mots consécutifs de 32 bits comme le montre l'exécution du programme ci-dessous :
 
-.. literalinclude:: /C/src/ptr_arith.c
+.. literalinclude:: /_static/src/C/src/ptr_arith.c
    :encoding: utf-8
    :language: c
    :start-after: ///CCC
@@ -640,7 +640,7 @@ En mémoire, ce tableau est stocké en utilisant trois mots consécutifs de 32 b
 
 La même sortie est produite avec le fragment de programme suivant qui utilise un pointeur.
 
-.. literalinclude:: /C/src/ptr_arith.c
+.. literalinclude:: /_static/src/C/src/ptr_arith.c
    :encoding: utf-8
    :language: c
    :start-after: ///EEE
@@ -658,7 +658,7 @@ Après l'exécution de la première ligne, ``ptr`` va contenir l'adresse de l'é
 
 Il est intéressant pour terminer cette première discussion de l'arithmétique des pointeurs, de considérer l'exécution du fragment de code ci-dessous.
 
-.. literalinclude:: /C/src/ptr_arith.c
+.. literalinclude:: /_static/src/C/src/ptr_arith.c
    :encoding: utf-8
    :language: c
    :start-after: ///GGG
@@ -686,7 +686,7 @@ Outre les types de données décrits ci-dessus, les programmes informatiques doi
 
 C permet la définition de structures qui combinent différents types de données simples ou structurés. Contrairement aux langages orientés objet, il n'y a pas de méthode directement associée aux structures qui sont définies. Une structure est uniquement un type de données. Voici quelques exemples de structures simples en C.
 
-.. literalinclude:: /C/S2-src/struct.c
+.. literalinclude:: /_static/src/C/S2-src/struct.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -698,7 +698,7 @@ La structure ``struct fract`` définit une fraction qui est composée de deux en
 
 Les structures permettent de facilement regrouper des données qui sont logiquement reliées entre elles et doivent être manipulées en même temps. C permet d'accéder facilement à un élément d'une structure en utilisant l'opérateur '``.``'. Ainsi, la structure ``point`` dont nous avons parlé ci-dessus aurait pu être initialisée par les trois expressions ci-dessous :
 
-.. literalinclude:: /C/S2-src/struct.c
+.. literalinclude:: /_static/src/C/S2-src/struct.c
    :encoding: utf-8
    :language: c
    :start-after: ///CCC
@@ -724,7 +724,7 @@ Les structures sont également fréquemment utilisées pour représenter des for
 
 La définition de ``struct timeval`` utilise une fonctionnalité fréquemment utilisée du C : la possibilité de définir des alias pour des noms de type de données existants. Cela se fait en utilisant l'opérateur ``typedef``. En C, il est possible de renommer des types de données existants. Ainsi, l'exemple ci-dessous utilise ``typedef`` pour définir ``Entier`` comme alias pour le type ``int`` et ``Fraction`` pour la structure ``struct fraction``.
 
-.. literalinclude:: /C/S2-src/typedef.c
+.. literalinclude:: /_static/src/C/S2-src/typedef.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -739,7 +739,7 @@ Les types ``Entier`` et ``int`` peuvent être utilisés de façon interchangeabl
 
  ``typedef`` est souvent utilisé pour avoir des identifiants de types de données plus courts. Par exemple, il est très courant de remplacer le types ``unsigned`` par les abréviations ci-dessous.
 
-  .. literalinclude:: /C/S2-src/typedef.c
+  .. literalinclude:: /_static/src/C/S2-src/typedef.c
      :encoding: utf-8
      :language: c
      :start-after: ///EEE
@@ -747,7 +747,7 @@ Les types ``Entier`` et ``int`` peuvent être utilisés de façon interchangeabl
 
  Soyez prudents si vous utilisez des ``typedef`` pour redéfinir des pointeurs. En C, il est tout à fait valide d'écrire les lignes suivantes.
 
-  .. literalinclude:: /C/S2-src/typedef.c
+  .. literalinclude:: /_static/src/C/S2-src/typedef.c
      :encoding: utf-8
      :language: c
      :start-after: ///CCC
@@ -758,7 +758,7 @@ Les types ``Entier`` et ``int`` peuvent être utilisés de façon interchangeabl
 
 Les pointeurs sont fréquemment utilisés lors de la manipulation de structures. Lorsqu'un pointeur pointe vers une structure, il est utile de pouvoir accéder facilement aux éléments de la structure. Le langage C supporte deux notations pour représenter ces accès aux éléments d'une structure. La première notation est ``(*ptr).elem``  où ``ptr`` est un pointeur et ``elem`` l'identifiant d'un des éléments de la structure pointée par ``ptr``. Cette notation est en pratique assez peu utilisée. La notation la plus fréquente est ``ptr->elem`` dans laquelle ``ptr`` et ``->elem`` sont respectivement un pointeur et un identifiant d'élément. L'exemple ci-dessous illustre l'initialisation de deux fractions en utilisant ces notations.
 
-.. literalinclude:: /C/S2-src/structptr.c
+.. literalinclude:: /_static/src/C/S2-src/structptr.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -774,7 +774,7 @@ Comme la plupart des langages, le C permet de faciliter la compréhension d'un p
 en le découpant en de nombreuses fonctions. Chacune réalise une
 tâche simple. Tout comme Java, C permet la définition de fonctions qui ne retournent aucun résultat. Celles-ci sont de type ``void`` comme l'exemple trivial ci-dessous.
 
-.. literalinclude:: /C/S2-src/fct.c
+.. literalinclude:: /_static/src/C/S2-src/fct.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -782,7 +782,7 @@ tâche simple. Tout comme Java, C permet la définition de fonctions qui ne reto
 
 La plupart des fonctions utiles retournent un résultat qui peut être une donnée d'un des types standard ou une structure. Cette utilisation est similaire à ce que l'on trouve dans des langages comme Java. Il faut cependant être attentif à la façon dont le langage C traite les arguments des fonctions. Le langage C utilise le `passage par valeur` des arguments. Lorsqu'une fonction est exécutée, elle reçoit les valeurs de ces arguments. Ces valeurs sont stockées dans une zone mémoire qui est locale à la fonction. Toute modification faite sur la valeur d'une variable à l'intérieur d'une fonction est donc locale à cette fonction. Les deux fonctions ci-dessous ont le même résultat et aucune des deux n'a d'effet de bord.
 
-.. literalinclude:: /C/S2-src/fct.c
+.. literalinclude:: /_static/src/C/S2-src/fct.c
    :encoding: utf-8
    :language: c
    :start-after: ///CCC
@@ -790,7 +790,7 @@ La plupart des fonctions utiles retournent un résultat qui peut être une donn�
 
 Il faut être nettement plus attentif lorsque l'on écrit des fonctions qui utilisent des pointeurs comme arguments. Lorsqu'une fonction a un argument de type pointeur, celui-ci est passé par valeur, mais connaissant la valeur du pointeur, il est possible à la fonction de modifier le contenu de la zone mémoire pointée par le pointeur. Ceci est illustré par l'exemple ci-dessous.
 
-.. literalinclude:: /C/S2-src/fct.c
+.. literalinclude:: /_static/src/C/S2-src/fct.c
    :encoding: utf-8
    :language: c
    :start-after: ///EEE
@@ -798,13 +798,13 @@ Il faut être nettement plus attentif lorsque l'on écrit des fonctions qui util
 
 Lors de l'exécution de la fonction ``f``, le programme ci-dessus affiche à la console la sortie suivante :
 
-.. literalinclude:: /C/S2-src/fct.out
+.. literalinclude:: /_static/src/C/S2-src/fct.out
    :encoding: utf-8
    :language: console
 
 Cet exemple illustre aussi une contrainte imposée par le langage C sur l'ordre de définition des fonctions. Pour que les fonctions ``times_two`` et ``timestwo`` puissent être utilisées à l'intérieur de la fonction ``f``, il faut qu'elles aient été préalablement définies. Dans l'exemple ci-dessus, cela s'est fait en plaçant la définition des deux fonctions avant leur utilisation. C'est une règle de bonne pratique utilisable pour de petits programmes composés de quelques fonctions. Pour des programmes plus larges, il est préférable de placer au début du code source la signature des fonctions qui y sont définies. La signature d'une fonction comprend le type de valeur de retour de la fonction, son nom et les types de ses arguments. Généralement, ces déclarations sont regroupées à l'intérieur d'un :term:`fichier header` dont le nom se termine par ``.h``.
 
-.. literalinclude:: /C/S2-src/fct.h
+.. literalinclude:: /_static/src/C/S2-src/fct.h
    :encoding: utf-8
    :language: c
    :start-after: ///HHH
@@ -812,7 +812,7 @@ Cet exemple illustre aussi une contrainte imposée par le langage C sur l'ordre 
 
 Les fonctions peuvent évidemment recevoir également des tableaux comme arguments. Cela permet par exemple d'implémenter une fonction qui calcule la longueur d'une chaîne de caractères en itérant dessus jusqu'à trouver le caractère de fin de chaîne.
 
-.. literalinclude:: /C/S2-src/strlenptr.c
+.. literalinclude:: /_static/src/C/S2-src/strlenptr.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -821,12 +821,12 @@ Les fonctions peuvent évidemment recevoir également des tableaux comme argumen
 .. spelling::
 
    ième
-
+                
 Tout comme cette fonction peut accéder au `ième` caractère de la chaîne passée en argument, elle peut également et sans aucune restriction modifier chacun des caractères de cette chaîne. Par contre, comme le pointeur vers la chaîne de caractères est passé par valeur, la fonction ne peut pas modifier la zone mémoire qui est pointée par l'argument.
 
 Un autre exemple de fonctions qui manipulent les tableaux sont des fonctions mathématiques qui traitent des vecteurs par exemple.
 
-.. literalinclude:: /C/S2-src/fctargs.c
+.. literalinclude:: /_static/src/C/S2-src/fctargs.c
    :encoding: utf-8
    :language: c
    :start-after: ///CCC
@@ -835,7 +835,7 @@ Un autre exemple de fonctions qui manipulent les tableaux sont des fonctions mat
 
 Ces deux fonctions peuvent être utilisées par le fragment de code ci-dessous :
 
-.. literalinclude:: /C/S2-src/fctargs.c
+.. literalinclude:: /_static/src/C/S2-src/fctargs.c
    :encoding: utf-8
    :language: c
    :start-after: ///EEE
@@ -846,7 +846,7 @@ Ces deux fonctions peuvent être utilisées par le fragment de code ci-dessous :
 
  Certains langages comme Java sont fortement typés et le compilateur contient de nombreuses vérifications, notamment sur les types de données utilisés, qui permettent d'éviter un grand nombre d'erreurs. Le langage C est lui nettement plus libéral. Les premiers compilateurs C étaient très permissifs notamment sur les types de données passés en arguments. Ainsi, un ancien compilateur C accepterait probablement sans broncher les appels suivants :
 
-  .. literalinclude:: /C/S2-src/fctargs.c
+  .. literalinclude:: /_static/src/C/S2-src/fctargs.c
      :encoding: utf-8
      :language: c
      :start-after: ///GGG
@@ -863,7 +863,7 @@ Ces deux fonctions peuvent être utilisées par le fragment de code ci-dessous :
 
 Pour terminer, mentionnons que les fonctions écrites en C peuvent utiliser des structures et des pointeurs vers des structures comme arguments. Elles peuvent aussi retourner des structures comme résultat. Ceci est illustré par deux variantes de fonctions permettant d'initialiser une fraction et de déterminer si deux fractions sont égales [#fegal]_.
 
-.. literalinclude:: /C/S2-src/struct.c
+.. literalinclude:: /_static/src/C/S2-src/struct.c
    :encoding: utf-8
    :language: c
    :start-after: ///EEE
@@ -873,7 +873,7 @@ Considérons d'abord les fonctions ``init`` et ``equal``. ``init`` est une fonct
 
 Les fonctions ``initptr`` et ``equalptr`` utilisent toutes les deux des pointeurs vers des ``struct fraction`` comme arguments. Ce faisant, elles ne peuvent modifier la valeur de ces pointeurs puisqu'ils sont passés comme valeurs. Par contre, les deux fonctions peuvent bien entendu modifier les éléments de la structure qui se trouvent dans la zone de mémoire pointée par le pointeur. C'est ce que ``initptr`` fait pour initialiser la structure. ``equalptr`` par contre se contente d'accéder aux éléments des structures passées en argument sans les modifier. Le fragment de code ci-dessous illustre comment ces fonctions peuvent être utilisées en pratique.
 
-.. literalinclude:: /C/S2-src/struct.c
+.. literalinclude:: /_static/src/C/S2-src/struct.c
    :encoding: utf-8
    :language: c
    :start-after: ///GGG
@@ -932,7 +932,7 @@ A     B      A XOR B
 .. spelling::
 
    De Morgan
-
+   
 
 Ces opérations peuvent être combinées entre elles. Pour des raisons technologiques, les circuits logiques implémentent plutôt les opérations NAND (qui équivaut à AND suivi de NOT) ou NOR (qui équivaut à OR suivi de NOT). Il est également important de mentionner les lois formulées par De Morgan qui peuvent se résumer par les équations suivantes :
 
@@ -941,13 +941,13 @@ Ces opérations peuvent être combinées entre elles. Pour des raisons technolog
 
 Ces opérations binaires peuvent s'étendre à des séquences de bits. Voici quelques exemples qui permettent d'illustrer ces opérations sur des octets.
 
-.. literalinclude:: /C/S2-src/exprbin.out
+.. literalinclude:: /_static/src/C/S2-src/exprbin.out
    :encoding: utf-8
    :language: console
 
 En C, ces expressions logiques s'utilisent comme dans le fragment de code suivant. En général, elles s'utilisent sur des représentations non signées, souvent des ``unsigned char`` ou des ``unsigned int``.
 
-.. literalinclude:: /C/S2-src/exprbin.c
+.. literalinclude:: /_static/src/C/S2-src/exprbin.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -955,7 +955,7 @@ En C, ces expressions logiques s'utilisent comme dans le fragment de code suivan
 
 En pratique, les opérations logiques sont utiles pour effectuer des manipulations au niveau des bits de données stockées en mémoire. Une utilisation fréquente dans certaines applications réseaux ou systèmes est de forcer certains bits à prendre la valeur ``0`` ou ``1``. La conjonction logique permet de forcer facilement un bit à zéro tandis que la disjonction logique permet de forcer facilement un bit à un. L'exemple ci-dessous montre comment forcer les valeurs de certains bits dans un ``unsigned char``. Il peut évidemment se généraliser à des séquences de bits plus longues.
 
-.. literalinclude:: /C/S2-src/exprbin.c
+.. literalinclude:: /_static/src/C/S2-src/exprbin.c
    :encoding: utf-8
    :language: c
    :start-after: ///CCC
@@ -964,10 +964,10 @@ En pratique, les opérations logiques sont utiles pour effectuer des manipulatio
 .. spelling::
 
    Vernam
-
+                
 L'opération XOR joue un rôle important dans certaines applications. La plupart des méthodes de chiffrement et de déchiffrement utilisent de façon extensive cette opération. Une des propriétés intéressantes de l'opération XOR est que :math:`(A \oplus B) \oplus B=A`. Cette propriété est largement utilisée par les méthodes de chiffrement. La méthode développée par Vernam au début du vingtième siècle s'appuie sur l'opération XOR. Pour transmettre un message `M` de façon sûre, elle applique l'opération XOR bit à bit entre tous les bits du message `M` et une clé `K` doit avoir au moins le même nombre de bits que `M`. Si cette clé `K` est totalement aléatoire et n'est utilisée qu'une seule fois, alors on parle de *one-time-pad*. On peut montrer que dans ce cas, la méthode de chiffrement est totalement sûre. En pratique, il est malheureusement difficile d'avoir une clé totalement aléatoire qui soit aussi longue que le message à transmettre. Le programme ci-dessous implémente cette méthode de façon triviale. La fonction `memfrob(3)`_ de la librairie :term:`GNU` utilise également un chiffrement via un XOR.
 
-.. literalinclude:: /C/S2-src/xor.c
+.. literalinclude:: /_static/src/C/S2-src/xor.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -993,7 +993,7 @@ Pour terminer, le langage C supporte des expressions permettant le décalage à 
 
 Ces opérations de décalage permettent différentes manipulations de bits. À titre d'exemple, la fonction ``int2bin`` utilise à la fois des décalages et des masques pour calculer la représentation binaire d'un entier non signé et la placer dans une chaîne de caractères.
 
-.. literalinclude:: /C/S2-src/exprbin.c
+.. literalinclude:: /_static/src/C/S2-src/exprbin.c
    :encoding: utf-8
    :language: c
    :start-after: ///EEE
@@ -1016,7 +1016,7 @@ Ces opérations de décalage permettent différentes manipulations de bits. À t
 .. spelling::
 
    IP
-
+              
 .. [#freseau] Parmi les exemples simples, on peut citer la structure ``struct ipv6hdr`` qui correspond à l'entête du protocole IP version 6 et est définie dans `linux/ipv6.h`_.
 
 .. [#fegal] Cette définition de l'égalité entre fractions suppose que les fractions à comparer sont sous forme irréductible. Le lecteur est invité à écrire la fonction générale permettant de tester l'égalité entre fractions réductibles.
