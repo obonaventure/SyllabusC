@@ -10,7 +10,7 @@ Communication entre threads
 Lorsque un programme a été décomposé en plusieurs threads, ceux-ci ne sont en général pas complètement indépendants et ils doivent communiquer entre eux. Cette communication entre threads est un problème complexe comme nous allons le voir. Avant d'aborder ce problème, il est utile de revenir à l'organisation d'un processus et de ses threads en mémoire. La figure ci-dessous illustre schématiquement l'organisation de la mémoire après la création d'un thread POSIX.
 
 
-.. figure:: /_static/figures/Threads/S6-fig/figures-001-c.png
+.. figure:: /Threads/S6-fig/figures-001-c.png
    :align: center
    :scale: 80
 
@@ -84,7 +84,7 @@ Malheureusement les difficultés surviennent lorsque deux threads exécutent en 
 
  La taille de la pile d'un thread POSIX est l'un des attributs qui peuvent être modifiés lors de l'appel à `pthread_create(3)`_  pour créer un nouveau thread. Cet attribut peut être fixé en utilisant la fonction `pthread_attr_setstackaddr(3posix)`_ comme illustré dans l'exemple ci-dessous [#fpthreadc]_ (où ``thread_first`` est la fonction qui sera appelée à la création du thread). En général, la valeur par défaut choisie par le système suffit, sauf lorsque le programmeur sait qu'un thread devra par exemple allouer un grand tableau auquel il sera le seul à avoir accès. Ce tableau sera alors alloué sur la pile qui devra être suffisamment grande pour le contenir.
 
- .. literalinclude:: /_static/src/Threads/S6-src/pthread.c
+ .. literalinclude:: /Threads/S6-src/pthread.c
     :encoding: utf-8
     :language: c
     :start-after: ///AAA
@@ -95,7 +95,7 @@ Ce problème d'accès concurrent à une zone de mémoire par plusieurs threads e
 
 Le fragment de code ci-dessus présente une autre illustration d'une section critique. Dans cet exemple, la fonction ``main`` (non présentée), créée deux threads. Le premier exécute la fonction ``inc`` qui incrémente la variable ``global``. Le second exécute la fonction ``is_even`` qui teste la valeur de cette variable et compte le nombre de fois qu'elle est paire. Après la terminaison des deux threads, le programme affiche le contenu des variables ``global`` et ``even``.
 
-.. literalinclude:: /_static/src/Threads/S6-src/pthread-test-if.c
+.. literalinclude:: /Threads/S6-src/pthread-test-if.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -172,7 +172,7 @@ Le deuxième type d'événement est l'exécution d'un appel système bloquant. U
 
 Ces interactions entre les threads et le système d'exploitation sont importantes. Pour bien les comprendre, il est utile de noter qu'un thread peut se trouver dans trois états différents du point de vue de son interaction avec le système d'exploitation. Ces trois états sont illustrés dans la figure ci-dessous.
 
-.. figure:: /_static/figures/Threads/S6-fig/figures-003-c.png
+.. figure:: /Threads/S6-fig/figures-003-c.png
    :align: center
    :scale: 80
 
@@ -274,7 +274,7 @@ En C, cela se fait en utilisant les fonctions `pthread_mutex_lock(3posix)`_ et `
 
 L'exemple ci-dessous reprend le programme dans lequel une variable globale est incrémentée par plusieurs threads.
 
-.. literalinclude:: /_static/src/Threads/S6-src/pthread-mutex.c
+.. literalinclude:: /Threads/S6-src/pthread-mutex.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -303,9 +303,9 @@ Pour montrer que la propriété de vivacité est bien respectée, il faut montre
 
 .. rubric:: Footnotes
 
-.. [#fexemple] Le programme complet est accessible via :download:`/_static/src/Threads/S5-src/pthread-test.c`
+.. [#fexemple] Le programme complet est accessible via :download:`/Threads/S5-src/pthread-test.c`
 
-.. [#fpthreadc] Le programme complet est accessible via :download:`/_static/src/Threads/S6-src/pthread.c`
+.. [#fpthreadc] Le programme complet est accessible via :download:`/Threads/S6-src/pthread.c`
 
 .. .. [#fframes] Il existe différents standards pour le nombre d'images par seconde en cinéma et en télévision. Les plus courants sont 24, 25 et 30 images par seconde. Voir http://en.wikipedia.org/wiki/Frame_rate
 
@@ -317,4 +317,4 @@ Pour montrer que la propriété de vivacité est bien respectée, il faut montre
 
 .. [#fstaticinit] Linux supporte également la macro ``PTHREAD_MUTEX_INITIALIZER`` qui permet d'initialiser directement un ``pthread_mutex_t`` déclaré comme variable globale. Dans cet exemple, la déclaration aurait été : ``pthread_mutex_t global_mutex=PTHREAD_MUTEX_INITIALIZER;`` et l'appel à `pthread_mutex_init(3posix)`_ aurait été inutile. Comme il s'agit d'une extension spécifique à Linux, il est préférable de ne pas l'utiliser pour garantir la portabilité du code.
 
-.. [#fphilo] Le programme complet est :download:`/_static/src/Threads/S6-src/pthread-philo.c`
+.. [#fphilo] Le programme complet est :download:`/Threads/S6-src/pthread-philo.c`

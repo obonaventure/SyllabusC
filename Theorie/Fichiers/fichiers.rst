@@ -30,7 +30,7 @@ Les systèmes Unix supportent différents mécanismes d'authentification. Le plu
    username
    inode
    inodes
-   
+
 Lorsqu'un utilisateur se connecte sur un système Unix, il fournit son nom d'utilisateur ou `username`. Ce nom d'utilisateur est une chaîne de caractères qui est facile à mémoriser par l'utilisateur. D'un point de vue implémentation, un système d'exploitation préfère manipuler des nombres plutôt que des chaînes de caractères. Unix associe à chaque utilisateur un identifiant qui est stocké sous la forme d'un nombre entier positif. La table de correspondance entre l'identifiant d'utilisateur et le nom d'utilisateur est le fichier `/etc/passwd`. Ce fichier texte, comme la grande majorité des fichiers de configuration d'un système Unix, comprend pour chaque utilisateur l'information suivante :
 
  - nom d'utilisateur (`username`)
@@ -191,18 +191,18 @@ Il existe plusieurs appels systèmes et fonctions de la librairie standard qui p
 		       char           d_name[256]; /* filename */
 		   };
 
-           
+
 	.. spelling::
 
 	   l'inode
 	   métadonnée
-	   
+
 	Cette structure comprend le numéro de l'inode, c'est-à-dire la métadonnée qui contient les informations relatives au fichier/répertoire, la position de l'entrée ``dirent`` qui suite, la longueur de l'entrée, son type et le nom de l'entrée dans le répertoire. Chaque appel à `readdir(3)`_ retourne un pointeur vers une structure de ce type.
 
 
 	L'extrait de code ci-dessous permet de lister tous les fichiers présents dans le répertoire ``name``.
 
-	.. literalinclude:: /_static/src/Fichiers/src/readdir.c
+	.. literalinclude:: /Fichiers/src/readdir.c
 	   :encoding: utf-8
 	   :language: c
 	   :start-after: ///AAA
@@ -345,7 +345,7 @@ Ces deux appels systèmes prennent trois arguments. Le premier est le `descripte
 
 Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'écrire des séquences contiguës d'octets. Lorsque l'on écrit ou lit des chaînes de caractères dans lesquels chaque caractère est représenté sous la forme d'un byte, il est possible d'utiliser `read(2)`_ et `write(2)`_ pour lire et écrire d'autres types de données que des octets comme le montre l'exemple ci-dessous.
 
-.. literalinclude:: /_static/src/Fichiers/src/read.c
+.. literalinclude:: /Fichiers/src/read.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -353,7 +353,7 @@ Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'
 
 Lors de son exécution, ce programme affiche la sortie ci-dessous.
 
-.. literalinclude:: /_static/src/Fichiers/src/read.out
+.. literalinclude:: /Fichiers/src/read.out
    :encoding: utf-8
    :language: console
 
@@ -367,13 +367,13 @@ Le second problème est que les fabricants de processeurs ne se sont pas mis d'a
 
 Pour comprendre ces deux techniques, regardons comment l'entier 16 bits ``0b1111111100000000`` est stocké en mémoire. En :term:`big endian`, le byte ``11111111`` sera stocké à l'adresse `x` et le byte ``00000000`` à l'adresse `x+1`. En :term:`little endian`, c'est le byte ``00000000`` qui est stocké à l'adresse `x` et le byte ``11111111`` qui est stocké à  l'adresse `x+1`. Il en va de même pour les entiers encodés sur 32 bits comme illustré dans les deux figures ci-dessous [#fendianfig]_.
 
-.. figure:: /_static/figures/Fichiers/fig/500px-Big-Endian.png
+.. figure:: /Fichiers/fig/500px-Big-Endian.png
    :align: center
    :scale: 40
 
    Ecriture d'un entier 32 bits en mémoire en `big endian`
 
-.. figure:: /_static/figures/Fichiers/fig/500px-Little-Endian.png
+.. figure:: /Fichiers/fig/500px-Little-Endian.png
    :align: center
    :scale: 40
 
@@ -442,6 +442,3 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
 .. [#flimit] Il y a une limite maximale au nombre de fichiers qui peuvent être ouverts par un processus. Cette limite peut être récupérée avec l'appel système `getdtablesize(2)`_.
 
 .. [#fendianfig] Source : http://en.wikipedia.org/wiki/Endianness
-
-
-

@@ -30,9 +30,9 @@ La première notion importante concernant la déclaration des variables est leur
 Dans un fichier donné, il ne peut évidemment pas y avoir deux variables globales qui ont le même identifiant. Lorsqu'une variable est définie dans un `bloc`, la portée de cette variable est locale à ce bloc. On parle dans ce cas de :term:`portée locale`. La variable locale n'existe pas avant le début du bloc et n'existe plus à la fin du bloc. Contrairement aux identifiants de variables globales qui doivent être uniques à l'intérieur d'un fichier, il est possible d'avoir plusieurs variables locales qui ont le même identifiant à l'intérieur d'un fichier. C'est fréquent notamment pour les définitions d'arguments de fonction et les variables de boucles. Dans l'exemple ci-dessus, les variables ``n`` et ``j`` ont une portée locale. La variable ``j`` est définie dans deux blocs différents à l'intérieur de la fonction ``f``.
 
 
-Le programme :download:`/_static/src/C/S3-src/portee.c` illustre la façon dont le compilateur C gère la portée de différentes variables.
+Le programme :download:`/C/S3-src/portee.c` illustre la façon dont le compilateur C gère la portée de différentes variables.
 
-.. literalinclude:: /_static/src/C/S3-src/portee.c
+.. literalinclude:: /C/S3-src/portee.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -42,7 +42,7 @@ Ce programme contient deux variables qui ont une portée globale : ``g1`` et ``g
 
 Lorsqu'un identifiant de variable locale est utilisé à plusieurs endroits dans un fichier, c'est la définition la plus proche qui est utilisée. L'exécution du programme ci-dessus illustre cette utilisation des variables globales et locales.
 
-.. literalinclude:: /_static/src/C/S3-src/portee.out
+.. literalinclude:: /C/S3-src/portee.out
    :encoding: utf-8
    :language: console
 
@@ -52,14 +52,14 @@ Lorsqu'un identifiant de variable locale est utilisé à plusieurs endroits dans
 
 Les versions récentes de C [C99]_ permettent également de définir des variables dont la valeur sera constante durant toute l'exécution du programme. Ces déclarations de ces constants sont préfixées par le mot-clé ``const`` qui joue le même rôle que le mot clé ``final`` en Java.
 
-.. literalinclude:: /_static/src/C/S3-src/const.c
+.. literalinclude:: /C/S3-src/const.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
 
 
-Il y a deux façons de définir des constantes dans les versions récentes de C [C99]_. La première est via la macro ``#define`` du préprocesseur. Cette macro permet de remplacer une chaîne de caractères (par exemple ``M_PI`` qui provient de `math.h`_) par un nombre ou une autre chaîne de caractères. Ce remplacement s'effectue avant la compilation. Dans le cas de ``M_PI`` ci-dessus, le préprocesseur remplace toute les occurrences de cette chaîne de caractères par la valeur numérique de :math:`\pi`. Lorsqu'une variable ``const`` est utilisée, la situation est un peu différente. Le préprocesseur n'intervient pas. Par contre, le compilateur réserve une zone mémoire pour la variable qui a été définie comme constante. Cela a deux avantages par rapport à l'utilisation de ``#define``. Premièrement, il est possible de définir comme constante n'importe quel type de données en C, y compris des structures ou des pointeurs alors qu'avec un ``#define`` on ne peut définir que des nombres ou des chaînes de caractères. Ensuite, comme une ``const`` est stockée en mémoire, il est possible d'obtenir son adresse et de l'examiner via un :term:`debugger`.
+Il y a deux façons de définir des constantes dans les versions récentes de C [C99]_. La première est via la macro ``#define`` du préprocesseur. Cette macro permet de remplacer une chaîne de caractères (par exemple ``M_PI`` qui provient de `math.h`_) par un nombre ou une autre chaîne de caractères. Ce remplacement s'effectue avant la compilation. Dans le cas de ``M_PI`` ci-dessus, le préprocesseur remplace toute les occurrences de cette chaîne de caractères par la valeur numérique de :math:`\pi`. Lorsqu'une variable ``const`` est utilisée, la situation est un peu différente. Le préprocesseur n'intervient pas. Par contre, le compilateur réserve une zone mémoire pour la variable qui a été définie comme constante. Cela a deux avantages par rapport à l'utilisation de ``#define``. Premièrement, il est possible de définir comme constante n'importe quel type de données en C, y compris des structures ou des pointeurs alors qu'avec un ``#define`` on ne pe//ut définir que des nombres ou des chaînes de caractères. Ensuite, comme une ``const`` est stockée en mémoire, il est possible d'obtenir son adresse et de l'examiner via un :term:`debugger`.
 
 
 Unions et énumérations
@@ -67,7 +67,7 @@ Unions et énumérations
 
 Les structures que nous avons présentées précédemment permettent de combiner plusieurs données de types primitifs différents entre elles. Outre ces structures (``struct``), le langage C supporte également les ``enum`` et les ``union``. Le mot-clé ``enum`` est utilisé pour définir un type énuméré, c'est-à-dire un type de donnée qui permet de stocker un nombre fixe de valeurs. Quelques exemples classiques sont repris dans le fragment de programme ci-dessous :
 
-.. literalinclude:: /_static/src/C/S3-src/enum.c
+.. literalinclude:: /C/S3-src/enum.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -75,7 +75,7 @@ Les structures que nous avons présentées précédemment permettent de combiner
 
 Le premier ``enum`` permet de définir le type de données ``day`` qui contient une valeur énumérée pour chaque jour de la semaine. L'utilisation d'un type énuméré rend le code plus lisible que simplement l'utilisation de constantes définies via le préprocesseur.
 
-.. literalinclude:: /_static/src/C/S3-src/enum.c
+.. literalinclude:: /C/S3-src/enum.c
    :encoding: utf-8
    :language: c
    :start-after: ///CCC
@@ -85,7 +85,7 @@ En pratique, lors de la définition d'un type énuméré, le compilateur C assoc
 
 Outre les structures, le langage C supporte également les unions. Alors qu'une structure permet de stocker plusieurs données dans une même zone mémoire, une ``union`` permet de réserver une zone mémoire pour stocker une données parmi plusieurs types possibles. Une ``union`` est parfois utilisée pour minimiser la quantité de mémoire utilisée pour une structure de données qui peut contenir des données de plusieurs types. Pour bien comprendre la différence entre une ``union`` et une ``struct``, considérons l'exemple ci-dessous.
 
-.. literalinclude:: /_static/src/C/S3-src/union.c
+.. literalinclude:: /C/S3-src/union.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -94,7 +94,7 @@ Outre les structures, le langage C supporte également les unions. Alors qu'une 
 
 Une union, ``u`` et une structure, ``s`` sont déclarées dans ce fragment de programme.
 
-.. literalinclude:: /_static/src/C/S3-src/union.c
+.. literalinclude:: /C/S3-src/union.c
    :encoding: utf-8
    :language: c
    :start-after: ///CCC
@@ -103,7 +103,7 @@ Une union, ``u`` et une structure, ``s`` sont déclarées dans ce fragment de pr
 La structure ``s`` peut contenir à la fois un entier et un caractère. Par contre, l'``union`` ``u``, peut elle contenir un entier (``u.i``) *ou* un caractère (``u.c``), mais jamais les deux en même temps.
 Le compilateur C alloue la taille pour l'``union`` de façon à ce qu'elle puisse contenir le type de donnée se trouvant dans l'``union`` nécessitant le plus de mémoire. Si les unions sont utiles dans certains cas très particulier, il faut faire très attention à leur utilisation. Lorsqu'une ``union`` est utilisée, le compilateur C fait encore moins de vérifications sur les types de données et le code ci-dessous est considéré comme valide par le compilateur :
 
-.. literalinclude:: /_static/src/C/S3-src/union.c
+.. literalinclude:: /C/S3-src/union.c
    :encoding: utf-8
    :language: c
    :start-after: ///EEE
@@ -111,7 +111,7 @@ Le compilateur C alloue la taille pour l'``union`` de façon à ce qu'elle puiss
 
 Lors de son exécution, la zone mémoire correspondant à l'union ``u`` sera simplement interprétée comme contenant un ``char``, même si on vient d'y stocker un entier. En pratique, lorsqu'une ``union`` est vraiment nécessaire pour des raisons d'économie de mémoire, on préférera la placer dans une ``struct`` en utilisant un type énuméré qui permet de spécifier le type de données qui est présent dans l'``union``.
 
-.. literalinclude:: /_static/src/C/S3-src/union.c
+.. literalinclude:: /C/S3-src/union.c
    :encoding: utf-8
    :language: c
    :start-after: ///BBB
@@ -119,7 +119,7 @@ Lors de son exécution, la zone mémoire correspondant à l'union ``u`` sera sim
 
 Le programmeur pourra alors utiliser cette structure en indiquant explicitement le type de données qui y est actuellement stocké comme suit.
 
-.. literalinclude:: /_static/src/C/S3-src/union.c
+.. literalinclude:: /C/S3-src/union.c
    :encoding: utf-8
    :language: c
    :start-after: ///FFF
@@ -131,95 +131,94 @@ Organisation de la mémoire
 
 Lors de l'exécution d'un programme en mémoire, le système d'exploitation charge depuis le système de fichier le programme en langage machine et le place à un endroit convenu en mémoire. Lorsqu'un programme s'exécute sur un système Unix, la mémoire peut être vue comme étant divisée en six zones principales. Ces zones sont représentées schématiquement dans la figure ci-dessous.
 
-.. figure:: /_static/figures/C/figures/figures-001-c.png
+.. figure:: /C/figures/figures-001-c.png
    :align: center
 
    Organisation d'un programme Linux en mémoire
 
-.. La figure ci-dessus présente une vision schématique de la façon dont un processus Linux est organisé en mémoire centrale. 
-Dans le cadre de ce cours, nous nous concentrerons sur les zones du Stack et du Heap.
+.. La figure ci-dessus présente une vision schématique de la façon dont un processus Linux est organisé en mémoire centrale.
 
-.. Il y a d'abord une partie de la mémoire qui est réservée au système d'exploitation (OS dans la figure). Cette zone est représentée en grisé dans la figure.
-
-..
-    Le segment text
-    ---------------
-
-    La première zone est appelée par convention le :term:`segment text`. Cette zone se situe dans la partie basse de la mémoire [#fetext]_. C'est dans cette zone que sont stockées toutes les instructions qui sont exécutées par le micro-processeur. Elle est généralement considérée par le système d'exploitation comme étant uniquement accessible en lecture. Si un programme tente de modifier son :term:`segment text`, il sera immédiatement interrompu par le système d'exploitation. C'est dans le segment text que l'on retrouvera les instructions de langage machine correspondant aux fonctions de calcul et d'affichage du programme. Nous en reparlerons lorsque nous présenterons le fonctionnement du langage d'assemblage.
-
-    Le segment des données initialisées
-    -----------------------------------
-
-    La deuxième zone, baptisée :term:`segment des données initialisées`, contient l'ensemble des données et chaînes de caractères qui sont utilisées dans le programme. Ce segment contient deux types de données. Tout d'abord, il comprend l'ensemble des variables globales explicitement initialisées par le programme (dans le cas contraire, elles sont initialisées à zéro par le compilateur et appartiennent alors au :term:`segment des données non-initialisées`). Ensuite, les constantes et les chaînes de caractères utilisées par le programme.
-
-    .. literalinclude:: /C/S3-src/dataseg.c
-       :encoding: utf-8
-       :language: c
-       :start-after: ///AAA
-       :end-before: ///BBB
-
-    Dans le programme ci-dessus, la variable ``g_init``, la constante ``un`` et les tableaux ``tab`` et ``cours`` sont dans la zone réservée aux variables initialisées. En pratique, leur valeur d'initialisation sera chargée depuis le fichier exécutable lors de son chargement en mémoire. Il en va de même pour toutes les chaînes de caractères qui sont utilisées comme arguments aux appels à ``printf(3)``.
-
-    L'exécution de ce programme produit la sortie standard suivante.
-
-    .. literalinclude:: /C/S3-src/dataseg.out
-       :encoding: utf-8
-       :language: console
+Il y a d'abord une partie de la mémoire qui est réservée au système d'exploitation (OS dans la figure). Cette zone est représentée en grisé dans la figure.
 
 
-    Cette sortie illustre bien les adresses où les variables globales sont stockées. La variable globale ``msg`` fait notamment partie du :term:`segment des données non-initialisées`.
+Le segment text
+---------------
 
-    Le segment des données non-initialisées
-    ---------------------------------------
+La première zone est appelée par convention le :term:`segment text`. Cette zone se situe dans la partie basse de la mémoire [#fetext]_. C'est dans cette zone que sont stockées toutes les instructions qui sont exécutées par le micro-processeur. Elle est généralement considérée par le système d'exploitation comme étant uniquement accessible en lecture. Si un programme tente de modifier son :term:`segment text`, il sera immédiatement interrompu par le système d'exploitation. C'est dans le segment text que l'on retrouvera les instructions de langage machine correspondant aux fonctions de calcul et d'affichage du programme. Nous en reparlerons lorsque nous présenterons le fonctionnement du langage d'assemblage.
 
-    La troisième zone est le :term:`segment des données non-initialisées`, réservée aux variables non-initialisées. Cette zone mémoire est initialisée à zéro par le système d'exploitation lors du démarrage du programme. Dans l'exemple ci-dessus, c'est dans cette zone que l'on stockera les valeurs de la variable ``g`` et des tableaux ``array`` et ``msg``.
+Le segment des données initialisées
+-----------------------------------
 
-    .. note:: Initialisation des variables
+La deuxième zone, baptisée :term:`segment des données initialisées`, contient l'ensemble des données et chaînes de caractères qui sont utilisées dans le programme. Ce segment contient deux types de données. Tout d'abord, il comprend l'ensemble des variables globales explicitement initialisées par le programme (dans le cas contraire, elles sont initialisées à zéro par le compilateur et appartiennent alors au :term:`segment des données non-initialisées`). Ensuite, les constantes et les chaînes de caractères utilisées par le programme.
 
-     Un point important auquel tout programmeur C doit faire attention est l'initialisation correcte de l'ensemble des variables utilisées dans un programme. Le compilateur C est nettement plus permissif qu'un compilateur Java et il autorisera l'utilisation de variables avant qu'elles n'aient été explicitement initialisées, ce qui peut donner lieu à des erreurs parfois très difficiles à corriger.
+.. literalinclude:: /C/S3-src/dataseg.c
+   :encoding: utf-8
+   :language: c
+   :start-after: ///AAA
+   :end-before: ///BBB
 
-     En C, par défaut les variables globales qui ne sont pas explicitement initialisées dans un programme sont initialisées à la valeur zéro par le compilateur. Plus précisément, la zone mémoire qui correspond à chaque variable globale non-explicitement initialisée contiendra des bits valant 0. Pour les variables locales, le langage C n'impose aucune initialisation par défaut au compilateur. Par souci de performance et sachant qu'un programmeur ne devrait jamais utiliser de variable locale non explicitement initialisée, le compilateur C n'initialise pas par défaut la valeur de ces variables. Cela peut avoir des conséquences ennuyeuses comme le montre l'exemple ci-dessous.
+Dans le programme ci-dessus, la variable ``g_init``, la constante ``un`` et les tableaux ``tab`` et ``cours`` sont dans la zone réservée aux variables initialisées. En pratique, leur valeur d'initialisation sera chargée depuis le fichier exécutable lors de son chargement en mémoire. Il en va de même pour toutes les chaînes de caractères qui sont utilisées comme arguments aux appels à ``printf(3)``.
 
-     .. literalinclude:: /C/S3-src/initvar.c
-        :encoding: utf-8
-        :language: c
-        :start-after: ///AAA
-        :end-before: ///BBB
+L'exécution de ce programme produit la sortie standard suivante.
 
-     Cet extrait de programme contient deux fonctions erronées. La seconde, baptisée ``read(void)`` déclare un tableau local et retourne la somme des éléments de ce tableau sans l'initialiser. En Java, une telle utilisation d'un tableau non-initialisé serait détectée par le compilateur. En C, elle est malheureusement valide (mais fortement découragée évidemment). La première fonction, ``init(void)`` se contente d'initialiser un tableau local mais ne retourne aucun résultat. Cette fonction ne sert a priori à rien puisqu'elle n'a aucun effet sur les variables globales et ne retourne aucun résultat. L'exécution de ces fonctions via le fragment de code ci-dessous donne cependant un résultat interpellant.
+.. literalinclude:: /C/S3-src/dataseg.out
+   :encoding: utf-8
+   :language: console
 
-     .. literalinclude:: /C/S3-src/initvar.c
-        :encoding: utf-8
-        :language: c
-        :start-after: ///CCC
-        :end-before: ///DDD
 
-     .. literalinclude:: /C/S3-src/initvar.out
-        :encoding: utf-8
-        :language: console
+Cette sortie illustre bien les adresses où les variables globales sont stockées. La variable globale ``msg`` fait notamment partie du :term:`segment des données non-initialisées`.
 
-    Les arguments et variables d'environnement
-    ------------------------------------------
+Le segment des données non-initialisées
+---------------------------------------
 
-    Lorsque le système d'exploitation charge un programme Unix en mémoire, il initialise dans le haut de la mémoire une zone qui contient deux types de variables. Cette zone contient tout d'abord les arguments qui ont été passés via la ligne de commande. Le système d'exploitation met dans ``argc`` le nombre d'arguments et place dans ``char *argv[]`` tous les arguments passés avec dans ``argv[0]`` le nom du programme qui est exécuté.
+La troisième zone est le :term:`segment des données non-initialisées`, réservée aux variables non-initialisées. Cette zone mémoire est initialisée à zéro par le système d'exploitation lors du démarrage du programme. Dans l'exemple ci-dessus, c'est dans cette zone que l'on stockera les valeurs de la variable ``g`` et des tableaux ``array`` et ``msg``.
 
-    Cette zone contient également les variables d'environnement. Ces variables sont généralement relatives à la configuration du système. Leurs valeurs sont définies par l'administrateur système ou l'utilisateur. De nombreuses variables d'environnement sont utilisées dans les systèmes Unix. Elles servent à modifier le comportement de certains programmes. Une liste exhaustive de toutes les variables d'environnement est impossible, mais en voici quelques unes qui sont utiles en pratique [#fenvbash]_:
+.. note:: Initialisation des variables
 
-     - ``HOSTNAME`` : le nom de la machine sur laquelle le programme s'exécute. Ce nom est fixé par l'administrateur système via la commande `hostname(1)`_
-     - ``SHELL`` : l'interpréteur de commande utilisé par défaut pour l'utilisateur courant. Cet interpréteur est lancé par le système au démarrage d'une session de l'utilisateur. Il est stocké dans le fichier des mots de passe et peut être modifié par l'utilisateur via la commande `passwd(1)`_
-     - ``USER`` : le nom de l'utilisateur courant. Sous Unix, chaque utilisateur est identifié par un numéro d'utilisateur et un nom uniques. Ces identifiants sont fixés par l'administrateur système via la commande `passwd(1)`_
-     - ``HOME``: le répertoire d'accueil de l'utilisateur courant. Ce répertoire d'accueil appartient à l'utilisateur. C'est dans ce répertoire qu'il peut stocker tous ses fichiers.
-     - ``PRINTER`` : le nom de l'imprimante par défaut qui est utilisée par la commande `lp(1posix)`_
-     - ``PATH``: cette variable d'environnement contient la liste ordonnée des répertoires que le système parcourt pour trouver un programme à exécuter. Cette liste contient généralement les répertoires dans lesquels le système stocke les exécutables standards, comme ``/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:`` ainsi que des répertoires relatifs à des programmes spécialisés comme ``/usr/lib/mozart/bin:/opt/python3/bin``. L'utilisateur peut ajouter des répertoires à son ``PATH`` avec `bash(1)`_ en incluant par exemple la commande ``PATH=$PATH:$HOME/local/bin:.`` dans son fichier ``.profile``. Cette commande ajoute au ``PATH`` par défaut le répertoire ``$HOME/local/bin`` et le répertoire courant. Par convention, Unix utilise le caractère ``.`` pour représenter ce répertoire courant.
+Un point important auquel tout programmeur C doit faire attention est l'initialisation correcte de l'ensemble des variables utilisées dans un programme. Le compilateur C est nettement plus permissif qu'un compilateur Java et il autorisera l'utilisation de variables avant qu'elles n'aient été explicitement initialisées, ce qui peut donner lieu à des erreurs parfois très difficiles à corriger.
 
-    La librairie standard contient plusieurs fonctions qui permettent de manipuler les variables d'environnement d'un processus. La fonction `getenv(3)`_ permet de récupérer la valeur associée à une variable d'environnement. La fonction `unsetenv(3)`_ permet de supprimer une variable de l'environnement du programme courant. La fonction `setenv(3)`_ permet elle de modifier la valeur d'une variable d'environnement. Cette fonction alloue de la mémoire pour stocker la nouvelle variable d'environnement et peut échouer si il n'y a pas assez de mémoire disponible pour stocker de nouvelles variables d'environnement. Ces fonctions sont utilisées notamment par l'interpréteur de commande mais parfois par des programmes dont le comportement dépend de la valeur de certaines variables d'environnement. Par exemple, la commande `man(1)`_ utilise différentes variables d'environnement pour déterminer par exemple où les pages de manuel sont stockées et la langue (variable ``LANG``) dans laquelle il faut afficher les pages de manuel.
+En C, par défaut les variables globales qui ne sont pas explicitement initialisées dans un programme sont initialisées à la valeur zéro par le compilateur. Plus précisément, la zone mémoire qui correspond à chaque variable globale non-explicitement initialisée contiendra des bits valant 0. Pour les variables locales, le langage C n'impose aucune initialisation par défaut au compilateur. Par souci de performance et sachant qu'un programmeur ne devrait jamais utiliser de variable locale non explicitement initialisée, le compilateur C n'initialise pas par défaut la valeur de ces variables. Cela peut avoir des conséquences ennuyeuses comme le montre l'exemple ci-dessous.
 
-    Le programme ci-dessous illustre brièvement l'utilisation de `getenv(3)`_, `unsetenv(3)`_ et `setenv(3)`_. Outre ces fonctions, il existe également `clearenv(3)`_ qui permet d'effacer complètement toutes les variables d'environnement du programme courant et `putenv(3)`_ qui était utilisé avant `setenv(3)`_.
+.. literalinclude:: /C/S3-src/initvar.c
+   :encoding: utf-8
+   :language: c
+   :start-after: ///AAA
+   :end-before: ///BBB
 
-    .. literalinclude:: /C/S3-src/argv-env.c
-       :encoding: utf-8
-       :language: c
-       :start-after: ///AAA
+Cet extrait de programme contient deux fonctions erronées. La seconde, baptisée ``read(void)`` déclare un tableau local et retourne la somme des éléments de ce tableau sans l'initialiser. En Java, une telle utilisation d'un tableau non-initialisé serait détectée par le compilateur. En C, elle est malheureusement valide (mais fortement découragée évidemment). La première fonction, ``init(void)`` se contente d'initialiser un tableau local mais ne retourne aucun résultat. Cette fonction ne sert a priori à rien puisqu'elle n'a aucun effet sur les variables globales et ne retourne aucun résultat. L'exécution de ces fonctions via le fragment de code ci-dessous donne cependant un résultat interpellant.
+
+.. literalinclude:: /C/S3-src/initvar.c
+   :encoding: utf-8
+   :language: c
+   :start-after: ///CCC
+   :end-before: ///DDD
+
+.. literalinclude:: /C/S3-src/initvar.out
+   :encoding: utf-8
+   :language: console
+
+Les arguments et variables d'environnement
+------------------------------------------
+
+Lorsque le système d'exploitation charge un programme Unix en mémoire, il initialise dans le haut de la mémoire une zone qui contient deux types de variables. Cette zone contient tout d'abord les arguments qui ont été passés via la ligne de commande. Le système d'exploitation met dans ``argc`` le nombre d'arguments et place dans ``char *argv[]`` tous les arguments passés avec dans ``argv[0]`` le nom du programme qui est exécuté.
+
+Cette zone contient également les variables d'environnement. Ces variables sont généralement relatives à la configuration du système. Leurs valeurs sont définies par l'administrateur système ou l'utilisateur. De nombreuses variables d'environnement sont utilisées dans les systèmes Unix. Elles servent à modifier le comportement de certains programmes. Une liste exhaustive de toutes les variables d'environnement est impossible, mais en voici quelques unes qui sont utiles en pratique [#fenvbash]_:
+
+- ``HOSTNAME`` : le nom de la machine sur laquelle le programme s'exécute. Ce nom est fixé par l'administrateur système via la commande `hostname(1)`_
+- ``SHELL`` : l'interpréteur de commande utilisé par défaut pour l'utilisateur courant. Cet interpréteur est lancé par le système au démarrage d'une session de l'utilisateur. Il est stocké dans le fichier des mots de passe et peut être modifié par l'utilisateur via la commande `passwd(1)`_
+- ``USER`` : le nom de l'utilisateur courant. Sous Unix, chaque utilisateur est identifié par un numéro d'utilisateur et un nom uniques. Ces identifiants sont fixés par l'administrateur système via la commande `passwd(1)`_
+- ``HOME``: le répertoire d'accueil de l'utilisateur courant. Ce répertoire d'accueil appartient à l'utilisateur. C'est dans ce répertoire qu'il peut stocker tous ses fichiers.
+- ``PRINTER`` : le nom de l'imprimante par défaut qui est utilisée par la commande `lp(1posix)`_
+- ``PATH``: cette variable d'environnement contient la liste ordonnée des répertoires que le système parcourt pour trouver un programme à exécuter. Cette liste contient généralement les répertoires dans lesquels le système stocke les exécutables standards, comme ``/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:`` ainsi que des répertoires relatifs à des programmes spécialisés comme ``/usr/lib/mozart/bin:/opt/python3/bin``. L'utilisateur peut ajouter des répertoires à son ``PATH`` avec `bash(1)`_ en incluant par exemple la commande ``PATH=$PATH:$HOME/local/bin:.`` dans son fichier ``.profile``. Cette commande ajoute au ``PATH`` par défaut le répertoire ``$HOME/local/bin`` et le répertoire courant. Par convention, Unix utilise le caractère ``.`` pour représenter ce répertoire courant.
+
+La librairie standard contient plusieurs fonctions qui permettent de manipuler les variables d'environnement d'un processus. La fonction `getenv(3)`_ permet de récupérer la valeur associée à une variable d'environnement. La fonction `unsetenv(3)`_ permet de supprimer une variable de l'environnement du programme courant. La fonction `setenv(3)`_ permet elle de modifier la valeur d'une variable d'environnement. Cette fonction alloue de la mémoire pour stocker la nouvelle variable d'environnement et peut échouer si il n'y a pas assez de mémoire disponible pour stocker de nouvelles variables d'environnement. Ces fonctions sont utilisées notamment par l'interpréteur de commande mais parfois par des programmes dont le comportement dépend de la valeur de certaines variables d'environnement. Par exemple, la commande `man(1)`_ utilise différentes variables d'environnement pour déterminer par exemple où les pages de manuel sont stockées et la langue (variable ``LANG``) dans laquelle il faut afficher les pages de manuel.
+
+Le programme ci-dessous illustre brièvement l'utilisation de `getenv(3)`_, `unsetenv(3)`_ et `setenv(3)`_. Outre ces fonctions, il existe également `clearenv(3)`_ qui permet d'effacer complètement toutes les variables d'environnement du programme courant et `putenv(3)`_ qui était utilisé avant `setenv(3)`_.
+
+.. literalinclude:: /C/S3-src/argv-env.c
+   :encoding: utf-8
+   :language: c
+   :start-after: ///AAA
 
 La pile (ou stack)
 ------------------
@@ -285,7 +284,7 @@ La fonction `malloc(3)`_ prend comme argument la taille (en bytes) de la zone m�
 
  Comme le langage Java, le langage C supporte des conversions implicites et explicites entre les différents types de données. Ces conversions sont possibles entre les types primitifs et les pointeurs. Nous les rencontrerons régulièrement, par exemple lorsqu'il faut récupérer un pointeur alloué par `malloc(3)`_ ou le résultat de ``sizeof``. Contrairement au compilateur Java, le compilateur C n'émet pas toujours de message de :term:`warning` lors de l'utilisation de  typecast qui risque d'engendrer une perte de précision. Ce problème est illustré par l'exemple suivant avec les nombres.
 
-  .. literalinclude:: /_static/src/C/S3-src/typecast.c
+  .. literalinclude:: /C/S3-src/typecast.c
      :encoding: utf-8
      :language: c
      :start-after: ///AAA
@@ -296,7 +295,7 @@ La fonction de la librairie `free(3)`_ est le pendant de `malloc(3)`_. Elle perm
 
 Le programme ci-dessous illustre l'utilisation de `malloc(3)`_ et `free(3)`_.
 
-.. literalinclude:: /_static/src/C/S3-src/malloc.c
+.. literalinclude:: /C/S3-src/malloc.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -304,7 +303,7 @@ Le programme ci-dessous illustre l'utilisation de `malloc(3)`_ et `free(3)`_.
 
 Ce programme alloue trois zones mémoires. Le pointeur vers la première est sauvé dans le pointeur ``string``. Elle est destinée à contenir une chaîne de ``size`` caractères (avec un caractère supplémentaire pour stocker le caractère ``\0`` de fin de chaîne). Il y a deux points à remarquer concernant cette allocation. Tout d'abord, le pointeur retourné par `malloc(3)`_ est "casté" en un ``char *``. Cela indique au compilateur que ``string`` va bien contenir un pointeur vers une chaîne de caractères. Cette conversion explicite rend le programme plus clair. Ensuite, la valeur de retour de `malloc(3)`_  est systématiquement testée. `malloc(3)`_ peut en effet retourner ``NULL`` lorsque la mémoire est remplie. Cela a peu de chance d'arriver dans un programme de test tel que celui-ci, mais tester les valeurs de retour des fonctions de la librairie est une bonne habitude à prendre lorsque l'on programme sous Unix. Le second pointeur, ``vector`` pointe vers une zone destiné à contenir un tableau d'entiers. Le dernier pointeur, ``fract_vect`` pointe vers une zone qui pourra stocker un tableau de ``Fraction``. Lors de son exécution, le programme affiche la sortie suivante.
 
-.. literalinclude:: /_static/src/C/S3-src/malloc.out
+.. literalinclude:: /C/S3-src/malloc.out
    :encoding: utf-8
    :language: console
 
@@ -313,7 +312,7 @@ Dans cette sortie, on remarque que l'appel à fonction `free(3)`_ libère la zon
 Un autre exemple d'utilisation de `malloc(3)`_ est la fonction ``duplicate`` ci-dessous qui permet de retourner une copie d'une chaîne de caractères. Il est important de noter qu'en C la fonction `strlen(3)`_ retourne la longueur de la chaîne de caractères passée en argument sans prendre en compte le caractère ``\0`` qui marque sa fin. C'est la raison pour laquelle `malloc(3)`_ doit réserver un bloc de mémoire en plus. Même si généralement les ``char`` occupent un octet en mémoire, il est préférable d'utiliser explicitement ``sizeof(char)`` lors du calcul de l'espace mémoire nécessaire pour un type de données.
 
 
-.. literalinclude:: /_static/src/C/S3-src/strcpy.c
+.. literalinclude:: /C/S3-src/strcpy.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -337,7 +336,7 @@ Lors de la compilation, `gcc(1)`_ affiche le :term:`warning` ``In function ‘du
 `malloc(3)`_ et `free(3)`_ sont fréquemment utilisés dans des programmes qui manipulent des structures de données dont la taille varie dans le temps. C'est le cas pour les différents sortes de listes chaînées, les piles, les queues, les arbres, ... L'exemple ci-dessous (:download:`/C/S3-src/stack.c`) illustre une implémentation d'une pile simple en C. Le pointeur vers le sommet de la pile est défini comme une variable globale. Chaque élément de la pile est représenté comme un pointeur vers une structure qui contient un pointeur vers la donnée stockée (dans cet exemple des fractions) et l'élément suivant sur la pile. Les fonctions ``push`` et ``pop`` permettent respectivement d'ajouter un élément et de retirer un élément au sommet de la pile. La fonction ``push`` alloue la mémoire nécessaire avec `malloc(3)`_ tandis que la fonction ``pop`` utilise `free(3)`_ pour libérer la mémoire dès qu'un élément est retiré.
 
 
-.. literalinclude:: /_static/src/C/S3-src/stack.c
+.. literalinclude:: /C/S3-src/stack.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -346,7 +345,7 @@ Lors de la compilation, `gcc(1)`_ affiche le :term:`warning` ``In function ‘du
 
 Ces fonctions peuvent être utilisées pour empiler et dépiler des fractions sur une pile comme dans l'exemple ci-dessous. La fonction ``display`` permet d'afficher sur :term:`stdout` le contenu de la pile.
 
-.. literalinclude:: /_static/src/C/S3-src/stack.c
+.. literalinclude:: /C/S3-src/stack.c
    :encoding: utf-8
    :language: c
    :start-after: ///BBB
@@ -354,7 +353,7 @@ Ces fonctions peuvent être utilisées pour empiler et dépiler des fractions su
 
 Lors de son exécution le programme :download:`/C/S3-src/stack.c` présenté ci-dessus affiche les lignes suivantes sur sa sortie standard.
 
-.. literalinclude:: /_static/src/C/S3-src/stack.out
+.. literalinclude:: /C/S3-src/stack.out
    :encoding: utf-8
    :language: console
 
@@ -376,14 +375,14 @@ Le tas (ou :term:`heap`) joue un rôle très important dans les programmes C. Le
 
 `malloc(3)` est la fonction d'allocation de mémoire la plus fréquemment utilisée [#fothermalloc]_. La librairie standard contient cependant d'autres fonctions permettant d'allouer de la mémoire mais aussi de modifier des allocations antérieures. `calloc(3)`_ est nettement moins utilisée que `malloc(3)`_. Elle a pourtant un avantage majeur par rapport à `malloc(3)`_ puisqu'elle initialise à zéro la zone de mémoire allouée. `malloc(3)`_ se contente d'allouer la zone de mémoire mais n'effectue aucune initialisation. Cela permet à `malloc(3)`_ d'être plus rapide, mais le programmeur ne doit jamais oublier qu'il ne peut pas utiliser `malloc(3)`_ sans initialiser la zone mémoire allouée. Cela peut s'observer en pratique avec le programme ci-dessous. Il alloue une zone mémoire pour ``v1``, l'initialise puis la libère. Ensuite, le programme alloue une nouvelle zone mémoire pour ``v2`` et y retrouve les valeurs qu'il avait stocké pour ``v1`` précédemment. En pratique, n'importe quelle valeur pourrait se trouver dans la zone retournée par `malloc(3)`.
 
-.. literalinclude:: /_static/src/C/S3-src/mallocinit.c
+.. literalinclude:: /C/S3-src/mallocinit.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
 L'exécution du programme ci-dessus affiche le résultat suivant sur la sortie standard. Ceci illustre bien que la fonction `malloc(3)`_ n'initialise pas  les zones de mémoire qu'elle alloue.
 
-.. literalinclude:: /_static/src/C/S3-src/mallocinit.out
+.. literalinclude:: /C/S3-src/mallocinit.out
    :encoding: utf-8
    :language: console
 
@@ -395,12 +394,12 @@ Lors de l'exécution du programme, on remarque que la première zone mémoire re
 
 .. [#fpossible] Pour des raisons de performance, le compilateur C ne génère pas de code permettant de vérifier automatiquement qu'un accès via un pointeur pointe vers une zone de mémoire qui est libre. Il est donc parfois possible d'accéder à une zone mémoire qui a été libérée, mais le programme n'a aucune garantie sur la valeur qu'il y trouvera. Ce genre d'accès à des zones mémoires libérées doit bien entendu être complètement proscrit.
 
-.. .. [#ggetrlimit] Sur de nombreuses variantes de Unix, cette limite à la taille du stack dépend du matériel utilisé et peut être configurée par l'administrateur système. Un processus peut connaître la taille maximale de son stack en utilisant l'appel système `getrlimit(2)`_. L'administrateur système peut modifier ces limites via l'appel système `setrlimit(2)`_. La commande ``ulimit`` de `bash(1)`_ permet également de manipuler ces limites.
+.. [#ggetrlimit] Sur de nombreuses variantes de Unix, cette limite à la taille du stack dépend du matériel utilisé et peut être configurée par l'administrateur système. Un processus peut connaître la taille maximale de son stack en utilisant l'appel système `getrlimit(2)`_. L'administrateur système peut modifier ces limites via l'appel système `setrlimit(2)`_. La commande ``ulimit`` de `bash(1)`_ permet également de manipuler ces limites.
 
-.. .. [#fetext] Dans de nombreuses variantes de Unix, il est possible de connaître le sommet du segment :term:`text` d'un processus grâce à la variable :term:`etext`. Cette variable, de type ``char`` est initialisée par le système au chargement du processus. Elle doit être déclarée comme variable de type ``extern char etext`` et son adresse (``&etext``) correspond au sommet du segment text.
+.. [#fetext] Dans de nombreuses variantes de Unix, il est possible de connaître le sommet du segment :term:`text` d'un processus grâce à la variable :term:`etext`. Cette variable, de type ``char`` est initialisée par le système au chargement du processus. Elle doit être déclarée comme variable de type ``extern char etext`` et son adresse (``&etext``) correspond au sommet du segment text.
 
-.. .. [#fvmem] Nous verrons ultérieurement que grâce à l'utilisation de la mémoire virtuelle, il est possible pour un processus d'utiliser des zones de mémoire qui ne sont pas contiguës.
+.. [#fvmem] Nous verrons ultérieurement que grâce à l'utilisation de la mémoire virtuelle, il est possible pour un processus d'utiliser des zones de mémoire qui ne sont pas contiguës.
 
 .. [#fothermalloc] Il existe différentes alternatives à l'utilisation de `malloc(3)`_ pour l'allocation de mémoire comme `Hoard <http://www.hoard.org/>`_ ou `gperftools <http://code.google.com/p/gperftools/>`_
 
-.. .. [#fenvbash] Il possible de lister les définitions actuelles des variables d'environnement via la commande `printenv(1)`_. Les interpréteurs de commande tels que `bash(1)`_ permettent de facilement modifier les valeurs de ces variables. La plupart d'entre elles sont initialisées par le système ou via les fichiers qui sont chargés automatiquement au démarrage de l'interpréteur comme ``/etc/profile`` qui contient les variables fixées par l'administrateur système ou le fichier ``.profile`` du répertoire d'accueil de l'utilisateur qui contient les variables d'environnement propres à cet utilisateur.
+ .. [#fenvbash] Il possible de lister les définitions actuelles des variables d'environnement via la commande `printenv(1)`_. Les interpréteurs de commande tels que `bash(1)`_ permettent de facilement modifier les valeurs de ces variables. La plupart d'entre elles sont initialisées par le système ou via les fichiers qui sont chargés automatiquement au démarrage de l'interpréteur comme ``/etc/profile`` qui contient les variables fixées par l'administrateur système ou le fichier ``.profile`` du répertoire d'accueil de l'utilisateur qui contient les variables d'environnement propres à cet utilisateur.
