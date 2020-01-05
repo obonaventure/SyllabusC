@@ -409,6 +409,3 @@ Glossaire
 
    raspberry pi
     Systèmes informatiques développés par la Raspberry Pi Foundation, voir https://www.raspberrypi.org
-
-   raspbian
-    Variante de GNU/Linux disponible depuis https://www.raspbian.org

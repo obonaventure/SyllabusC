@@ -4,6 +4,8 @@ La variable locale f est à l'adresse : 0x7fff5fbfe1dc
 La fonction main est à l'adresse : 0x100000b6b
 La fonction max est à l'adresse : 0x100000b46
 ///FACT
+La fonction fact est à l'adresse : 0x100000a0f
+La fonction times est à l'adresse : 0x1000009d8
 La variable nombre vaut 3 et est à l'adresse 0x7fff5fbfe1ac
 [fact(3)]: Valeur de n:3, adresse: 0x7fff5fbfe17c
 [fact(3)]: appel à fact(2)
