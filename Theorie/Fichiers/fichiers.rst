@@ -202,11 +202,12 @@ Il existe plusieurs appels systèmes et fonctions de la librairie standard qui p
 
 	L'extrait de code ci-dessous permet de lister tous les fichiers présents dans le répertoire ``name``.
 
-	.. literalinclude:: /_static/src/Fichiers/src/readdir.c
-	   :encoding: utf-8
-	   :language: c
-	   :start-after: ///AAA
-	   :end-before: ///BBB
+.. literalinclude:: /Fichiers/src/readdir.c
+   :encoding: utf-8
+   :language: c
+   :start-after: ///AAA
+   :end-before: ///BBB
+
 
 	La lecture d'un répertoire avec `readdir(3)`_ commence au début de ce répertoire. A chaque appel à `readdir(3)`_, le programme appelant récupère un pointeur vers une zone mémoire contenant une structure ``dirent`` avec l'entrée suivante du répertoire ou ``NULL`` lorsque la fin du répertoire est atteinte. Si une fonction doit relire à nouveau un répertoire, cela peut se faire en utilisant `seekdir(3)`_ ou `rewinddir(3)`_.
 
@@ -345,7 +346,7 @@ Ces deux appels systèmes prennent trois arguments. Le premier est le `descripte
 
 Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'écrire des séquences contiguës d'octets. Lorsque l'on écrit ou lit des chaînes de caractères dans lesquels chaque caractère est représenté sous la forme d'un byte, il est possible d'utiliser `read(2)`_ et `write(2)`_ pour lire et écrire d'autres types de données que des octets comme le montre l'exemple ci-dessous.
 
-.. literalinclude:: /_static/src/Fichiers/src/read.c
+.. literalinclude:: /Fichiers/src/read.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -353,7 +354,7 @@ Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'
 
 Lors de son exécution, ce programme affiche la sortie ci-dessous.
 
-.. literalinclude:: /_static/src/Fichiers/src/read.out
+.. literalinclude:: /Fichiers/src/read.out
    :encoding: utf-8
    :language: console
 

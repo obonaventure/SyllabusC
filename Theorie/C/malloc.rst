@@ -30,9 +30,9 @@ La première notion importante concernant la déclaration des variables est leur
 Dans un fichier donné, il ne peut évidemment pas y avoir deux variables globales qui ont le même identifiant. Lorsqu'une variable est définie dans un `bloc`, la portée de cette variable est locale à ce bloc. On parle dans ce cas de :term:`portée locale`. La variable locale n'existe pas avant le début du bloc et n'existe plus à la fin du bloc. Contrairement aux identifiants de variables globales qui doivent être uniques à l'intérieur d'un fichier, il est possible d'avoir plusieurs variables locales qui ont le même identifiant à l'intérieur d'un fichier. C'est fréquent notamment pour les définitions d'arguments de fonction et les variables de boucles. Dans l'exemple ci-dessus, les variables ``n`` et ``j`` ont une portée locale. La variable ``j`` est définie dans deux blocs différents à l'intérieur de la fonction ``f``.
 
 
-Le programme :download:`/_static/src/C/S3-src/portee.c` illustre la façon dont le compilateur C gère la portée de différentes variables.
+Le programme :download:`/C/S3-src/portee.c` illustre la façon dont le compilateur C gère la portée de différentes variables.
 
-.. literalinclude:: /_static/src/C/S3-src/portee.c
+.. literalinclude:: /C/S3-src/portee.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -42,7 +42,7 @@ Ce programme contient deux variables qui ont une portée globale : ``g1`` et ``g
 
 Lorsqu'un identifiant de variable locale est utilisé à plusieurs endroits dans un fichier, c'est la définition la plus proche qui est utilisée. L'exécution du programme ci-dessus illustre cette utilisation des variables globales et locales.
 
-.. literalinclude:: /_static/src/C/S3-src/portee.out
+.. literalinclude:: /C/S3-src/portee.out
    :encoding: utf-8
    :language: console
 
@@ -52,7 +52,7 @@ Lorsqu'un identifiant de variable locale est utilisé à plusieurs endroits dans
 
 Les versions récentes de C [C99]_ permettent également de définir des variables dont la valeur sera constante durant toute l'exécution du programme. Ces déclarations de ces constants sont préfixées par le mot-clé ``const`` qui joue le même rôle que le mot clé ``final`` en Java.
 
-.. literalinclude:: /_static/src/C/S3-src/const.c
+.. literalinclude:: /C/S3-src/const.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -67,7 +67,7 @@ Unions et énumérations
 
 Les structures que nous avons présentées précédemment permettent de combiner plusieurs données de types primitifs différents entre elles. Outre ces structures (``struct``), le langage C supporte également les ``enum`` et les ``union``. Le mot-clé ``enum`` est utilisé pour définir un type énuméré, c'est-à-dire un type de donnée qui permet de stocker un nombre fixe de valeurs. Quelques exemples classiques sont repris dans le fragment de programme ci-dessous :
 
-.. literalinclude:: /_static/src/C/S3-src/enum.c
+.. literalinclude:: /C/S3-src/enum.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -75,7 +75,7 @@ Les structures que nous avons présentées précédemment permettent de combiner
 
 Le premier ``enum`` permet de définir le type de données ``day`` qui contient une valeur énumérée pour chaque jour de la semaine. L'utilisation d'un type énuméré rend le code plus lisible que simplement l'utilisation de constantes définies via le préprocesseur.
 
-.. literalinclude:: /_static/src/C/S3-src/enum.c
+.. literalinclude:: /C/S3-src/enum.c
    :encoding: utf-8
    :language: c
    :start-after: ///CCC
@@ -85,7 +85,7 @@ En pratique, lors de la définition d'un type énuméré, le compilateur C assoc
 
 Outre les structures, le langage C supporte également les unions. Alors qu'une structure permet de stocker plusieurs données dans une même zone mémoire, une ``union`` permet de réserver une zone mémoire pour stocker une données parmi plusieurs types possibles. Une ``union`` est parfois utilisée pour minimiser la quantité de mémoire utilisée pour une structure de données qui peut contenir des données de plusieurs types. Pour bien comprendre la différence entre une ``union`` et une ``struct``, considérons l'exemple ci-dessous.
 
-.. literalinclude:: /_static/src/C/S3-src/union.c
+.. literalinclude:: /C/S3-src/union.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -94,7 +94,7 @@ Outre les structures, le langage C supporte également les unions. Alors qu'une 
 
 Une union, ``u`` et une structure, ``s`` sont déclarées dans ce fragment de programme.
 
-.. literalinclude:: /_static/src/C/S3-src/union.c
+.. literalinclude:: /C/S3-src/union.c
    :encoding: utf-8
    :language: c
    :start-after: ///CCC
@@ -103,7 +103,7 @@ Une union, ``u`` et une structure, ``s`` sont déclarées dans ce fragment de pr
 La structure ``s`` peut contenir à la fois un entier et un caractère. Par contre, l'``union`` ``u``, peut elle contenir un entier (``u.i``) *ou* un caractère (``u.c``), mais jamais les deux en même temps.
 Le compilateur C alloue la taille pour l'``union`` de façon à ce qu'elle puisse contenir le type de donnée se trouvant dans l'``union`` nécessitant le plus de mémoire. Si les unions sont utiles dans certains cas très particulier, il faut faire très attention à leur utilisation. Lorsqu'une ``union`` est utilisée, le compilateur C fait encore moins de vérifications sur les types de données et le code ci-dessous est considéré comme valide par le compilateur :
 
-.. literalinclude:: /_static/src/C/S3-src/union.c
+.. literalinclude:: /C/S3-src/union.c
    :encoding: utf-8
    :language: c
    :start-after: ///EEE
@@ -111,7 +111,7 @@ Le compilateur C alloue la taille pour l'``union`` de façon à ce qu'elle puiss
 
 Lors de son exécution, la zone mémoire correspondant à l'union ``u`` sera simplement interprétée comme contenant un ``char``, même si on vient d'y stocker un entier. En pratique, lorsqu'une ``union`` est vraiment nécessaire pour des raisons d'économie de mémoire, on préférera la placer dans une ``struct`` en utilisant un type énuméré qui permet de spécifier le type de données qui est présent dans l'``union``.
 
-.. literalinclude:: /_static/src/C/S3-src/union.c
+.. literalinclude:: /C/S3-src/union.c
    :encoding: utf-8
    :language: c
    :start-after: ///BBB
@@ -119,7 +119,7 @@ Lors de son exécution, la zone mémoire correspondant à l'union ``u`` sera sim
 
 Le programmeur pourra alors utiliser cette structure en indiquant explicitement le type de données qui y est actuellement stocké comme suit.
 
-.. literalinclude:: /_static/src/C/S3-src/union.c
+.. literalinclude:: /C/S3-src/union.c
    :encoding: utf-8
    :language: c
    :start-after: ///FFF
@@ -217,7 +217,7 @@ La fonction `malloc(3)`_ prend comme argument la taille (en bytes) de la zone m�
 
  Comme le langage Java, le langage C supporte des conversions implicites et explicites entre les différents types de données. Ces conversions sont possibles entre les types primitifs et les pointeurs. Nous les rencontrerons régulièrement, par exemple lorsqu'il faut récupérer un pointeur alloué par `malloc(3)`_ ou le résultat de ``sizeof``. Contrairement au compilateur Java, le compilateur C n'émet pas toujours de message de :term:`warning` lors de l'utilisation de  typecast qui risque d'engendrer une perte de précision. Ce problème est illustré par l'exemple suivant avec les nombres.
 
-  .. literalinclude:: /_static/src/C/S3-src/typecast.c
+  .. literalinclude:: /C/S3-src/typecast.c
      :encoding: utf-8
      :language: c
      :start-after: ///AAA
@@ -228,7 +228,7 @@ La fonction de la librairie `free(3)`_ est le pendant de `malloc(3)`_. Elle perm
 
 Le programme ci-dessous illustre l'utilisation de `malloc(3)`_ et `free(3)`_.
 
-.. literalinclude:: /_static/src/C/S3-src/malloc.c
+.. literalinclude:: /C/S3-src/malloc.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -236,7 +236,7 @@ Le programme ci-dessous illustre l'utilisation de `malloc(3)`_ et `free(3)`_.
 
 Ce programme alloue trois zones mémoires. Le pointeur vers la première est sauvé dans le pointeur ``string``. Elle est destinée à contenir une chaîne de ``size`` caractères (avec un caractère supplémentaire pour stocker le caractère ``\0`` de fin de chaîne). Il y a deux points à remarquer concernant cette allocation. Tout d'abord, le pointeur retourné par `malloc(3)`_ est "casté" en un ``char *``. Cela indique au compilateur que ``string`` va bien contenir un pointeur vers une chaîne de caractères. Cette conversion explicite rend le programme plus clair. Ensuite, la valeur de retour de `malloc(3)`_  est systématiquement testée. `malloc(3)`_ peut en effet retourner ``NULL`` lorsque la mémoire est remplie. Cela a peu de chance d'arriver dans un programme de test tel que celui-ci, mais tester les valeurs de retour des fonctions de la librairie est une bonne habitude à prendre lorsque l'on programme sous Unix. Le second pointeur, ``vector`` pointe vers une zone destiné à contenir un tableau d'entiers. Le dernier pointeur, ``fract_vect`` pointe vers une zone qui pourra stocker un tableau de ``Fraction``. Lors de son exécution, le programme affiche la sortie suivante.
 
-.. literalinclude:: /_static/src/C/S3-src/malloc.out
+.. literalinclude:: /C/S3-src/malloc.out
    :encoding: utf-8
    :language: console
 
@@ -245,7 +245,7 @@ Dans cette sortie, on remarque que l'appel à fonction `free(3)`_ libère la zon
 Un autre exemple d'utilisation de `malloc(3)`_ est la fonction ``duplicate`` ci-dessous qui permet de retourner une copie d'une chaîne de caractères. Il est important de noter qu'en C la fonction `strlen(3)`_ retourne la longueur de la chaîne de caractères passée en argument sans prendre en compte le caractère ``\0`` qui marque sa fin. C'est la raison pour laquelle `malloc(3)`_ doit réserver un bloc de mémoire en plus. Même si généralement les ``char`` occupent un octet en mémoire, il est préférable d'utiliser explicitement ``sizeof(char)`` lors du calcul de l'espace mémoire nécessaire pour un type de données.
 
 
-.. literalinclude:: /_static/src/C/S3-src/strcpy.c
+.. literalinclude:: /C/S3-src/strcpy.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -254,7 +254,7 @@ Un autre exemple d'utilisation de `malloc(3)`_ est la fonction ``duplicate`` ci-
 `malloc(3)`_ et `free(3)`_ sont fréquemment utilisés dans des programmes qui manipulent des structures de données dont la taille varie dans le temps. C'est le cas pour les différents sortes de listes chaînées, les piles, les queues, les arbres, ... L'exemple ci-dessous (:download:`/C/S3-src/stack.c`) illustre une implémentation d'une pile simple en C. Le pointeur vers le sommet de la pile est défini comme une variable globale. Chaque élément de la pile est représenté comme un pointeur vers une structure qui contient un pointeur vers la donnée stockée (dans cet exemple des fractions) et l'élément suivant sur la pile. Les fonctions ``push`` et ``pop`` permettent respectivement d'ajouter un élément et de retirer un élément au sommet de la pile. La fonction ``push`` alloue la mémoire nécessaire avec `malloc(3)`_ tandis que la fonction ``pop`` utilise `free(3)`_ pour libérer la mémoire dès qu'un élément est retiré.
 
 
-.. literalinclude:: /_static/src/C/S3-src/stack.c
+.. literalinclude:: /C/S3-src/stack.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -263,7 +263,7 @@ Un autre exemple d'utilisation de `malloc(3)`_ est la fonction ``duplicate`` ci-
 
 Ces fonctions peuvent être utilisées pour empiler et dépiler des fractions sur une pile comme dans l'exemple ci-dessous. La fonction ``display`` permet d'afficher sur :term:`stdout` le contenu de la pile.
 
-.. literalinclude:: /_static/src/C/S3-src/stack.c
+.. literalinclude:: /C/S3-src/stack.c
    :encoding: utf-8
    :language: c
    :start-after: ///BBB
@@ -271,7 +271,7 @@ Ces fonctions peuvent être utilisées pour empiler et dépiler des fractions su
 
 Lors de son exécution le programme :download:`/C/S3-src/stack.c` présenté ci-dessus affiche les lignes suivantes sur sa sortie standard.
 
-.. literalinclude:: /_static/src/C/S3-src/stack.out
+.. literalinclude:: /C/S3-src/stack.out
    :encoding: utf-8
    :language: console
 
@@ -293,14 +293,14 @@ Le tas (ou :term:`heap`) joue un rôle très important dans les programmes C. Le
 
 `malloc(3)` est la fonction d'allocation de mémoire la plus fréquemment utilisée [#fothermalloc]_. La librairie standard contient cependant d'autres fonctions permettant d'allouer de la mémoire mais aussi de modifier des allocations antérieures. `calloc(3)`_ est nettement moins utilisée que `malloc(3)`_. Elle a pourtant un avantage majeur par rapport à `malloc(3)`_ puisqu'elle initialise à zéro la zone de mémoire allouée. `malloc(3)`_ se contente d'allouer la zone de mémoire mais n'effectue aucune initialisation. Cela permet à `malloc(3)`_ d'être plus rapide, mais le programmeur ne doit jamais oublier qu'il ne peut pas utiliser `malloc(3)`_ sans initialiser la zone mémoire allouée. Cela peut s'observer en pratique avec le programme ci-dessous. Il alloue une zone mémoire pour ``v1``, l'initialise puis la libère. Ensuite, le programme alloue une nouvelle zone mémoire pour ``v2`` et y retrouve les valeurs qu'il avait stocké pour ``v1`` précédemment. En pratique, n'importe quelle valeur pourrait se trouver dans la zone retournée par `malloc(3)`.
 
-.. literalinclude:: /_static/src/C/S3-src/mallocinit.c
+.. literalinclude:: /C/S3-src/mallocinit.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
 L'exécution du programme ci-dessus affiche le résultat suivant sur la sortie standard. Ceci illustre bien que la fonction `malloc(3)`_ n'initialise pas  les zones de mémoire qu'elle alloue.
 
-.. literalinclude:: /_static/src/C/S3-src/mallocinit.out
+.. literalinclude:: /C/S3-src/mallocinit.out
    :encoding: utf-8
    :language: console
 
