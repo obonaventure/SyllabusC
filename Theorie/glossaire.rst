@@ -32,7 +32,7 @@ Glossaire
     Compilateur pour la langage C développé par un groupe de volontaires qui est diffusé depuis http://gcc.gnu.org gcc est utilisé dans plusieurs systèmes d'exploitation de type Unix, comme MacOS, Linux ou FreeBSD. Il existe d'autres compilateurs C. Une liste non-exhaustive est maintenue sur http://en.wikipedia.org/wiki/List_of_compilers#C_compilers
 
    llvm
-    Ensemble de compilateurs pour différents langages de programmation et différents processeurs développé par un groupe de volontaire. llvm est distrubé depuis http://llvm.org/
+    Ensemble de compilateurs pour différents langages de programmation et différents processeurs développé par un groupe de volontaire. ``llvm`` est distribué depuis http://llvm.org/
 
    cpp
    préprocesseur
@@ -154,7 +154,7 @@ Glossaire
     Fichier contenant des signatures de fonctions, des déclarations de types de données, des variables globales, permettant d'utiliser une librairie ou un API.
 
    segmentation fault
-    Erreur à l'exécution à compléter
+    Erreur à l'exécution causée par un accès à une adresse mémoire non-autorisée pour le programme.
 
    NOT
    négation
@@ -182,7 +182,7 @@ Glossaire
     Zone d'un programme dans laquelle une variable est déclarée.
 
    portée locale
-    Une variable ayant une portée locale est accessible uniquement dans le bloc dans lequelle elle est définie.
+    Une variable ayant une portée locale est accessible uniquement dans le bloc dans laquelle elle est définie.
 
    portée globale
         Une variable ayant une portée globale est accessible dans tout le programme.
@@ -262,40 +262,40 @@ Glossaire
     Registre spécial du processeur qui contient en permanence l'adresse de l'instruction en cours d'exécution. Le contenu de ce registre est incrémenté après chaque instruction et modifié par les instructions de saut.
 
    makefile
-    à compléter
+    Fichier décrivant la façon dont `make(1)`_ doit compiler un programme.
 
    fichier
-    à compléter
+    Une séquence composée d'un nombre entier d'octets stockée sur un dispositif de stockage. Un fichier est identifié par son nom et sa position dans l'arborescence du système de fichiers. 
 
    fichier objet
-    à compléter
+    Fichier résultat de la compilation d'une partie de programme. Ce fichier contient les instructions en langage machine à exécuter ainsi que les informations relatives aux différents symboles (variables, fonctions, ...) qui y sont définis.
 
    linker
-    à compléter
+    Editeur de liens. Partie du compilateur c permettant de combiner plusieurs fichiers objet en un exécutable.
 
    errno
-    à compléter
+    Variable globale mise à jour par certains appels systèmes et fonctions de la librairie standard en cas d'erreur. Voir `errno(3)`_
 
    loi de Moore
-    à compléter
+    Voir https://fr.wikipedia.org/wiki/Loi_de_Moore
 
    kHz
-    à compléter
+    Mesure de fréquence en milliers de répétitions par seconde.
 
    MHz
-    à compléter
+    Mesure de fréquence en millions de répétitions par seconde.
 
    GHz
-    à compléter
+    Mesure de fréquence en milliards de répétitions par seconde.
 
    MIPS
     Million d'instructions par seconde
 
    benchmark
-    à compléter
+    Ensemble de programmes permettant d'évaluer les performances d'un système informatique. 
 
    multi-coeurs
-    à compléter
+    Processeur contenant plusieurs unités permettant d'exécuter simultanément des instructions de programmes différents.
 
    multithreadé
     Programme utilisant plusieurs threads.
@@ -304,94 +304,94 @@ Glossaire
     Partie de programme ne pouvant pas être exécutée simultanément par deux threads différents.
 
    exclusion mutuelle
-    à compléter
+    Zone d'un programme multithreadé qui ne peut pas être exécutée par plus d'un thread à la fois.
 
    sûreté
    safety
-    à compléter
+    Propriété d'un programme informatique. Dans le problème de l'exclusion mutuelle, une propriété de sûreté est que deux threads ne seront jamais dans la même section critique. 
 
    liveness
    vivacité
-    à compléter
+    Propriété d'un programme informatique. Dans le problème de l'exclusion mutuelle, une propriété de vivacité est qu'un thread qui souhaite entrer en section critique finira par y accéder. 
 
    multitâche
    multitasking
-    à compléter
+    Capacité d'exécuter plusieurs programmes simultanément.
 
    contexte
-    à compléter
+    Structure de données maintenue pas le noyau du système d'exploitation qui contient toutes les informations nécessaires pour poursuivre l'exécution d'un programme.
 
    changement de contexte
-    à compléter
+    Passage de l'exécution du programme A au programme B.
 
    interruption
-    à compléter
+    Signal extérieur (horloge, opération d'entrée/sortie, ...) qui force le processeur à arrêter l'exécution du programme en cours pour exécuter une routine du système d'exploitation et traiter l'interruption.
 
    scheduler
-    à compléter
+    Ordonnanceur. Algorithme utilisé par le noyau du système d'exploitation pour sélectionner le prochain programme à exécuter après une interruption d'horloge ou un appel système bloquant. 
 
    round-robin
-    à compléter
+    Voir https://fr.wikipedia.org/wiki/Round-robin_(informatique)
 
    livelock
-    à compléter
+    Voir https://en.wikipedia.org/wiki/Deadlock#Livelock
 
    opération atomique
-    à compléter
+    Opération ne pouvant être interrompue. 
 
    deadlock
-    à compléter
+    Voir https://en.wikipedia.org/wiki/Deadlock
 
    mutex
-    à compléter
+    Primitive de synchronisation permettant d'empêcher que deux threads accèdent simultanément à une même section critique.
 
    appel système
-    à compléter
+    Fonction primitive fournie par le noyau du système d'exploitation et pouvant être appelée directement par les programmes applicatifs.
 
    appel système bloquant
-    à compléter
+    Appel système qui ne retourne par de résultat immédiat. Dans ce cas, le noyau du système d'exploitation sélectionne un autre processus via le :term:`scheduler` en attendant que le résultat de l'appel système soit disponible.
 
    sémaphore
-    à compléter
+    Primitive de synchronisation permettant notamment l'exclusion mutuelle. Voir notamment  [Downey2008]_
 
    thread-safe
-    à compléter
+    Une fonction est dite thread-safe si elle peut être simultanément exécutée sans contrainte par différents threads d'un même programme.
 
    loi de Amdahl
-    à compléter
+    Voir https://fr.wikipedia.org/wiki/Loi_d%27Amdahl
 
    static library
    librairie statique
-    à compléter
+    Une librairie est statiquement liée à un programme exécutable lorsque tout son code est intégré dans l'exécutable. Voir les arguments ``static`` dans `gcc(1)`_
 
    shared library
    librairie dynamique
    librairie partagée
-    à compléter
+    Lorsqu'un librairie est dynamiquement liée à un programme exécutable, le code de celui-ci ne contient pas les instructions de la librairie, mais celle-ci est automatiquement chargée lors de chaque exécution du programme. Cela permet d'avoir une seule copie de chaque librairie. C'est la solution utilisée par défaut sous Linux. 
 
    descripteur de fichier
-    à compléter
+    Identifiant (entier) retourné par le noyau du système d'exploitation lors de l'ouverture d'un fichier par l'appel système `open(2)`_. 
 
    répertoire
-    à compléter
+    Branche de l'arborescence du système de fichiers. Un répertoire contient un ou plusieurs fichiers.
 
    répertoire courant
-    à compléter
+    Répertoire dans lequel l'appel système `open(2)`_ cherchera à ouvrir les fichiers do  
 
    offset pointer
-    à compléter
+    Position de la tête de lecture associée à un fichier ouvert. 
 
    little endian
-    à compléter
+    Ordre dans lequel les octets correspondants à des mots de plusieurs octets sont stockés en mémoire. Voir https://fr.wikipedia.org/wiki/Boutisme#Little_endian
 
    big endian
-    à compléter
+    Ordre dans lequel les octets correspondants à des mots de plusieurs octets sont stockés en mémoire. Voir https://fr.wikipedia.org/wiki/Boutisme#Little_endian
 
    lien symbolique
-    à compléter
+    Unix supporte deux types de liens. Les liens durs créés par `ln(1)`_ et les liens symboliques créés par `ln(1)`_ avec l'argument ``-s``. 
 
    appel système lent
-    à compléter
+    Un appel système lent est un appel système qui peut attendre un temps indéfini pour se terminer. Par exemple, l'appel `read(2)`_ sur l'entrée standard ne retournera de résultat que lorsque l'utilisateur aura pressé une touche sur le clavier.
 
 
    SSD
@@ -399,13 +399,81 @@ Glossaire
     Système de stockage de données s'appuyant uniquement sur de la mémoire flash.
 
    root
-    à compléter
+    Racine de l'arborescence des fichiers mais aussi utilisateur ayant les privilèges les plus élevés sur un ordinateur utilisant Unix.
 
    userid
-    à compléter
-
+    Identifiant d'utilisateur. Sous Unix, un entier unique est associé à chaque utilisateur. 
+    
    Unicode
     Norme d'encodage de caractères supportant l'ensemble des langues écrites, voir notamment https://en.wikipedia.org/wiki/Unicode
 
    raspberry pi
     Systèmes informatiques développés par la Raspberry Pi Foundation, voir https://www.raspberrypi.org
+
+
+.. spelling::
+
+   proc
+   Tanenbaum
+   Programming
+   Aqua
+   endian
+   overflow
+   Complex
+   cpp
+   deadlock
+   debugger
+   dynamic
+   eip
+   multithreadé
+   Foundation
+   garbage
+   is
+   not
+   libc
+   Torvalds
+   little
+   endian
+   liveness
+   llvm
+   livelock
+   Amdahl
+   Inc
+   Makefile
+   memory
+   leak
+   multitasking
+   multithreadé
+   nibble
+   pid
+   Access
+   Memory
+   raspberry
+   Reduced
+   root
+   scheduler
+   fault
+   shared
+   library
+   Solaris
+   Sun
+   Microsystems
+   Solid
+   static
+   library
+   stderr
+   stdin
+   stdout
+   safety
+   safe
+   lab
+   userid
+   Pentium
+   Centrino
+   Xeon
+   von
+   Neumann
+   makefile
+   coeurs
+   Labs
+   Editeur

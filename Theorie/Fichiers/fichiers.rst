@@ -177,8 +177,7 @@ Il existe plusieurs appels systèmes et fonctions de la librairie standard qui p
  - l'appel système `mkdir(2)`_ permet de créer un répertoire alors que l'appel système `rmdir(2)`_ permet d'en supprimer un
  - les fonctions de la librairie `opendir(3)`_, `closedir(3)`_, et `readdir(3)`_ permettent de consulter le contenu de répertoires.
 
-..
-	Les fonctions de manipulation des répertoires méritent que l'on s'y attarde un peu. Un répertoire est un fichier qui a une structure spéciale. Ces trois fonctions permettent d'en extraire de l'information en respectant le format d'un répertoire. Pour accéder à un répertoire, il faut d'abord l'ouvrir en utilisant `opendir(3)`_. La fonction `readdir(3)`_ permet d'accéder aux différentes entrées de ce répertoire et `closedir(3)`_ doit être utilisée lorsque l'accès n'est plus nécessaire. La fonction `readdir(3)`_ permet de manipuler la structure ``dirent`` qui est définie dans `bits/dirent.h`_.
+Les fonctions de manipulation des répertoires méritent que l'on s'y attarde un peu. Un répertoire est un fichier qui a une structure spéciale. Ces trois fonctions permettent d'en extraire de l'information en respectant le format d'un répertoire. Pour accéder à un répertoire, il faut d'abord l'ouvrir en utilisant `opendir(3)`_. La fonction `readdir(3)`_ permet d'accéder aux différentes entrées de ce répertoire et `closedir(3)`_ doit être utilisée lorsque l'accès n'est plus nécessaire. La fonction `readdir(3)`_ permet de manipuler la structure ``dirent`` qui est définie dans `bits/dirent.h`_.
 
 	.. code-block:: c
 
@@ -197,10 +196,11 @@ Il existe plusieurs appels systèmes et fonctions de la librairie standard qui p
 	   l'inode
 	   métadonnée
 	   
-	Cette structure comprend le numéro de l'inode, c'est-à-dire la métadonnée qui contient les informations relatives au fichier/répertoire, la position de l'entrée ``dirent`` qui suite, la longueur de l'entrée, son type et le nom de l'entrée dans le répertoire. Chaque appel à `readdir(3)`_ retourne un pointeur vers une structure de ce type.
+Cette structure comprend le numéro de l'inode, c'est-à-dire la métadonnée qui contient les informations relatives au fichier/répertoire, la position de l'entrée ``dirent`` qui suite, la longueur de l'entrée, son type et le nom de l'entrée dans le répertoire. Chaque appel à `readdir(3)`_ retourne un pointeur vers une structure de ce type.
 
 
-	L'extrait de code ci-dessous permet de lister tous les fichiers présents dans le répertoire ``name``.
+L'extrait de code ci-dessous permet de lister tous les fichiers présents dans le répertoire ``name``.
+
 
 .. literalinclude:: /Fichiers/src/readdir.c
    :encoding: utf-8
@@ -208,13 +208,14 @@ Il existe plusieurs appels systèmes et fonctions de la librairie standard qui p
    :start-after: ///AAA
    :end-before: ///BBB
 
+		
+		
+La lecture d'un répertoire avec `readdir(3)`_ commence au début de ce répertoire. A chaque appel à `readdir(3)`_, le programme appelant récupère un pointeur vers une zone mémoire contenant une structure ``dirent`` avec l'entrée suivante du répertoire ou ``NULL`` lorsque la fin du répertoire est atteinte. Si une fonction doit relire à nouveau un répertoire, cela peut se faire en utilisant `seekdir(3)`_ ou `rewinddir(3)`_.
 
-	La lecture d'un répertoire avec `readdir(3)`_ commence au début de ce répertoire. A chaque appel à `readdir(3)`_, le programme appelant récupère un pointeur vers une zone mémoire contenant une structure ``dirent`` avec l'entrée suivante du répertoire ou ``NULL`` lorsque la fin du répertoire est atteinte. Si une fonction doit relire à nouveau un répertoire, cela peut se faire en utilisant `seekdir(3)`_ ou `rewinddir(3)`_.
 
+.. note:: `readdir(3)`_ et les threads
 
-	.. note:: `readdir(3)`_ et les threads
-
-	  La fonction `readdir(3)`_ est un exemple de fonction non-réentrante qu'il faut éviter d'utiliser dans une application dont plusieurs threads doivent pouvoir parcourir le même répertoire. Ce problème est causé par l'utilisation d'une zone de mémoire ``static`` afin de stocker la structure dont le pointeur est retourné par `readdir(3)`_. Dans une application utilisant plusieurs threads, il faut utiliser la fonction `readdir_r(3)`_ :
+   La fonction `readdir(3)`_ est un exemple de fonction non-réentrante qu'il faut éviter d'utiliser dans une application dont plusieurs threads doivent pouvoir parcourir le même répertoire. Ce problème est causé par l'utilisation d'une zone de mémoire ``static`` afin de stocker la structure dont le pointeur est retourné par `readdir(3)`_. Dans une application utilisant plusieurs threads, il faut utiliser la fonction `readdir_r(3)`_ :
 
 	  .. code-block:: c
 
@@ -225,7 +226,7 @@ Il existe plusieurs appels systèmes et fonctions de la librairie standard qui p
 	  Cette fonction prend comme arguments le pointeur ``entry`` vers un buffer propre à l'appelant qui permet de stocker le résultat de `readdir_r(3)`_.
 
 
-	Les appels systèmes `link(2)`_ et `unlink(2)`_ sont un peu particuliers et méritent une description plus détaillée. Sous Unix, un :term:`inode` est associé à chaque fichier mais l':term:`inode` ne contient pas le nom de fichier parmi les méta-données qu'il stocke. Par contre, chaque :term:`inode` contient un compteur (``nlinks``) du nombre de liens vers un fichier. Cela permet d'avoir une seule copie d'un fichier qui est accessible depuis plusieurs répertoires. Pour comprendre cette utilisation des liens sur un système de fichiers Unix, considérons le scénario suivant.
+Les appels systèmes `link(2)`_ et `unlink(2)`_ sont un peu particuliers et méritent une description plus détaillée. Sous Unix, un :term:`inode` est associé à chaque fichier mais l':term:`inode` ne contient pas le nom de fichier parmi les méta-données qu'il stocke. Par contre, chaque :term:`inode` contient un compteur (``nlinks``) du nombre de liens vers un fichier. Cela permet d'avoir une seule copie d'un fichier qui est accessible depuis plusieurs répertoires. Pour comprendre cette utilisation des liens sur un système de fichiers Unix, considérons le scénario suivant.
 
 	.. code-block:: console
 
@@ -301,8 +302,9 @@ En plus de l'un des trois drapeaux ci-dessus, il est également possible de spé
  - ``O_CREAT`` : indique que si le fichier n'existe pas, il doit être créé lors de l'exécution de l'appel système `open(2)`_. L'appel système `creat(2)`_ peut également être utilisé pour créer un nouveau fichier. Lorsque le drapeau ``O_CREAT`` est spécifié, l'appel système `open(2)`_ prend comme troisième argument les permissions du fichier qui doit être créé. Celles-ci sont spécifiées de la même façon que pour l'appel système `chmod(2)`_. Si elles ne sont pas spécifiées, le fichier est ouvert avec comme permissions les permissions par défaut du processus définies par l'appel système `umask(2)`_
  - ``O_APPEND`` : indique que le fichier est ouvert de façon à ce que les données écrites dans le fichier par l'appel système `write(2)`_ s'ajoutent à la fin du fichier.
  - ``O_TRUNC`` : indique que si le fichier existe déjà et qu'il est ouvert en écriture, alors le contenu du fichier doit être supprimé avant que le processus ne commence à y accéder.
-..  - ``O_CLOEXEC`` : ce drapeau qui est spécifique à Linux indique que le fichier doit être automatiquement fermé lors de l'exécution de l'appel système `execve(2)`_. Normalement, les fichiers qui ont été ouverts par `open(2)`_ restent ouverts lors de l'exécution de `execve(2)`_.
  - ``O_SYNC`` : ce drapeau indique que toutes les opérations d'écriture sur le fichier doivent être effectuées immédiatement sur le dispositif de stockage sans être mises en attente dans les buffers du noyau du système d'exploitation
+   ..  - ``O_CLOEXEC`` : ce drapeau qui est spécifique à Linux indique que le fichier doit être automatiquement fermé lors de l'exécution de l'appel système `execve(2)`_. Normalement, les fichiers qui ont été ouverts par `open(2)`_ restent ouverts lors de l'exécution de `execve(2)`_.
+
 
 Ces différents drapeaux binaires doivent être combinés en utilisant une disjonction logique entre les différents drapeaux. Ainsi, ``O_CREAT|O_RDWR`` correspond à l'ouverture d'un fichier qui doit à la fois être créé si il n'existe pas et ouvert en lecture et écriture.
 
@@ -331,6 +333,7 @@ Toutes les opérations qui sont faites sur un fichier se font en utilisant le :t
 Tout processus doit correctement fermer tous les fichiers qu'il a utilisé. Par défaut, le système d'exploitation ferme automatiquement les descripteurs de fichiers correspondant ``0``, ``1`` et ``2`` lorsqu'un processus se termine. Les autres descripteurs de fichiers doivent être explicitement fermés par le processus. Si nécessaire, cela peut se faire en enregistrant une fonction permettant de fermer correctement les fichiers ouverts via `atexit(3)`_. Il faut noter que par défaut un appel à `execve(2)`_ ne ferme pas les descripteurs de fichiers ouverts par le processus. C'est nécessaire pour permettre au programme exécuté d'avoir les entrées et sorties standard voulues.
 
 .. , outre les références vers l':term:`inode` du fichier,
+
 Lorsqu'un fichier a été ouvert, le noyau du système d'exploitation maintient un :term:`offset pointer`. Cet :term:`offset pointer` est la position actuelle de la tête de lecture/écriture du fichier. Lorsqu'un fichier est ouvert, son :term:`offset pointer` est positionné au premier octet du fichier, sauf si le drapeau ``O_APPEND`` a été spécifié lors de l'ouverture du fichier, dans ce cas l':term:`offset pointer` est positionné juste après le dernier octet du fichier de façon à ce qu'une écriture s'ajoute à la suite du fichier.
 
 Les deux appels systèmes permettant de lire et d'écrire dans un fichier sont respectivement `read(2)`_ et `write(2)`_.
@@ -429,6 +432,68 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
  Dans certains cas il est utile de pouvoir dupliquer un descripteur de fichier. C'est possible avec les appels systèmes `dup(2)`_ et `dup2(2)`_. L'appel système `dup(2)`_ prend comme argument un descripteur de fichier et retourne le plus petit descripteur de fichier libre. Lorsqu'un descripteur de fichier a été dupliqué avec `dup(2)`_ les deux descripteurs de fichiers partagent le même :term:`offset pointer` et les mêmes modes d'accès au fichier.
 
 
+.. _mmap:
+
+Fichiers mappés en mémoire
+--------------------------
+
+Lorsqu'un processus Unix veut lire ou écrire des données dans un fichier, il utilise en général les appels systèmes `open(2)`_, `read(2)`_, `write(2)`_ et `close(2)`_ directement ou à travers une librairie de plus haut niveau comme la libraire d'entrées/sorties standard. Ce n'est pas la seule façon pour accéder à des données sur un dispositif de stockage. Grâce à la mémoire virtuelle, il est possible de placer le contenu d'un fichier ou d'une partie de fichier dans une zone de la mémoire du processus. Cette opération peut être effectuée en utilisant l'appel système `mmap(2)`_. Cet appel système permet de rendre un fichier accessibles directement dans la mémoire du processus. 
+
+
+
+.. code-block:: c
+
+   #include <sys/mman.h>
+
+   void *mmap(void *addr, size_t length, int prot, int flags,
+              int fd, off_t offset);
+
+
+L'appel système `mmap(2)`_ prend six arguments, c'est un des appels systèmes qui utilise le plus d'arguments. Il permet de rendre accessible une portion d'un fichier via la mémoire d'un processus. Le cinquième argument est le descripteur du fichier qui doit être mappé. Celui-ci doit avoir été préalablement ouvert avec l'appel système `open(2)`_. Le sixième argument spécifie l'offset à partir duquel le fichier doit être mappé, ``0`` correspondant au début du fichier. Le premier argument est l'adresse à laquelle la première page du fichier doit être mappée. Généralement, cet argument est mis à ``NULL`` de façon à laisser le noyau choisir l'adresse la plus appropriée. Le deuxième argument est la longueur de la zone du fichier qui doit être mappée en mémoire. Le troisième argument contient des drapeaux qui spécifient les permissions d'accès aux données mappées. Cet argument peut soit être ``PROT_NONE``, ce qui indique que la page est inaccessible soit une permission classique :
+
+ - ``PROT_EXEC``, les pages mappées contiennent des instructions qui peuvent être exécutées
+ - ``PROT_READ``, les pages mappées contiennent des données qui peuvent être lues
+ - ``PROT_WRITE``, les pages mappées contiennent des données qui peuvent être modifiées
+
+Ces drapeaux peuvent être combinés avec une disjonction logique. Le quatrième argument est un drapeau qui indique comment les pages doivent être mappées en mémoire. Ce drapeau spécifie comment un fichier qui est mappé par deux ou plusieurs processus doit être traité. Deux drapeaux sont possibles :
+
+ - ``MAP_PRIVATE``. Dans ce cas, le fichier est mappé dans chaque processus, mais si un processus modifie une page, cette modification n'est pas répercutée aux autres processus qui ont mappé le même fichier.
+ - ``MAP_SHARED``. Dans ce cas, plusieurs processus peuvent accéder et modifier la page qui est mappée en mémoire. Lorsqu'un processus modifie le contenu d'une page, la modification est visible aux autres processus. Par contre, le fichier qui est mappé en mémoire n'est modifié que lorsque le noyau du système d'exploitation décide d'écrire les données modifiées sur le dispositif de stockage. Ces écritures dépendent de nombreux facteurs, dont la charge du système. Si un processus veut être sûr des écritures sur disque des modifications qu'il a fait à un fichier mappé un mémoire, il doit exécuter l'appel système `msync(2)`_ ou supprimer le mapping via `munmap(2)`_.
+
+.. spelling::
+
+   mapping
+   
+Ces deux drapeaux peuvent dans certains cas particuliers être combinés avec d'autres drapeaux définis dans la page de manuel de `mmap(2)`_.
+
+Lorsque `mmap(2)`_ réussit, il retourne l'adresse du début de la zone mappée en mémoire. En cas d'erreur, la constante ``MAP_FAILED`` est retournée et ``errno`` est mis à jour en conséquence.
+
+L'appel système `msync(2)`_ permet de forcer l'écriture sur disque d'une zone mappée en mémoire. Le premier argument est l'adresse du début de la zone qui doit être écrite sur disque. Le deuxième argument est la longueur de la zone qui doit être écrite sur le disque. Enfin, le dernier contient un drapeau qui spécifie comment les pages correspondantes doivent être écrites sur le disque. Le drapeau ``MS_SYNC`` indique que l'appel `msync(2)`_ doit bloquer tant que les données n'ont pas été écrites. Le drapeau ``MS_ASYNC`` indique au noyau que l'écriture doit être démarrée, mais l'appel système peut se terminer avant que toutes les pages modifiées aient été écrites sur disque.
+
+.. code-block:: c
+
+   #include <sys/mman.h>
+   int msync(void *addr, size_t length, int flags);
+
+
+Lorsqu'un processus a fini d'utiliser un fichier mappé en mémoire, il doit d'abord supprimer le mapping en utilisant l'appel système `munmap(2)`_. Cet appel système prend deux arguments. Le premier doit être un multiple de la taille d'une page [#ftaillepage]_. Le second est la taille de la zone pour laquelle le mapping doit être retiré.
+
+.. code-block:: c
+
+   #include <sys/mman.h>
+
+   int munmap(void *addr, size_t length);
+
+
+A titre d'exemple d'utilisation de `mmap(2)`_ et `munmap(2)`_, le programme ci-dessous implémente l'équivalent de la commande `cp(1)`_. Il prend comme arguments deux noms de fichiers et copie le contenu du premier dans le second. La copie se fait en mappant le premier fichier entièrement en mémoire et en utilisant la fonction `memcpy(3)`_ pour réaliser la copie. Cette solution fonctionne avec de petits fichiers. Avec de gros fichiers, elle n'est pas très efficace car tout le fichier doit être mappé en mémoire.
+
+.. literalinclude:: /MemoireVirtuelle/src/cp2.c
+   :encoding: utf-8
+   :language: c
+   :start-after: ///AAA
+
+
+ 
 
 .. rubric:: Footnotes
 
@@ -444,5 +509,5 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
 
 .. [#fendianfig] Source : http://en.wikipedia.org/wiki/Endianness
 
-
+.. [#ftaillepage] Il est possible d'obtenir la taille des pages utilisée sur un système via les appels `sysconf(3)`_ ou `getpagesize(2)`_
 

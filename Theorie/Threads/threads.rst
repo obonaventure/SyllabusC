@@ -81,6 +81,8 @@ Considérons la fonction ``f`` :
     }
     return m;
   }
+
+  
 ..
 	En assembleur, cette fonction se traduit en :
 
@@ -111,9 +113,11 @@ Considérons la fonction ``f`` :
 		addl	$16, %esp
 		ret
 
+		.. il faut non seulement qu'il implémente chacune de ces instructions, mais également qu'il puisse accéder :
+
+		
 
 Pour qu'un processeur puisse exécuter cette séquence d'instructions, il faut qu'il puisse accéder :
-.. il faut non seulement qu'il implémente chacune de ces instructions, mais également qu'il puisse accéder :
 
  - à la mémoire contenant les instructions à exécuter
  - à la mémoire contenant les données manipulées par cette séquence d'instruction. Pour rappel, cette mémoire est divisée en plusieurs parties :
@@ -123,7 +127,8 @@ Pour qu'un processeur puisse exécuter cette séquence d'instructions, il faut q
     - la pile
 
 
- - aux registres, des zone de mémoire très rapide (mais peu nombreuses par soucis technique) se trouvant sur le processeur qui permettent de stocker entre autre : l'addresse de l'instruction à exécuter, des résultats intermédaires obtenus durant l'exécution d'un instruction ou encore des informations sur la pile.
+ - aux registres, des zones de mémoire très rapide (mais peu nombreuses) se trouvant sur le processeur qui permettent de stocker entre autres : l'adresse de l'instruction à exécuter, des résultats intermédiaires obtenus durant l'exécution d'un instruction ou encore des informations sur la pile.
+   
 .. et plus particulièrement, il doit accéder :
 ..
     - aux registres de données pour stocker les résultats de chacune des instructions
