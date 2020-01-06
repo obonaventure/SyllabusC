@@ -42,12 +42,6 @@ Langage C
    Theorie/C/malloc
    Theorie/C/linker.rst
 
-Structure des ordinateurs
-*************************
-.. toctree::
-   :maxdepth: 2
-
-   Theorie/Assembleur/memory
 
 Systèmes Multiprocesseurs
 *************************
@@ -57,7 +51,7 @@ Systèmes Multiprocesseurs
    Theorie/Threads/threads
    Theorie/Threads/threads2
    Theorie/Threads/coordination
-   Theorie/Threads/processus
+.. Theorie/Threads/processus
 
 Fichiers
 ********
@@ -66,37 +60,28 @@ Fichiers
    :maxdepth: 2
 
    Theorie/Fichiers/fichiers
-   Theorie/Fichiers/fichiers-signaux
+..   Theorie/Fichiers/fichiers-signaux
 
 
-Mémoire virtuelle
-*****************
+..
+	******
+	Outils
+	******
 
-.. toctree::
-   :maxdepth: 2
+	.. toctree::
+	   :maxdepth: 2
 
-   Theorie/MemoireVirtuelle/vmem
-
-
-
-******
-Outils
-******
-
-.. toctree::
-   :maxdepth: 2
-
-   Outils/intro-outils
-   Outils/git
-   Outils/make
-   Outils/ssh
-   Outils/cunit
-   Outils/processus
-   Outils/valgrind
-   Outils/gdb
-   Outils/gprof
-   Outils/shell
-   Outils/gcc
+	   Outils/intro-outils
+	   Outils/git
+	   Outils/make
+	   Outils/ssh
+	   Outils/cunit
+	   Outils/processus
+	   Outils/valgrind
+	   Outils/gdb
+	   Outils/gprof
+	   Outils/shell
+	   Outils/gcc
 
 *******
 Annexes

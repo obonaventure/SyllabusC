@@ -10,14 +10,14 @@ Communication entre threads
 Lorsque un programme a été décomposé en plusieurs threads, ceux-ci ne sont en général pas complètement indépendants et ils doivent communiquer entre eux. Cette communication entre threads est un problème complexe comme nous allons le voir. Avant d'aborder ce problème, il est utile de revenir à l'organisation d'un processus et de ses threads en mémoire. La figure ci-dessous illustre schématiquement l'organisation de la mémoire après la création d'un thread POSIX.
 
 
-.. figure:: /Threads/S6-fig/figures-001-c.png
+.. figure:: /_static/figures/Threads/S6-fig/figures-001-c.png
    :align: center
    :scale: 80
 
    Organisation de la mémoire après la création d'un thread POSIX
 
 
-Le programme principal et le thread qu'il a créé partagent trois zones de la mémoire : le :term:`segment text` qui comprend l'ensemble des instructions qui composent le programme, le :term:`segment de données` qui comprend toutes les données statiques, initialisées ou non et enfin le :term:`heap`. Autant le programme principal que son thread peuvent accéder à n'importe quelle information se trouvant en mémoire dans ces zones. Par contre, le programme principal et le thread qu'il vient de créer ont chacun leur propre contexte et leur propre pile.
+Le programme principal et le thread qu'il a créé partagent trois zones de la mémoire : le :term:`segment text` qui comprend l'ensemble des instructions qui composent le programme, le :term:`segment de données` qui comprend toutes les données statiques , initialisées ou non (c'est-à-dire les constantes, les variables globales ou encore les chaînes de caractère) et enfin le :term:`heap`. Autant le programme principal que son thread peuvent accéder à n'importe quelle information se trouvant en mémoire dans ces zones. Par contre, le programme principal et le thread qu'il vient de créer ont chacun leur propre contexte et leur propre pile.
 
 La première façon pour un processus de communiquer avec un thread qu'il a lancé est d'utiliser les arguments de la fonction de démarrage du thread et la valeur retournée par le thread que le processus principal peut récupérer via l'appel à `pthread_join(3posix)`_. C'est un canal de communication très limité qui ne permet pas d'échange d'information pendant l'exécution du thread.
 
@@ -172,7 +172,7 @@ Le deuxième type d'événement est l'exécution d'un appel système bloquant. U
 
 Ces interactions entre les threads et le système d'exploitation sont importantes. Pour bien les comprendre, il est utile de noter qu'un thread peut se trouver dans trois états différents du point de vue de son interaction avec le système d'exploitation. Ces trois états sont illustrés dans la figure ci-dessous.
 
-.. figure:: /Threads/S6-fig/figures-003-c.png
+.. figure:: /_static/figures/Threads/S6-fig/figures-003-c.png
    :align: center
    :scale: 80
 
@@ -187,7 +187,7 @@ Lorsqu'un thread est créé avec la fonction `pthread_create(3)`_, il est placé
    schedulers
    l'ordonnanceur
    l'implémentation
-   
+
 Les transitions entre les différents états d'un thread sont gérées par le système d'exploitation. Lorsque plusieurs threads d'exécution sont simultanément actifs, le système d'exploitation doit arbitrer les demandes d'utilisation du CPU de chaque thread. Cet arbitrage est réalisé par l'ordonnanceur (ou :term:`scheduler` en anglais). Le :term:`scheduler` est un ensemble d'algorithmes qui sont utilisés par le système d'exploitation pour sélectionner le ou les threads qui peuvent utiliser un processeur à un moment donné. Il y a souvent plus de threads qui sont dans l'état `Ready` que de processeurs disponibles et le scheduler doit déterminer quels sont les threads à exécuter.
 
 Une description détaillée du fonctionnement d'un scheduler relève plutôt d'un cours sur les systèmes d'exploitation que d'un premier cours sur le langage C, mais il est important de connaître les principes de base de fonctionnement de quelques schedulers.
@@ -318,4 +318,3 @@ Pour montrer que la propriété de vivacité est bien respectée, il faut montre
 .. [#fstaticinit] Linux supporte également la macro ``PTHREAD_MUTEX_INITIALIZER`` qui permet d'initialiser directement un ``pthread_mutex_t`` déclaré comme variable globale. Dans cet exemple, la déclaration aurait été : ``pthread_mutex_t global_mutex=PTHREAD_MUTEX_INITIALIZER;`` et l'appel à `pthread_mutex_init(3posix)`_ aurait été inutile. Comme il s'agit d'une extension spécifique à Linux, il est préférable de ne pas l'utiliser pour garantir la portabilité du code.
 
 .. [#fphilo] Le programme complet est :download:`/Threads/S6-src/pthread-philo.c`
-
