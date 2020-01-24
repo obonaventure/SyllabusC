@@ -105,10 +105,10 @@ Assertion                                                      Définition
 ``CU_ASSERT_PTR_NOT_EQUAL(actual, expected)``                  Vérifie que le pointeur ``actual`` est différent du pointeur ``expected``.
 ``CU_ASSERT_PTR_NULL(value)``                                  Vérifie que le pointeur est ``NULL``.
 ``CU_ASSERT_PTR_NOT_NULL(value)``                              Vérifie que le pointeur n'est pas ``NULL``.
-``CU_ASSERT_STRING_EQUAL(actual, expected)``                   Vérifie que la chaine de caractère ``actual`` est égale à la chaine de caractère ``expected``.
-``CU_ASSERT_STRING_NOT_EQUAL(actual, expected)``               Vérifie que la chaine de caractère ``actual`` n'est pas égale à la chaine de caractère ``expected``.
-``CU_ASSERT_NSTRING_EQUAL(actual, expected, count)``           Vérifie que les ``count`` premiers caractères de la chaine ``actual`` sont égaux aux ``count`` premiers caractères de la chaine ``expected``.
-``CU_ASSERT_NSTRING_NOT_EQUAL(actual, expected, count)``       Vérifie que les ``count`` premiers caractères de la chaine ``actual`` ne sont pas égaux aux ``count`` premiers caractères de la chaine ``expected``.
+``CU_ASSERT_STRING_EQUAL(actual, expected)``                   Vérifie que la chaîne de caractère ``actual`` est égale à la chaîne de caractère ``expected``.
+``CU_ASSERT_STRING_NOT_EQUAL(actual, expected)``               Vérifie que la chaîne de caractère ``actual`` n'est pas égale à la chaîne de caractère ``expected``.
+``CU_ASSERT_NSTRING_EQUAL(actual, expected, count)``           Vérifie que les ``count`` premiers caractères de la chaîne ``actual`` sont égaux aux ``count`` premiers caractères de la chaîne ``expected``.
+``CU_ASSERT_NSTRING_NOT_EQUAL(actual, expected, count)``       Vérifie que les ``count`` premiers caractères de la chaîne ``actual`` ne sont pas égaux aux ``count`` premiers caractères de la chaîne ``expected``.
 ``CU_ASSERT_DOUBLE_EQUAL(actual, expected, granularity)``      Vérifie que ``actual`` et ``expected`` ne diffèrent pas plus que ``granularity`` (:math:`|actual-expected| \leq |granularity|`)
 ``CU_ASSERT_DOUBLE_NOT_EQUAL(actual, expected, granularity)``  Vérifie que ``actual`` et ``expected`` diffèrent de plus que ``granularity`` (:math:`|actual-expected| > |granularity|`)
 ``CU_PASS(message)``                                           Ne vérifie rien mais notifie que le test est réussis
