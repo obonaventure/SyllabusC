@@ -8,11 +8,11 @@ GCC
 ---
 
 
-Comme cela a déja été dit, le compilateur fonctionne selon 4 étapes distinctes:
-	* Appel du préprocesseur ``cpp``: Supprime les commentaires, inclus les #includes et évalue les macros
+Comme cela a déjà été dit, le compilateur fonctionne selon 4 étapes distinctes:
+	* Appel du préprocesseur ``cpp``: Supprime les commentaires, inclus les `#include` et évalue les macros
 	* Appel du compilateur	 ``cc1``: Génère un fichier assembleur (.as)
 	* Appel de l'assembleur	 ``as``	: Génère le fichier objet (.o)
-	* Appel du linkeur	 ``ld``	: Génère l'exécutable
+	* Appel du de l'éditeur de liens ``ld``	: Génère l'exécutable
 
 
 Différentes options peuvent être utilisé avec gcc :
@@ -26,11 +26,16 @@ Différentes options peuvent être utilisé avec gcc :
 	* -On		: Indique le niveau d'optimisation où n est compris entre 0 et 3
 	* -Wall		: Active tout les warnings
 	* -Werror 	: Considère tout les warnings comme des erreurs
+	* --help        : Messages d'aide
 
-	* --help
+Notons que les trois premières options ne présentent pas d'intérêt pour ce cours.
 
-Notons que les trois premières options ne présentent pas d'interêt pour ce cour.
 
+.. spelling::
+
+   help
+
+   
 
 
 

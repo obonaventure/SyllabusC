@@ -1,7 +1,17 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch, Grégory Detal et Nicolas Houtain
+.. Copyright |copy| 2012, 2020 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch, Grégory Detal et Nicolas Houtain
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
+.. spelling::
+
+   breakpoint
+   Breakpoint
+   breakpoints
+   frame
+   display
+   displays
+   débugger
+   
 .. _gdb-ref:
 
 GDB
@@ -18,7 +28,7 @@ Liste des commandes
 
 L'option -g de `gcc(1)`_ place dans l'exécutable les informations sur les noms de variables, mais aussi tout le code source.
 
-Lancez gdb avec la commande ``gdb my_program``. Ceci va vous ouvrir la console de ``gdb`` qui vous permet de lancer, le programme et de l'analyser. Pour démarrer le programme, tapez ``run``. gdb va arrêter l'exécution au premier problème trouvé. Votre programme tourne encore pour l'instant. Arrètez-le avec la commande ``kill``.
+Lancez gdb avec la commande ``gdb my_program``. Ceci va vous ouvrir la console de ``gdb`` qui vous permet de lancer, le programme et de l'analyser. Pour démarrer le programme, tapez ``run``. gdb va arrêter l'exécution au premier problème trouvé. Votre programme tourne encore pour l'instant. Arrêtez-le avec la commande ``kill``.
 
 Breakpoint
 ^^^^^^^^^^
@@ -82,7 +92,7 @@ Automatisation
 
 Lors d'un débuggage long et fastidieux, il est parfois nécessaire d'exécuter certaines commandes à chaque breakpoint.
 
-	* ``commands [numerobreakpoint]`` definit une liste de commandes associées à un breakpoint. Celles ci seront exécutées quand on s'arrêtera sur ce breakpoint. Il suffit de taper les commandes à effectuer les unes après les autres et de terminer par ``end``. Si vous ne fournissez pas de numéro, les commandes sont assignées au dernier breakpoint créé.
+	* ``commands [numerobreakpoint]`` définit une liste de commandes associées à un breakpoint. Celles ci seront exécutées quand on s'arrêtera sur ce breakpoint. Il suffit de taper les commandes à effectuer les unes après les autres et de terminer par ``end``. Si vous ne fournissez pas de numéro, les commandes sont assignées au dernier breakpoint créé.
 	* ``display [variablename]`` affiche la variable à chaque breakpoint.
 
 Gestion des Signaux
@@ -95,9 +105,9 @@ Il est possible de gérer le comportement de `gdb(1)`_ lorsque des signaux sont 
 Localiser un signal
 """""""""""""""""""
 
-Avec `gdb(1)`_, il est possible de localiser un signal et de débugguer certaines erreurs comme une erreur de segmentation. En effet, lorsque `gdb(1)`_ interrompt le programme en cours après l'interception d'un signal d'erreur comme ``SIGSEGV``, il est possible de trouver la ligne du programme à laquelle le signal a été intercepté en tapant le mot-clé ``where`` une fois le programme interrompu (il est cependant nécessaire d'avoir compilé le programme avec l'option ``-g`` de ``gcc`` pour trouver la ligne précise). Ensuite, grâce aux commandes expliquées plus tôt, il est possible de vérifier les valeurs des variables lors de l'interception du signal pour trouver l'origine du problème.
+Avec `gdb(1)`_, il est possible de localiser un signal et de débugger certaines erreurs comme une erreur de segmentation. En effet, lorsque `gdb(1)`_ interrompt le programme en cours après l'interception d'un signal d'erreur comme ``SIGSEGV``, il est possible de trouver la ligne du programme à laquelle le signal a été intercepté en tapant le mot-clé ``where`` une fois le programme interrompu (il est cependant nécessaire d'avoir compilé le programme avec l'option ``-g`` de ``gcc`` pour trouver la ligne précise). Ensuite, grâce aux commandes expliquées plus tôt, il est possible de vérifier les valeurs des variables lors de l'interception du signal pour trouver l'origine du problème.
 
-En plus de localiser facilement les erreurs de segmentation dans un programme, vous pourrez annalyser plus aisément les problèmes de deadlock des threads. En effet, lorsque le programme est lancé sur le shell et que vous remarquez un deadlock, vous pouvez appuyer sur ``CTRL + C`` pour lancer le signal ``SIGINT`` au programme. Cela permettra de trouver les endroits où bloquent les différents threads du programme à l'aide des commandes décrites dans la section de débuggage des threads ci-dessous.
+En plus de localiser facilement les erreurs de segmentation dans un programme, vous pourrez analyser plus aisément les problèmes de deadlock des threads. En effet, lorsque le programme est lancé sur le shell et que vous remarquez un deadlock, vous pouvez appuyer sur ``CTRL + C`` pour lancer le signal ``SIGINT`` au programme. Cela permettra de trouver les endroits où bloquent les différents threads du programme à l'aide des commandes décrites dans la section de débuggage des threads ci-dessous.
 
 Extraction de code assembleur
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -105,13 +115,16 @@ Extraction de code assembleur
 	* ``disas`` 		affiche le code assembleur
 	* ``disas /m blah`` 	met en correspondance le code assembleur et le code source
 
-Pour arrêter la console de gdb, tappez ``quit``.
+Pour arrêter la console de gdb, tapez ``quit``.
 
 
 Illustration avec des exemples
 ------------------------------
 
-.. A titre d'exemple, télécharger l'archive :download:`src/gdb.c`. L'archive contient un Makefile qui vous permettra de compiler plusieurs programmes.
+.. spelling::
+   calc
+   factTmp
+   tab
 
 Premier programme
 ^^^^^^^^^^^^^^^^^
@@ -156,8 +169,10 @@ Premier programme
 Deuxième programme
 ^^^^^^^^^^^^^^^^^^
 
-	Le deuxième programme est appelé :download:`src/recursive.c`. Celui ne présente aucun bug et se déroulera normalement. Toutefois, il est intéressant d'utiliser `gdb(1)`_ pour bien comprendre les différents contextes au sein d'un programme. Mettez un break sur la fonction factTmp avec ``break factTmp`` et ajoutez automatiquement à ce breakpoint la commande ``backtrace``, via ``commands``. Ensuite, lancez le programme.
-	``backtrace`` vous permet de visualiser les appels de fonction effectués. Nous pouvons voir que la fonction factTmp a été appellée par factTerminal, elle même appellée par la fonction main.
+
+
+	Le deuxième programme est appelé :download:`src/recursive.c`. Celui ne présente aucun bug et se déroulera normalement. Toutefois, il est intéressant d'utiliser `gdb(1)`_ pour bien comprendre les différents contextes au sein d'un programme. Mettez un break sur la fonction ``factTmp avec`` ``break factTmp`` et ajoutez automatiquement à ce breakpoint la commande ``backtrace``, via ``commands``. Ensuite, lancez le programme.
+	``backtrace`` vous permet de visualiser les appels de fonction effectués. Nous pouvons voir que la fonction ``factTmp`` a été appelée par ``factTerminal``, elle même appelée par la fonction ``main``.
 
 	.. code-block:: console
 
@@ -165,10 +180,10 @@ Deuxième programme
 			#1  0x000000000040057d in factTerminal (a=6) at recursive.c:17
 			#2  0x0000000000400598 in main (argc=1, argv=0x7fffffffe1b8) at recursive.c:23
 
-	Essayez d'afficher les variable ``globalVar`` puis ``localVar``. Vous remarquerez qu'il n'est pas possible d'afficher ``localVar`` puisque cette variable ne fait pas partie de l'environement contextuel de factTmp. Pour afficher cette variable, il faut remonter la liste des appels. ``up`` permettra de remonter les appels pour pouvoir afficher ``localVar``.
+	Essayez d'afficher les variable ``globalVar`` puis ``localVar``. Vous remarquerez qu'il n'est pas possible d'afficher ``localVar`` puisque cette variable ne fait pas partie de l'environnement contextuel de factTmp. Pour afficher cette variable, il faut remonter la liste des appels. ``up`` permettra de remonter les appels pour pouvoir afficher ``localVar``.
 	Une fois la variable affichée, redescendez avec ``down`` et continuez 4 fois le programme après le breakpoint. Vous remarquerez que la liste des appels s'allonge à chaque appel récursif, ce qui est tout à fait normal.
 
-        Naviguez dans les appels recursifs de factTmp en affichant les valeur de ``globalTmp``, ``tmp``, ``acc`` et ``nbr``. Il est important de bien comprendre que la variable statique ``globalTmp`` est commune à tous les appels de la fonction ``factTmp`` et un changement de cette variable dans un des appels récursifs modifie la variable des autres appels. A contrario, la variable local ainsi que les arguments sont propres à chaque appel.
+        Naviguez dans les appels récursifs de factTmp en affichant les valeur de ``globalTmp``, ``tmp``, ``acc`` et ``nbr``. Il est important de bien comprendre que la variable statique ``globalTmp`` est commune à tous les appels de la fonction ``factTmp`` et un changement de cette variable dans un des appels récursifs modifie la variable des autres appels. A contrario, la variable local ainsi que les arguments sont propres à chaque appel.
 
 	Vous pouvez maintenant terminer le programme.
 
@@ -200,7 +215,7 @@ Débuggage des threads avec GDB
 
 `gdb(1)`_ est aussi utile pour débugger des programmes avec des threads. Il permet de faire les opérations suivantes sur les threads:
 
-        * Etre notifié lors de la création d'un nouveau thread.
+        * Recevoir une notification lors de la création d'un nouveau thread.
         * Afficher la liste complète des threads avec ``info threads``.
         * Placer un breakpoint dans un thread. En effet, si vous placez un breakpoint dans une certaine fonction, et un thread passe lors de son exécution à travers ce breakpoint, ``gdb`` va mettre l'exécution de tous les threads en pause et changer le contexte de la console `gdb(1)`_ vers ce thread.
         * Lorsque les threads sont en pause, vous pouvez manuellement donner la main à un thread en faisant ``thread [thread_no]`` avec ``thread_no`` étant l'indice du thread comme indiqué par ``info threads``

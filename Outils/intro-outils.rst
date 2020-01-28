@@ -5,8 +5,14 @@
 Introduction
 ============
 
-Outre des compétences théoriques qui sont abordées dans d'autres parties de ce document, la maitrise d'une système informatique implique également une excellente connaissance des outils informatiques qui sont inclus dans ce système. Cette connaissance se construit bien entendu en utilisant activement ces logiciels. Cette section comprend les informations de bases sur quelques logiciels importants qui sont utilisés dans le cadre du cours. Elle est volontairement réduite car de nombreux logiciels pourraient faire l'objet de livres complets. Les étudiants sont invités à proposer des améliorations à cette section sous la forme de patches via https://github.com/obonaventure/SystemesInformatiques
+Outre des compétences théoriques qui sont abordées dans d'autres parties de ce document, la maîtrise d'une système informatique implique également une excellente connaissance des outils informatiques qui sont inclus dans ce système. Cette connaissance se construit bien entendu en utilisant activement ces logiciels. Cette section comprend les informations de bases sur quelques logiciels importants qui sont utilisés dans le cadre du cours. Elle est volontairement réduite car de nombreux logiciels pourraient faire l'objet de livres complets. Les étudiants sont invités à proposer des améliorations à cette section sous la forme de patches via https://github.com/UCL-INFI/SyllabusC
 
+.. spelling::
+
+   Editeurs
+   emacs
+   Tetris
+   
 
 Editeurs
 ========

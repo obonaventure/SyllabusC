@@ -2,34 +2,64 @@
 .. Copyright |copy| 2013 by Benoit Legat
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
+.. spelling::
+   kernel
+   committé
+   committées
+   respécifier
+   l'email
+   GitHub
+   remote
+   push
+   pusher
+   pushé
+   staging
+   area
+   committer
+   snapshot
+   noeud
+   noeuds
+   staging
+   Staging
+   committons
+   Committons
+   committés
+   Branching
+   request
+   committait
+   check
+   backtrace
+   git
+
+.. _git-ref:
+   
 Git
 ---
 
 Introduction
 ~~~~~~~~~~~~
 
-`Git`_ a été développé initialement pour la gestion du code source du kernel Linux.
+`git(1)`_ a été développé initialement pour la gestion du code source du kernel Linux.
 Il est aussi utilisé pour la gestion des sources de ce document
 depuis https://github.com/obonaventure/SystemesInformatiques.
 On l'utilise le plus souvent à l'aide de l'utilitaire `git(1)`_ mais il
 existe aussi des
 `applications graphiques <http://git-scm.com/downloads/guis>`_.
 
-Les différentes versions sont enregistrées dans des commits qui sont liées
-au commit constituant la version précédente.
-On sait ainsi facilement voir ce qui a changé entre deux versions
-(pas spécialement, une version et la suivante)
-et même restaurer l'état de certains fichiers à une version sauvegardée
-dans un commit.
-Du coup, si vous utilisez `Git`_ pour un projet, vous ne pouvez jamais
-perdre plus que les changements que vous n'avez pas encore committé.
-Toutes les versions du codes déjà committées sont sauvegardées et facilement
-accessibles.
-Cette garantie est extrêmement précieuse et constitue à elle seule une raison
-suffisante d'utiliser `Git`_ pour tous vos projets.
+Les différentes versions sont enregistrées dans des commits qui sont
+liées au commit constituant la version précédente.  On sait ainsi
+facilement voir ce qui a changé entre deux versions (pas spécialement,
+une version et la suivante) et même restaurer l'état de certains
+fichiers à une version sauvegardée dans un commit.  Du coup, si vous
+utilisez `git(1)`_ pour un projet, vous ne pouvez jamais perdre plus
+que les changements que vous n'avez pas encore committé.  Toutes les
+versions du codes déjà committées sont sauvegardées et facilement
+accessibles.  Cette garantie est extrêmement précieuse et constitue à
+elle seule une raison suffisante d'utiliser `git(1)`_ pour tous vos
+projets.
 
 Contrairement à `subversion`_, il est décentralisé, c'est à dire que chaque
-développeur a toute l'information nécessaire pour utiliser `Git`_,
+développeur a toute l'information nécessaire pour utiliser `git(1)`_,
 il ne doit pas passer par un serveur où les données sont centralisées à
 chaque commande.
 Cela prend éventuellement plus d'espace disque mais comme on travaille
@@ -39,12 +69,12 @@ On a pas besoin d'être connecté au serveur pour l'utiliser,
 il est beaucoup plus rapide
 et chaque développeur constitue un backup du code, ce qui est confortable.
 
-De plus, comme on va le voir, `Git`_ supporte une gestion des commits
+De plus, comme on va le voir, `git(1)`_ supporte une gestion des commits
 très flexible avec un historique pas linéaire
 mais composés de plusieurs branches et il
 permet aux développeurs de ne pas avoir toutes les branches en local.
 
-Cette efficacité de `Git`_ et sa flexibilité sont ses arguments majeurs et
+Cette efficacité de `git(1)`_ et sa flexibilité sont ses arguments majeurs et
 leur origine est évidente quand on sait qu'il a été créé pour gérer des projets
 aussi complexes que le kernel Linux.
 Il est parfois critiqué pour sa complexité mais c'est surtout dû au fait
@@ -58,9 +88,9 @@ qu'il a une façon assez différente de fonctionner des autres.
 Utilisation linéaire de Git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On peut utiliser `Git`_ à plusieurs niveaux.
+On peut utiliser `git(1)`_ à plusieurs niveaux.
 On peut tout à fait avoir un historique linéaire tout en profitant pleinement
-de `Git`_.
+de `git(1)`_.
 Pour ceux dont c'est la première fois qu'ils utilisent un système de contrôle
 de version,
 il vaut peut-être mieux commencer par ne lire que cette partie et
@@ -79,20 +109,20 @@ Un historique linéaire est un historique comme on l'imagine avec des versions
 l'une après l'autre, chaque version étendant la précédente avec
 certaines modifications.
 On verra par après qu'il est possible d'avoir un historique non-linéaire
-avec `Git`_ mais ce n'est pas indispensable.
+avec `git(1)`_ mais ce n'est pas indispensable.
 
-Sur `Git`_, on appelle une version un *commit*.
+Sur `git(1)`_, on appelle une version un *commit*.
 Chacun de ces commits est documenté en fournissant le nom de l'auteur,
 son email, un commentaire et une description (optionnelle).
 Pour ne pas devoir respécifier le nom et l'email à chaque fois,
-on le stoque dans le fichier de configuration de `Git`_ ``~/.gitconfig``.
+on le stocke dans le fichier de configuration de `git(1)`_ ``~/.gitconfig``.
 Bien qu'on peut l'éditer manuellement, on préfère le faire à l'aide de
 la commande `git-config(1)`_.
 
 Pour spécifier le commentaire,
 `git-commit(1)`_ ouvrira un éditeur de texte.
 Pour entrer une description, laissez une ligne vide puis écrivez la.
-L'éditeur de texte à ouvrir est déterminé par `Git`_ en fonction de la variable
+L'éditeur de texte à ouvrir est déterminé par `git(1)`_ en fonction de la variable
 ``core.editor`` du fichier de configuration mentionné plus haut.
 Vous pouvez aussi spécifier le commentaire à l'aide de l'option ``-m``
 de `git-commit(1)`_ comme on verra dans les exemples par après.
@@ -108,13 +138,13 @@ Vous devez bien entendu remplacer les valeurs par celles qui vous conviennent.
    $ git config --global core.editor gedit
 
 L'option ``--global`` spécifie qu'on veut que ces configurations s'appliquent
-pour tous nos dépôts (`Git`_ éditera le fichier ``~/.gitconfig``).
+pour tous nos dépôts (`git(1)`_ éditera le fichier ``~/.gitconfig``).
 Sinon, `git-config(1)`_ ne modifie que le fichier
 ``.git/config`` à l'intérieur du *git directory* du projet en cours.
 Ce dernier prône bien entendu sur ``~/.gitconfig`` quand une variable
 a des valeurs différentes dans ``~/.gitconfig`` et ``.git/config``.
 
-Vous voilà paré pour créer votre premier dépôt `Git`_
+Vous voilà paré pour créer votre premier dépôt `git(1)`_
 mais avant de voir comment faire des nouveaux commits,
 il est impératif de comprendre ce qu'est la *staging area*.
 
@@ -136,8 +166,8 @@ Voyons tout ça avec un programme exemple qui affiche en LaTex
 la somme des entiers de :math:`1` à :math:`n`.
 On va utiliser les commandes
 
- * `git-init(1)`_ qui permet de transformer un projet en dépôt `Git`_
-   (tout est stoqué dans le dossier ``.git``);
+ * `git-init(1)`_ qui permet de transformer un projet en dépôt `git(1)`_
+   (tout est stocké dans le dossier ``.git``);
  * `git-diff(1)`_ qui donne la différence entre l'état des fichiers dans le
    *working directory* avec leur état dans le *git directory*
    au commit actuel;
@@ -174,9 +204,9 @@ Ce programme fonctionne comme suit
 
 On va sauvegarder un premier commit contenant cette version de ``main.c``
 
-`git-init(1)`_ permet d'initialiser le dépôt `Git`_.
+`git-init(1)`_ permet d'initialiser le dépôt `git(1)`_.
 `git-status(1)`_ analyse le contenu du répertoire.
-Il indique que le fichier ``main.c`` n'est pas suivi par `Git`_ (`untracked`).
+Il indique que le fichier ``main.c`` n'est pas suivi par `git(1)`_ (`untracked`).
 Ce fichier est ajouté avec la commande `git-add(1)`_.
 `git-commit(1)`_ sauvegarde cette version du code dans un commit
 dont le commentaire, spécifié avec l'option ``-m``, est *First commit*.
@@ -370,7 +400,7 @@ dans un commit au commentaire *Fix SIGSEV*
 Travailler à plusieurs sur un même projet
 #########################################
 
-`Git`_ est déjà un outil très pratique à utiliser seul mais c'est quand
+`git(1)`_ est déjà un outil très pratique à utiliser seul mais c'est quand
 on l'utilise pour se partager du code qu'il devient vraiment indispensable.
 On se partage le code par l'intermédiaire de *remotes*.
 Ce sont en pratique des serveurs auxquels on peut avoir l'accès lecture et/ou
@@ -385,10 +415,10 @@ Alice va créer le projet avec
    $ git init
    Initialized empty Git repository in /path/to/project/.git/
 
-puis elle créera une *remote*, c'est à dire un autre dépôt `Git`_ que celui
+puis elle créera une *remote*, c'est à dire un autre dépôt `git(1)`_ que celui
 qu'ils ont en local, avec lequel ils vont pouvoir synchroniser leur
 historique.
-Supposons qu'ils aient un projet *projectname* sur Github.
+Supposons qu'ils aient un projet *projectname* sur GitHub.
 Vous pouvez créer le *remote* comme suit
 
 .. code-block:: bash
@@ -402,14 +432,14 @@ et ajouter vos modifications avec ``git push origin master``.
 Si vous exécutez ``git pull origin master``, que vous faites quelques
 commits et puis que vous essayer de mettre *origin* à jour avec
 ``git push origin master``,
-il faut qu'aucun autre développeur n'ait pushé de modification entre temps.
-S'il en a pushé, `Git`_ ne saura pas effectuer votre *push*.
+il faut qu'aucun autre développeur n'ait poussé de modification entre temps.
+S'il en a poussé, `git(1)`_ ne saura pas effectuer votre *push*.
 Il vous faudra alors faire un *pull*.
-`Git`_ tentera alors de fusionner vos changements avec ceux d'*origin*.
+`git(1)`_ tentera alors de fusionner vos changements avec ceux d'*origin*.
 Si ces derniers sont à une même ligne d'un même fichier, il vous demandera
 de résoudre le conflit vous-même.
 Il est important pour cela que vous ayez commité vos changements avant
-le *pull* sinon `Git`_ l'abandonnera car il ne sait que fusionner des commits.
+le *pull* sinon `git(1)`_ l'abandonnera car il ne sait que fusionner des commits.
 C'est à dire que ce qu'il y a dans le *git directory*,
 pas ce qu'il y a dans le *working directory* ni dans la *staging area*.
 
@@ -540,8 +570,8 @@ puis essaie de les pusher
    hint: before pushing again.
    hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
-mais `Git`_ lui fait bien comprendre que ce n'est pas possible.
-En faisant le *pull*, on voit que `Git`_ fait de son mieux pour
+mais `git(1)`_ lui fait bien comprendre que ce n'est pas possible.
+En faisant le *pull*, on voit que `git(1)`_ fait de son mieux pour
 fusionner les changements mais qu'il préfère nous laisser
 choisir quelle ligne est la bonne
 
@@ -642,29 +672,29 @@ Paul peut alors récupérer les changements avec
 
 La plupart des fusions ne demande pas d'intervention manuelle mais
 dans les cas comme celui-ci,
-`Git`_ n'a pas d'autre choix que de nous demander notre avis.
+`git(1)`_ n'a pas d'autre choix que de nous demander notre avis.
 
 Contribuer au syllabus
 ######################
 
 Dans le cas du syllabus, vous n'avez pas l'accès écriture.
-La manière dont Github fonctionne pour règler ça c'est que vous *forkez* le
+La manière dont GitHub fonctionne pour régler cela c'est que vous *forkez* le
 projet principal.
 C'est à dire que vous en faites un copie indépendante à votre nom.
 À celle là vous avez l'accès écriture.
 Vous allez ensuite soumettre vos changements sur celle là puis les
-proposer à travers l'interface de Github qu'on appelle *Pull request*.
+proposer à travers l'interface de GitHub qu'on appelle *Pull request*.
 Conventionnellement, on appelle la *remote* du dépôt principal *upstream*
 et la votre *origin*.
 
-Commencez donc par vous connecter sur Github, allez à
+Commencez donc par vous connecter sur GitHub, allez à
 l'`adresse du code du syllabus
 <https://github.com/obonaventure/SystemesInformatiques/>`_ et cliquez
 sur *Fork*.
 
 Vous pouvez maintenant obtenir le code du syllabus avec la commande
 `git-clone(1)`_
-(remplacez ``username`` par votre nom d'utilisateur sur Github)
+(remplacez ``username`` par votre nom d'utilisateur sur GitHub)
 
 .. code-block:: bash
 
@@ -694,7 +724,7 @@ Une fois vos changements commités, vous pouvez les ajouter à *origin* avec
 
 Votre amélioration devrait normalement être visible via
 `https://github.com/obonaventure/SystemesInformatiques/network <https://github.com/obonaventure/SystemesInformatiques/network>`_.
-Vous pouvez maintenant aller sur Github à la page de votre fork et
+Vous pouvez maintenant aller sur GitHub à la page de votre fork et
 cliquer sur *Pull Requests* puis *New pull request* et expliquer
 vos changements.
 
@@ -716,7 +746,7 @@ puis faire un nouveau pull request.
 Utilisation non-linéaire de Git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Git`_ peut créer un historique non-linéaire semblable à celui ci-dessous.
+`git(1)`_ peut créer un historique non-linéaire semblable à celui ci-dessous.
 C'est un exemple un peu exagéré de non-linéarité mais il est
 pédagogiquement intéressant.
 
@@ -726,7 +756,7 @@ c'est à dire que les arêtes ont une direction.
 Les noeuds sont de 3 types,
  - en bleu, on a les commits, c'est comme un snapshot, c'est une
    description complète de l'état de tous les fichiers pris en
-   charge par `Git`_ à un moment donné.
+   charge par `git(1)`_ à un moment donné.
    Ces commits sont
 
     - soit construits comme la version suivante d'un autre commit
@@ -761,7 +791,7 @@ Les noeuds sont de 3 types,
 Manipulation de l'historique à travers les commandes Git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Pour initialiser un dépôt `Git`_,
+Pour initialiser un dépôt `git(1)`_,
 il suffit d'utiliser la commande `git-init(1)`_
 
 .. code-block:: bash
@@ -775,7 +805,7 @@ Staging area
 ############
 
 Commençons par définir les 4 statuts qu'un fichier peut avoir
- - il peut être non-traqué par `Git`_, c'est à dire qu'il n'est
+ - il peut être non-traqué par `git(1)`_, c'est à dire qu'il n'est
    ni dans le *git directory*, ni dans la *staging area*.
    C'est un fichier que le autres développeurs peuvent ne même pas être
    au courant que vous l'avez dans votre *working directory*.
@@ -831,7 +861,7 @@ Dans la partie ``Changes to be committed``,
 on a les fichiers au statut *staged*.
 Dans la partie ``Changes not staged for commit``,
 on a les fichiers au statut modifié.
-Les fichiers au statut non-modifié ne sont pas affichés et ceux non-trackés
+Les fichiers au statut non-modifié ne sont pas affichés et ceux non-suivis
 sont dans la partie ``Untracked files`` sauf si on a spécifiquement demandé
 de les ignorer dans le fichier ``.gitignore``.
 En effet, on peut s'imaginer que dans un gros projet, la partie
@@ -839,12 +869,12 @@ En effet, on peut s'imaginer que dans un gros projet, la partie
 distinguer les fichiers qu'il faut penser à ajouter de ceux qu'il faut
 ignorer une fois de plus.
 
-Lorsque `Git`_ voit un fichier ``.gitignore`` dans un dossier,
+Lorsque `git(1)`_ voit un fichier ``.gitignore`` dans un dossier,
 il en prend compte pour tous ses fichiers ainsi que tous les fichiers des
 sous-dossiers.
 La syntaxe est très simple, on spécifie un fichier par ligne,
 on utilise un ``*`` pour spécifier n'importe
-quelle chaine de charactères, les commentaires commencent par un ``#``
+quelle chaîne de caractères, les commentaires commencent par un ``#``
 comme en Bash et si la ligne commence par un ``!``,
 on demande de ne pas ignorer ce fichier à l'intérieur du dossier même
 si un ``.gitignore`` d'un dossier parent dit le contraire.
@@ -857,20 +887,20 @@ Dans notre exemple, ``.gitignore`` aura le contenu suivant
    # Executable
    a.out
 
-Pour faire passer un fichier du statut modifié au status *staged*,
+Pour faire passer un fichier du statut modifié au statut *staged*,
 il faut utiliser `git-add(1)`_.
-Lorsqu'on lui donne en argument un fichier modifié, elle ajoute sa version
+Lorsque l'on lui donne en argument un fichier modifié, elle ajoute sa version
 avec toutes les modifications dans la *staging area*.
 Si on lui donne un dossier,
 elle ajoute tous les fichiers au statut modifié ou
-au statut non-traqué qui ne sont pas ignoré par `Git`_.
+au statut non-traqué qui ne sont pas ignoré par `git(1)`_.
 
 .. code-block:: bash
 
    $ git add .
 
 On peut aussi donner l'option ``-p`` à `git-add(1)`_,
-`Git`_ demandera alors pour chaque bloc de modification s'il faut le prendre
+`git(1)`_ demandera alors pour chaque bloc de modification s'il faut le prendre
 en compte puis ajoutera dans la *staging area* un fichier avec toutes
 ces modifications.
 C'est très utile si on a fait différents changements dans un fichier mais
@@ -979,10 +1009,10 @@ Voyons à présent comment committer
 les fichiers présents dans la *staging area*.
 Comme vu précédemment,
 il y a toujours un commit actif,
-c'est comparativement à ce dernier que `Git`_ détermine si un fichier est
+c'est comparativement à ce dernier que `git(1)`_ détermine si un fichier est
 modifié ou pas.
 
-Lorqu'on choisit de committer ce qu'il y a dans la *staging area*,
+Quand on choisit de committer ce qu'il y a dans la *staging area*,
 un nouveau commit est créé avec le même état que le précédent plus les
 modifications des fichiers au statut *staged*.
 Ce nouveau commit a une référence vers le commit précédent.
@@ -1014,10 +1044,10 @@ On voit que la branche active a avancé alors que les autres n'ont pas bougé.
 
    Historique après le commit
 
-Lorsqu'on fait ``gcc main.c`` un fichier ``a.out`` est généré.
-Il est inutile de suivre ses changements à travers `Git`_ car ses modifications
+Lorsque l'on exécute ``gcc main.c`` un fichier ``a.out`` est généré.
+Il est inutile de suivre ses changements à travers `git(1)`_ car ses modifications
 ne sont que l'image des modifications de ``main.c``.
-De plus, ce n'est pas un fichier texte donc `Git`_ ne verra pas ce qui
+De plus, ce n'est pas un fichier texte donc `git(1)`_ ne verra pas ce qui
 a changé, il fera comme si tout ``a.out`` avait changé.
 
 .. code-block:: bash
@@ -1059,9 +1089,9 @@ On verra des exemples d'utilisation par après.
 Branching
 ~~~~~~~~~
 
-Lorsqu'on exécute ``git init``, une branche au nom de ``master`` est créée.
+Quand on exécute ``git init``, une branche au nom de ``master`` est créée.
 Beaucoup de petits projets se contentent de cette branche et n'en font pas
-d'autre mais c'est passer à côté d'un des aspects les plus pratiques de `Git`_.
+d'autre mais c'est passer à côté d'un des aspects les plus pratiques de `git(1)`_.
 
 Une utilisation classique des branches sont les *feature branches*.
 C'est à dire qu'on a la branche principale ``master`` qui contient un code
@@ -1084,6 +1114,10 @@ chez aucun des deux développeurs.
 Créer une branche
 #################
 
+.. spelling::
+
+   pid
+
 Pour créer une branche, on utilise la commande `git-branch(1)`_.
 `git-branch(1)`_ sert aussi à montrer la liste des branches avec
 le caractère ``*`` devant la branche active.
@@ -1091,7 +1125,7 @@ le caractère ``*`` devant la branche active.
 Par exemple, supposons qu'on veuille ajouter à notre exemple la possibilité
 de changer le message un caractère plus universel pour que le programme soit
 utilisable pour tout citoyen de l'univers.
-Mais qu'on veut aussi ajouter un aspect pratique en rajoutant le pid
+Mais qu'on veut aussi ajouter un aspect pratique en rajoutant le `pid`
 du processus et du processus parent.
 
 On commencera par créer deux *feature branches*, ``pid`` et ``universal``.
@@ -1178,18 +1212,18 @@ Après le *checkout*, le contenu de ``main.c`` vaut
    }
 
 S'il y a des fichiers modifiés au moment du `git-checkout(1)`_,
-`Git`_ va faire du mieux qu'il peut pour changer de branche en gardant
+`git(1)`_ va faire du mieux qu'il peut pour changer de branche en gardant
 vos modifications mais si le fichier modifié est justement un fichier
 qui diffère entre l'ancienne branche active et la nouvelle branche active,
-`Git`_ va abandonner le changement de branche car mettre ce fichier à
+`git(1)`_ va abandonner le changement de branche car mettre ce fichier à
 la version de la nouvelle branche écraserait les modifications.
 
 Les changements doivent alors soit être committés,
-soit sauvegardés par `git-stash(1)`_ (détailllé plus loin),
+soit sauvegardés par `git-stash(1)`_ (détaillé plus loin),
 soit abandonnés.
 Pour abandonner des changements et revenir à la version du commit référencé
 par la branche active, on utilise aussi `git-checkout(1)`_.
-Avec `Git`_, pas mal de commandes ont de multiples usages.
+Avec `git(1)`_, pas mal de commandes ont de multiples usages.
 
 Dans notre exemple, si on change ``main.c``, cela pose problème car il
 diffère entre ``master`` et ``pid`` mais
@@ -1215,7 +1249,7 @@ les a laissées lorsqu'on exécute ``git checkout master``
 Fusionner des branches
 ######################
 
-Lorsqu'on fusionne deux branches,
+Quand on fusionne deux branches,
 le rôle de chaque branche n'est pas le même.
 Il y a la branche active et la branche qu'on veut fusionner.
 Par la règle *il n'y a toujours que la branche active qui est modifée*,
@@ -1230,14 +1264,14 @@ Deux cas peuvent se présenter
 
  - soit ce commit parent est le commit référencé par la branche active,
    dans lequel cas, on dira que la fusion est *fast-forward*.
-   `Git`_ fera alors simplement la branche active pointer vers le commit
+   `git(1)`_ fera alors simplement la branche active pointer vers le commit
    référencé par la branche qu'on veut fusionner;
  - soit ce commit parent est le commit référencé par la branche qu'on veut
-   fusionner, dans lequel cas, `Git`_ ne fera rien car le commit référencé
+   fusionner, dans lequel cas, `git(1)`_ ne fera rien car le commit référencé
    par la branche active contient déjà les modifications de l'autre puisque
    c'est un de ses commits parents;
  - soit ce commit est différent des deux commits en question.
-   Dans ce cas, `Git`_ créera un commit ayant deux parents, les deux commits
+   Dans ce cas, `git(1)`_ créera un commit ayant deux parents, les deux commits
    en questions et tentera de fusionner toutes les modifications depuis
    le commit parent commun.
    Bien entendu, plus ce commit commun est loin, plus il y aura de modification
@@ -1248,20 +1282,20 @@ Deux cas peuvent se présenter
 
    Là encore, il y a deux cas
 
-    - soit `Git`_ arrive à tout fusionner, c'est à dire que les modifications
+    - soit `git(1)`_ arrive à tout fusionner, c'est à dire que les modifications
       sont soit dans des fichiers différents, soit à des endroits bien
       distincts d'un même fichier;
     - soit il n'y arrive pas. Il fusionnera alors le plus possible lui-même
       et marquera dans le fichier les confits à gérer à la main.
-      Il faudra alors ouvrir le fichier et régler puis avertir à `Git`_
+      Il faudra alors ouvrir le fichier, les corriger puis indiquer à `git(1)`_
       qu'il peut terminer la fusion.
-      En peut aussi dire qu'on abandonne la fusion et `Git`_ retire tout
+      En peut aussi dire qu'on abandonne la fusion et `git(1)`_ retire tout
       ce qu'il a fait pour la fusion.
 
-   Dans les deux cas, si on abandonne pas, `Git`_ créera ce commit
+   Dans les deux cas, si on abandonne pas, `git(1)`_ créera ce commit
    de fusion et fera pointer la branche active vers ce dernier.
 
-Il est important de réinsister sur le fait que
+Il est important d'insister à nouveau sur le fait que
 la branche non-active n'a pas été modifiée par la fusion.
 Par contre si on la rend active et
 qu'on demande de la fusionner avec l'ancienne branche active,
@@ -1399,7 +1433,7 @@ C'est ce qu'on va vérifier
     1 file changed, 5 insertions(+)
     create mode 100644 Makefile
 
-On voit que `Git`_ a su faire la fusion sans notre aide sans problème
+On voit que `git(1)`_ a su faire la fusion sans notre aide sans problème
 car tous les changements étaient dans le ``Makefile`` qui n'existait pas
 pour ``universal``
 
@@ -1419,7 +1453,7 @@ pour ``universal``
     1 file changed, 5 insertions(+)
     create mode 100644 Makefile
 
-`Git`_ nous confirme que c'est *fast-forward*
+`git(1)`_ nous confirme que c'est *fast-forward*
 
 .. figure:: figures/hello_pid_makefile.png
    :align: center
@@ -1494,7 +1528,7 @@ Retournons sur notre branche ``universal`` et essayons notre ``Makefile``
    make: *** [run] Segmentation fault (core dumped)
 
 Les deux premières lignes sont simplement les commandes que `make(1)`_ exécute.
-La troisième est plus inquiètante.
+La troisième est plus inquiétante.
 Elle nous avertit que le programme a été terminé par le signal ``SIGSEV``.
 C'est dû au fait qu'on ne vérifie pas que ``argv`` ait au moins 2 éléments
 avant d'essayer accéder au deuxième élément.
@@ -1535,7 +1569,7 @@ avant d'essayer accéder au deuxième élément.
 
    Historique après avoir réparé le ``Segmentation fault``
 
-``universal`` est maintenant prêt à être mergée.
+``universal`` est maintenant prêt à être fusionnée.
 
 .. code-block:: bash
 
@@ -1580,11 +1614,11 @@ Les conflits sont marqués dans ``main.c``
 
 Il nous faut maintenant éditer ``main.c`` pour résoudre le conflit.
 Il n'y a un conflit à un seul endroit du fichier mais le conflit est assez
-large, `Git`_ nous montre ce qu'il y a pour ``HEAD`` c'est à dire
+large, `git(1)`_ nous montre ce qu'il y a pour ``HEAD`` c'est à dire
 la branche active ``master`` et ce qu'il y a pour ``universal``.
 On va devoir prendre un peu des deux.
 
-Si on fait `git-diff(1)`_ par la suite, `Git`_ met en début de ligne un
+Si on fait `git-diff(1)`_ par la suite, `git(1)`_ met en début de ligne un
 ``+`` ou un ``-`` en premier caractère
 si c'est une ligne qui vient de la branche qu'on veut fusionner,
 en deuxième caractère si ça vient de la branche active et en premier et
@@ -1619,7 +1653,7 @@ deuxième caractère si ça vient d'aucune des deux pour le ``+``.
      }
 
 Il n'y a pas besoin de spécifier de commentaire pour une fusion car
-`Git`_ en génère un automatiquement
+`git(1)`_ en génère un automatiquement
 
 .. code-block:: bash
 
@@ -1855,7 +1889,7 @@ Il ajoutera alors les modifications au commit actuel au lieu d'en créer un
 nouveau.
 
 On peut aussi annuler le dernier commit avec ``git reset HEAD^``.
-`Git`_ permet aussi de construire un commit qui a l'effet inverse d'un autre
+`git(1)`_ permet aussi de construire un commit qui a l'effet inverse d'un autre
 avec `git-revert(1)`_.
 Ce dernier construit un commit qui annulera l'effet d'un autre commit.
 Voyons tout ça par un exemple qui pourrait être le code de *Deep Thought*.
@@ -2054,7 +2088,7 @@ supprimons ce dernier commit
 Corriger des bugs grâce à Git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Git permet de garder des traces des nombreux changements qui ont été effectué au
+git(1) permet de garder des traces des nombreux changements qui ont été effectué au
 cours de l’évolution d’un programme. Il contient d’ailleurs un outil très
 puissant vous permettant de retrouver la source de certaines erreurs, pourvu que
 les changements soient faits par petits commits : `git-bisect(1)`_.
@@ -2070,7 +2104,7 @@ important. Ce que vous cherchez, c’est la source de l’erreur ; cela fait, la
 corriger sera sans l’ombre d’un doute une tâche aisée. Si seulement il était
 possible de voir à partir de quel changement le bug a été introduit…
 
-C’est là que vous repensez à Git ! Git connaît tous les changements qui ont été
+C’est là que vous repensez à `git(1)`_ ! `git(1)`_ connaît tous les changements qui ont été
 effectués, et vous permet facilement de revenir dans le passé pour vérifier si
 le bug était présent à un moment donné. En outre, vous vous rappelez vos cours
 d’algorithmiques et vous rendez compte que, puisque vous connaissez un point où
@@ -2089,7 +2123,7 @@ bien.
 Pour vous montrez comme utiliser cette fonctionnalité, et vous convaincre que
 cela marche vraiment, et pas seulement dans des exemples fabriqués uniquement
 dans un but de démonstration, nous allons l’appliquer à un vrai programme C :
-mruby, une implémentation d’un langage correspondant à un sous-ensemble de Ruby.
+``mruby``, une implémentation d’un langage correspondant à un sous-ensemble de Ruby.
 
 Intéressons nous à `un des problèmes qui a été rapporté par un utilisateur
 <https://github.com/mruby/mruby/issues/1583>`_. Si vous lisez cette page, vous
@@ -2099,7 +2133,7 @@ verrez que le développeur a bien dû changer une ligne introduite dans le commi
 qui avait été accusé par l’utilisateur.
 
 Mettons nous dans la peau de l’utilisateur qui a trouvé le bug, et tentons nous
-aussi d’en trouver la cause, en utilisant Git. D’abord, il nous faut obtenir le
+aussi d’en trouver la cause, en utilisant `git(1)`_ . D’abord, il nous faut obtenir le
 dépôt sur notre machine (vous aurez besoin de Ruby afin de pouvoir tester),
 et revenir dans le passé puisque, depuis, l’erreur a été corrigée.
 
@@ -2142,7 +2176,7 @@ incluse dans la backtrace :
                         [0] /home/kilian/code/rb/test.rb:13
                 /home/kilian/code/rb/test.rb:9: undefined method 'd' for #<A:0xdf1000> (NoMethodError)
 
-C’est le moment de commencer. Il faut d’abord dire à Git que nous désirons
+C’est le moment de commencer. Il faut d’abord dire à `git(1)`_ que nous désirons
 démarrer une bissection et que le commit actuel est « mauvais », c’est à dire
 que le bug est présent. Ceci est fait en utilisant les deux lignes suivantes,
 dans l’ordre :
@@ -2169,7 +2203,7 @@ utiliser ``make clean`` pour s’assurer de tout recompiler ici) :
                         [0] /home/kilian/code/rb/test.rb:13
                 /home/kilian/code/rb/test.rb:9: undefined method 'd' for #<A:0x165d2c0> (NoMethodError)
 
-Cette fois-ci, tout va bien. Nous pouvons donc en informer Git :
+Cette fois-ci, tout va bien. Nous pouvons donc en informer `git(1)`_ :
 
         .. code-block:: console
 
@@ -2177,10 +2211,10 @@ Cette fois-ci, tout va bien. Nous pouvons donc en informer Git :
                 Bisecting: 116 revisions left to test after this (roughly 7 steps)
                 [fe1f121640fbe94ad2e7fabf0b9cb8fdd4ae0e02] Merge pull request #1512 from wasabiz/eliminate-mrb-intern
 
-Ici, Git nous dit combien de révisions il reste à vérifier dans l’intervalle en
+Ici, `git(1)`_ nous dit combien de révisions il reste à vérifier dans l’intervalle en
 plus de nous donner une estimation du nombre d’étapes que cela prendra. Il nous
 informe aussi de la révision vers laquelle il nous a déplacé. Nous pouvons donc
-réitérer notre test et en communiquer le résultat à Git :
+réitérer notre test et en communiquer le résultat à `git(1)`_ :
 
         .. code-block:: console
 
@@ -2198,7 +2232,7 @@ réitérer notre test et en communiquer le résultat à Git :
 
 Si nous réessayons, nous allons nous rendre compte que notre teste échoue à
 présent (il manque la ligne ``[1]``): nous somme allés trop loin dans le
-futur. Il nous faudra donc dire à Git que la révision est mauvaise.
+futur. Il nous faudra donc dire à `git(1)`_ que la révision est mauvaise.
 
         .. code-block:: console
 
@@ -2214,7 +2248,7 @@ futur. Il nous faudra donc dire à Git que la révision est mauvaise.
                 [9b2f4c4423ed11f12d6393ae1f0dd4fe3e51ffa0] move declarations to the beginning of blocks
 
 Si vous continuez à appliquer cette procédure, vous allez finir par trouver la
-révision fautive, et Git nous donnera l’information que nous recherchions, comme
+révision fautive, et `git(1)`_ nous donnera l’information que nous recherchions, comme
 par magie :
 
         .. code-block:: console
@@ -2241,7 +2275,7 @@ par magie :
                 :040000 040000 5040dd346fea4d8f476d26ad2ede0dc49ca368cd 903f2d954d8686e7bfa7bcf5d83b80b5beb4899f M      src
 
 Maintenant que nous connaissons la source du problème, il ne faut pas oublier de
-confirmer à Git que la recherche est bien terminée, et que nous désirons
+confirmer à `git(1)`_ que la recherche est bien terminée, et que nous désirons
 remettre le dépôt dans son état normal.
 
         .. code-block:: console
@@ -2277,7 +2311,7 @@ N’oubliez pas de changer les permissions du script pour en permettre l’exéc
 
 
 Ce test n’est en bien sûr pas infaillible, mais sera suffisant ici. Il faut
-d’abord redonner à Git l’intervalle dans lequel se trouve la révision fautive.
+d’abord redonner à `git(1)`_ l’intervalle dans lequel se trouve la révision fautive.
 
         .. code-block:: console
 
@@ -2293,7 +2327,7 @@ d’abord redonner à Git l’intervalle dans lequel se trouve la révision faut
 Il suffit maintenant d’utiliser ``git bisect run`` avec le nom du script pour
 l’utiliser. Il est possible de rajouter d’autres arguments après le nom du
 script, qui seront passés au script lors de chaque exécution. Par exemple, si
-vous avez dans votre Makefile une tâche test qui renvoie 0 si tous les tests
+vous avez dans votre ``Makefile`` une tâche test qui renvoie 0 si tous les tests
 passent et 1 si certains échouent, alors ``git bisect run make test``
 permettrait de trouver à partir de quand les tests ont cessé de fonctionner.
 
@@ -2318,49 +2352,8 @@ compilations, le même résultat qu’avant :
 À nouveau, n’oubliez pas d’utiliser ``git bisect reset`` avant de continuer à
 travailler sur le dépôt.
 
-.. `subversion`_ (ou abrégé `svn(1)`_) est un logiciel qui permet à plusieurs utilisateurs de travailler sur les mêmes documents de type texte. `Subversion`_ est fréquemment utilisé pour gérer du code source développé de façon collaborative, mais il peut aussi servir à gérer n'importe quel ensemble de fichiers (de préférence textes) manipulés par plusieurs personnes.
+.. spelling::
 
-.. Dans le cadre du cours SINF1252 vous devez vous inscrire à subversion dans le projet ``SINF1252_2012`` en suivant le lien et les instructions sur http://wiki.student.info.ucl.ac.be/index.php/Svn
-
-.. Pour commencer l'utilisation de `svn(1)`_ vous devriez faire d'abord un ``checkout`` du répertoire:
-
-        .. code-block:: console
-
-                $ svn checkout <url de votre répertoire>
-                Checked out revision 1.
-
-.. Ceci installe votre répertoire (ici, nommé ``my_rep``) dans le dossier courant. Vous pouvez vous déplacer dans le nouveau dossier et créer un nouveau dossier pour cet premier projet. Il faut explicitement ajouter ce dossier à svn avec la commande ``svn add [nom du dossier]``. Chaque fichier et dossier dont vous voulez qu'il fasse partie du contrôle de version doivent être ajoutés avec cette commande.
-
-        .. code-block:: console
-
-                $ cd my_rep
-                $ mkdir projet_S1
-                $ svn add projet_S1
-                A       projet_S1
-
-.. Ce dossier n'a pas encore été envoyé sur le serveur principal et n'est donc pas encore visible pour d'autres utilisateurs. Pour afficher l'état de votre répertoire utilisez ``svn status``. La lettre ``A`` indique que ceci est un nouveau dossier/fichier pas encore envoyé vers le serveur. ``?`` indique que les fichiers/dossiers ne font pas partie du répertoire svn (on peut les ajouter avec ``svn add``). ``M`` indique que les fichiers sont modifiés localement mais pas encore envoyés vers le serveur. Ces fichiers font partie du répertoire svn.
-
-        .. code-block:: console
-
-                $ svn status
-                A       projet_S1
-                $ svn commit -m "Projet S1: Initialisation"
-                Adding  projet_S1
-                Transmitting file data .
-                Committed revision 2.
-
-.. La commande ``svn commit`` permet de pousser les changements locaux et les nouveaux fichiers vers le serveur. La chaîne de charactères entre les ``"`` est le commentaire qu'il faut ajouter au commit. Il est important de commenter vos commits pour que vous puissiez vous retrouvez dans votre historique. L'historique de votre répertoire peut être affiché avec la commande ``svn log``.
-
-.. Les autres utilisateurs de votre répertoire (c'est-à-dire dans le cadre de ce cours: vôtre binôme du groupe) peuvent à partir de maintenant accéder à ce nouveau dossier en mettant à jour son répertoire local.
-.. Pour mettre à jour le répertoire local, on utilise la commande ``svn update``.
-
-        .. code-block:: console
-
-                $ svn update
-                Updating '.':
-                A       projet_S1
-                Updated to revision 2.
-
-.. Il est recommandé de toujours faire un ``update`` avant de faire un ``commit``. Lors d'un update il est possible qu'un conflit se crée dans votre dossier local. Ceci peut arriver si vous avez modifié une ligne dans un fichier localement et que cette ligne a aussi été modifiée par le commit d'un autre utilisateur. Pour résoudre le conflit, vous devez éditer le fichier que svn a indiqué être en conflit en cherchant des lignes qui commencent par ``<<<``. Corrigez ce fichier et retournez dans la console et tapez ``r`` pour indiquer à svn que ce conflit a été résolu.
-
-.. Pour plus d'informations sur svn regardez les commandes ``svn help``, ``svn help [commande]`` ou http://svnbook.red-bean.com/. Une recherche sur Google vous aidera aussi pour résoudre vos problèmes avec subversion.".."
+   mruby
+   Makefile
+   deadline

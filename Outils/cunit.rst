@@ -8,7 +8,7 @@ CUnit: librairie de tests
 -------------------------
 
 `CUnit <http://cunit.sourceforge.net>`_ est une librairie de tests unitaires
-en C. Cette librarie vous sera utile lors de développement de projets en C.
+en C. Cette librairie vous sera utile lors de développement de projets en C.
 
 Installation
 ^^^^^^^^^^^^
@@ -76,7 +76,7 @@ tests.
 Pour pouvoir concrètement exécuter un ensemble de tests, il est nécessaire
 de réaliser les différentes étapes suivantes:
 
-1. Ecrire les tests
+1. Programmer les tests
 2. Initialiser le catalogue
 3. Ajouter les suites de tests dans le catalogue
 4. Ajouter les tests dans les suites de tests
@@ -89,7 +89,7 @@ Tout d'abord, il est nécessaire d'écrire les tests. Aucune libraire ne peut
 les écrire pour vous. Toutefois, CUnit vient avec un certain nombre de macros
 permettant de vérifier les propriétés qui nous intéressent. Pour pouvoir
 utiliser ces macros, il est nécessaire d'importer ``CUnit.h``. La table
-suivante récapitule les principales macros. Il est important d'appeller ces
+suivante récapitule les principales macros. Il est important d'appeler ces
 macros lorsque l'on rédige les tests, ce sont ces appels qui détermineront si
 oui ou non, le test est fructueux.
 
@@ -155,12 +155,17 @@ vérification des tests. Par exemple,
             if (CUE_SUCCESS != CU_initialize_registry())
               return CU_get_error();
 
+.. spelling::
+
+   setup
+   teardown
+	      
 Pour ajouter les suites de tests au catalogue, il faut faire appel à la
 méthode ``CU_add_suite(const char* strName, CU_InitializeFunc pInit,
 CU_CleanupFunc pClean)``. Comme on peut le voir, cette méthode demande un nom
 (qui doit être unique pour un catalogue) ainsi que deux pointeurs de fonction.
 Ces pointeurs de fonction permettent d'exécuter du code avant (typiquement
-appelé 'setup') ou après (typiquement 'teardown') l'exécution des tests de la
+appelé `setup`) ou après (typiquement `teardown`) l'exécution des tests de la
 suite. Ces méthodes sont utiles pour initialiser un environnement d'exécution
 pour des tests le nécessitants (par exemple, s'assurer de la présence de
 fichier, initialiser certaines variables, etc.). Ces méthodes sont bien sûr

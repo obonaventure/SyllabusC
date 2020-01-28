@@ -13,7 +13,12 @@ Dans le cadre de ce cours nous utiliserons l'interpréteur `bash(1)`_. Cet exéc
 
 Le shell est un outil très puissant. Il permet d'effectuer de nombreuses opérations qui peuvent difficilement être réalisées manuellement ou via une interface graphique.
 
+.. spelling::
 
+   tab
+   regex
+   gz
+   
 .. note:: Astuce : utilisez la complétion
 
  Lors de la frappe d'un nom de fichier, d'un chemin d'accès ou même d'une commande tapez sur la touche ``<tab>`` pour "compléter" le mot que vous écrivez. Si rien ne se passe tapez deux fois <tab> pour obtenir la liste des possibilités.
@@ -31,6 +36,10 @@ Expressions régulières
 ----------------------
 
 Avant de commencer à voir les commandes utiles avec le shell, il est important de définir ce qu'est une expression régulière (`regex(3)`). Les expressions régulières caractérisent des chaînes de caractères et elles sont utiles pour de nombreuses commandes. Nous l'utiliserons notamment pour faire une recherche dans un fichier.
+
+.. spelling::
+
+   er
 
 Dans une regex, certains caractères ont une signification particulière :
 
@@ -80,9 +89,13 @@ La commande `ls(1)`_ permet de connaître l'ensemble des fichiers et répertoire
 	
     * ``-F`` : 	Positionne à la fin des noms de fichier un ``/`` pour les répertoires et ``*`` pour les fichiers exécutables
     * ``-a`` : 	Affiche tous les fichiers, y compris les fichiers cachés (ceux qui commencent par le caractère ``.`` )
-    * ``-d`` : 	Evite de lister le contenu d'un répertoire : si `rep` est un répertoire, ``ls -l`` `rep` listera le contenu du répertoire `rep`, alors que ``ls -ld`` `rep` listera la description du répertoire
+    * ``-d`` : 	Ne liste pas le contenu d'un répertoire : si `rep` est un répertoire, ``ls -l`` `rep` listera le contenu du répertoire `rep`, alors que ``ls -ld`` `rep` listera la description du répertoire
     * ``-l`` : 	Description complète du contenu d'un répertoire (une ligne par fichier)
 
+.. spelling::
+
+   filename
+      
 Avec l'option ``-l``, le premier caractère de la ligne indique le type du fichier. Le caractère ``-`` correspond à un fichier standard et ``d`` à un répertoire. Il est aussi possible de connaître le contenu d'un autre répertoire que le répertoire courant en fournissant le nom de ce répertoire comme argument à la commande ``ls``. 
 
 	.. code-block:: console
@@ -97,6 +110,12 @@ Avec l'option ``-l``, le premier caractère de la ligne indique le type du fichi
 Manipulation de fichiers
 ------------------------
 
+.. spelling::
+
+   irf
+   opt
+   
+
 Créer et détruire 
 ^^^^^^^^^^^^^^^^^
 
@@ -105,12 +124,22 @@ Créer et détruire
 	* `echo(1)`_ mon_texte > filename	crée un fichier avec "mon_texte" dedans.
 	
 	`rm(1)`_ [-irf] files	    	efface les fichiers
-				    	* -i : 	intéractif, demande une confirmation sur chaque fichier
+				    	* -i : 	interactif, demande une confirmation sur chaque fichier
 				    	* -f : 	force la suppression du fichier
 				    	* -r :  efface un répertoire et son contenu
 
 Visualiser
 ^^^^^^^^^^
+
+.. spelling::
+
+   vET
+   vE
+   cat
+   ctrl
+   sX
+   s'XXX
+   
 
 	* `cat(1)`_ [-opt] f1 f2		concatène et affiche les deux fichiers.
 	* `cat(1)`_ [-opt] file			affiche le fichier sur la sortie standard.
@@ -118,12 +147,14 @@ Visualiser
 					* -v : convertit les caractères spéciaux en caractères affichables
 					* -n : numérote les lignes
 					* -b : numérote seulement les lignes non vides
-					* -E : affiche le symbôle $ à la fin de chaque ligne
+					* -E : affiche le symbole $ à la fin de chaque ligne
 					* -T : affiche les caractères de tabulation comme ^I
 					* -A : équivalent à -vET
 					* -e : équivalent à -vE
 					* -t : équivalent à -vT
 
+
+					  
 	Avec cat, il est possible d'écrire depuis la console dans un fichier. 
 	Appuyez sur ctrl+D au début d'une ligne pour terminer la saisie
 
@@ -170,8 +201,8 @@ Modifier
 					* -a : change uniquement la date d'accès du fichier
 
 `split(1)`_ [-opt] file [out]	coupe le fichier en plusieurs petites parties
-					* -b nbr : decoupe selon un nombre d'octets
-					* -n nbr : decoupe selon un nombre de lignes
+					* -b nbr : découpe selon un nombre d'octets
+					* -n nbr : découpe selon un nombre de lignes
 
 Extraction de données
 ^^^^^^^^^^^^^^^^^^^^^
@@ -179,9 +210,9 @@ Extraction de données
 `grep(1)`_ [-opt] regex file	recherche l'expression dans les fichiers.
 					* -i : ignore la casse
 				    	* -v : affiche les lignes ne contenant pas l'expression. 
-					* -c : compte les lignes ne contenant pas la chaine
+					* -c : compte les lignes ne contenant pas la chaîne
 					* -n : numérote chaque ligne contenant la chaîne
-					* -x : affiche les lignes correspondant exactement à la chaine
+					* -x : affiche les lignes correspondant exactement à la chaîne
 
 `uniq(1)`_ [-opt] filename	affiche le fichier en supprimant les lignes qui se répètent successivement.
 					* -u : Affiche seulement les lignes n'apparaissant qu'une seule fois
@@ -200,7 +231,7 @@ Extraction de données
 					* -n : compare selon la valeur arithmétique
 					* -k : spécifie la colonne utilisée pour le tri
 
-	uniq et sort sont souvent utilisés ensemble. Par exemple, cette commande trie les lignes de file.txt selon leur nombre d'apparitions.
+	`uniq(1)`_  et `sort(1)`_ sont souvent utilisés ensemble. Par exemple, cette commande trie les lignes de `file.txt` selon leur nombre d'apparitions.
 	
 	.. code-block:: console
 	
@@ -282,6 +313,10 @@ Extraction de données
 
 Obtenir des informations
 ^^^^^^^^^^^^^^^^^^^^^^^^
+.. spelling::
+
+   src
+   dst
 
 `wc(1)`_ [-opt] filename	donne sur stdout des informations au sujet de l'entrée standard ou d'une liste de fichiers. 
 				Première colonne est le nombre de lignes, deuxième le nombre de mots et en dernier le nombre d'octets.
@@ -310,13 +345,13 @@ Copier
 		$ cp test.txt btest.txt ../
 		$ cp -r repertoire ../repertoirebis
 
-Déplacer ou renomer
-^^^^^^^^^^^^^^^^^^^
+Déplacer ou renommer
+^^^^^^^^^^^^^^^^^^^^
 
 `mv(1)`_ [-opt] src dst    	renomme ou déplace src en dst.
 					* -f : écrase les fichiers existants
 					* -i : demande confirmation avant d'écraser un fichier existant
-					* -n : n'écrase aucun fichier déja existant
+					* -n : n'écrase aucun fichier déjà existant
 		
 			Note : Si la destination est un répertoire, alors la source peut être une liste de fichiers. 
 
@@ -329,12 +364,36 @@ Déplacer ou renomer
 Rechercher
 ^^^^^^^^^^
 
+.. spelling::
+
+   rep
+   group
+   mtime
+   atime
+   ctime
+   print
+   find
+   dev
+   null
+   expr
+   xargs
+   supertab
+   block
+   testdirectory
+   grep
+   tarname
+   tar
+   owner
+   tt
+   bz
+   pid
+
 Pour les critères de recherche :
 		* critère1 critère2 		= et logique
 		* !critère 			= non logique
 		* critère1 -a critère2	 	= ou logique
 
-`find(1)`_ chemin regex	 	recherche les fichiers/répertoires caractérisés par nom, à partir du répertoire rep et affiche le résultat.
+`find(1)`_ chemin regex	 	recherche les fichiers/répertoires caractérisés par nom, à partir du répertoire `rep` et affiche le résultat.
 			    		* -name  : sur le nom du fichier
 			    		* -perm  : sur les droits d'accès du fichier
 			    		* -links : sur le nombre de liens du fichier
@@ -435,7 +494,7 @@ Pour chaque fichier, il y a trois classes d'utilisateurs
 Les permissions accordées à ces trois classes sont :
 	* r : 	lecture
 	* w : 	écriture
-	* x : 	exécution (Un fichier peut être executé et un répertoire peut devenir répertoire courant)
+	* x : 	exécution (Un fichier peut être exécuté et un répertoire peut devenir répertoire courant)
 
 
 `chmod(1)`_ mode files    	change les permissions du ou des fichiers/répertoires.
@@ -534,8 +593,15 @@ Gestion des processus
 		$ lsof -i -a -p 2735	  =  Les connexions ouvertes par le processus 2735
 
 
-`kill(1)`_ pid			supprime le processus specifié. Si malgré la commande, le processus n'est pas détruit, essayez kill -9 pid.
+`kill(1)`_ pid			supprime le processus spécifié. Si malgré la commande, le processus n'est pas détruit, essayez kill -9 pid.
 
+
+.. spelling::
+
+   pid
+   cmd
+   wc
+   root
 
 Symboles utiles
 ---------------
@@ -599,11 +665,11 @@ Informations générales
 
 `su(1)`_			passe en mode "root", c'est à dire administrateur
 
-`whatis(1)`_ cmd		explique briévement l'utilité d'une commande
+`whatis(1)`_ cmd		explique brièvement l'utilité d'une commande
 
-`apropos(1)`_ [-opt] motclé	recherche dans les man pages les commandes correspondants aux mots clés.
+`apropos(1)`_ [-opt] mot-clé	recherche dans les man pages les commandes correspondants aux mots clés.
 				* -a : Affiche seulement les résultats répondant à tout les mots clés. 
-				       L'inverse est le fonctionnement par défault
+				       L'inverse est le fonctionnement par défaut
 
 `date(1)`_			donne l'heure, selon l'horloge de votre ordinateur
 
@@ -615,6 +681,26 @@ Informations générales
 
 Informations système
 ^^^^^^^^^^^^^^^^^^^^
+
+.. spelling::
+
+   node
+   prog
+   cmdfile
+   sed
+   num
+   mtf
+   sbst
+   goto
+   eo
+   awk
+   program
+   while
+   kill
+   txt
+   name
+   nbr
+   
 
 `time(1posix)`_ programme		permet de calculer le temps d'exécution d'un programme
 
@@ -901,7 +987,7 @@ Après il ne reste plus qu'à l'exécuter et observer le résultat.
 Les variables
 ^^^^^^^^^^^^^
 
-Bash permet l'utilisation de variables dans les scripts. Il peut s'agir de simples variables ou de tableaux. Bash n'est pas un langage typé, les Int ou les String n'existent pas, toutes les variables sont traitées de la même façon. Pour illustrer ceci nous allons écrire le script `variables.sh <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/variables.sh>`_
+Bash permet l'utilisation de variables dans les scripts. Il peut s'agir de simples variables ou de tableaux. Bash n'est pas un langage typé, les entiers ou les String n'existent pas, toutes les variables sont traitées de la même façon. Pour illustrer ceci nous allons écrire le script `variables.sh <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/variables.sh>`_
 
     .. code-block:: bash
 
@@ -927,7 +1013,7 @@ Ce script produit comme résultat
       Hello,1252
       Hello,12 52
 
-Il est interressant de visiter cette page : http://michel.mauny.net/sii/variables-shell.html
+Il est intéressant de visiter cette page : http://michel.mauny.net/sii/variables-shell.html
 
 Les structures de contrôle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

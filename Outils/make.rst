@@ -2,6 +2,14 @@
 .. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
+.. spelling::
+
+   Makefile
+   Makefiles
+   Make
+   make
+   
+   
 .. _make:
 
 Introduction aux Makefiles
@@ -60,7 +68,7 @@ Comme ``text.txt`` dépend de ``name.txt``, il faut que ce dernier soit défini 
         Salut,
         Tintin
 
-Lorsqu'une dépendance change, ``make`` le détecte et ré-exécute les commandes associées à la cible. Dans le cas suivant, le fichier ``name.txt`` est modifié, ce qui force la regénération du fichier ``text.txt``.
+Lorsqu'une dépendance change, ``make`` le détecte et ré-exécute les commandes associées à la cible. Dans le cas suivant, le fichier ``name.txt`` est modifié, ce qui force une nouvelle génération du fichier ``text.txt``.
 
     .. code-block:: console
 
@@ -112,6 +120,10 @@ Il est très intéressant de savoir que toutes les variables d’environnement p
 Vous pouvez donc très bien utiliser la variable ``$(HOME)`` indiquant le répertoire attribué à l'utilisateur sans la définir.
 
 Il existe six différentes manières d'assigner une valeur à une variable. Nous ne nous intéresserons qu'à quatre d'entre elles.
+
+.. spelling::
+
+   value
 
     .. code-block:: make
 
@@ -186,7 +198,7 @@ Une bonne pratique est de déclarer dans ``.PHONY`` toutes les règles de nettoy
         clean:
             rm -f *.o
 
-Cela est aussi pratique pour forcer une re-compilation.
+Cela est aussi pratique pour forcer une nouvelle compilation.
 
     .. code-block:: make
 
@@ -213,7 +225,7 @@ Cette syntaxe est semblable au script shell.
         build:
             gcc -o foo foo.c # commentaire en fin de ligne
 
-Débugger les erreurs de vos Makefiles peut sembler difficile lorsque vous êtes baignés dans un flux d'instructions. Vous pouvez néanmoins régler leur verbosité.
+Corriger les erreurs de vos Makefiles peut sembler difficile lorsque vous êtes baignés dans un flux d'instructions. Vous pouvez néanmoins régler leur verbosité.
 Il est possible de rendre silencieuse une commande en plaçant une arobase devant. Ceci indique juste à Make de ne pas imprimer la ligne de commande. La sortie
 standard de cette commande restera visible.
 

@@ -89,3 +89,9 @@ monothreadé
 multithreadé
 pthread
 malloc
+débuggage
+valgrind
+tmp
+stdin
+stdout
+gdb

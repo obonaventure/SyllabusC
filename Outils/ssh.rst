@@ -8,9 +8,15 @@
 SSH
 ---
 
+.. spelling::
+
+   ssh
+   intel
+   sirius
+
 `ssh(1)`_ est un outil qui permet de se connecter depuis l'Internet à la console d'une autre machine et donc d'y exécuter des commandes. Dans l'infrastructure INGI vous pouvez vous connecter via ssh aux différents machines des salles en utilisant votre login et mot de passe INGI. Pour savoir les noms de machines, visitez le `student-wiki <http://wiki.student.info.ucl.ac.be/Matériel/Matériel>`_.
 
-Depuis l'extérieur vous devez passer via ``sirius.info.ucl.ac.be`` pour ensuite pouvoir vous connecter sur les machines des salles. 
+Depuis l'extérieur vous devez passer via ``studssh.info.ucl.ac.be`` pour ensuite pouvoir vous connecter sur les machines des salles. 
 
 Quelques exemples d'utilisation de `ssh(1)`_ qui vous seront utiles:
 
@@ -89,4 +95,9 @@ Nous pouvons aussi utiliser `rsync <http://linux.about.com/library/cmd/blcmdl1_r
 
       rsync -avz [hostname]:src/bar /data/tmp
 
-Maintenant tout les fichiers de la machine hôte, dans le dossier src/bar vont être copiés vers le répertoire local /data/tmp.
+Maintenant tout les fichiers de la machine hôte, dans le dossier ``src/bar`` vont être copiés vers le répertoire local ``/data/tmp``
+
+
+.. spelling::
+
+   src
