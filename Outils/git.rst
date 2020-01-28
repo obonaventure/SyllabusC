@@ -4,6 +4,8 @@
 
 .. spelling::
    kernel
+   commits
+   fork
    committé
    committées
    respécifier
@@ -173,7 +175,7 @@ On va utiliser les commandes
    *working directory* avec leur état dans le *git directory*
    au commit actuel;
  * `git-status(1)`_ qui affiche les fichiers modifiés et ceux qui vont être
-   commités;
+   committés;
  * `git-add(1)`_ qui spécifie quels fichiers doivent faire partie du prochain
    commit en les ajoutant à la *staging area*;
  * `git-commit(1)`_ qui commit les fichiers dans la *staging area*;
@@ -439,7 +441,7 @@ Il vous faudra alors faire un *pull*.
 `git(1)`_ tentera alors de fusionner vos changements avec ceux d'*origin*.
 Si ces derniers sont à une même ligne d'un même fichier, il vous demandera
 de résoudre le conflit vous-même.
-Il est important pour cela que vous ayez commité vos changements avant
+Il est important pour cela que vous ayez committé vos changements avant
 le *pull* sinon `git(1)`_ l'abandonnera car il ne sait que fusionner des commits.
 C'est à dire que ce qu'il y a dans le *git directory*,
 pas ce qu'il y a dans le *working directory* ni dans la *staging area*.
@@ -716,7 +718,7 @@ Pour cela, il faut commencer par ajouter la remote
 
    $ git pull upstream master
 
-Une fois vos changements commités, vous pouvez les ajouter à *origin* avec
+Une fois vos changements committés, vous pouvez les ajouter à *origin* avec
 `git-push(1)`_
 
 .. code-block:: bash
@@ -1817,7 +1819,7 @@ de ne pas avoir de modifications en conflit avec l'opération.
 
 `git-stash(1)`_ permet de sauvegarder ces modifications pour qu'elles ne soient
 plus dans le *working directory* mais qu'elles ne soient pas perdues.
-On peut ensuite les réappliquer avec ``git stash apply`` puis les effacer
+On peut ensuite les appliquer à nouveau avec ``git stash apply`` puis les effacer
 avec ``git stash drop``.
 
 Reprenons notre exemple de *Changer la branche active* illustré par la figure
