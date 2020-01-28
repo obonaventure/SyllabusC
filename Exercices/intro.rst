@@ -126,14 +126,3 @@ La matière couverte cette semaine correspond aux sections :
    Programmes/prog-6
 
 
-Septième semaine
-----------------
-
-
-
-.. toctree::
-   :maxdepth: 2
-
-   mcq-ex/qcm-7
-   Programmes/prog-7
-

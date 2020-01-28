@@ -194,6 +194,10 @@ Glossaire
    segment text
     Partie de la mémoire d'un programme contenant les instructions en langage machine à exécuter.
 
+   segment de données
+    Partie de la mémoire comprenant les segments des données initialisées et non-initialisées
+    
+    
    segment des données initialisées
     Partie de la mémoire d'un programme contenant les données initialisées dans le code source du programme ainsi que les chaînes de caractères.
 
@@ -411,6 +415,13 @@ Glossaire
     Systèmes informatiques développés par la Raspberry Pi Foundation, voir https://www.raspberrypi.org
 
 
+   inode
+    structure de données utilisée par le système de fichiers Unix pour représenter un fichier/répertoire
+
+   principe de localité
+    principe de fonctionnement de la mémoire indiquant que lorsqu'un programme accède à une adresse à un temps t, il accédera encore à des adresses proches dans les prochains instants
+    
+    
 .. spelling::
 
    proc

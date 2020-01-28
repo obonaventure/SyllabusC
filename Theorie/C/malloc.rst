@@ -401,7 +401,7 @@ Lors de la compilation, `gcc(1)`_ affiche le :term:`warning` ``In function ‘du
 
 .. [#ggetrlimit] Sur de nombreuses variantes de Unix, cette limite à la taille du stack dépend du matériel utilisé et peut être configurée par l'administrateur système. Un processus peut connaître la taille maximale de son stack en utilisant l'appel système `getrlimit(2)`_. L'administrateur système peut modifier ces limites via l'appel système `setrlimit(2)`_. La commande ``ulimit`` de `bash(1)`_ permet également de manipuler ces limites.
 
-.. [#fetext] Dans de nombreuses variantes de Unix, il est possible de connaître le sommet du segment :term:`text` d'un processus grâce à la variable :term:`etext`. Cette variable, de type ``char`` est initialisée par le système au chargement du processus. Elle doit être déclarée comme variable de type ``extern char etext`` et son adresse (``&etext``) correspond au sommet du segment text.
+.. [#fetext] Dans de nombreuses variantes de Unix, il est possible de connaître le sommet du segment :term:`text` d'un processus grâce à la variable `etext`. Cette variable, de type ``char`` est initialisée par le système au chargement du processus. Elle doit être déclarée comme variable de type ``extern char etext`` et son adresse (``&etext``) correspond au sommet du segment text.
 
 .. [#fvmem] Nous verrons ultérieurement que grâce à l'utilisation de la mémoire virtuelle, il est possible pour un processus d'utiliser des zones de mémoire qui ne sont pas contiguës.
 

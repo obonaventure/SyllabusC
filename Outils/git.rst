@@ -8,6 +8,7 @@
    committées
    respécifier
    l'email
+   email
    GitHub
    remote
    push

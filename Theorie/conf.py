@@ -78,11 +78,11 @@ language = 'fr'
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build/**', '.#*', '**/.#**', 'Exercices/QCM/**', "**.BASE.**", "**.REMOTE.**", "**.LOCAL.**", "**.BACKUP.**", "MemoireVirtuelle/**", "Assembleur/**", "Fichiers/fichiers-signaux.rst", "Threads/processus.rst" ]
 
-#rst_prolog = """
-#.. include:: /links.rst
-#.. include:: /man_links.rst
-#.. include:: /incl_links.rst
-#"""
+rst_prolog = """
+.. include:: /links.rst
+.. include:: /man_links.rst
+.. include:: /incl_links.rst
+"""
 
 # recommended to avoid problems with mobi conversion
 smartquotes=False
