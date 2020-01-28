@@ -12,7 +12,7 @@ Bibliographie
 
 .. .. [Alagarsamy2003] Alagarsamy, K., `Some myths about famous mutual exclusion algorithms`. SIGACT News 34, 3 (September 2003), 94-103.  http://doi.acm.org/10.1145/945526.945527
 
-.. [Amdahl1967] Amdahl, G., `Validity of the Single-Processor Approach to Achieving Large-Scale Computing Capabilities`,  Proc.  Am. Federation of Information Processing Societies Conf., AFIPS Press, 1967, pp. 483-485, http://dx.doi.org/10.1145/1465482.1465560
+.. .. [Amdahl1967] Amdahl, G., `Validity of the Single-Processor Approach to Achieving Large-Scale Computing Capabilities`,  Proc.  Am. Federation of Information Processing Societies Conf., AFIPS Press, 1967, pp. 483-485, http://dx.doi.org/10.1145/1465482.1465560
 
 .. [Bashar1997] Bashar, N., `Ariane 5: Who Dunnit?`, IEEE Software 14(3): 15–16. May 1997. https://doi.ieeecomputersociety.org/10.1109/MS.1997.589224
 
@@ -52,7 +52,7 @@ Bibliographie
 
 .. [GNUPTH] Engelschall, R., `GNU Portable Threads`, http://www.gnu.org/software/pth/
 
-.. [Graham+1982] Graham, S., Kessler, P. and Mckusick, M., `Gprof: A call graph execution profiler`. SIGPLAN Not. 17, 6 (June 1982), 120-126. http://doi.acm.org/10.1145/872726.806987
+.. .. [Graham+1982] Graham, S., Kessler, P. and Mckusick, M., `Gprof: A call graph execution profiler`. SIGPLAN Not. 17, 6 (June 1982), 120-126. http://doi.acm.org/10.1145/872726.806987
 
 .. .. [HennessyPatterson] Hennessy, J. and Patterson, D., `Computer Architecture: A Quantitative Approach`, Morgan Kauffmann, http://books.google.be/books?id=gQ-fSqbLfFoC
 
@@ -173,3 +173,5 @@ Bibliographie
    Prentice
    Walls
    Microsystems
+   and
+   Sun

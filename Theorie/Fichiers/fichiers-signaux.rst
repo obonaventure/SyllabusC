@@ -415,7 +415,7 @@ A titre d'exemple, considérons l'exécution de la commande suivante depuis le s
 
 Lors de son exécution, deux open file objects sont créés dans le noyau. Le premier est relatif au fichier ``/tmp/t`` qui est associé au descripteur ``stdin``. Le second est lié au fichier ``/tmp/out`` et est associé au descripteur ``stdout``. Ces open-file objects sont représentés graphiquement dans la figure ci-dessous.
 
-.. figure:: /Fichiers/fig/figures-10-001-c.png
+.. figure:: /_static/figures/Fichiers/fig/figures-10-001-c.png
    :align: center
    :scale: 60
 
@@ -429,7 +429,7 @@ Les open file objects sont également utilisés lorsque plusieurs processus ouvr
 
 Lors de l'exécution de ces deux processus, le noyau va attribuer un descripteur de fichier à chacun d'eux. Si ``file`` est le premier fichier ouvert par chaque processus, il sera associé au descripteur ``3``. Le noyau créera un open-file object pour le fichier ``file`` utilisé par le processus ``prog1`` et un autre open-file object pour le fichier ``file`` utilisé par le processus ``prog2``. Ces deux open-file objects référencient le même inode et donc le même fichier, mais ils peuvent avoir des modes et des offset pointers qui sont totalement indépendants. Tous les accès faits par le processus ``prog2`` sont complètement indépendants des accès faits par le processus ``prog1``. Cette utilisation d'un même fichier par deux processus distincts est représentée graphiquement dans la figure ci-dessous.
 
-.. figure:: /Fichiers/fig/figures-10-002-c.png
+.. figure:: /_static/figures/Fichiers/fig/figures-10-002-c.png
    :align: center
    :scale: 60
 
@@ -437,7 +437,7 @@ Lors de l'exécution de ces deux processus, le noyau va attribuer un descripteur
 Sous Unix et Linux, il est important d'analyser également ce qu'il se passe lors de la création d'un processus en utilisant l'appel système `fork(2)`_. Imaginons que le processus ``prog1`` discuté ci-dessous effectue `fork(2)`_ après avoir ouvert le fichier ``file``. Dans ce cas, le noyau du système d'exploitation va dupliquer la table des descripteurs de fichiers du processus père pour créer celle du processus fils. Le processus père et le processus fils ont donc chacun une table des descripteurs de fichiers qui leur est propre. Cela permet, comme nous l'avons vu lorsque nous avons présenté les pipes, que le fils ferme un de ses descripteurs de fichiers sans que cela n'ait d'impact sur l'utilisation de ce descripteur de fichier par le processus père. Par contre, l'exécution de l'appel système `fork(2)`_ ne copie pas les open-file objects. Après exécution de `fork(2)`_ le descripteur de fichiers ``3`` dans le processus père pointe vers l'open-file object associé au fichier ``file`` et le même descripteur dans le processus fils pointe vers le même open-file object. Cette situation est représentée schématiquement dans la figure ci-dessous.
 
 
-.. figure:: /Fichiers/fig/figures-10-003-c.png
+.. figure:: /_static/figures/Fichiers/fig/figures-10-003-c.png
    :align: center
    :scale: 80
 
@@ -516,7 +516,7 @@ Le premier argument est le descripteur de fichiers sur lequel le lock doit être
 
 Cette structure permet de spécifier plus finement qu'avec la fonction `lockf(3)`_ la section du fichier sur laquelle le lock doit être placé. L'utilisation de locks force le noyau à maintenir des structures de données supplémentaires pour stocker ces locks et les processus qui peuvent être en attente sur chacun de ces locks. Conceptuellement, cette structure de données est associée à chaque fichier comme représenté dans la figure ci-dessous.
 
-.. figure:: /Fichiers/fig/figures-10-004-c.png
+.. figure:: /_static/figures/Fichiers/fig/figures-10-004-c.png
    :align: center
    :scale: 80
 

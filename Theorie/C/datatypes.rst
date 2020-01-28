@@ -282,7 +282,7 @@ est décomposée en trois parties [#fexemple]_ :
  - `e` bits sont réservés pour stocker l'exposant [#fexposant]_.
  - Les `f` bits de poids faible servent à stocker la partie fractionnaire du nombre réel.
 
-.. figure:: /C/svg/Float_example.png
+.. figure:: /_static/figures/C/svg/Float_example.png
    :align: center
    :scale: 100
 

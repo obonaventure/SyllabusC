@@ -131,7 +131,7 @@ Le problème des producteurs-consommateurs est un problème extrêmement fréque
 
 Ces deux types de threads communiquent en utilisant un buffer qui a une capacité limitée à `N` places comme illustré dans la figure ci-dessous.
 
-.. figure:: /Threads/figures/figures-S7-001-c.png
+.. figure:: /_static/figures/Threads/figures/figures-S7-001-c.png
    :align: center
    :scale: 80
 
@@ -210,48 +210,44 @@ Il existe différentes implémentations des threads POSIX. Les mécanismes de co
 Il reste cependant quelques concepts qu'il est utile de connaître lorsque l'on développe des programmes découpés en threads en langage C.
 
 
-Variables ``volatile``
-----------------------
+..
+	Variables ``volatile``
+	----------------------
 
-Normalement, dans un programme C, lorsqu'une variable est définie, ses accès sont contrôlés entièrement par le compilateur. Si la variable est utilisée dans plusieurs calculs successifs, il peut être utile d'un point de vue des performances de stocker la valeur de cette variable dans un registre pendant au moins le temps correspondant à l'exécution de quelques instructions [#fregister]_. Cette optimisation peut éventuellement poser des difficultés dans certains programmes utilisant des threads puisqu'une variable peut être potentiellement modifiée ou lue par plusieurs threads simultanément.
+	Normalement, dans un programme C, lorsqu'une variable est définie, ses accès sont contrôlés entièrement par le compilateur. Si la variable est utilisée dans plusieurs calculs successifs, il peut être utile d'un point de vue des performances de stocker la valeur de cette variable dans un registre pendant au moins le temps correspondant à l'exécution de quelques instructions [#fregister]_. Cette optimisation peut éventuellement poser des difficultés dans certains programmes utilisant des threads puisqu'une variable peut être potentiellement modifiée ou lue par plusieurs threads simultanément.
 
-Les premiers compilateurs C avaient pris en compte un problème similaire. Lorsqu'un programme ou un système d'exploitation interagit avec des dispositifs d'entrée-sortie, cela se fait parfois en permettant au dispositif d'écrire directement en mémoire à une adresse connue par le système d'exploitation. La valeur présente à cette adresse peut donc être modifiée par le dispositif d'entrée-sortie sans que le programme ne soit responsable de cette modification. Face à ce problème, les inventeurs du langage C ont introduit le qualificatif ``volatile``. Lorsqu'une variable est ``volatile``, cela indique au compilateur qu'il doit recharger la variable de la mémoire chaque fois qu'elle est utilisée.
+	Les premiers compilateurs C avaient pris en compte un problème similaire. Lorsqu'un programme ou un système d'exploitation interagit avec des dispositifs d'entrée-sortie, cela se fait parfois en permettant au dispositif d'écrire directement en mémoire à une adresse connue par le système d'exploitation. La valeur présente à cette adresse peut donc être modifiée par le dispositif d'entrée-sortie sans que le programme ne soit responsable de cette modification. Face à ce problème, les inventeurs du langage C ont introduit le qualificatif ``volatile``. Lorsqu'une variable est ``volatile``, cela indique au compilateur qu'il doit recharger la variable de la mémoire chaque fois qu'elle est utilisée.
 
-Pour bien comprendre l'impact de ce qualificatif, il est intéressant d'analyser le code assembleur généré par un compilateur C dans l'exemple suivant.
+	Pour bien comprendre l'impact de ce qualificatif, il est intéressant d'analyser le code assembleur généré par un compilateur C dans l'exemple suivant.
 
-.. code-block:: c
 
-    int x=1;
-    int v[2];
+	.. code-block:: c
+	    int x=1;
+	    int v[2];
+	    void f(void ) {
+	      v[0]=x;
+	      v[1]=x;
+	    }
 
-    void f(void ) {
-      v[0]=x;
-      v[1]=x;
-    }
+	Dans ce cas, la fonction ``f`` est traduite en la séquence d'instructions suivante :
 
-Dans ce cas, la fonction ``f`` est traduite en la séquence d'instructions suivante :
+	.. code-block:: nasm
+	   f:
+		movl	x, %eax
+		movl	%eax, v
+		movl	%eax, v+4
+		ret
+	Si par contre la variable ``x`` est déclarée comme étant ``volatile``, le compilateur ajoute une instruction ``movl x, %eax`` qui permet de recharger la valeur de ``x`` dans un registre avant la seconde utilisation.
 
-.. code-block:: nasm
+	.. code-block:: nasm
+	   f:
+		movl	x, %eax
+		movl	%eax, v
+		movl	x, %eax
+		movl	%eax, v+4
+		ret
 
-   f:
- 	movl	x, %eax
-	movl	%eax, v
-	movl	%eax, v+4
-	ret
-
-Si par contre la variable ``x`` est déclarée comme étant ``volatile``, le compilateur ajoute une instruction ``movl x, %eax`` qui permet de recharger la valeur de ``x`` dans un registre avant la seconde utilisation.
-
-.. code-block:: nasm
-
-   f:
-	movl	x, %eax
-	movl	%eax, v
-	movl	x, %eax
-	movl	%eax, v+4
-	ret
-
-Le qualificatif ``volatile`` force le compilateur à recharger la variable depuis la mémoire avant chaque utilisation. Ce qualificatif est utile lorsque le contenu stocké à une adresse mémoire peut être modifié par une autre source que le programme lui-même. C'est le cas dans les threads, mais marquer les variables partagées par des threads comme ``volatile`` ne suffit pas. Si ces variables sont modifiées par certains threads, il est nécessaire d'utiliser des :term:`mutex` ou d'autres techniques de coordination pour réguler l'accès en ces variables partagées. En pratique, la documentation du programme devra spécifier quelles variables sont partagées entre les threads et la technique de coordination éventuelle qui est utilisée pour en réguler les accès. L'utilisation du qualificatif ``volatile`` permet de forcer le compilateur à recharger le contenu de la variable depuis la mémoire avant toute utilisation. C'est une règle de bonne pratique qu'il est utile de suivre. Il faut cependant noter que dans l'exemple ci-dessus, l'utilisation du qualificatif ``volatile`` augmente le nombre d'accès à la mémoire et peut donc dans certains cas réduire les performances.
-
+	Le qualificatif ``volatile`` force le compilateur à recharger la variable depuis la mémoire avant chaque utilisation. Ce qualificatif est utile lorsque le contenu stocké à une adresse mémoire peut être modifié par une autre source que le programme lui-même. C'est le cas dans les threads, mais marquer les variables partagées par des threads comme ``volatile`` ne suffit pas. Si ces variables sont modifiées par certains threads, il est nécessaire d'utiliser des :term:`mutex` ou d'autres techniques de coordination pour réguler l'accès en ces variables partagées. En pratique, la documentation du programme devra spécifier quelles variables sont partagées entre les threads et la technique de coordination éventuelle qui est utilisée pour en réguler les accès. L'utilisation du qualificatif ``volatile`` permet de forcer le compilateur à recharger le contenu de la variable depuis la mémoire avant toute utilisation. C'est une règle de bonne pratique qu'il est utile de suivre. Il faut cependant noter que dans l'exemple ci-dessus, l'utilisation du qualificatif ``volatile`` augmente le nombre d'accès à la mémoire et peut donc dans certains cas réduire les performances. 
 
 Variables spécifiques à un thread
 ---------------------------------
@@ -368,41 +364,6 @@ La fonction `strerror_r(3)`_ évite ce problème de tableau statique en utilisan
 
 Lorsque l'on intègre des fonctions provenant de la librairie standard ou d'une autre librairie dans un programme découpé en threads, il est important de vérifier que les fonctions utilisées sont bien :term:`thread-safe`. La page de manuel `pthreads(7)`_ liste les fonctions qui ne sont pas :term:`thread-safe` dans la librairie standard.
 
-.. spelling::
-
-   Gene
-   Amdahl
-
-Loi de Amdahl
-=============
-
-En découpant un programme en threads, il est théoriquement possible d'améliorer les performances du programme en lui permettant d'exécuter plusieurs threads d'exécution simultanément. Dans certains cas, la découpe d'un programme en différents threads est naturelle et relativement facile à réaliser. Dans d'autres cas, elle est nettement plus compliquée. Pour s'en convaincre, il suffit de considérer un grand tableau contenant plusieurs centaines de millions de nombres. Considérons un programme simple qui doit trouver dans ce tableau quel est l'élément du tableau pour lequel l'application d'une fonction complexe ``f`` donne le résultat minimal. Une implémentation purement séquentielle se contenterait de parcourir l'entièreté du tableau et d'appliquer la fonction ``f`` à chacun des éléments. A la fin de son exécution, le programme retournera l'élément qui donne la valeur minimale. Un tel problème est très facile à découper en threads. Il suffit de découper le tableau en ``N`` sous-tableaux, de lancer un thread de calcul sur chaque sous-tableau et ensuite de fusionner les résultats de chaque thread.
-
-Un autre problème est de trier le contenu d'un tel tableau dans l'ordre croissant. De nombreux algorithmes séquentiels de tri existent pour ordonner un tableau. La découpe de ce problème en thread est nettement moins évidente que dans le problème précédent et les algorithmes de tri adaptés à une utilisation dans plusieurs threads ne sont pas une simple extension des algorithmes séquentiels.
-
-Dans les années 1960s, à l'époque des premières réflexions sur l'utilisation de plusieurs processeurs pour résoudre un problème, Gene Amdahl [Amdahl1967]_ a analysé quelles étaient les gains que l'on pouvait attendre de l'utilisation de plusieurs processeurs. Dans sa réflexion, il considère un programme ``P`` qui peut être découpé en deux parties :
-
- - une partie purement séquentielle. Il s'agit par exemple de l'initialisation de l'algorithme utilisé, de la collecte des résultats, ...
- - une partie qui est peut être parallélisée. Il s'agit en général du coeur de l'algorithme.
-
-Plus les opérations réalisées à l'intérieur d'un programme sont indépendantes entre elles, plus le programme fonction en parallèle et inversement. Pour Amdahl, si le temps d'exécution d'un programme séquentiel est `T` et qu'une fraction `f` de ce programme peut être parallélisée, alors le gain qui peut être obtenu de la parallélisation est :math:`\frac{T}{T \times( (1-f)+\frac{f}{N})}=\frac{1}{ (1-f)+\frac{f}{N}}` lorsque le programme est découpé en `N` threads. Cette formule, connue sous le nom de la :term:`loi de Amdahl` fixe une limite théorique sur le gain que l'on peut obtenir en parallélisant un programme. La figure ci-dessous [#famdahl]_ illustre le gain théorique que l'on peut obtenir en parallélisant un programme en fonction du nombre de processeur et pour différentes fractions parallélisées.
-
-.. figure:: /Threads/figures/500px-AmdahlsLaw.png
-   :align: center
-   :scale: 80
-
-   Loi de Amdahl (source `wikipedia <http://en.wikipedia.org/wiki/Amdahl's_law>`_)
-
-.. spelling::
-
-   profiling
-
-La loi de Amdahl doit être considérée comme un maximum théorique qui est difficile d'atteindre. Elle suppose que la parallélisation est  parfaite, c'est-à-dire que la création et la terminaison de threads n'ont pas de coût en terme de performance. En pratique, c'est loin d'être le cas et il peut être difficile d'estimer a priori le gain qu'une parallélisation permettra d'obtenir. En pratique, avant de découper un programme séquentiel en threads, il est important de bien identifier la partie séquentielle et la partie du programme pouvant être parallélisée. Si la partie séquentielle est trop importante, le gain dû à la parallélisation risque d'être faible. Si par contre la partie purement séquentielle est faible, il est possible d'obtenir théoriquement des gains élevés. Le tout sera de trouver des solutions efficaces qui permettront aux threads de fonctionner le plus indépendamment possible.
-
-En pratique, avant de s'attaquer à la découpe d'un programme séquentiel en threads, il est important de bien comprendre quelles sont les parties du programme qui sont les plus consommatrices de temps CPU. Ce seront souvent les boucles ou les grandes structures de données. Si le programme séquentiel existe, il est utile d'analyser son exécution avec des outils de `profiling` tels que `gprof(1)`_  [Graham+1982]_ ou `oprofile <http://oprofile.sourceforge.net/>`_. Un profiler est un logiciel qui permet d'analyser l'exécution d'un autre logiciel de façon à pouvoir déterminer notamment quelles sont les fonctions ou parties du programmes les plus exécutées. Ces parties de programme sont celles sur lesquelles l'effort de parallélisation devra porter en pratique.
-
-Dans un programme découpé en threads, toute utilisation de fonctions de coordination comme des sémaphores ou des mutex, bien qu'elle soit nécessaire pour la correction du programme, risque d'avoir un impact négatif sur les performances. Pour s'en convaincre, il est intéressant de réfléchir au problème des producteurs-consommateurs. Il correspond à de nombreux programmes réels. Les performances d'une implémentation du problème des producteurs consommateurs dépendront fortement de la taille du buffer entre les producteurs et les consommateurs et de leur nombre et/ou vitesses relatives. Idéalement, il faudrait que le buffer soit en moyenne rempli à moitié. De cette façon, chaque producteur pourra déposer de l'information dans le buffer et chaque consommateur pourra en retirer. Si le buffer est souvent vide, cela indique que les consommateurs sont plus rapides que les producteurs. Ces consommateurs risquent d'être inutilement bloqués, ce qui affectera les performances. Il en va de même si le buffer était plein. Dans ce cas, les producteurs seraient souvent bloqués.
-
 .. rubric:: Footnotes
 
 .. [#fSysV] Les systèmes Unix supportent également des sémaphores dits `System V` du nom de la version de Unix dans laquelle ils ont été introduits. Dans ces notes, nous nous focalisons sur les sémaphores POSIX qui ont une API un peu plus simple que les es sémaphores `System V`. Les principales fonctions pour les sémaphores `System V` sont `semget(3posix)`_, `semctl(3posix)`_ et `semop(3posix)`_.
@@ -413,7 +374,3 @@ Dans un programme découpé en threads, toute utilisation de fonctions de coordi
 .. [#fstrerror] Cette implémentation est adaptée de http://opensource.apple.com/source/gcc/gcc-926/libiberty/strerror.c et est dans le domaine public.
 
 .. [#fstrerror_r] Cette implémentation est adaptée de https://www-asim.lip6.fr/trac/netbsdtsar/browser/vendor/netbsd/5/src/lib/libc/string/strerror_r.c?rev=2 et est `Copyright (c) 1988 Regents of the University of California.`
-
-.. [#famdahl] Source : http://en.wikipedia.org/wiki/Amdahl's_law
-
-

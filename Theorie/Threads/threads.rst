@@ -7,6 +7,8 @@
 Utilisation de plusieurs threads
 ================================
 
+.. todo: remove assembly code
+
 Les performances des microprocesseurs se sont continuellement améliorées depuis les années 1960s. Cette amélioration a été possible grâce aux progrès constants de la micro-électronique qui a permis d'assembler des microprocesseurs contenant de plus en plus de transistors sur une surface de  plus en plus réduite. La figure [#ftransistors]_ ci-dessous illustre bien cette évolution puisqu'elle représente le nombre de transistors par microprocesseur en fonction du temps.
 
 .. spelling::
@@ -15,7 +17,7 @@ Les performances des microprocesseurs se sont continuellement améliorées depui
    intel
 
 
-.. figure:: /Threads/figures/534px-Transistor_Count_and_Moore's_Law_-_2011.png
+.. figure:: /_static/figures/Threads/figures/534px-Transistor_Count_and_Moore's_Law_-_2011.png
    :align: center
 
    Evolution du nombre de transistors par microprocesseur
@@ -25,7 +27,7 @@ Cette évolution avait été prédite par Gordon Moore dans les années 1960s [S
 
 Le fonctionnement d'un microprocesseur est régulé par une horloge. Celle-ci rythme la plupart des opérations du processeur et notamment le chargement des instructions depuis la mémoire. Pendant de nombreuses années, les performances des microprocesseurs ont fortement dépendu de leur vitesse d'horloge. Les premiers microprocesseurs avaient des fréquences d'horloge de quelques centaines de :term:`kHz`. A titre d'exemple, le processeur intel 4004 avait une horloge à 740 kHz en 1971. Aujourd'hui, les processeurs rapides dépassent la fréquence de 3 :term:`GHz`. La figure ci-dessous présente l'évolution de la fréquence d'horloge des microprocesseurs depuis les années 1970s [#fperf]_. On remarque une évolution rapide jusqu'aux environs du milieu de la dernière décennie. La barrière des 10 MHz a été franchie à la fin des années 1970s. Les 100 :term:`MHz` ont étés atteints en 1994 et le GHz aux environs de l'an 2000.
 
-.. figure:: /Threads/figures/figures-001-c.png
+.. figure:: /_static/figures/Threads/figures/figures-001-c.png
    :align: center
 
    Evolution de la vitesse d'horloge des microprocesseurs
@@ -43,7 +45,7 @@ Si pendant longtemps la fréquence d'horloge d'un microprocesseur a été une bo
 Une autre façon de mesurer les performances d'un microprocesseur est de comptabiliser le nombre d'instructions qu'il exécute par seconde. On parle en général de Millions d'Instructions par Seconde (ou :term:`MIPS`). Si les premiers microprocesseurs effectuaient moins de 100.000 instructions par seconde, la barrière du MIPS a été franchie en 1979. Mesurées en MIPS, les performances des microprocesseurs ont continué à augmenter durant les dernières années malgré la barrière des 3 GHz comme le montre la figure ci-dessous.
 
 
-.. figure:: /Threads/figures/figures-002-c.png
+.. figure:: /_static/figures/Threads/figures/figures-002-c.png
    :align: center
 
    Evolution des performances des microprocesseurs en MIPS
@@ -53,7 +55,7 @@ Une autre façon de mesurer les performances d'un microprocesseur est de comptab
    Evaluation
    benchmark
    benchmarks
-   
+
 .. note:: Evaluation des performances de systèmes informatiques
 
  La fréquence d'horloge d'un processeur et le nombre d'instructions qu'il est capable d'exécuter chaque seconde ne sont que quelques uns des paramètres qui influencent les performances d'un système informatique qui intègre ce processeur. Les performances globales d'un système informatique dépendent de nombreux autres facteurs comme la capacité de mémoire et ses performances, la vitesse des bus entre les différents composants, les performances des dispositifs de stockage ou des cartes réseaux. Les performances d'un système dépendront aussi fortement du type d'application utilisé. Un serveur web, un serveur de calcul scientifique et un serveur de bases de données n'auront pas les mêmes contraintes en termes de performance. L'évaluation complète des performances d'un système informatique se fait généralement en utilisant des benchmarks. Un :term:`benchmark` est un ensemble de logiciels qui reproduisent le comportement de certaines classes d'applications de façon à pouvoir tester les performances de systèmes informatiques de façon reproductible. Différents organismes publient de tels benchmarks. Le plus connu est probablement `Standard Performance Evaluation Corporation <http://www.spec.org>`_ qui publie des benchmarks et des résultats de benchmarks pour différents types de systèmes informatiques et d'applications.
@@ -64,7 +66,9 @@ Cette progression continue des performances en MIPS a été possible grâce à l
 
 
 
-La notion de thread d'exécution est très importante dans un système informatique. Elle permet non seulement de comprendre comme un ordinateur équipé d'un seul microprocesseur peut exécuter plusieurs programmes simultanément, mais aussi comment des programmes peuvent profiter des nouveaux processeurs capables d'exécuter plusieurs threads simultanément. Pour comprendre cette notion, il est intéressant de revenir à nouveau sur l'exécution d'une fonction en langage assembleur. Considérons la fonction ``f`` :
+La notion de thread d'exécution est très importante dans un système informatique. Elle permet non seulement de comprendre comme un ordinateur équipé d'un seul microprocesseur peut exécuter plusieurs programmes simultanément, mais aussi comment des programmes peuvent profiter des nouveaux processeurs capables d'exécuter plusieurs threads simultanément. 
+.. Pour comprendre cette notion, il est intéressant de revenir à nouveau sur l'exécution d'une fonction en langage assembleur. 
+Considérons la fonction ``f`` :
 
  .. code-block:: c
 
@@ -78,49 +82,55 @@ La notion de thread d'exécution est très importante dans un système informati
     return m;
   }
 
-En assembleur, cette fonction se traduit en :
+  
+..
+	En assembleur, cette fonction se traduit en :
 
+	.. code-block:: nasm
+		f:
+		subl	$16, %esp
+		movl	24(%esp), %eax
+		movl	20(%esp), %ecx
+		movl	%ecx, 12(%esp)
+		movl	%eax, 8(%esp)
+		movl	$0, 4(%esp)
+		movl	$0, (%esp)
+		.LBB0_1:
+		movl	(%esp), %eax
+		cmpl	8(%esp), %eax
+		jge	.LBB0_3
 
-.. code-block:: nasm
+		movl	12(%esp), %eax
+		movl	4(%esp), %ecx
+		addl	%eax, %ecx
+		movl	%ecx, 4(%esp)
+		movl	(%esp), %eax
+		addl	$1, %eax
+		movl	%eax, (%esp)
+		jmp	.LBB0_1
+		.LBB0_3:
+		movl	4(%esp), %eax
+		addl	$16, %esp
+		ret
 
-    f:
-	subl	$16, %esp
-	movl	24(%esp), %eax
-	movl	20(%esp), %ecx
-	movl	%ecx, 12(%esp)
-	movl	%eax, 8(%esp)
-	movl	$0, 4(%esp)
-	movl	$0, (%esp)
-   .LBB0_1:
-	movl	(%esp), %eax
-	cmpl	8(%esp), %eax
-	jge	.LBB0_3
+		.. il faut non seulement qu'il implémente chacune de ces instructions, mais également qu'il puisse accéder :
 
-	movl	12(%esp), %eax
-	movl	4(%esp), %ecx
-	addl	%eax, %ecx
-	movl	%ecx, 4(%esp)
-	movl	(%esp), %eax
-	addl	$1, %eax
-	movl	%eax, (%esp)
-	jmp	.LBB0_1
-   .LBB0_3:
-	movl	4(%esp), %eax
-	addl	$16, %esp
-	ret
+		
 
-
-Pour qu'un processeur puisse exécuter cette séquence d'instructions, il faut non seulement qu'il implémente chacune de ces instructions, mais également qu'il puisse accéder :
+Pour qu'un processeur puisse exécuter cette séquence d'instructions, il faut qu'il puisse accéder :
 
  - à la mémoire contenant les instructions à exécuter
  - à la mémoire contenant les données manipulées par cette séquence d'instruction. Pour rappel, cette mémoire est divisée en plusieurs parties :
 
     - la zone contenant les variables globales
-    - le tas
+    - le tas 
     - la pile
 
- - aux registres et plus particulièrement, il doit accéder :
 
+ - aux registres, des zones de mémoire très rapide (mais peu nombreuses) se trouvant sur le processeur qui permettent de stocker entre autres : l'adresse de l'instruction à exécuter, des résultats intermédiaires obtenus durant l'exécution d'un instruction ou encore des informations sur la pile.
+   
+.. et plus particulièrement, il doit accéder :
+..
     - aux registres de données pour stocker les résultats de chacune des instructions
     - au registre ``%esp`` directement ou indirectement via les instructions ``push`` et ``pop`` qui permettent de manipuler la pile
     - au registre ``%eip`` qui contient l'adresse de l'instruction en cours d'exécution
@@ -129,7 +139,7 @@ Pour qu'un processeur puisse exécuter cette séquence d'instructions, il faut n
 .. spelling::
 
    multithreadé
-      
+
 Un processeur `multithreadé` a la capacité d'exécuter plusieurs programmes simultanément. En pratique, ce processeur disposera de plusieurs copies des registres. Chacun de ces blocs de registres pourra être utilisé pour exécuter ces programmes simultanément à raison d'un thread d'exécution par bloc de registres. Chaque thread d'exécution va correspondre à une séquence différente d'instructions qui va modifier son propre bloc de registres. C'est grâce à cette capacité d'exécuter plusieurs threads d'exécution simultanément que les performances en :term:`MIPS` des microprocesseurs ont pu continuer à croître alors que leur fréquence d'horloge stagnait.
 
 Cette capacité d'exécuter plusieurs threads d'exécution simultanément n'est pas limitée à un thread d'exécution par programme. Sachant qu'un thread d'exécution n'est finalement qu'une séquence d'instructions qui utilisent un bloc de registres, il est tout à fait possible à plusieurs séquences d'exécution appartenant à un même programme de s'exécuter simultanément. Si on revient à la fonction assembleur ci-dessus, il est tout à fait possible que deux invocations de cette fonction s'exécutent simultanément sur un microprocesseur. Pour démarrer une telle instance, il suffit de pouvoir initialiser le bloc de registres nécessaire à la nouvelle instance et ensuite de démarrer l'exécution à la première instruction de la fonction. En pratique, cela nécessite la coopération du système d'exploitation. Différents mécanismes ont été proposés pour permettre à un programme de lancer différents threads d'exécution. Aujourd'hui, le plus courant est connu sous le nom de threads POSIX. C'est celui que nous allons étudier en détail, mais il en existe d'autres.
@@ -223,4 +233,3 @@ Concernant `pthread_join(3)`_, le code ci-dessus illustre la récupération du r
 .. [#ftransistors] Source : http://en.wikipedia.org/wiki/File:Transistor_Count_and_Moore%27s_Law_-_2011.svg
 
 .. [#fperf] Plusieurs sites web recensent cette information, notamment http://www.intel.com/pressroom/kits/quickreffam.htm, http://en.wikipedia.org/wiki/List_of_Intel_microprocessors et http://en.wikipedia.org/wiki/Instructions_per_second
-
