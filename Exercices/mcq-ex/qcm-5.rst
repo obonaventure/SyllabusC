@@ -6,7 +6,7 @@
 Questions à choix multiples
 ===========================
 
-:task_id: sinf1252-9
+:task_id: lepl1503-5
 
 La matière couverte cette semaine porte sur le système de fichiers et sa manipulation par les processus.
 
@@ -208,7 +208,7 @@ Question 3. Permissions sur les fichiers
 
 
       - Le fichier ayant ``00666`` comme permissions est exécutable par n'importe quel utilisateur
-      - Le fichier ayant ``00400`` comme permissions est modificale par son propriétaire
+      - Le fichier ayant ``00400`` comme permissions est modifiable par son propriétaire
       - Le fichier ayant ``00400`` comme permissions ne peut être lu que par son propriétaire
 
       .. comment::
@@ -290,57 +290,7 @@ Les bits de permissions associés à un fichiers sont généralement représent�
          Relisez la page de manuel de `chmod(1)`_
 
 
-Question 5. Système de fichiers
--------------------------------
-
-.. question:: inodes
-   :nb_prop: 3 
-   :nb_pos: 1 
-
-
-   Le système de fichiers Unix utilise des `inode` pour stocker les meta-données relatives à un fichier/répertoire. Parmi les groupes d'affirmations suivants, un seul est correct. Lequel ?
-
-   .. positive::
-
-
-      - deux fichiers se trouvant dans des répertoires différents sur le même disque peuvent avoir le même `inode`
-      - le champ ``nlinks`` est toujours positif
-      - un accès au fichier modifie le ``atime`` associé à ce fichier
-
-
-   .. negative::
-
-
-      - deux fichiers ont toujours des `inode` différents
-      - l'`inode` contient le nom du fichier
-      - une écriture dans un fichier modifie le ``mtime`` associé à ce fichier
-
-      .. comment::
-
-         Les deux premières affirmations sont fausses.
-
-
-   .. negative::
-
-      - un fichier et un répertoire se trouvant sur le même disque peuvent avoir le même `inode`
-      - une lecture dans un fichier modifie le ``mtime`` associé à ce fichier
-      - l'`inode` contient le nom du fichier
-
-      .. comment::
-
-         Toutes les affirmations sont fausses.
-
-   .. negative::
-
-      - une copie d'un fichier incrémente la valeur du champ ``nlinks`` de son `inode`
-      - une lecture dans un fichier modifie le ``atime`` associé à ce fichier
-      - il n'y a jamais deux fichiers qui ont le même `inode`
-
-      .. comment::
-
-         La première et la troisième affirmation sont fausses.
-
-Question 6. Manipulation des répertoires
+Question 5. Manipulation des répertoires
 ----------------------------------------
 
 Les répertoires sont des fichiers spéciaux. Pour les utiliser, il faut faire appel aux fonctions `opendir(3)`_, `readdir(3)`_  et `closedir(3)`_. 
@@ -470,65 +420,4 @@ Les répertoires sont des fichiers spéciaux. Pour les utiliser, il faut faire a
       .. comment::
 
          Ce code est erroné. `opendir(3)`_ retourne un pointeur et `readdir(3)`_ également.
-
-
-Question 7. Liens symboliques
------------------------------
-
-Considérons un répertoire dans lequel les commandes suivantes sont exécutées :
-
-.. code-block:: console
-
-   touch a
-   cp a b
-   ln a c
-   ln b d
-   echo "test" > c
-   ln -s  d e
-   echo essai > e
-
-
-.. question:: liens
-   :nb_prop: 3
-   :nb_pos: 1
-
-   Après exécution de ces commandes, un seul des groupes d'affirmations suivant est correct. Lequel ?
-
-   .. positive::
-
-
-      - les fichiers ``a`` et ``c`` ont le même `inode`
-      - les fichiers ``b`` et ``d`` ont la même taille
-      - l'`inode` correspondant au fichier ``d`` indique qu'il y a deux liens vers lui
-
-   .. positive::
-
-
-      - les fichiers ``d`` et ``e`` ont des `inode` différents
-      - les fichiers ``a`` et ``c`` ont la même taille
-      - l'`inode` correspondant au fichier ``b`` indique qu'il y a deux liens vers lui
-
-
-   .. negative::
-
-
-      - les fichiers ``a`` et ``c`` ont des `inode` différents
-      - les fichiers ``e`` et ``d`` ont la même taille
-      - l'`inode` correspondant au fichier ``d`` indique qu'il y a trois liens vers lui
-
-   .. negative::
-
-      - les fichiers ``a`` et ``d`` ont des `inode` différents
-      - les fichiers ``b`` et ``d`` ont la même taille
-      - l'`inode` correspondant au fichier ``b`` indique qu'il y a trois liens vers lui
-
-      .. comment::
-
-         Il y a deux liens (hard) vers le fichier ``b``. Le fichier ``e`` est un lien symbolique vers ce fichier et non un lien `hard`.
-
-   .. negative::
-
-      - les fichiers ``b``, ``d`` et ``e`` ont le même `inode`
-      - les fichiers ``a`` et ``c`` ont la même taille
-      - l'`inode` correspondant au fichier ``a`` indique qu'il y a deux liens vers lui
 

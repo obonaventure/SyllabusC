@@ -25,7 +25,8 @@ import sys, os
 sys.path.append(os.path.abspath('mcq'))
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx','mcq' ]
+
+extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx','mcq','sphinxcontrib.spelling' ] 
 
 
 # mcq
@@ -82,7 +83,7 @@ language = 'fr'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', '.#*', '*/.#*', 'QCM/*' ]
+exclude_patterns = ['_build', '.#*', '*/.#*', 'QCM/*', 'QBF/*' ]
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -113,7 +114,10 @@ rst_epilog = """
 # Intersphinx
 intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SystInfo/notes/Theorie/html/', None), 'outils': ('https://sites.uclouvain.be/SystInfo/notes/Outils/html/', None), 'exercices': ('https://sites.uclouvain.be/SystInfo/notes/Exercices/html/', None)}
 
+# -- Options for Spelling extension ------------------------------------------
 
+spelling_lang='fr'
+spelling_word_list_filename='../dict.txt'
 
 # -- Options for HTML output ---------------------------------------------------
 

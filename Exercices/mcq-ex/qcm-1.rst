@@ -1,11 +1,11 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Copyright |copy| 2012, 2020 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
 Questions à choix multiples
 ===========================
-:task_id: sinf1252-1
+:task_id: lepl1503-1
 
 Ces questions ont pour objectif de vous permettre de tester vous-même votre compréhension de la matière couverte par cette mission de mise en route. Elles supposent que vous avez lu le premier chapitre du syllabus contenant l'introduction à Unix et au langage C.
 
@@ -92,13 +92,19 @@ Question 2. Commande `ls(1)`_
 Question 3. Premier programme en langage C
 ------------------------------------------
 
+.. spelling::
+
+   world
+
 .. question:: hello 
    :nb_prop: 3           
    :nb_pos: 1 
 
 
-   Depuis la publication du livre de référence [KernighanRitchie1998], le premier programme écrit en langage C affiche à l'écran la chaîne de caractères "Hello, world". Parmi les codes source ci-dessous, un seul est entièrement correct. Lequel ?
+   Depuis la publication du livre de référence [KernighanRitchie1998]_, le premier programme écrit en langage C affiche à l'écran la chaîne de caractères "Hello, world". Parmi les codes source ci-dessous, un seul est entièrement correct. Lequel ?
 
+
+   
 
    .. positive::
 
@@ -239,7 +245,7 @@ Question 4. Deuxième programme en langage C
            printf("SINF$a\n", a);
          }
 
-      .. comment:: Dans la fonction `printf(3)`_ en C, et contrairement à d'autres langages, le caractère ``$`` ne joue pas de rÃ´le particulier. Le programme ci-dessus affichera donc simplement ``SINF$a`` à l'écran.
+      .. comment:: Dans la fonction `printf(3)`_ en C, et contrairement à d'autres langages, le caractère ``$`` ne joue pas de rôle particulier. Le programme ci-dessus affichera donc simplement ``SINF$a`` à l'écran.
 
 
 Question 5. Arguments passés à un programme C

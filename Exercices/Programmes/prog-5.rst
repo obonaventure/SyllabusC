@@ -5,22 +5,21 @@
 Exercices INGINIOUS
 -------------------
 
-Les exercices INGINIOUS de cette semaine ont comme objectif de vous familiariser avec
-les appels systèmes `open(2)`_, `close(2)`_, `read(2)`_, `write(2)`_ et `stat(2)`_ qui
-permettent de manipuler les fichiers contenant des données binaires.
+Les exercices INGINIOUS de cette semaine ont comme objectif de vous familiariser avec la manipulation des fichiers contenant des données binaires.
 
-1. Le `premier exercice <https://inginious.info.ucl.ac.be/course/LSINF1252/s5_file_exists>`_ est
+#. Le `premier exercice <https://inginious.info.ucl.ac.be/course/LEPL1503/s5_file_exists>`_ est
 une mise en jambe. En utilisant `open(2)`_ (et `close(2)`_), pouvez-vous vérifier si un
-fichier dont le nom est passé en argument existe ?
+fichier dont le nom est passé en argument existe ? Voir https://inginious.info.ucl.ac.be/course/LEPL1503/s5_file_exists
 
-2. L'avantage des fichiers binaires est qu'il est possible de sauvegarder directement un tableau stocké en mémoire dans le fichier en utilisant `write(2)`_ pour écrire chaque élément du tableau dans un fichier. En lisant les pages de manuel de `write(2)`_, vous verrez même qu'un seul appel à `write(2)`_ peut suffire à sauver tout un tableau dans un fichier. Ecrivez cette `fonction save <https://inginious.info.ucl.ac.be/course/LSINF1252/s4_file_save_struct>`_.
+#. Parfois, il est utile de pouvoir stocker une structure directement dans un fichier. Utilisez `mmap(2)`_ pour cela dans l'exercice https://inginious.info.ucl.ac.be/course/LEPL1503/s5_file_save_struct
 
-3. Un fichier binaire peut être utilisé pour stocker tous les éléments d'un tableau d'entiers. Ecrivez la `fonction sum_file <https://inginious.info.ucl.ac.be/course/LSINF1252/s4_read_file_array_integer>`_ qui prend comme argument un nom de fichier contenant un tel tableau et calcule la somme de tous les entiers stockés dans le fichier. Pensez aux cas d'erreurs possibles si le fichier n'a pas la bonne taille.
+#. Un fichier binaire peut être utilisé pour stocker tous les éléments d'un tableau d'entiers. Ecrivez la `fonction sum_file <https://inginious.info.ucl.ac.be/course/LEPL1503/s5_read_file_array_integer>`_ qui prend comme argument un nom de fichier contenant un tel tableau et calcule la somme de tous les entiers stockés dans le fichier. Pensez aux cas d'erreurs possibles si le fichier n'a pas la bonne taille. Voir https://inginious.info.ucl.ac.be/course/LEPL1503/s5_read_file_array_integer
 
-4. Vous continuez à explorer les fichiers binaires qui permettent de stocker tous les éléments d'un tableau d'entiers. Cette fois-ci vous devez écrire une `première fonction <https://inginious.info.ucl.ac.be/course/LSINF1252/s5_big_array_get_set>`_ pour récupérer la valeur d'un
-élément du tableau stocké dans le fichier et une `seconde fonction <https://inginious.info.ucl.ac.be/course/LSINF1252/s5_big_array_get_set>`_ pour modifier la valeur d'un élément de ce tableau.
 
-5. En ligne de commande, `cp(1)`_ vous permet de copier complètement un fichier quel que soit son contenu. Pouvez-vous implémenter l'équivalent de cette commande dans la `fonction copy <https://inginious.info.ucl.ac.be/course/LSINF1252/s5_file_copy>`_ que vous allez écrire en C.
+#. Vous continuez à explorer les fichiers binaires qui permettent de stocker tous les éléments d'un tableau d'entiers. Cette fois-ci vous devez écrire une `première fonction <https://inginious.info.ucl.ac.be/course/LEPL1503/s5_big_array_get_set>`_ pour récupérer la valeur d'un
+élément du tableau stocké dans le fichier et une `seconde fonction <https://inginious.info.ucl.ac.be/course/LEPL1503/s5_big_array_get_set>`_ pour modifier la valeur d'un élément de ce tableau. Voir https://inginious.info.ucl.ac.be/course/LEPL1503/s5_big_array_get_set
+
+#. En ligne de commande, `cp(1)`_ vous permet de copier complètement un fichier quel que soit son contenu. Pouvez-vous implémenter l'équivalent de cette commande dans la `fonction copy <https://inginious.info.ucl.ac.be/course/LEPL1503/s5_file_copy>`_ que vous allez écrire en C. Voir https://inginious.info.ucl.ac.be/course/LEPL1503/s5_file_copy
 
 
 
@@ -106,7 +105,7 @@ Exercices
 
      A forcer l'écriture des données sur le disque
 
-8. Le programme :download:`/Programmes/src/writeperf.c` permet de tester les performances des écritures dans write sur un système de fichiers. Compilez-le et exécutez le avec différents tailles de buffers passés à `write(2)`_. Mesurez le temps d'exécution avec la commande `time(1posix)`_ et comparez le temps qu'il faut pour écrire 100MB en blocs de 1 MB ou en blocs de 1 KB. Faites de même en activant la synchronisation avec le paramètre ``-s``.
+8. Le programme :download:`/Programmes/src/writeperf.c` permet de tester les performances des écritures sur un système de fichiers. Compilez-le et exécutez le avec différents tailles de buffers passés à `write(2)`_. Mesurez le temps d'exécution avec la commande `time(1posix)`_ et comparez le temps qu'il faut pour écrire 100MB en blocs de 1 MB ou en blocs de 1 KB. Faites de même en activant la synchronisation avec le paramètre ``-s``.
 
   .. only:: staff
 
@@ -114,54 +113,8 @@ Exercices
 
 .. only:: staff
 
-   15. Effectuez l'exercice sur la manipulation de fichiers sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252/fichiers>`_.
+   15. Effectuez l'exercice sur la manipulation de fichiers sur `INGInious <https://inginious.info.ucl.ac.be/course/LEPL1503/fichiers>`_.
 
 .. 17. `tee(1)`_ est un utilitaire qui permet de recopier son entrée standard vers un ou plusieurs fichiers et également vers sa sortie standard. Il peut être utile pour par exemple inspecter des données échangées entre deux processus à travers un :term:`pipe`. Quels sont les appels systèmes exécutés par `tee(1)`_ lors de l'exécution de la commande ``cat /tmp/t | tee /tmp/tee.out | grep "sinf1252" ``
 
 
-Questions de bilan final
-------------------------
-
-Un système informatique est utilisé par 3 utilisateurs: ``quentin``, ``brigitte`` and ``françois``. Ils appartiennent à des groupes différents comme décrit ci-dessous.
-
-.. code-block:: bash
-
-   $ groups quentin
-   quentin : quentin boys
-
-   $ groups brigitte
-   brigitte: brigitte girls sudo wheel
-
-   $ groups françois
-   françois: françois boys
-
-#. ``quentin`` ouvre le fichier ``/shared_folder/petit_projet.c`` en utilisant les drapeaux ``O_CREAT | O_RDWR | O_TRUNC``, donne les permissions ``664``, l'associe au groupe ``boys`` et écrit le code de son projet dedans.
-
-   #. Quelles sont les permissions que doit avoir ``/shared_folder`` pour que ``françois`` et ``brigitte`` puissent accéder au fichier ``petit_projet.c``?
-
-
-   #. ``brigitte``, de son côté, lance ensuite les commandes suivantes.
-   
-      .. code-block:: bash
-
-         $ sudo chown brigitte:girls /shared_folder/petit_projet.c
-         $ chmod 660 /shared_folder/petit_projet.c
-
-      ``quentin`` veut maintenant sauvegarder son travail avec l'appel système ``write(2)`` sur le file descriptor obtenu avec le ``open(2)`` précédent, et puis le ferme avec ``close(2)``. Que se passe-t-il?
-
-   #. ``françois`` aimerait aussi rajouter son nom sur le projet et ouvre le fichier avec ``open(2)`` avec le drapeau ``O_WRONLY`` pour ensuite utiliser ``write(2)``. Que se passe-t-il?
-
-   #. Finalement, ``quentin`` souhaite relire son code et fait appel à ``open(2)`` avec le drapeau ``O_RDONLY``, pour ensuite utiliser ``read(2)``. Que se passe-t-il?
-
-
-#. Considérons le fichier ``/shared_folder/music.mp3`` avec les permissions ``644`` possédé par ``françois`` et associé au groupe ``boys``.
-
-   #. Est-ce que ``quentin`` peut écouter le morceau? Qu'en est-il pour ``brigitte``? Quelles sont les permissions requises pour ``/shared_folder`` afin qu'ils y accèdent?
-
-   #. Supposons maintenant que ``quentin`` et ``brigitte`` sont en train d'écouter le morceau MP3. Observant qu'il ne lui reste que peu d'espace disque disponible, ``françois`` supprime le fichier ``/shared_folder/music.mp3`` avec la commande ``rm``.
-
-      #. Que se passe-t-il pour ``brigitte`` et ``quentin``?
-
-      #. ``quentin`` ferme ensuite le fichier avec ``close(2)``. Qui a encore accès au fichier?
-
-      #. ``brigitte`` ferme à son tour son file descriptor. Qui a encore accès au fichier?

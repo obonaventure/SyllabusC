@@ -1,11 +1,9 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Copyright |copy| 2012,2020 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 Exercices
 =========
-
-
 
 1. Exercices de manipulation du shell
 -------------------------------------
@@ -27,18 +25,18 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
 #. Créez, dans un nouveau répertoire ``my_dir`` le fichier nommé ``first`` contenant le texte "`Inserer`". Vérifiez chaque étape en utilisant une des commandes `ls(1)`_, `pwd(1)`_ et `cat(1)`_.
 #. Copiez le fichier ``first`` vers ``second`` et ajoutez la ligne "`Retirer`" à ``second``.
 #. Comment pourriez-vous afficher la taille des fichiers avec `ls(1)`_?
-#. Concaténez ``first`` et ``second`` dans un nouveau fichier ``third`` (sans utiliser la command `echo(1)`_)
+#. Concaténez ``first`` et ``second`` dans un nouveau fichier ``third`` (sans utiliser la commande `echo(1)`_)
 #. Utilisez `grep(1)`_ pour afficher le numéro de la ligne sur laquelle se trouve le mot "`Retirer`" dans ``second``.
 #. Retournez dans le répertoire parent de ``my_dir`` et copiez le dossier complet ``my_dir`` dans ``my_dir_2``.
 #. Effacez le dossier entier ``my_dir`` en une seule commande (utilisez `rm(1)`_).
 
-Vous trouverez également sur `le cours LSINF1252 sur inginious <https://inginious.info.ucl.ac.be/course/LSINF1252>`_ les exercices suivants :
+.. Vous trouverez également sur `le cours LEPL1503 sur inginious <https://inginious.info.ucl.ac.be/course/LEPL1503>`_ les exercices suivants :
 
-#. Utilisation de la commande `grep(1)`_ : https://inginious.info.ucl.ac.be/course/LSINF1252/s1_grep
-#. Utilisation des pipes : https://inginious.info.ucl.ac.be/course/LSINF1252/s1_pipes
-#. Utilisation de la commande `tar(1)`_ : https://inginious.info.ucl.ac.be/course/LSINF1252/s1_tar
-#. Capture the flag (1): https://inginious.info.ucl.ac.be/course/LSINF1252/s1_ctf1
-#. Capture the flag (2): https://inginious.info.ucl.ac.be/course/LSINF1252/s1_ctf2
+.. #. Utilisation de la commande `grep(1)`_ : https://inginious.info.ucl.ac.be/course/LSINF1252/s1_grep
+.. #. Utilisation des pipes : https://inginious.info.ucl.ac.be/course/LSINF1252/s1_pipes
+.. #. Utilisation de la commande `tar(1)`_ : https://inginious.info.ucl.ac.be/course/LSINF1252/s1_tar
+.. #. Capture the flag (1): https://inginious.info.ucl.ac.be/course/LSINF1252/s1_ctf1
+.. #. Capture the flag (2): https://inginious.info.ucl.ac.be/course/LSINF1252/s1_ctf2
 
 .. only:: staff
 
@@ -67,17 +65,20 @@ Vous trouverez également sur `le cours LSINF1252 sur inginious <https://inginio
 Certains côtés du C sont très proches du langage Java que vous connaissez déjà. Ce n'est pas surprenant
 puisque Java a été conçu avec le langage C comme base. Les inventeurs de Java ont ajouté tout ce qui 
 était nécessaire pour supporter les objets et ont retiré la gestion explicite de la mémoire. Les premiers
-exercices `inginious en C <https://inginious.info.ucl.ac.be/course/LSINF1252>`_ sont très proches de ceux
+exercices `inginious en C <https://inginious.info.ucl.ac.be/course/LEPL1503>`_ sont très proches de ceux
 que vous aviez réalisé en Java.
 
-#. Calcul de la valeur absolue d'une entier: https://inginious.info.ucl.ac.be/course/LSINF1252/absolute_value
-#. Calcul de la factorielle d'un nombre entier: https://inginious.info.ucl.ac.be/course/LSINF1252/factorial
-#. Recherche d'un élément dans un tableau d'entiers: https://inginious.info.ucl.ac.be/course/LSINF1252/tab_find
+#. Calcul de la valeur absolue d'une entier: https://inginious.info.ucl.ac.be/course/LEPL1503/s1_absolute_value
+#. Calcul de la factorielle d'un nombre entier: https://inginious.info.ucl.ac.be/course/LEPL1503/s1_factorial
+#. Recherche d'un élément dans un tableau d'entiers: https://inginious.info.ucl.ac.be/course/LEPL1503/s1_tab_find
+
 
 #. Compilez et exécutez le code suivant. Expliquez ce que fait l'appel à `printf(3)`_.
 
         .. code-block:: c
-
+			
+		#include <stdio.h>	
+			
                 int f()
                 {
                         int a = 1252;
@@ -106,7 +107,7 @@ que vous aviez réalisé en Java.
 
                         Le programme ne compile plus. Il faut inclure ``stdio.h`` parce que C nécessite d'avoir une déclaration des fonctions.
 
-#. (bonus) comment se fait-il que ``gcc`` compilait sans problème au point `4`?
+#. (bonus) Comment se fait-il que ``gcc`` compilait sans problème au point `4`?
 
         .. only:: staff
 
@@ -168,7 +169,10 @@ que vous aviez réalisé en Java.
                                 ``atoi`` = transforme une chaine de caractère en un entier.
                                 Le programme renvoi une segmentation fault lorsque l'on ne passe pas d'argument. Il faut donc utiliser ``argc`` pour tester que l'on a le bon nombre d'argument.
 
+.. spelling::
 
+   Ecrivez
+   
         .. only:: staff
        
                   #. Ecrivez un programme qui va itérer (avec une boucle ``for`` et une boucle ``while``) et afficher tous les arguments qui lui sont passés à la sortie standard.
@@ -195,7 +199,8 @@ que vous aviez réalisé en Java.
                 $ if ! ./false; then echo "false fonctionne"; fi
                 false fonctionne
 
-   Bash permet aussi de faire des ``else``. Trouvez comment faire en regardant ce `lien <http://tldp.org/LDP/abs/html/tests.html>`_.
+   Le shell `bash(1)`_ permet aussi de faire des ``else``. Trouvez comment faire en regardant ce `lien <http://tldp.org/LDP/abs/html/tests.html>`_.
+   
         .. only:: staff
 
                 .. note::
@@ -222,7 +227,7 @@ que vous aviez réalisé en Java.
 
 .. only:: staff
 
-          #.  Faites l'exercice sur `commandetest <https://inginious.info.ucl.ac.be/course/LSINF1252/commandetest>`_ sur la commande `test(1)`_.
+          #.  Faites l'exercice sur `commandetest <https://inginious.info.ucl.ac.be/course/LEPL1503/commandetest>`_ sur la commande `test(1)`_.
 
               INGInious est un environnement qui permet de soumettre du code, et des tests sont automatiquement exécutés sur ce code. Cela vous permettra de vérifier que votre programme fonctionne.
 
@@ -238,61 +243,3 @@ que vous aviez réalisé en Java.
           
           #. En utilisant le shell et un programme C, essayez de déterminer expérimentalement le nombre maximum d'arguments que vous pouvez passer à un programme C. Y a-t-il une limite à ce nombre d'arguments ? Si oui, d'où vient-elle et de quoi dépend-elle ?
 
-3. Question de bilan final
---------------------------
-
-Le fizz buzz est un programme qui affiche sur la sortie standard pour chaque entier ``n``:
-
-- ``fizz buzz`` si le nombre est divisible par 3 et par 5;
-- ``fizz`` si le nombre est divisible par 3;
-- ``buzz`` si le nombre est divisible par 5;
-- La valeur de ``n`` sinon.
-
-Un étudiant implémente cet algorithme en Bash. Malheureusement, son script comporte plusieurs erreurs.
-Pouvez-vous identifier et corriger les erreurs en question? Son code est disponible ci-dessous.
-
-.. code-block:: bash
-
-        #!/bin/bash
-
-        x=1
-        limit=100
-        if [ ! -z "$1" ]
-        then
-            limit=$1
-        fi
-
-        while [[ $x < "$limit" ]]
-        do
-            if [[0 -eq "($x%3)"  && 0 -eq "($x%5)"]]
-            then
-                # Check if divide by 3 & 5
-                echo "fizz buzz"
-            elif [[0 == "($x%5)"]]
-            then
-                # Check if divide by 5
-                echo "buzz"
-            elif [[0 == "($x%3)"]]
-            then
-                # Check if divide by 3
-                echo "fizz"
-            else
-                echo "$x"
-            fi
-            x=$(( x + 1 ))
-        done
-
-
-Il y a 4 différents groupes d'erreurs. Trois d'entre-eux peuvent être facilement repérés via
-`ShellCheck <https://www.shellcheck.net>`_, un outil de vérification statique de code Bash. L'utilisation
-systématique de ce genre d'outils vous évitera bon nombre d'erreurs fréquentes lors de la rédaction de code.
-
-.. only:: staff
-
-          #. Double crochets qui manque un espace
-
-          #. == au lieu de -eq
-
-          #. ! -z au lieu de -n
-
-          #. < au lieu de -lt . Cette erreur n'est pas détectée par ShellCheck.

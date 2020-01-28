@@ -2,15 +2,15 @@
 .. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
+.. spelling::
 
+   ième
 
 
 Questions à choix multiples
 ===========================
 
-:task_id: sinf1252-2
-
-La matière couverte cette semaine la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`_
+:task_id: lepl1503-2
 
 
 Question 1. Conversion de types

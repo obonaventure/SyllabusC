@@ -2,6 +2,20 @@
 .. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
+   
+
+Exercices Inginious
+===================
+
+
+Pour cette dernière semaine consacrée à l'apprentissage du langage C, nous vous avons préparé quatre exercices Inginious:
+
+ - https://inginious.info.ucl.ac.be/course/LEPL1503/s6_sort_my_points
+ - https://inginious.info.ucl.ac.be/course/LEPL1503/s6_protect_variable
+ - https://inginious.info.ucl.ac.be/course/LEPL1503/s6_do_my_work
+ - https://inginious.info.ucl.ac.be/course/LEPL1503/s6_shared_ressource
+   
+
 
 Exercices
 =========
@@ -12,9 +26,6 @@ Exercices
 
 #. Avec les threads POSIX, comment peut-on passer plusieurs arguments à la fonction démarrée par `pthread_create(3)`_ ? Ecrivez un petit exemple en C qui permet de passer un entier et un caractère à cette fonction.
 
-.. only:: staff
-
-   Ecrivez un code qui permet de récupérer un tableau d'entiers d'un thread. Exercice disponible sur `INGInious threads_1 <https://inginious.info.ucl.ac.be/course/LSINF1252-new/threads_1>`_.
 
 #. Essayez de lancer un grand nombre de threads d'exécution sur votre machine. Quel est le nombre maximum de threads que `pthread_create(3)`_ vous autorise à lancer ?
 
@@ -144,18 +155,69 @@ Exercices
 
 	Discuter les avantages et inconvénients des ces deux solutions. (Regardez la man page de `pthread_mutex_trylock(3posix)`_) 
 
+
+
+#. Un étudiant propose d'implémenter le producteur du problème des producteurs-consommateurs comme ci-dessous :
+
+   .. code-block:: c
+
+      // Producteur
+      void producer(void)
+      {
+         int item;
+         while(true)
+         {
+            item=produce(item);
+            pthread_mutex_lock(&mutex);   // modification
+            sem_wait(&empty);             // modification
+            insert_item();
+            pthread_mutex_unlock(&mutex);
+            sem_post(&full);
+         }
+      }
+
+   Que pensez-vous de cette solution (en supposant que le consommateur continue à fonctionner comme indiqué dans les notes) ?
+
+   .. only:: staff
+
+      On a inversé les locks dans le producteur. Cela peut causer un deadlock puisque le producteur ayant pris mutex, si empty est bloquant, ce qui est le cas lorsque le buffer est vide, le producteur empêchera tout consommateur d'accéder au buffer et donc le système sera en deadlock
+
+#. Un étudiant propose d'implémenter le consommateur du problème des producteurs-consommateurs comme ci-dessous :
+
+   .. code-block:: c
+
+      // Consommateur
+      void consumer(void)
+      {
+        int item;
+        while(true)
+        {
+            sem_wait(&full);
+            pthread_mutex_lock(&mutex);
+            item=remove(item);
+            sem_post(&empty);             // modification
+            pthread_mutex_unlock(&mutex); // modification
+        }
+      }
+
+   Que pensez-vous de sa solution (en supposant que le producteur n'a pas été modifié) ?
+
+   .. only:: staff
+
+      L'ordre des unlock a changé. Ici, cela n'a pas d'impact sur la solution.
+
+
+#. Les mutex et les sémaphores peuvent être utilisés pour résoudre des problèmes d'exclusion mutuelle. Le programme :download:`/QCM/S7/src/pthread-mutex-perf.c` utilise des mutex. Modifiez-le pour utiliser des sémaphores à la place et comparez le coût en termes de performance entre les mutex et les sémaphores.
+
+
+	
 #. L'outil ``helgrind`` (décrit dans la section :ref:`outils:helgrind-ref`) permet de trouver des deadlocks ou autres problèmes. Exécutez-le sur le petit programme suivant :download:`/Programmes/src/pthread-philo.c` et analysez ce qu'il affiche. 
 
-
-
-.. only:: staff
-
-   Résolvez des sudokus. Exercice disponible sur `INGInious sudoku <https://inginious.info.ucl.ac.be/course/LSINF1252-new/sudoku>`_.
 
 Mini-projet: Mesure de performance
 ==================================
 
-On vous demande de transformer un code monothreadé en un code multithreadé. Vous devez vous baser sur le code présent dans l'archive: :download:`/Programmes/src/prog-5-measure/prog-5-measure.tar.gz`. Le programme permet de chiffrer ou déchiffrer des mots de passe passés en argument au programme. Ce dernier prend plusieurs arguments additionels:
+On vous demande de transformer un code monothreadé en un code multithreadé. Vous devez vous baser sur le code présent dans l'archive: :download:`/Programmes/src/prog-5-measure/prog-5-measure.tar.gz`. Le programme permet de chiffrer ou déchiffrer des mots de passe passés en argument au programme. Ce dernier prend plusieurs arguments :
 
     * ``-p`` définit le mot de passe à utiliser
     * ``-n`` définit le nombre de fois que chaque mot de passe est chiffré/déchiffré

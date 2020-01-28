@@ -4,26 +4,26 @@
 
 Questions INGINIOUS
 -------------------
+   
+#. Le premier exercice INGINIOUS porte sur le heap et le stack : https://inginious.info.ucl.ac.be/course/LEPL1503/s3_stack_vs_heap
 
-#. Le premier exercice INGINIOUS porte sur le heap et le stack : https://inginious.info.ucl.ac.be/course/LSINF1252/stack_vs_heap
+#. La question suivante porte sur les déclarations de types de données : https://inginious.info.ucl.ac.be/course/LEPL1503/s3_types
 
-#. `malloc(3)`_ est une fonction clé en C puisqu'elle permet d'allouer une zone de mémoire. Elle a l'inconvénient de ne *pas* initialiser cette mémoire, contrairement à `calloc(3)`_. Lisez les pages de manuel de ces deux fonctions et implémentez vous-même la fonction `calloc(3)`_ en utilisant `malloc(3)`_ : https://inginious.info.ucl.ac.be/course/LSINF1252/calloc2
+#. `strcpy(3)`_ est une fonction de la librairie standard qui permet de copier une chaîne de caractères. Cet exercice vous propose d'écrire une variante de cette fonction : https://inginious.info.ucl.ac.be/course/LEPL1503/s3_strcpy
 
-#. Lorsque l'on utilise les fonctions de la librairie ou les appels systèmes, il est *nécessaire* de vérifier chaque fois leur valeur de retour pour éviter tout problème. Dans cet exercice, vous écrivez une variante de `malloc(3)`_ qui essaye plusieurs fois d'allouer de la mémoire pour pallier à un problème temporaire de manque de mémoire : https://inginious.info.ucl.ac.be/course/LSINF1252/sleep_malloc
+#. Lorsque l'on travaille avec les pointeurs, il est possible d'accéder à n'importe quel endroit de la mémoire. Cet exercice vous permet de tester vos compétences de manipulation des pointeurs: https://inginious.info.ucl.ac.be/course/LEPL1503/s3_pointer_types
 
-#. La question suivante porte sur les déclarations de types de données (faites seulement les 7 premières sous-questions) : https://inginious.info.ucl.ac.be/course/LSINF1252/types
+#. `malloc(3)`_ est une fonction clé en C puisqu'elle permet d'allouer une zone de mémoire. Elle a l'inconvénient de ne *pas* initialiser cette mémoire, contrairement à `calloc(3)`_. Lisez les pages de manuel de ces deux fonctions et implémentez vous-même la fonction `calloc(3)`_ en utilisant `malloc(3)`_ : https://inginious.info.ucl.ac.be/course/LEPL1503/s3_calloc2
 
-#. `strcpy(3)`_ est une fonction de la librairie standard qui permet de copier une chaîne de caractères. Cet exercice vous propose d'écrire une variante de cette fonction : https://inginious.info.ucl.ac.be/course/LSINF1252/strcpy
+#. Lorsque l'on utilise les fonctions de la librairie ou les appels systèmes, il est *nécessaire* de vérifier chaque fois leur valeur de retour pour éviter tout problème. Dans cet exercice, vous écrivez une variante de `malloc(3)`_ qui essaye plusieurs fois d'allouer de la mémoire pour pallier à un problème temporaire de manque de mémoire : https://inginious.info.ucl.ac.be/course/LEPL1503/s3_sleep_malloc
 
-#. Lorsque l'on travaille avec les pointeurs, il est possible d'accéder à n'importe quel endroit de la mémoire. Cet exercice vous permet de tester vos compétences de manipulation des pointeurs: https://inginious.info.ucl.ac.be/course/LSINF1252/pointer_types
+#. Un exercice classique pour montrer que l'on comprend bien les pointeurs est de manipuler des listes chaînées: https://inginious.info.ucl.ac.be/course/LEPL1503/s3_basic_linked_list
 
-#. Un exercice classique pour montrer que l'on comprend bien les pointeurs est de manipuler des listes chainées: https://inginious.info.ucl.ac.be/course/LSINF1252/basic_linked_list
+#. Un exercice sur le parcours simple d'un arbre binaire de recherche https://inginious.info.ucl.ac.be/course/LEPL1503/s3_BST
 
-#. Un exercice sur le parcours simple d'un arbre binaire de recherche https://inginious.info.ucl.ac.be/course/LSINF1252/BST
+.. #. Un exercice où vous devez analyser l'information reçue d'un modem : https://inginious.info.ucl.ac.be/course/LEPL1503/modem_read
 
-#. Un exercice où vous devez analyser l'information reçue d'un modem : https://inginious.info.ucl.ac.be/course/LSINF1252/modem_read
-
-#. Maintenant que vous avez écrit de nombreuses fonctions sur INGINIOUS, il est temps pour vous d'écrire votre premier programme directement en C. Utilisez un éditeur de texte pour écrire le fichier ``test.c`` qui implémente un sous-ensemble du programme standard `test(1)`_. Pensez à structurer votre code en utilisant des sous-fonctions. Compilez votre programme sur votre ordinateur avant de le soumettre sur INGINIOUS. https://inginious.info.ucl.ac.be/course/LSINF1252/commandetest
+#. Maintenant que vous avez écrit de nombreuses fonctions sur INGINIOUS, il est temps pour vous d'écrire votre premier programme directement en C. Utilisez un éditeur de texte pour écrire le fichier ``test.c`` qui implémente un sous-ensemble du programme standard `test(1)`_. Pensez à structurer votre code en utilisant des sous-fonctions. Compilez votre programme sur votre ordinateur et testez-le avant de le soumettre sur INGINIOUS. *Vous ne pouvez faire qu'une soumission par jour, vérifiez le bon fonctionnement de votre programme avant de le soumettre*. https://inginious.info.ucl.ac.be/course/LEPL1503/s3_commandetest
 
 
 
@@ -68,11 +68,11 @@ Questions complémentaires
 
 					L'adresse de ``global`` ne change pas, car elle fait partie du segment texte du programme. Les autres sont soit sur la pile (stack), ou sur le tas (heap).
 
-#. Un étudiant a fait l'implémentation d'un sous-ensemble des fonctions définies dans string.h, mais il rencontre quelques problèmes avec son code :download:`/Programmes/src/string.c`. Utilisez `gdb <http://sites.uclouvain.be/SystInfo/notes/Outils/html/gdb.html>`_ pour corriger son code. Utilisez le flag ``-g`` de ``gcc`` pour ajouter les informations de debug dans votre executable. Pour rappel, voici quelques commandes importantes de `gdb <http://sites.uclouvain.be/SystInfo/notes/Outils/html/gdb.html>`_:
+#. Un étudiant a fait l'implémentation d'un sous-ensemble des fonctions définies dans string.h, mais il rencontre quelques problèmes avec son code :download:`/Programmes/src/string.c`. Utilisez `gdb`_ pour corriger son code. Utilisez le flag ``-g`` de ``gcc`` pour ajouter les informations de debug dans votre programme. Pour rappel, voici quelques commandes importantes de `gdb` :
 
-   - ``run [ARGS]`` permet de lancer l'execution du programme avec les arguments ARGS si spécifiés.
+   - ``run [ARGS]`` permet de lancer l'exécution du programme avec les arguments ARGS si spécifiés.
    - ``break string.c:9`` met un point d'arrêt à la ligne 9 du fichier string.c
-   - ``next`` permet d'executer la ligne courante et de s'arrêter à la ligne suivante
+   - ``next`` permet d'exécuter la ligne courante et de s'arrêter à la ligne suivante
    - ``print var`` affiche la valeur de la variable ``var``
    - ``backtrace`` affiche la pile d'appel des fonctions courantes
    - ``quit`` quitte `gdb <http://sites.uclouvain.be/SystInfo/notes/Outils/html/gdb.html>`_
@@ -97,7 +97,7 @@ Questions complémentaires
 
 		.. only:: staff
 
-		   #. Faites l'exercice relatif aux `linked lists <https://inginious.info.ucl.ac.be/course/LSINF1252/linked_lists_1>`_ sur INGInious.
+		   #. Faites l'exercice relatif aux `linked lists <https://inginious.info.ucl.ac.be/course/LEPL1503/linked_lists_1>`_ sur INGInious.
 
 
 		.. only:: staff
@@ -190,52 +190,3 @@ Questions complémentaires
 							printf("global %p loc %p p1 %p p2 %p\n", &global, &local, ptr1, ptr2);
 							return EXIT_SUCCESS;
 						}
-
-
-Questions de bilan final
-------------------------
-
-#. Lisez attentivement le code suivant et essayez de deviner ce qui sera affiché
-   sur la sortie standard. Ensuite, compilez le code en activant l'option 
-   ``-fno-stack-protector`` de `gcc(1)`_ et exécutez le code. Avez-vous bien
-   deviné ? Comment expliquez-vous les lignes affichées par le programme ?
-
-	   .. code-block:: c
-
-		 		#include <stdlib.h>
-				#include <stdio.h>
-				#include <string.h>
-				#include <stdint.h>
-                                
-				int f() {
-				        uint32_t zero = 0;
-				        char a = 'a';
-				        char b = 'b';
-				        char str[8] = "Hello !";
-				        printf("1) str = \"%s\",\t\tzero = %d,\ta = %c,\tb = %c\n", str, zero, a, b);
-				        strcpy(str, "I love  sour!");
-				        printf("2) str = \"%s\",\tzero = %d,\ta = %c,\tb = %c\n", str, zero, a, b);
-				        a = 'a';
-				        b = 'b';
-				        printf("3) str = \"%s\",\tzero = %d,\ta = %c,\tb = %c\n", str, zero, a, b);
-				        return 0;
-				}
-
-				int main(int argc, char *argv[]) {
-				        return f();
-				}
-
-#. *Question ouverte*. Soit la structure ``pair_t`` suivante :
-
-     .. code-block:: c
-
-        typedef struct pair {
-          int a;
-          int b;
-        } pair_t;
-
-
-   Comment feriez-vous pour stocker dans les
-   variables ``pair_t *p1, *p2`` les pointeurs vers deux instances de ``pair_t``
-   allouées sur le heap de manière contiguë (i.e. les deux structures se suivent
-   directement dans la mémoire) ?

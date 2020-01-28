@@ -1,20 +1,17 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Copyright |copy| 2012,2020 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
 Questions à choix multiples 
 ===========================
 
-:task_id: sinf1252-6
+.. spelling::
 
-Cette semaine porte sur la communication et la synchronisation entre threads. Plus précisément, la matière est décrite dans les deux sections suivantes :
+   safe
+   castée
 
- - :ref:`theorie:threads` (sauf la section `Utilisation d'instruction atomique`)
- - :ref:`theorie:comthreads` (jusqu'à la section `Le problème des philosophes`) 
-
-..  - `Communication entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html>`_
-.. - `Coordination entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html#coordination-entre-threads>`_
+:task_id: lepl1503-6
 
 
 
@@ -244,165 +241,8 @@ Considérons un thread qui a pour objectif de convertir une fraction en un nombr
       .. comment:: Cette variante contient deux erreurs. La première est le prototype de la fonction ``mythread``. Celle-ci doit obligatoirement être de type ``void * fct(void * param)``, il n'est pas possible d'utiliser un autre prototype. Ensuite, l'appel à `pthread_join(3)`_ est incorrect puisque le deuxième argument de `pthread_join(3)`_ doit être de type ``void **`` et non ``void *``.
 
 
-Question 3. Algorithme de Peterson
-----------------------------------
 
-.. question:: peterson
-   :nb_prop: 3
-   :nb_pos: 1
-
-   L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien comprendre son fonctionnement, il est utile de réfléchir à d'autres formulations que celle utilisées dans le syllabus. Parmi les fragments de code ci-dessous, un seul implémente correctement l'algorithme de Peterson. Lequel ?
-
-
-   .. positive::
-
-      .. code-block:: c
-
-         /* initialisation */
-         bool in1 = false;
-         bool in2 = false;
-         int last = 1;
-         // thread 1
-         while (true) {
-           in1 = true;
-           last = 1;
-           while ( in2 &&  (last==1)) {};
-           section_critique();
-           in1=false;
-           // ...
-          }
-          // thread2
-          while (true) {
-           in2 = true;
-           last = 2;
-           while ( in1 &&  (last==2)) {};
-           section_critique();
-           in2=false;
-           // ...
-          }
-
-   .. positive::
-
-      .. code-block:: c
-
-         /* initialisation */
-         bool in1 = false;
-         bool in2 = false;
-         int last = 2;
-         // thread 1
-         while (true) {
-           in1 = true;
-           last = 1;
-           while ( in2 &&  (last==1)) {};
-           section_critique();
-           in1=false;
-           // ...
-          }
-          // thread2
-          while (true) {
-           in2 = true;
-           last = 2;
-           while ( in1 &&  (last==2)) {};
-           section_critique();
-           in2=false;
-           // ...
-          }
-
-   .. negative::
-
-
-      .. code-block:: c
-
-         // initialisation
-         bool in1 = false;
-         bool in2 = false;
-         int last = 1;
-         // thread 1
-         while (true) {
-           in1 = true;
-           last = 1;
-           while ( in1 &&  (last==1)) {};
-           section_critique();
-           in1=false;
-           // ...
-          }
-          // thread2
-          while (true) {
-           in2 = true;
-           last = 2;
-           while ( in2 &&  (last==2)) {};
-           section_critique();
-           in2=false;
-           // ...
-          }
-
-      .. comment::
-
-         Cette solution ne fonctionne pas. Si un des deux threads est seul, il n'entrera jamais en section critique.
-
-   .. negative::
-
-      .. code-block:: c
-
-         // initialisation
-         bool in1 = false;
-         bool in2 = false;
-         int last = 2;
-         // thread 1
-         while (true) {
-           in1 = true;
-           last = 1;
-           while ( in2 &&  (last==2)) {};
-           section_critique();
-           in1=false;
-           // ...
-          }
-          // thread2
-          while (true) {
-           in2 = true;
-           last = 2;
-           while ( in1 &&  (last==1)) {};
-           section_critique();
-           in2=false;
-           // ...
-          }
-
-      .. comment::
-
-         Cette solution ne fonctionne pas. Il est possible que le thread 1 rentre en section critique puis le thread 2 met ``last`` à 2 et peut également y entrer sans que thread 1 n'en soit sorti.
-
-   .. negative::
-
-      .. code-block:: c
-
-         // initialisation
-         bool in1 = false;
-         bool in2 = false;
-         int last = 1;
-         // thread 1
-         while (true) {
-           last = 1;
-           in1 = true;
-           while ( in2 &&  (last==1)) {};
-           section_critique();
-           in1=false;
-           // ...
-          }
-          // thread2
-          while (true) {
-           last = 2;
-           in2 = true;
-           while ( in1 &&  (last==2)) {};
-           section_critique();
-           in2=false;
-           // ...
-          }
-
-      .. comment::
-
-         Cette solution ne fonctionne pas. Il y a un risque de violation de section critique. Si le thread 1 fait ``last=1;`` puis est interrompu avant de faire ``in1=true;``. Le thread 2 exécute alors ``last=2;`` suivi de ``in2=true;``. A cet instant, ``in2==false`` et le thread 2 rentre en section critique puisque ``in1==false``. Le thread 1 se réveille et exécute ``in1=true;``. Il peut ensuite immédiatement entre en section critique puisque ``last`` vaut ``2`` à cet instant.
-
-Question 4. Initialisation de mutex
+Question 3. Initialisation de mutex
 -----------------------------------
 
 .. question:: mutexinit
@@ -501,7 +341,7 @@ Question 4. Initialisation de mutex
 
 
 
-Question 5. Utilisation de `pthread_mutex_lock(3posix)`_ et `pthread_mutex_unlock(3posix)`_
+Question 4. Utilisation de `pthread_mutex_lock(3posix)`_ et `pthread_mutex_unlock(3posix)`_
 -------------------------------------------------------------------------------------------
 
 .. question:: pthread_mutex_lock
@@ -594,7 +434,7 @@ Question 5. Utilisation de `pthread_mutex_lock(3posix)`_ et `pthread_mutex_unloc
 
 
 
-Question 6. Utilisation de plusieurs mutex
+Question 5. Utilisation de plusieurs mutex
 ------------------------------------------
 
 
@@ -719,4 +559,439 @@ Dans certains programmes, il est nécessaire de définir plusieurs mutex qui son
          update(&a,&c,&x,&z);
 
       .. comment:: Lorsqu'un thread utilise plusieurs ressources protégées par un mutex, il est important que les accès à ces mutex se fasse chaque fois dans le même ordre. Dans cet exemple, il faut toujours accéder à ``x`` puis à ``y`` puis à ``z`` (ou un autre ordre). Accéder à ``a``  puis à ``y`` dans le thread A et à ``y`` puis à ``x`` dans le thread B est une source de deadlocks potentiels.
+
+
+
+
+Question 6. Utilisation des sémaphores
+--------------------------------------
+
+.. question:: sem1
+   :nb_prop: 3
+   :nb_pos: 1
+
+   Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Après son utilisation, il doit être détruit. Parmi les séquences d'instructions ci-dessous, une seule initialise correctement un sémaphore à la valeur 1. Laquelle ?
+
+   .. positive::
+
+      .. code-block:: c
+
+           sem_t semaphore;
+
+           sem_init(&semaphore, 0,1);
+
+           // ...
+
+           sem_destroy(&semaphore);
+
+
+   .. positive
+
+      .. code-block:: c
+
+         sem_t *semaphore;
+         semaphore=(sem_t *)malloc(sizeof(struct sem_t));
+         if (semaphore==NULL)
+            error("malloc");
+
+         sem_init(semaphore, 0,1);
+
+         // ...
+
+         sem_destroy(semaphore);
+
+
+   .. negative::
+
+      .. code-block:: c
+
+         sem_t semaphore;
+
+         sem_init(semaphore, 1,0);
+
+         // ...
+
+         sem_destroy(semaphore);
+
+      .. comment::
+
+         `sem_init(3)`_ et `sem_destroy(3)`_ prennent comme premier argument un pointeur vers une structure ``sem_t``. `sem_init(3)`_ prend comme troisième argument la valeur initiale du sémaphore.
+
+   .. negative::
+
+      .. code-block:: c
+
+         sem_t semaphore;
+
+         sem_init(&semaphore, 1,0);
+
+         // ...
+
+         sem_destroy(&semaphore);
+
+      .. comment::
+
+         `sem_init(3)`_ prend comme troisième argument la valeur initiale du sémaphore.
+
+   .. negative::
+
+      .. code-block:: c
+
+         sem_t *semaphore;
+         semaphore=(sem_t *)malloc(sizeof(struct sem_t));
+         if (semaphore==NULL)
+            error("malloc");
+
+         sem_init(semaphore, 1, 0);
+
+         // ...
+
+         sem_destroy(semaphore);
+
+      .. comment::
+
+         `sem_init(3)`_ prend comme troisième argument la valeur initiale du sémaphore.
+
+
+   .. negative::
+
+      .. code-block:: none
+
+         sem_t *semaphore;
+         semaphore=(sem_t *)malloc(sizeof(struct sem_t));
+         if (semaphore==NULL)
+            error("malloc");
+
+         sem_init(semaphore, 1, 0);
+
+         // ...
+
+         sem_destroy(&semaphore);
+
+       .. comment::
+
+          `sem_init(3)`_ prend comme troisième argument la valeur initiale du sémaphore. `sem_destroy(3)`_ prennent comme premier argument un pointeur vers une structure ``sem_t``.
+
+
+Question 7. Exclusion mutuelle
+------------------------------
+
+.. question:: semmutex
+   :nb_prop: 3
+   :nb_pos: 1
+
+   Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des problèmes d'exclusion mutuelle. Parmi les extraits de programmes ci-dessous, une seule est une solution correcte au problème de l'exclusion mutuelle en utilisant des sémaphores. Laquelle ?
+
+   .. positive::
+
+
+      .. code-block:: c
+
+
+         static sem_t semaphore;
+         long global=0;
+
+         int increment(int i) {
+            // ...
+         }
+
+         void *inc(void * param) {
+           for(int j=0;j<1000000;j++) {
+             sem_wait(&semaphore);
+             global=increment(global);
+             sem_post(&semaphore);
+           }
+         }
+
+         int main (int argc, char *argv[])  {
+           pthread_t thread[NTHREADS];
+           int err;
+
+           sem_init(&semaphore, 0,1);
+
+           for(int i=0;i<NTHREADS;i++) {
+             err=pthread_create(&(thread[i]),NULL,&inc,NULL);
+             if(err!=0)
+               error(err,"pthread_create");
+           }
+
+           // reste non fourni
+         }
+
+   .. positive::
+
+      .. code-block:: c
+
+
+         sem_t * semaphore;
+         long global=0;
+
+         int increment(int i) {
+            // ...
+         }
+
+         void *inc(void * param) {
+           for(int j=0;j<1000000;j++) {
+             sem_wait(semaphore);
+             global=increment(global);
+             sem_post(semaphore);
+           }
+         }
+
+         int main (int argc, char *argv[])  {
+           pthread_t thread[NTHREADS];
+           int err;
+           semaphore=(sem_t *)malloc(sizeof(sem_t))
+           if(semaphore==NULL)
+             error("malloc");
+
+           sem_init(semaphore, 0,1);
+
+           for(int i=0;i<NTHREADS;i++) {
+             err=pthread_create(&(thread[i]),NULL,&inc,NULL);
+             if(err!=0)
+               error(err,"pthread_create");
+           }
+
+           // reste non fourni
+         }
+
+   .. negative::
+
+
+      .. code-block:: c
+
+
+         static sem_t semaphore;
+         long global=0;
+
+         int increment(int i) {
+            // ...
+         }
+
+         void *inc(void * param) {
+           for(int j=0;j<1000000;j++) {
+             sem_wait(&semaphore);
+             global=increment(global);
+             sem_post(&semaphore);
+           }
+         }
+
+         int main (int argc, char *argv[])  {
+           pthread_t thread[NTHREADS];
+           int err;
+
+           sem_init(&semaphore, 0,0);
+
+           for(int i=0;i<NTHREADS;i++) {
+             err=pthread_create(&(thread[i]),NULL,&inc,NULL);
+             if(err!=0)
+               error(err,"pthread_create");
+           }
+
+           // reste non fourni
+         }
+
+      .. comment::
+
+         Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `sem_init(3)`_ et non à ``0`` comme dans cet exemple.
+
+   .. negative::
+
+      .. code-block:: c
+
+
+         static sem_t semaphore;
+         long global=0;
+
+         int increment(int i) {
+            // ...
+         }
+
+         void *inc(void * param) {
+           for(int j=0;j<1000000;j++) {
+             sem_post(&semaphore);
+             global=increment(global);
+             sem_wait(&semaphore);
+           }
+         }
+
+         int main (int argc, char *argv[])  {
+           pthread_t thread[NTHREADS];
+           int err;
+
+           sem_init(&semaphore, 0,0);
+
+           for(int i=0;i<NTHREADS;i++) {
+             err=pthread_create(&(thread[i]),NULL,&inc,NULL);
+             if(err!=0)
+               error(err,"pthread_create");
+           }
+
+           // reste non fourni
+         }
+
+      .. comment::
+
+         Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `sem_init(3)`_ et non à ``0`` comme dans cet exemple. En outre, l'accès à la section critique doit être précédée par un appel à `sem_wait(3)`_  et suivie par un appel à `sem_post(3)`_ et non l'inverse comme dans cet exemple.
+
+   .. negative::
+
+      .. code-block:: c
+
+
+         sem_t * semaphore;
+         long global=0;
+
+         int increment(int i) {
+            // ...
+         }
+
+         void *inc(void * param) {
+           for(int j=0;j<1000000;j++) {
+             sem_wait(semaphore);
+             global=increment(global);
+             sem_post(semaphore);
+           }
+         }
+
+         int main (int argc, char *argv[])  {
+           pthread_t thread[NTHREADS];
+           int err;
+           semaphore=(sem_t *)malloc(sizeof(sem_t))
+           if(semaphore==NULL)
+             error("malloc");
+
+           sem_init(semaphore, 0,0);
+
+           for(int i=0;i<NTHREADS;i++) {
+             err=pthread_create(&(thread[i]),NULL,&inc,NULL);
+             if(err!=0)
+               error(err,"pthread_create");
+           }
+
+           // reste non fourni
+         }
+
+      .. comment::
+
+         Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `sem_init(3)`_ et non à ``0`` comme dans cet exemple.
+
+   .. negative::
+
+      .. code-block:: c
+
+
+         sem_t * semaphore;
+         long global=0;
+
+         int increment(int i) {
+            // ...
+         }
+
+         void *inc(void * param) {
+           for(int j=0;j<1000000;j++) {
+             sem_post(semaphore);
+             global=increment(global);
+             sem_wait(semaphore);
+           }
+         }
+
+         int main (int argc, char *argv[])  {
+           pthread_t thread[NTHREADS];
+           int err;
+           semaphore=(sem_t *)malloc(sizeof(sem_t))
+           if(semaphore==NULL)
+             error("malloc");
+
+           sem_init(semaphore, 0,0);
+
+           for(int i=0;i<NTHREADS;i++) {
+             err=pthread_create(&(thread[i]),NULL,&inc,NULL);
+             if(err!=0)
+               error(err,"pthread_create");
+           }
+
+           // reste non fourni
+         }
+
+      .. comment::
+
+         Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `sem_init(3)`_ et non à ``0`` comme dans cet exemple. En outre, l'accès à la section critique doit être précédée par un appel à `sem_wait(3)`_  et suivie par un appel à `sem_post(3)`_ et non l'inverse comme dans cet exemple.
+
+
+
+Question 8. Fonctions 'thread-safe'
+-----------------------------------
+
+.. question:: threadsafe
+   :nb_prop: 3
+   :nb_pos: 1
+
+   La plupart des fonctions de la librairie standard sont des fonctions thread-safe, c'est-à-dire des fonctions que l'on peut utiliser dans plusieurs threads distincts sans risquer de problèmes d'accès concurrent. Cependant, certaines fonctions, souvent parmi les plus anciennes, ne sont pas thread-safe. Parmi les fonctions ci-dessous, une seule est thread-safe. Laquelle ?
+
+   .. positive::
+
+      `gettimeofday(2)`_
+
+      .. comment::
+
+         Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
+
+   .. positive::
+
+      `strsep(3)`_
+
+      .. comment::
+
+         Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
+
+   .. negative::
+
+      `getenv(3)`_
+
+      .. comment::
+
+         Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
+
+   .. negative::
+
+      `getopt(3)`_
+
+      .. comment::
+
+         Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
+
+   .. negative::
+
+      `asctime(3)`_
+
+      .. comment::
+
+         Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
+
+   .. negative::
+
+      `strtok(3)`_
+
+      .. comment::
+
+         Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
+
+   .. negative::
+
+      `strerror(3)`_
+
+      .. comment::
+
+         Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
+
+   .. negative::
+
+      `getopt(3)`_
+
+      .. comment::
+
+         Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
+
 

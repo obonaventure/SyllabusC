@@ -1,16 +1,12 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Copyright |copy| 2012 by, 2020 `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
 Questions à choix multiples
 ===========================
 
-:task_id: sinf1252-3
-
-Cette semaine, la matière porte sur l'organisation de la mémoire et l'utilisation des fonctions `malloc(3)`_ et `free(3)`_
-
- - http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/malloc.html#organisation-de-la-memoire
+:task_id: lepl1503-3
 
 
 

@@ -1,13 +1,20 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Copyright |copy| 2012, 2020 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
 Questions à choix multiples 
 ===========================
 
-:task_id: sinf1252-4
+.. spelling::
 
+   ptr
+   fault
+   
+   
+:task_id: lepl1503-4
+
+	  
 
 Question 1. Pointeurs et tableaux
 ---------------------------------
@@ -163,7 +170,7 @@ Un exemple d'exécution de ce fragment de programme est présenté ci-dessous :
 
       .. comment::
 
-            Notez dans ce code que ``ptr`` est déclaré comme ``char *``, alors que ``argv`` est un ``char **``. Si vous tenez d'exécutez ce code, il provoquera un segmentation fault.
+            Notez dans ce code que ``ptr`` est déclaré comme ``char *``, alors que ``argv`` est un ``char **``. Si vous tentez d'exécuter ce code, il provoquera une segmentation fault.
 
    .. negative::
 

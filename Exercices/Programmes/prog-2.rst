@@ -1,5 +1,5 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Copyright |copy| 2012, 2020 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
@@ -7,15 +7,23 @@
 Questions INGINIOUS
 -------------------
 
-#. Faites l'exercice relatif à `printf(3)`_ sur INGINIOUS : https://inginious.info.ucl.ac.be/course/LSINF1252/printf
+#. Faites l'exercice relatif à `printf(3)`_ sur INGINIOUS : https://inginious.info.ucl.ac.be/course/LEPL1503/s2_printf
 
-#. Un utilisateur peut adapter le comportement d'un programme via les arguments passés en ligne de commande. Ecrivez un programme permettant d'afficher un argument sur deux tel qu'indiqué sur INGINIOUS: https://inginious.info.ucl.ac.be/course/LSINF1252/main_argc
+#. Faites l'exercice relatif à `strcat(3)`_ sur INGINIOUS : https://inginious.info.ucl.ac.be/course/LEPL1503/s2_strcat
 
-#. L'an dernier, vous avez écrit un programme permettant de détecter si une chaîne de caractères était un palindrome. Faites de même en C avec l'exercice INGINIOUS https://inginious.info.ucl.ac.be/course/LSINF1252/palindrome
+#. Faites l'exercice relatif à `strlen(3)`_ sur INGINIOUS : https://inginious.info.ucl.ac.be/course/LEPL1503/s2_strlen
 
-#. Ecrivez le corps de la fonction `swap2 <https://inginious.info.ucl.ac.be/course/LSINF1252/swap2int>`_ permettant d'échanger les valeurs stockées dans deux variables de type entier. Faites de même lorsque les arguments de cette fonction sont des structures contenant des fractions : https://inginious.info.ucl.ac.be/course/LSINF1252/swap2int
 
-#. La libraire `string(3)`_ implémente un grand nombre de fonctions de manipulation des strings qui vous serons utile lors de différents projets de programmation. 
+#. Faites l'exercice relatif à `strcasecmp(3)`_ sur INGINIOUS : https://inginious.info.ucl.ac.be/course/LEPL1503/s2_casecmp
+
+#. L'an dernier, vous avez écrit un programme permettant de détecter si une chaîne de caractères était un palindrome. Faites de même en C avec l'exercice INGINIOUS https://inginious.info.ucl.ac.be/course/LEPL1503/s2_palindrome   
+
+#. Un utilisateur peut adapter le comportement d'un programme via les arguments passés en ligne de commande. Ecrivez un programme permettant d'afficher un argument sur deux tel qu'indiqué sur INGINIOUS: https://inginious.info.ucl.ac.be/course/LEPL1503/s2_main_argc
+
+
+#. Ecrivez le corps de la fonction `swap2 <https://inginious.info.ucl.ac.be/course/LEPL1503/s2_swap2int>`_ permettant d'échanger les valeurs stockées dans deux variables de type entier. Faites de même lorsque les arguments de cette fonction sont des structures contenant des fractions : https://inginious.info.ucl.ac.be/course/LEPL1503/s2_swap
+
+.. #. La libraire `string(3)`_ implémente un grand nombre de fonctions de manipulation des strings qui vous serons utile lors de différents projets de programmation. 
 
         * `strlen(3)`_
         * `strcat(3)`_
@@ -24,18 +32,18 @@ Questions INGINIOUS
    
    Ecrivez le code implémentant ces trois fonctions. Pour cela, créez un fichier ``string.c`` contenant la définition des fonctions et un fichier ``string.h`` avec les `déclarations <http://en.wikipedia.org/wiki/Declaration_(computer_programming)>`_ des fonctions. Vous devez aussi fournir un Makefile (cfr :ref:`outils:make`) qui permet de recompiler facilement votre programme en tapant ``make``. Pensez à implémenter quelques tests pour vos fonctions dans la fonction ``main`` et n'incluez pas l'exécutable dans l'archive. Pour la réalisation de ces tests, utilisez une librairie de tests unitaires telle que `CUnit <http://cunit.sourceforge.net>`_
 
-   Lorsque vous considérez que votre programme est correct, testez son bon fonctionnement via l'exercice correspondant sur inginious : https://inginious.info.ucl.ac.be/course/LSINF1252/mini-projet-string
+   Lorsque vous considérez que votre programme est correct, testez son bon fonctionnement via l'exercice correspondant sur inginious : https://inginious.info.ucl.ac.be/course/LEPL1503/mini-projet-string
 
-#. Faites l'exercice `swap <https://inginious.info.ucl.ac.be/course/LSINF1252/swap>`_ sur INGInious
+.. #. Faites l'exercice `swap <https://inginious.info.ucl.ac.be/course/LEPL1503/swap>`_ sur INGInious
 
-#. Faites les exercices de manipulation de bits sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252>`_. Pour réaliser ces exercices, réfléchissez d'abord sur papier, par exemple sur des blocs de 4 ou 8 bits. Pour la plupart des questions, il faut combiner des décalages à gauche ou à droite avec des opérations ``AND`` (``&``), ``OR`` (``|``) et ``NOT`` (``~``) bit à bit.
+.. #. Faites les exercices de manipulation de bits sur `INGInious <https://inginious.info.ucl.ac.be/course/LEPL1503>`_. Pour réaliser ces exercices, réfléchissez d'abord sur papier, par exemple sur des blocs de 4 ou 8 bits. Pour la plupart des questions, il faut combiner des décalages à gauche ou à droite avec des opérations ``AND`` (``&``), ``OR`` (``|``) et ``NOT`` (``~``) bit à bit.
 
-   - https://inginious.info.ucl.ac.be/course/LSINF1252/bits_leftmost
-   - https://inginious.info.ucl.ac.be/course/LSINF1252/bits_rightmost
-   - https://inginious.info.ucl.ac.be/course/LSINF1252/set_bit
-   - https://inginious.info.ucl.ac.be/course/LSINF1252/bits_spin
-   - https://inginious.info.ucl.ac.be/course/LSINF1252/bits_sum
-   - https://inginious.info.ucl.ac.be/course/LSINF1252/bits_strong
+..   - https://inginious.info.ucl.ac.be/course/LEPL1503/bits_leftmost
+..   - https://inginious.info.ucl.ac.be/course/LEPL1503/bits_rightmost
+..   - https://inginious.info.ucl.ac.be/course/LEPL1503/set_bit
+..   - https://inginious.info.ucl.ac.be/course/LEPL1503/bits_spin
+..   - https://inginious.info.ucl.ac.be/course/LEPL1503/bits_sum
+..   - https://inginious.info.ucl.ac.be/course/LEPL1503/bits_strong
 
 
 Questions de discussion
@@ -80,26 +88,3 @@ Questions de discussion
 
    Pour certaines opérations, les performances dépendent du type de données utilisé. Modifiez le programme ci-dessous de façon à utiliser un calcul plus compliqué que la simple addition et comparez sur de longues itérations (:math:`10^7` ou plus) les performances de cette opération lorsqu'elle utilise des ``int``, ``long long``, ``double`` ou ``float``. Les performances sont-elles identiques ?
 
-
-Questions de bilan final
-------------------------
-
-#. La structure suivante ``foo_t`` est définie de façon à ce qu'elle contienne un ``char`` suivi d'un entier. D'après vous combien de bytes occupe cette structure en mémoire ? Vérifiez ce que vous pensiez en utilisant ``sizeof``. (bonus: expliquez vos résultats.)
-
-        .. code-block:: c
-
-                struct foo_t {
-                        char a;
-                        int b;
-                };
-
-
-#. Considérez le programme suivant.
-
-        .. literalinclude:: /Programmes/s2_qbf.c
-                :encoding: utf-8
-                :language: c
-
-      * Sans executer le programme, essayez de comprendre son fonctionnement. En particulier, quelles seront les adresses affichées à chaque tour de boucle?
-      * Compilez le programme et exécutez le. Expliquez sa sortie et comparez avec vos attentes.
-      * (Bonus) Expliquez les valeurs affichées lors de l'exécution de la dernière boucle.

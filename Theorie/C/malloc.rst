@@ -2,7 +2,9 @@
 .. Copyright |copy| 2012, 2019 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
-
+   
+.. _declarations:
+ 
 Déclarations
 =============
 
@@ -61,6 +63,7 @@ Les versions récentes de C [C99]_ permettent également de définir des variabl
 
 Il y a deux façons de définir des constantes dans les versions récentes de C [C99]_. La première est via la macro ``#define`` du préprocesseur. Cette macro permet de remplacer une chaîne de caractères (par exemple ``M_PI`` qui provient de `math.h`_) par un nombre ou une autre chaîne de caractères. Ce remplacement s'effectue avant la compilation. Dans le cas de ``M_PI`` ci-dessus, le préprocesseur remplace toute les occurrences de cette chaîne de caractères par la valeur numérique de :math:`\pi`. Lorsqu'une variable ``const`` est utilisée, la situation est un peu différente. Le préprocesseur n'intervient pas. Par contre, le compilateur réserve une zone mémoire pour la variable qui a été définie comme constante. Cela a deux avantages par rapport à l'utilisation de ``#define``. Premièrement, il est possible de définir comme constante n'importe quel type de données en C, y compris des structures ou des pointeurs alors qu'avec un ``#define`` on ne peut définir que des nombres ou des chaînes de caractères. Ensuite, comme une ``const`` est stockée en mémoire, il est possible d'obtenir son adresse et de l'examiner via un :term:`debugger`.
 
+.. _unions:
 
 Unions et énumérations
 ======================
@@ -125,6 +128,7 @@ Le programmeur pourra alors utiliser cette structure en indiquant explicitement 
    :start-after: ///FFF
    :end-before: ///GGG
 
+.. _memoire:		
 
 Organisation de la mémoire
 ==========================
