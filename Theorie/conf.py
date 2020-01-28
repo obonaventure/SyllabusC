@@ -155,6 +155,9 @@ html_show_sourcelink = True
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 #html_show_copyright = True
 
+# Intersphinx
+intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SyllabusC/notes/Theorie/', None), 'outils': ('https://sites.uclouvain.be/SyllabusC/notes/Outils/', None), 'exercices': ('https://sites.uclouvain.be/SyllabusC/notes/Exercices/', None)}
+
 
 # -- Options for Spelling extension ------------------------------------------
 

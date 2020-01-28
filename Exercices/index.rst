@@ -3,14 +3,20 @@
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
-##################################
-Systèmes informatiques : Exercices
-##################################
+######################
+Syllabus C : Exercices
+######################
 
+.. spelling::
 
+   pull-requests
+   pull
+   requests
+ 
 .. only:: html
 
-    Ce site web contient les exercices du cours `SINF1252 <http://www.uclouvain.be/cours-2015-LSINF1252.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/obonaventure/SystemesInformatiques 
+    Ce site web contient la partie théorique du support du cours `Projet P3 - LEPL1503 <https://uclouvain.be/cours-2019-lepl1503>`_ donné aux `étudiants ingénieurs et informaticiens <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <https://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à proposer leurs améliorations en soumettant des pull-requests via https://github.com/UCL-INGI/SyllabusC .
+
 
 *********
 Exercices
@@ -22,6 +28,3 @@ Exercices
    intro
    bib
 
-..   Projets/P1/projet-1
-..   Projets/P2/enonce
-..   Projets/P3/enonce

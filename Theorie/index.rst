@@ -3,15 +3,21 @@
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
-######################
-Systèmes informatiques
-######################
+######################################
+Syllabus de Programmation en Langage C
+######################################
 
+.. spelling::
+
+   pull-requests
+   pull
+   requests
  
 .. only:: html
 
-    Ce site web contient la partie théorique du support du cours `Projet P3 - LEPL1503 <https://uclouvain.be/cours-2019-lepl1503>`_ donné aux `étudiants ingénieurs et informaticiens <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <https://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/UCL-INGI/SyllabusC .
-
+    Ce site web contient la partie théorique du support du cours `Projet P3 - LEPL1503 <https://uclouvain.be/cours-2019-lepl1503>`_ donné aux `étudiants ingénieurs et informaticiens <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <https://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à proposer leurs améliorations en soumettant des pull-requests via https://github.com/UCL-INGI/SyllabusC .
+   
+ 
     La version HTML est la préférable car elle contient des liens hypertextes vers les pages de manuel Linux qui font partie de la matière. D'autres formats sont possibles pour ceux qui veulent lire le document hors ligne :
 
         - `format epub <http://sites.uclouvain.be/SystInfo/distrib/SINF1252-Theorie.epub>`_ lisible sur tablettes style iPad ou Galaxy Tab

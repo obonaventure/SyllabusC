@@ -110,9 +110,8 @@ rst_epilog = """
 .. include:: /../Theorie/man_links.rst
 .. include:: /../Theorie/incl_links.rst
 """
-
 # Intersphinx
-intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SystInfo/notes/Theorie/html/', None), 'outils': ('https://sites.uclouvain.be/SystInfo/notes/Outils/html/', None), 'exercices': ('https://sites.uclouvain.be/SystInfo/notes/Exercices/html/', None)}
+intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SyllabusC/notes/Theorie/', None), 'outils': ('https://sites.uclouvain.be/SyllabusC/notes/Outils/', None), 'exercices': ('https://sites.uclouvain.be/SyllabusC/notes/Exercices/', None)}
 
 # -- Options for Spelling extension ------------------------------------------
 
