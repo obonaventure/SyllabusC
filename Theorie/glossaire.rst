@@ -298,8 +298,10 @@ Glossaire
    benchmark
     Ensemble de programmes permettant d'évaluer les performances d'un système informatique. 
 
+   multi-threadé    
    multi-coeurs
     Processeur contenant plusieurs unités permettant d'exécuter simultanément des instructions de programmes différents.
+
 
    multithreadé
     Programme utilisant plusieurs threads.
