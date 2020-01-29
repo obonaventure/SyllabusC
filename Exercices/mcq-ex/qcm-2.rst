@@ -26,6 +26,8 @@ En C tout comme dans des langages comme Java, il est possible de convertir des n
     // unsigned short		2 octet(s)
     // int			4 octet(s)
     // unsigned int		4 octet(s)
+    // long			4 octet(s)
+    // unsigned long		4 octet(s)
 
 
     int i;
@@ -486,7 +488,7 @@ Question 8. Chaînes de caractères
           int count1(char *s, char c) {
             int i=0;
             int count=0;
-            while(*s!=`\0`) {
+            while(*s!='\0') {
               if(*(s+i)==c) {
                 count++;
               }
