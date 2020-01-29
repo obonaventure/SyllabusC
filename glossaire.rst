@@ -558,3 +558,11 @@ Glossaire
 
     stratégie de remplace de pages
        Définit quelle page doit être préférentiellement retirée de la mémoire RAM et placée sur le dispositif de stockage.
+
+
+.. spelling::
+
+   benchmark
+   big
+   threadé
+
