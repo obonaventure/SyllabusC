@@ -26,6 +26,8 @@ Valgrind permet de détecter des erreurs liées à la gestion de la mémoire dan
    segfaults
    faults
    Fault
+   désallouée
+   Désallouer
    
    .. code-block:: console
 

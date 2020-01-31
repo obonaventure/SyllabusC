@@ -11,6 +11,9 @@
    display
    displays
    débugger
+   contrario
+   cliquer
+   cliquez
    
 .. _gdb-ref:
 

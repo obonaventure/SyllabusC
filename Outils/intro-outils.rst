@@ -42,7 +42,7 @@ Dans de nombreux projets informatiques, il est nécessaire d'utiliser des outils
    `vidéo <http://www.youtube.com/watch?v=ZDR433b0HJY>`_ faite par le créateur
    de ces deux sites et
    `Try Git <http://try.github.io/levels/1/challenges/1>`_ qui permet
-   de découvrir `Git`_ en 15 minutes interactivement à travers le site.
+   de découvrir `Git`_ en 15 minutes de façon interactive à travers le site.
  - `subversion`_ qui est décrit ci-dessous également
  - `mercurial <http://mercurial.selenic.com/>`_
  - `bazaar <http://bazaar.canonical.com/>`_
@@ -54,3 +54,8 @@ Compilateurs
 Le compilateur C utilisé dans de nombreuses distributions Linux est `gcc(1)`_. C'est un compilateur open-source développé activement dans le cadre du projet GNU par la `Free Software Foundation <http://www.fsf.org>`_. Nous utiliserons principalement `gcc(1)`_ dans le cadre de ce cours.
 
 Il existe des alternatives à `gcc(1)`_ comme llvm_ que nous utiliserons lorsque nous analyserons le code assembleur généré par un compilateur C. Les variantes commerciales de Unix utilisent généralement des compilateurs propriétaires, dont par exemple `Oracle Studio <http://www.oracle.com/technetwork/server-storage/solarisstudio/overview/index.html>`_ ou la `suite de compilateurs <http://software.intel.com/en-us/c-compilers>`_ développée par intel_.
+
+
+.. spelling::
+
+   Git

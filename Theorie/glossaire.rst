@@ -490,3 +490,25 @@ Glossaire
    coeurs
    Labs
    Editeur
+   Andrew
+   l'API
+   big
+   Berkeley
+   Raspberry
+   process
+   Random
+   Linus
+   Free
+   collector
+   pc
+   Processing
+   benchmark
+   State
+   Bell
+   warning
+   Moore
+   d'Amsterdam
+   threadé
+   Ordonnanceur
+   warning
+   

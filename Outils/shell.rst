@@ -18,6 +18,9 @@ Le shell est un outil très puissant. Il permet d'effectuer de nombreuses opéra
    tab
    regex
    gz
+   redirige
+   métadonnées
+   désarchive
    
 .. note:: Astuce : utilisez la complétion
 

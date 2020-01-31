@@ -68,6 +68,12 @@ Questions complémentaires
 
 					L'adresse de ``global`` ne change pas, car elle fait partie du segment texte du programme. Les autres sont soit sur la pile (stack), ou sur le tas (heap).
 
+.. spelling::
+
+   l'implémentation
+   réimplémenter
+
+   
 #. Un étudiant a fait l'implémentation d'un sous-ensemble des fonctions définies dans string.h, mais il rencontre quelques problèmes avec son code :download:`/Programmes/src/string.c`. Utilisez `gdb`_ pour corriger son code. Utilisez le flag ``-g`` de ``gcc`` pour ajouter les informations de debug dans votre programme. Pour rappel, voici quelques commandes importantes de `gdb` :
 
    - ``run [ARGS]`` permet de lancer l'exécution du programme avec les arguments ARGS si spécifiés.

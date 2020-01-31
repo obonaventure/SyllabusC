@@ -131,6 +131,10 @@ Exercices
 	 return 0;
 	}
 
+.. spelling::
+
+   d'affilée
+        
 #. D'après vous (essayez d'expérimenter), que se passe-t-il si:
 
 	* un thread exécute deux fois `pthread_mutex_lock(3posix)`_ sur le même mutex d'affilée ?

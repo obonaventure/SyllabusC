@@ -9,14 +9,14 @@ set -e
 # --keep-going continue the processing after a warning
 cd Theorie
 echo "**** Theorie ****"
-sphinx-build  -nWNT --keep-going -b html . /tmp
 sphinx-build -b spelling . /tmp
+sphinx-build  -nWNT --keep-going -b html . /tmp
 cd ../Outils
 echo "**** Outils ****"
-sphinx-build  -nWNT --keep-going -b html . /tmp
 sphinx-build -b spelling . /tmp
+sphinx-build  -nWNT --keep-going -b html . /tmp
 cd ../Exercices
 echo "**** Exercices ****"
-sphinx-build  -nWNT --keep-going -b html . /tmp
 sphinx-build -b spelling . /tmp
+sphinx-build  -nWNT --keep-going -b html . /tmp
 cd ../..

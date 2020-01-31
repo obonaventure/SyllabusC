@@ -431,6 +431,13 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
 
  Dans certains cas il est utile de pouvoir dupliquer un descripteur de fichier. C'est possible avec les appels systèmes `dup(2)`_ et `dup2(2)`_. L'appel système `dup(2)`_ prend comme argument un descripteur de fichier et retourne le plus petit descripteur de fichier libre. Lorsqu'un descripteur de fichier a été dupliqué avec `dup(2)`_ les deux descripteurs de fichiers partagent le même :term:`offset pointer` et les mêmes modes d'accès au fichier.
 
+.. spelling::
+
+   mappé
+   mappés
+   mappées
+   mappant
+   mappée
 
 .. _mmap:
 

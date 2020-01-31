@@ -10,6 +10,9 @@ Bibliographie
 
    Kernighan
    and
+   Ritchie
+   Addison
+   Wesley
 
 .. [KernighanRitchie1998] Kernighan, B., and Ritchie, D., `The C programming language, second edition`, Addison Wesley, 1998, http://cm.bell-labs.com/cm/cs/cbook/
 	  

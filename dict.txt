@@ -96,3 +96,14 @@ stdin
 stdout
 gdb
 login
+bug
+bugs
+background
+multi
+multitâches
+tabulation
+tabulations
+indenter
+tutoriel
+tutoriels
+

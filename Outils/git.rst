@@ -33,12 +33,24 @@
    check
    backtrace
    git
+   Alice
+   Git
+   tag
+   tags
+   patch
+   master
+   logarithmique
+   Ruby
+   cliquez
+   cliquer
 
 .. _git-ref:
    
 Git
 ---
+.. sectionauthor:: Benoit Legat
 
+   
 Introduction
 ~~~~~~~~~~~~
 

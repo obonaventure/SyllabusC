@@ -297,7 +297,7 @@ En C, une règle de bonne pratique est d'initialiser toutes les variables avant 
 
       - la variable ``f`` est initialisée à  la valeur ``0.0``
       - la variable ``j`` contient une valeur indéterminée
-      - le pointeur ``string`` contient une valuer indéterminée
+      - le pointeur ``string`` contient une valeur indéterminée
       - Après une exécution réussie de ``malloc``, le contenu de ``ptr`` est une adresse sur la pile 
 
       .. comment:: `malloc(3)`_ n'initialise pas de zone mémoire sur la pile.

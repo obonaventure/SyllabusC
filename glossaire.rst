@@ -565,4 +565,23 @@ Glossaire
    benchmark
    big
    threadé
-
+   Andrew
+   d'Amsterdam
+   l'API
+   Berkeley
+   Processing
+   pc
+   Free
+   collector
+   Linus
+   Moore
+   multi
+   process
+   identifier
+   Random
+   Raspberry
+   Ordonnanceur
+   State
+   Bell
+   warning
+   

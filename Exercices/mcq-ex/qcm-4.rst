@@ -10,6 +10,9 @@ Questions à choix multiples
 
    ptr
    fault
+   précédence
+   l'incrémentation
+   warning
    
    
 :task_id: lepl1503-4
