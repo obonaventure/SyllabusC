@@ -231,14 +231,14 @@ Considérons le fragment de programme ci-dessous.
 Question 4. Initialisation des variables
 ----------------------------------------
 
-En C, une règle de bonne pratique est d'initialiser toutes les variables avant leur utilisation. Utiliser une variable qui n'a pas été correctement initialisée pour être une source de problèmes. Un étudiant a écrit les déclarations ci-dessous :
+En C, une règle de bonne pratique est d'initialiser toutes les variables avant leur utilisation. Utiliser une variable qui n'a pas été correctement initialisée peut être une source de problèmes. Un étudiant a écrit les déclarations ci-dessous :
 
  .. code-block:: c
 
     int k=0;
     int i;
     short j;
-    float f;
+    float f=0.0;
     double d;
     char c[10];
     char* string;
@@ -255,57 +255,59 @@ En C, une règle de bonne pratique est d'initialiser toutes les variables avant 
    .. positive::
 
 
-      - la variable ``i`` est initialisée à  la valeur ``0``
-      - le pointeur ``string`` est initialisé à la valeur ``NULL``
-      - ``c[2]`` contient le caractère ``'\0'``
-      -  Après exécution de ``malloc``, le contenu de l'adresse ``ptr+1`` est indéterminé
+      - la variable ``k`` est initialisée à  la valeur ``0``
+      - la variable ``f`` est initialisé à la valeur ``0``
+      - la variable ``ptr`` est stockée sur la pile
+      - Après exécution de ``malloc``, le contenu de l'adresse ``ptr+1`` est indéterminé
 
       .. comment:: Pour des raisons d'efficacité, `malloc(3)`_ n'initialise pas à zéro les zones mémoires allouées, contrairement à `calloc(3)`_
 
    .. positive::
 
 
-      - la variable ``j`` est initialisée à  la valeur ``0``
-      - le pointeur ``v`` est initialisé à la valeur ``NULL``
-      - ``c[4]`` contient le caractère ``'\0'``
-      - Après exécution de ``malloc``, le contenu de l'adresse ``ptr+4`` est indéterminé
+      - la variable ``d`` contient une valeur indéterminée
+      - le pointeur ``v`` contient une valeur indéterminée
+      - ``c[9]`` va faire un accès mémoire sur la pile
+      - Après une exécution réussie de ``malloc``, le contenu de ``ptr`` est une adresse sur le tas 
 
-      .. comment:: Pour des raisons d'efficacité, `malloc(3)`_ n'initialise pas à zéro les zones mémoires allouées, contrairement à `calloc(3)`_
+      .. comment:: Le contenu de ``c`` est stocké sur la pile 
 
    .. negative::
 
 
-      - la variable ``f`` est initialisée à  la valeur ``0.0``
-      - le pointeur ``string`` n'a aucune valeur et n'est pas utilisable
+      - la variable ``f`` est initialisée à la valeur ``0.0``
+      - le pointeur ``string`` n'est pas utilisable
       - ``c[2]`` contient le caractère espace
       - Après exécution de ``malloc``, l'adresse ``ptr+1`` contient le caractère ``'\0'``
 
-      .. comment:: `malloc(3)`_ n'initialise pas la zone mémoire allouée. ``string`` contient ``NULL`` et ``c[2]`` le caractère ``'\0'``
+      .. comment:: `malloc(3)`_ n'initialise pas la zone mémoire allouée. Le contenu de ``c`` est indéfini
 
    .. negative::
 
 
       - la variable ``f`` est initialisée à  la valeur ``0.0``
       - le pointeur ``v`` n'a aucune valeur et n'est pas utilisable
-      - ``c[2]`` contient le caractère espace
+      - ``c[2]`` contient le caractère ``'\0'``
       - Après exécution de ``malloc``, l'adresse ``ptr`` contient le caractère ``'\0'``
 
-   .. negative::
-
-
-      - la variable ``f`` est initialisée à  la valeur ``0.0``
-      - le pointeur ``string`` est initialisé à ``NULL``
-      - ``c[10]`` contient le caractère espace
-      - Après exécution de ``malloc``, l'adresse ``ptr+3`` contient le caractère ``'\0'``
-
-      .. comment:: ``c[10]`` est hors du tableau ``c``. `malloc(3)`_ n'initialise pas la zone mémoire allouée.
+      .. comment:: `malloc(3)`_ n'initialise pas la zone mémoire allouée. Le contenu de ``c`` est indéfini
 
    .. negative::
 
 
       - la variable ``f`` est initialisée à  la valeur ``0.0``
-      - le pointeur ``v`` est initialisé à ``NULL``
-      - ``c[6]`` contient le caractère ``'\0'``
+      - la variable ``j`` contient une valeur indéterminée
+      - le pointeur ``string`` contient une valuer indéterminée
+      - Après une exécution réussie de ``malloc``, le contenu de ``ptr`` est une adresse sur la pile 
+
+      .. comment:: `malloc(3)`_ n'initialise pas de zone mémoire sur la pile.
+
+   .. negative::
+
+
+      - la variable ``f`` est initialisée à  la valeur ``0.0``
+      - la variable ``i`` contient une valeur indéterminée
+      - la variable ``d`` contient une valeur indéterminée
       - Après exécution de ``malloc``, l'adresse ``ptr+5`` contient le caractère ``'\0'``
 
       .. comment:: `malloc(3)`_ n'initialise pas la zone mémoire allouée. De plus, ``ptr+5`` se trouve en dehors de la zone mémoire allouée par `malloc(3)`_

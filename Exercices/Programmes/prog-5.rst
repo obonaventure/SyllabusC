@@ -7,17 +7,14 @@ Exercices INGINIOUS
 
 Les exercices INGINIOUS de cette semaine ont comme objectif de vous familiariser avec la manipulation des fichiers contenant des données binaires.
 
-#. Le `premier exercice <https://inginious.info.ucl.ac.be/course/LEPL1503/s5_file_exists>`_ est
-une mise en jambe. En utilisant `open(2)`_ (et `close(2)`_), pouvez-vous vérifier si un
-fichier dont le nom est passé en argument existe ? Voir https://inginious.info.ucl.ac.be/course/LEPL1503/s5_file_exists
+#. Le `premier exercice <https://inginious.info.ucl.ac.be/course/LEPL1503/s5_file_exists>`_ est une mise en jambe. En utilisant `open(2)`_ (et `close(2)`_), pouvez-vous vérifier si un fichier dont le nom est passé en argument existe ? Voir https://inginious.info.ucl.ac.be/course/LEPL1503/s5_file_exists
 
 #. Parfois, il est utile de pouvoir stocker une structure directement dans un fichier. Utilisez `mmap(2)`_ pour cela dans l'exercice https://inginious.info.ucl.ac.be/course/LEPL1503/s5_file_save_struct
 
 #. Un fichier binaire peut être utilisé pour stocker tous les éléments d'un tableau d'entiers. Ecrivez la `fonction sum_file <https://inginious.info.ucl.ac.be/course/LEPL1503/s5_read_file_array_integer>`_ qui prend comme argument un nom de fichier contenant un tel tableau et calcule la somme de tous les entiers stockés dans le fichier. Pensez aux cas d'erreurs possibles si le fichier n'a pas la bonne taille. Voir https://inginious.info.ucl.ac.be/course/LEPL1503/s5_read_file_array_integer
 
 
-#. Vous continuez à explorer les fichiers binaires qui permettent de stocker tous les éléments d'un tableau d'entiers. Cette fois-ci vous devez écrire une `première fonction <https://inginious.info.ucl.ac.be/course/LEPL1503/s5_big_array_get_set>`_ pour récupérer la valeur d'un
-élément du tableau stocké dans le fichier et une `seconde fonction <https://inginious.info.ucl.ac.be/course/LEPL1503/s5_big_array_get_set>`_ pour modifier la valeur d'un élément de ce tableau. Voir https://inginious.info.ucl.ac.be/course/LEPL1503/s5_big_array_get_set
+#. Vous continuez à explorer les fichiers binaires qui permettent de stocker tous les éléments d'un tableau d'entiers. Cette fois-ci vous devez écrire une `première fonction <https://inginious.info.ucl.ac.be/course/LEPL1503/s5_big_array_get_set>`_ pour récupérer la valeur d'un élément du tableau stocké dans le fichier et une `seconde fonction <https://inginious.info.ucl.ac.be/course/LEPL1503/s5_big_array_get_set>`_ pour modifier la valeur d'un élément de ce tableau. Voir https://inginious.info.ucl.ac.be/course/LEPL1503/s5_big_array_get_set
 
 #. En ligne de commande, `cp(1)`_ vous permet de copier complètement un fichier quel que soit son contenu. Pouvez-vous implémenter l'équivalent de cette commande dans la `fonction copy <https://inginious.info.ucl.ac.be/course/LEPL1503/s5_file_copy>`_ que vous allez écrire en C. Voir https://inginious.info.ucl.ac.be/course/LEPL1503/s5_file_copy
 

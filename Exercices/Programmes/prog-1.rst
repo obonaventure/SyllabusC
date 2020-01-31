@@ -77,8 +77,6 @@ que vous aviez réalisé en Java.
 
         .. code-block:: c
 			
-		#include <stdio.h>	
-			
                 int f()
                 {
                         int a = 1252;
