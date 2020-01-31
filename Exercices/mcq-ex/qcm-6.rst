@@ -530,7 +530,7 @@ Dans certains programmes, il est nécessaire de définir plusieurs mutex qui son
 
    .. negative::
 
-      .. code-block:: none
+      .. code-block:: c
 
          // thread A
 
@@ -542,7 +542,7 @@ Dans certains programmes, il est nécessaire de définir plusieurs mutex qui son
          update(&b,&c,&y,&z);
          update(&c,&a,&z,&x);
 
-         .. comment:: Lorsqu'un thread utilise plusieurs ressources protégées par un mutex, il est important que les accès à ces mutex se fasse chaque fois dans le même ordre. Dans cet exemple, il faut toujours accéder à ``x`` puis à ``y`` puis à ``z`` (ou un autre ordre). Accéder à ``z``  puis à ``x`` dans le thread B et à ``x`` puis à ``z`` dans le thread A est une source de deadlocks potentiels.
+      .. comment:: Lorsqu'un thread utilise plusieurs ressources protégées par un mutex, il est important que les accès à ces mutex se fasse chaque fois dans le même ordre. Dans cet exemple, il faut toujours accéder à ``x`` puis à ``y`` puis à ``z`` (ou un autre ordre). Accéder à ``z``  puis à ``x`` dans le thread B et à ``x`` puis à ``z`` dans le thread A est une source de deadlocks potentiels.
 
    .. negative::
 
