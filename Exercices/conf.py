@@ -59,8 +59,8 @@ source_encoding = 'utf-8'
 master_doc = 'index'
 
 # General information about the project.
-project = u'SINF1252 : Exercices '
-copyright = u'2012-2014, O. Bonaventure, G. Detal, C. Paasch'
+project = u'LEPL1503 : Exercices '
+copyright = u'2012-2020, O. Bonaventure, G. Detal, C. Paasch'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -195,7 +195,7 @@ html_static_path = ['_static', 'mcq/static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'SINF1252doc'
+htmlhelp_basename = 'LEPL1503doc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -214,7 +214,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'SINF1252.tex', u'SINF1252',
+  ('index', 'LEPL1503Ex.tex', u'LEPL1503Ex',
    u'O. Bonaventure, G. Detal, C. Paasch', 'manual'),
 ]
 
@@ -276,10 +276,10 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'SINF1252'
+epub_title = u'LEPL1503Exercices'
 epub_author = u'O. Bonaventure, G. Detal, C. Paasch'
-epub_publisher = u'O. Bonaventure, G. Detal, C. Paasch'
-epub_copyright = u'2013, O. Bonaventure, G. Detal, C. Paasch'
+epub_publisher = u'UCLouvain'
+epub_copyright = u'2013-2020, O. Bonaventure, G. Detal, C. Paasch'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.

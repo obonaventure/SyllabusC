@@ -53,8 +53,8 @@ source_encoding = 'utf-8'
 master_doc = 'index'
 
 # General information about the project.
-project = u'SINF1252 : Outils informatiques'
-copyright = u'2012-2014, O. Bonaventure, G. Detal, C. Paasch, B. Legat, N. Houtain, M. Demol'
+project = u'LEPL1503 : Outils informatiques'
+copyright = u'2012-2020, O. Bonaventure, G. Detal, C. Paasch, B. Legat, N. Houtain, M. Demol'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -190,7 +190,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'SINF1252doc'
+htmlhelp_basename = 'LEPL1503'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -209,7 +209,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'SINF1252.tex', u'SINF1252',
+  ('index', 'LEPL1503.tex', u'LEPL1503',
    u'O. Bonaventure, G. Detal, C. Paasch', 'manual'),
 ]
 
@@ -234,17 +234,6 @@ latex_documents = [
 #latex_domain_indices = True
 
 
-# -- Options for manual page output --------------------------------------------
-
-# One entry per manual page. List of tuples
-# (source start file, name, description, authors, manual section).
-man_pages = [
-    ('index', 'sinf1252', u'SINF1252',
-     [u'O. Bonaventure, G. Detal, C. Paasch'], 1)
-]
-
-# If true, show URL addresses after external links.
-#man_show_urls = False
 
 
 # -- Options for Texinfo output ------------------------------------------------
@@ -271,10 +260,10 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'SINF1252'
+epub_title = u'LEPL1503'
 epub_author = u'O. Bonaventure, G. Detal, C. Paasch'
-epub_publisher = u'O. Bonaventure, G. Detal, C. Paasch'
-epub_copyright = u'2013, O. Bonaventure, G. Detal, C. Paasch'
+epub_publisher = u'UCLouvain'
+epub_copyright = u'2012-2020, O. Bonaventure, G. Detal, C. Paasch, B. Legat, N. Houtain, M. Demol'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
