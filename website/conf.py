@@ -121,7 +121,7 @@ html_theme_options = {
     'description': "Syllabus d'apprentissage du C pour le projet LEPL1503",
     'github_user': 'UCL-INGI',
     'github_repo': 'SyllabusC',
-    'travis_button': True,
+    'travis_button': False,
 }
 html_sidebars = {
     '**': [
