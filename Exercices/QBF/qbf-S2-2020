@@ -1,0 +1,39 @@
+
+Vous devez développer un test unitaire pour une librairie de
+manipulation de chaînes de caractères.  Il vous est demandé
+d'implémenter une fonction sr qui prend en argument trois
+chaînes de caractères: string, s1, et s2. Son objectif est
+de remplacer chaque occurrence de la s1 dans string par la chaine s2.
+
+
+
+Signature de la fonction :
+/*
+  * @pre -
+  * @post si les chaines sont non-nulles et que s1 a la même longueur
+  *       que s2, remplace toutes les occurences de la chaine s1 par s2
+  *       dans string et retourne le numbre de remplacements effectués.
+  *       Retourne 0 si s1 n'est pas présent dans string.
+  *       Dans les autres cas retourne -1
+  */
+int sr(char string[], char s1[],char s2[])
+
+
+
+Exemple:
+
+Avant l'exécution de sr:
+string = "bonjourlechaton"
+s1 = "on"
+s2 = "ob"
+
+Après l'exécution de sr(string, s1, s2):
+string = "bobjourlechatob"
+
+Dans les spécifications de renverse_chaine, il est dit que
+l'utilisateur n'est censé appeler la fonction que si
+s1 et s2 ont la même longueur ... mais rien n'assure que l'utilisateur 
+va respecter les spécifications.
+
+Fournissez également une fonction main qui utilise votre
+fonction sr sur quelques tableaux d'exemples bien choisis.
