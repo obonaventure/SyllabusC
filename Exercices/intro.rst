@@ -100,12 +100,18 @@ Cinquième semaine
 -----------------
 
 
-La matière de cette semaine porte sur l'utilisation du système de fichiers et les ``pipe``. Elle est décrite dans les sections  :
+La matière de cette semaine porte sur l'utilisation du système de fichiers. Elle est décrite dans les sections  :
 
  - :ref:`theorie:utilisateurs`
  - :ref:`theorie:fichiers`
 
+En outre, vous devrez aussi lire les sections de la partie Outils qui sont relatives à 
 
+ -  :ref:`outils:git-ref`
+
+`git(1)`_ sera très utilisé dans le cadre du projet. Après avoir lu l'explication sur `git(1)`_, vous êtes invités à testez vos connaissances via les exercices `https://inginious.org/course/git <https://inginious.org/course/git>`_
+    
+   
 .. toctree::
    :maxdepth: 2
 
