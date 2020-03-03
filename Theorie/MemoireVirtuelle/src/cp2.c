@@ -53,13 +53,13 @@ int main (int argc, char *argv[]) {
  }
 
  // mmap fichier source
- if ((src = mmap (NULL, file_stat.st_size, PROT_READ, MAP_SHARED, file1, 0))  == NULL) {
+ if ((src = mmap (NULL, file_stat.st_size, PROT_READ, MAP_SHARED, file1, 0))  == (void *)(-1)) {
    perror("mmap(src)");
    exit(EXIT_FAILURE);
  }
 
  // mmap fichier destination
- if ((dst = mmap (NULL, file_stat.st_size, PROT_READ | PROT_WRITE, MAP_SHARED, file2, 0)) == NULL) {
+ if ((dst = mmap (NULL, file_stat.st_size, PROT_READ | PROT_WRITE, MAP_SHARED, file2, 0)) == (void *)(-1)) {
    perror("mmap(src)");
    exit(EXIT_FAILURE);
  }
