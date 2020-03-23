@@ -1,0 +1,142 @@
+Bonjour,
+> 
+> Sauf erreur de ma part il me semble que nous n'avons pas encore reçu la 
+> QBF de cette semaine. Puisque la plupart des TP's ont lieu demain, 
+> serait-il possible de nous l'envoyer le plus vite possible ?
+Durant cette semaine, les étudiants découvrent les threads, les mutex et les sémaphores. Cela fait beaucoup de concepts à assimiler même si ils ont vu en partie certains d'entre eux dans le cours de Java. Plutôt que d'écrire du code au tableau, je vous propose de faire des discussions style questions de QCM ou petites questions ouvertes. 
+
+
+Q1 Arguments de pthread_create
+
+Quels sont les premiers arguments que l'on peut passe à pthread_create ?
+
+pthread_t t1;
+
+void *f(void *param) { }
+void launch(void ){
+  pthread_t t2;
+  pthread_t * t3=(pthread_t *) malloc(sizeof(pthread_t));
+
+  int err=pthread_create(t1,NULL,&f, v);
+  err=pthread_create(&t1,NULL,&f, v);
+  err=pthread_create(&t2,NULL,&f, v);
+  err=pthread_create(t3,NULL,&f, v);
+}
+
+
+[ C'est l'occasion d'avoir une discussion sur la différence entre un pointeur et une structure et l'accessibilité de certaines zones de la mémoire. Seuls &t1 et t3 sont corrects, les autres sont sur le stack et donc non utilisables
+ ]
+
+
+Q2 Lesquelles de ces fonctions peuvent service de début d'un thread
+
+void *f1(void *param) { }
+void f2(void *param) { }
+void *f3(void param) { }
+void f4() { }
+
+
+[ suite de la question précédente ]
+
+Q3 Vous devez créer un thread qui reçoit deux valeurs réels en argument. Ecrivez le code du thread qui affiche ces deux réels et l'appel à ce thread via pthread_create 
+
+[ Solution via un tableau
+
+pthread_t pt;
+double tab[2]={2.0,3.0};
+
+void *f3(void *param) {
+  printf("f3\n");
+  double *p=(double *) param;
+  printf("%f %f\n",*p,*p+1);
+ return NULL;
+}
+int main( int argc, char **argv) {
+    int err=pthread_create(&pt,NULL,&f3,(void *)tab);
+
+// via une structure
+
+pthread_t pt;
+struct pair {
+  double x;
+  double y;
+};
+void *f2(void *param) {
+  struct pair *p=(struct pair *) param;
+  printf("%f %f\n",p->x,p->y);
+  return NULL;
+}
+int main( int argc, char **argv) {
+struct pair * a =(struct pair *) malloc(sizeof(struct pair));
+a->x=2.3; a->y=4.5;
+int err=pthread_create(&pt,NULL,&f2,(void *)a);
+
+
+C'est important que les étudiants voient qu'ils peuvent passer ce qu'ils veulent à un thread ]
+
+Q4 Variable partagée
+
+Quelles sont les variables déclarées ci-dessous que l'on peut partager entre deux threads
+
+__thread int count1; 
+int count2;
+int * count3; 
+int main ( int argc, char *argv[])
+
+__thread int count4; 
+int * count 5=(int *)malloc(sizeof(int));
+count3=(int *) malloc(sizeof(int)); 
+
+
+Q5 Structure et mutex
+
+Un vecteur qui sera utilisé par plusieurs threads est déclaré comme suit
+
+struct vecteur {
+  double *v;
+  pthread_mutex_t mutex;
+};
+
+Quel code faut-il écrire pour initialiser un vecteur de SIZE réels ?
+
+[ 
+   struct vecteur * v1=(struct vecteur *)malloc(sizeof(struct vecteur));
+   pthread_mutex_init(&(v1->mutex),NULL);
+   v1->v=(double *)malloc(SIZE*sizeof(double));
+]
+
+
+Q6 Un programme modifie deux de ces vecteurs, A et B. Quel code faut-il utiliser pour entrer en section critique et sortir de section critique ?
+
+[ Si A et B sont les vecteurs :
+
+pthread_mutex_lock(A->mutex);
+pthread_mutex_lock(B->mutex); 
+ 
+// section critique
+
+pthread_mutex_unlock(A->mutex);
+pthread_mutex_unlock(B->mutex); 
+
+Demandez leur ce qu'il se passe si un thread fait le code ci-dessus et l'autre 
+
+pthread_mutex_lock(B->mutex);
+pthread_mutex_lock(A->mutex); 
+ 
+// section critique
+
+pthread_mutex_unlock(A->mutex);
+pthread_mutex_unlock(B->mutex); 
+
+C'est l'occasion de leur expliquer que dans un programme on doit toujours prendre les mutex dans le même ordre (idem pour les sémaphores) 
+
+
+Q7 Sémaphores
+
+Pour résoudre un problème de section critique, à quelle valeur faut-il initialiser le sémaphore ?
+
+
+Q8 voir les deux questions sur les producteurs consommateurs dans les slides attachés. C'est important qu'ils comprennent comment le producteur consommateur fonctionne.
+
+
+OB
