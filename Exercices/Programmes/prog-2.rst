@@ -14,14 +14,14 @@ Questions INGINIOUS
 #. Faites l'exercice relatif à `strlen(3)`_ sur INGINIOUS : https://inginious.info.ucl.ac.be/course/LEPL1503/s2_strlen
 
 
-#. Faites l'exercice relatif à `strcasecmp(3)`_ sur INGINIOUS : https://inginious.info.ucl.ac.be/course/LEPL1503/s2_casecmp
+#. Faites l'exercice relatif à `strcasecmp(3)`_ sur INGINIOUS : https://inginious.info.ucl.ac.be/course/LEPL1503/s2_strcasecmp
 
-#. L'an dernier, vous avez écrit un programme permettant de détecter si une chaîne de caractères était un palindrome. Faites de même en C avec l'exercice INGINIOUS https://inginious.info.ucl.ac.be/course/LEPL1503/s2_palindrome   
+#. L'an dernier, vous avez écrit un programme permettant de détecter si une chaîne de caractères était un palindrome. Faites de même en C avec l'exercice INGINIOUS https://inginious.info.ucl.ac.be/course/LEPL1503/s2_palindrome   (bonus)
 
 #. Un utilisateur peut adapter le comportement d'un programme via les arguments passés en ligne de commande. Ecrivez un programme permettant d'afficher un argument sur deux tel qu'indiqué sur INGINIOUS: https://inginious.info.ucl.ac.be/course/LEPL1503/s2_main_argc
 
 
-#. Ecrivez le corps de la fonction `swap2 <https://inginious.info.ucl.ac.be/course/LEPL1503/s2_swap2int>`_ permettant d'échanger les valeurs stockées dans deux variables de type entier. Faites de même lorsque les arguments de cette fonction sont des structures contenant des fractions : https://inginious.info.ucl.ac.be/course/LEPL1503/s2_swap
+#. Ecrivez le corps de la fonction `swap2 <https://inginious.info.ucl.ac.be/course/LEPL1503/s2_swap2int>`_ permettant d'échanger les valeurs stockées dans deux variables de type entier. Faites de même lorsque les arguments de cette fonction sont des structures contenant des fractions : https://inginious.info.ucl.ac.be/course/LEPL1503/s2_swap2int
 
 .. #. La libraire `string(3)`_ implémente un grand nombre de fonctions de manipulation des strings qui vous serons utile lors de différents projets de programmation. 
 
