@@ -119,7 +119,7 @@ html_theme_options = {
     'logo_name': False,
     'logo_text_align': 'left',
     'description': "Syllabus d'apprentissage du C pour le projet LEPL1503",
-    'github_user': 'UCL-INGI',
+    'github_user': 'obonaventure',
     'github_repo': 'SyllabusC',
     'travis_button': False,
 }
