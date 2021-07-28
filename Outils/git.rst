@@ -45,25 +45,37 @@
    cliquer
 
 .. _git-ref:
-   
+
 Git
 ---
 .. sectionauthor:: Benoit Legat
 
-   
-Introduction
-~~~~~~~~~~~~
+`git(1)`_ est un outil de **version control**, c'est-à-dire de gestion de code sous formes de versions.
+Il est utilisé pour sauvegarder chaque version d'un code source,
+depuis sa création jusqu'à la dernière version.
+Il est également très utile dans le cas où plusieurs programmeurs travaillent sur le même projet,
+car il permet de fusionner les modifications apportées par chaque membre de l'équipe
+et d'éviter les conflits de code, par exemple un fichier qui aurait été modifié conjointement
+par 2 personnes.
+Il est extrêmement utilisé en pratique, et permet de faciliter grandement
+la gestion du code source lors de projets de taille relativement grande,
+ou comprenant plusieurs programmeurs.
 
 `git(1)`_ a été développé initialement pour la gestion du code source du kernel Linux.
 Il est aussi utilisé pour la gestion des sources de ce document
-depuis https://github.com/obonaventure/SystemesInformatiques.
+depuis https://github.com/obonaventure/SyllabusC.
 On l'utilise le plus souvent à l'aide de l'utilitaire `git(1)`_ mais il
 existe aussi des
 `applications graphiques <http://git-scm.com/downloads/guis>`_.
 
-Les différentes versions sont enregistrées dans des commits qui sont
-liées au commit constituant la version précédente.  On sait ainsi
-facilement voir ce qui a changé entre deux versions (pas spécialement,
+Le code source est sauvegardé dans un *dépôt*, ou *repository*, qui est simplement
+un dossier contenant le code, et auquel chaque développeur a accès.
+Ce repository contient un historique de toutes les versions du code,
+depuis sa création.
+Chacune des différentes versions est enregistrée dans un *commit*,
+qui représente les modifications apportées aux différents fichiers du projet
+depuis la version précédente.
+On sait ainsi facilement voir ce qui a changé entre deux versions (pas spécialement
 une version et la suivante) et même restaurer l'état de certains
 fichiers à une version sauvegardée dans un commit.  Du coup, si vous
 utilisez `git(1)`_ pour un projet, vous ne pouvez jamais perdre plus
@@ -73,223 +85,114 @@ accessibles.  Cette garantie est extrêmement précieuse et constitue à
 elle seule une raison suffisante d'utiliser `git(1)`_ pour tous vos
 projets.
 
-Contrairement à `subversion`_, il est décentralisé, c'est à dire que chaque
-développeur a toute l'information nécessaire pour utiliser `git(1)`_,
-il ne doit pas passer par un serveur où les données sont centralisées à
-chaque commande.
-Cela prend éventuellement plus d'espace disque mais comme on travaille
-avec des documents de type texte, ce n'est pas critique.
-Les avantages, par contre, sont nombreux.
-On a pas besoin d'être connecté au serveur pour l'utiliser,
-il est beaucoup plus rapide
-et chaque développeur constitue un backup du code, ce qui est confortable.
+`git(1)`_ est souvent utilisé conjointement avec une plateforme en ligne,
+comme `GitHub <https://github.com>`_ ou GitLab (via la `Forge UCLouvain <https://forge.uclouvain.be/>`_),
+qui permet de centraliser le code source, pour que tous les collaborateurs
+puissent récupérer la dernière version, et qui permet également de consulter
+le code source en ligne.
 
-De plus, comme on va le voir, `git(1)`_ supporte une gestion des commits
-très flexible avec un historique pas linéaire
-mais composés de plusieurs branches et il
-permet aux développeurs de ne pas avoir toutes les branches en local.
+Configuration de l'utilisateur
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Cette efficacité de `git(1)`_ et sa flexibilité sont ses arguments majeurs et
-leur origine est évidente quand on sait qu'il a été créé pour gérer des projets
-aussi complexes que le kernel Linux.
-Il est parfois critiqué pour sa complexité mais c'est surtout dû au fait
-qu'il a une façon assez différente de fonctionner des autres.
+Lorsqu'on utilise `git(1)`_, chaque commit est documenté en fournissant le nom de l'auteur,
+son email, un commentaire et une description (optionnelle).
+Pour ne pas devoir spécifier le nom et l'email à chaque fois,
+il est possible de configurer `git(1)`_ pour qu'il les stocke et les utilise pour chaque commit.
+Pour ce faire, il suffit d'utiliser la commande `git-config(1)`_:
 
-.. FIXME je dis "historique" ou "arborescence" ? sur le wikipedia
-   français, ils disent "arborescence :/ (http://fr.wikipedia.org/wiki/Git)
-   Pour svn, historique est le bon terme mais pour Git...
-   Je dis "dépôt" ou "repository" ?
+.. code-block:: bash
+
+  $ git config --global user.name "Your name"
+  $ git config --global user.email name@domain.com
+
+L'option ``--global`` signifie que ces données seront utilisées pour chaque repository
+sur la machine. En enlevant l'option, les données seront donc uniquement utilisées
+pour le repository courant.
+
+Création d'un repository
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+La première étape pour profiter des capacités de `git(1)`_ pour un projet,
+est de créer un repository qui contiendra le code source du projet.
+La façon la plus simple de faire est de créer le repository depuis la plateforme en ligne (GitHub ou GitLab),
+puis le cloner en local.
+Pour ce faire, la première étape est de créer le repository sur la plateforme en ligne.
+Cela est relativement simple et ne sera pas décrit dans ce document.
+Ce repository sera appelé *remote*, car il n'est pas situé en local, mais sur
+un serveur distant accessible depuis l'Internet, ce qui permet à chaque
+utilisateur de le consulter pour obtenir la dernière version du code source.
+Une fois créé, il faut récupérer le lien du repository sur la page web du projet.
+Le lien peut être sous forme HTTPS ou SSH.
+Le premier est le choix de base, et le second est choisi pour utiliser une clé ssh
+pour s'identifier (voir la section :ref:`outils:ssh` du syllabus pour plus d'informations).
+Ensuite, il faut *cloner* le repository en local, avec la commande `git-clone(1)`_:
+
+.. code-block:: bash
+
+  $ git clone LIEN_DU_REPOSITORY
+  Cloning into 'NOM_DU_REPOSITORY'...
+
+Cette commande va cloner le repository dans le dossier courant,
+de manière à avoir une copie locale du code source sur laquelle travailler.
 
 Utilisation linéaire de Git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On peut utiliser `git(1)`_ à plusieurs niveaux.
-On peut tout à fait avoir un historique linéaire tout en profitant pleinement
-de `git(1)`_.
-Pour ceux dont c'est la première fois qu'ils utilisent un système de contrôle
-de version,
-il vaut peut-être mieux commencer par ne lire que cette partie et
-déjà l'utiliser de façon plus basique pour le premier projet et
-lire les parties suivantes une fois que vous voulez consolider
-votre connaissance et apprendre plus en détails comment ça fonctionne
-sans toutefois voir toutes ses possibilités.
-Toutefois, la lecture de cette partie n'est pas nécessaire pour comprendre
-les parties suivantes donc si vous voulez juste parfaire votre
-connaissance, vous pouvez la passer sans crainte.
+La manière la plus simple d'utiliser `git(1)`_ est de façon linéaire,
+c'est-à-dire que chaque version du code (chaque commit) sera une modification de la précédente,
+par addition, modification, ou suppression de fichiers.
+Dans ce cas, après la création du repository contenant le projet,
+le travail sur le code source suit un schéma,
+qui est répété pour chaque modification, et qui est le suivant:
 
-Créer un historique linéaire
-############################
+  * Récupération du dernier commit (``git pull``)
+  * Modification du code source
+  * Ajout des modifications au commit (``git add``)
+  * Sauvegarde du commit (``git commit``)
+  * Publication des changements sur le remote (``git push``)
 
-Un historique linéaire est un historique comme on l'imagine avec des versions
-l'une après l'autre, chaque version étendant la précédente avec
-certaines modifications.
-On verra par après qu'il est possible d'avoir un historique non-linéaire
-avec `git(1)`_ mais ce n'est pas indispensable.
+Chacune de ces étapes sera décrite ci-après.
 
-Sur `git(1)`_, on appelle une version un *commit*.
-Chacun de ces commits est documenté en fournissant le nom de l'auteur,
-son email, un commentaire et une description (optionnelle).
-Pour ne pas devoir respécifier le nom et l'email à chaque fois,
-on le stocke dans le fichier de configuration de `git(1)`_ ``~/.gitconfig``.
-Bien qu'on peut l'éditer manuellement, on préfère le faire à l'aide de
-la commande `git-config(1)`_.
+Récupération du dernier commit
+##############################
 
-Pour spécifier le commentaire,
-`git-commit(1)`_ ouvrira un éditeur de texte.
-Pour entrer une description, laissez une ligne vide puis écrivez la.
-L'éditeur de texte à ouvrir est déterminé par `git(1)`_ en fonction de la variable
-``core.editor`` du fichier de configuration mentionné plus haut.
-Vous pouvez aussi spécifier le commentaire à l'aide de l'option ``-m``
-de `git-commit(1)`_ comme on verra dans les exemples par après.
+Avant de travailler sur le code, il faut récupérer en local toutes les modifications
+qui auraient été apportées au remote entre temps.
+En effet, si on ne récupère pas ces modifications,
+des conflits peuvent apparaître, car des fichiers auraient été modifiées
+en même temps dans deux copies du repository.
 
-Voici les commandes à exécuter pour configurer le nom, l'email et l'éditeur
-de texte.
-Vous devez bien entendu remplacer les valeurs par celles qui vous conviennent.
+Pour récupérer la dernière version du remote, il suffit d'exécuter la commande `git-pull(1)`_:
 
 .. code-block:: bash
 
-   $ git config --global user.name "Jean Dupont"
-   $ git config --global user.email jean@dupont.com
-   $ git config --global core.editor gedit
+  $ git pull
 
-L'option ``--global`` spécifie qu'on veut que ces configurations s'appliquent
-pour tous nos dépôts (`git(1)`_ éditera le fichier ``~/.gitconfig``).
-Sinon, `git-config(1)`_ ne modifie que le fichier
-``.git/config`` à l'intérieur du *git directory* du projet en cours.
-Ce dernier prône bien entendu sur ``~/.gitconfig`` quand une variable
-a des valeurs différentes dans ``~/.gitconfig`` et ``.git/config``.
+Cette commande va appliquer les derniers commits du remote à la copie locale du repository.
+Ensuite, on peux travailler sur le code et modifier les fichiers.
 
-Vous voilà paré pour créer votre premier dépôt `git(1)`_
-mais avant de voir comment faire des nouveaux commits,
-il est impératif de comprendre ce qu'est la *staging area*.
+Ajout des modifications au commit
+#################################
 
-Il y a 3 états dans lequel un fichier peut-être,
- - il peut être dans le *working directory*,
-   c'est à dire que c'est le fichier tel qu'il est actuellement dans le code;
- - il peut être dans la *staging area*,
-   c'est à dire que ses changements seront pris en compte dans le prochain
-   commit;
- - et il peut être dans le *git directory*, c'est à dire sauvegardé dans
-   un commit à l'intérieur du dossier ``.git``.
+Lorsque des modifications ont été apportées au code, et qu'on veut les publier sur le remote
+pour que tous les développeurs aient accès à la dernière version,
+la première étape est de créer un commit contenant ces modifications.
 
-Pour committer des changements, on les mets d'abord dans la
-*staging area* puis on commit.
-Cette flexibilité permet de ne pas committer
-tout les changements du *working directory*.
-
-Voyons tout ça avec un programme exemple qui affiche en LaTex
-la somme des entiers de :math:`1` à :math:`n`.
-On va utiliser les commandes
-
- * `git-init(1)`_ qui permet de transformer un projet en dépôt `git(1)`_
-   (tout est stocké dans le dossier ``.git``);
- * `git-diff(1)`_ qui donne la différence entre l'état des fichiers dans le
-   *working directory* avec leur état dans le *git directory*
-   au commit actuel;
- * `git-status(1)`_ qui affiche les fichiers modifiés et ceux qui vont être
-   committés;
- * `git-add(1)`_ qui spécifie quels fichiers doivent faire partie du prochain
-   commit en les ajoutant à la *staging area*;
- * `git-commit(1)`_ qui commit les fichiers dans la *staging area*;
- * et `git-log(1)`_ qui montre tous les commits de l'historique.
-
-La première version sera la suivante
-
-.. code-block:: c
-
-   #include <stdio.h>
-   #include <stdlib.h>
-
-   int main (int argc, char *argv[]) {
-     long int sum = 0, i, n = 42;
-     for (i = 1; i <= n; i++) {
-       sum += i;
-     }
-     printf("\\sum_{i=1}^{%ld} i = %ld\n", n, sum);
-     return EXIT_SUCCESS;
-   }
-
-Ce programme fonctionne comme suit
+Imaginons que le repository contient un fichier ``main.c``
+(qui calcule la somme des entiers de 0 à n) qui a été modifié.
+On peut voir les fichiers qui ont été modifiés avec la commande `git-status(1)`_:
 
 .. code-block:: bash
 
-   $ gcc main.c
-   $ ./a.out
-   \sum_{i=1}^{42} i = 903
-
-On va sauvegarder un premier commit contenant cette version de ``main.c``
-
-`git-init(1)`_ permet d'initialiser le dépôt `git(1)`_.
-`git-status(1)`_ analyse le contenu du répertoire.
-Il indique que le fichier ``main.c`` n'est pas suivi par `git(1)`_ (`untracked`).
-Ce fichier est ajouté avec la commande `git-add(1)`_.
-`git-commit(1)`_ sauvegarde cette version du code dans un commit
-dont le commentaire, spécifié avec l'option ``-m``, est *First commit*.
-
-.. code-block:: bash
-
-   $ git init
-   Initialized empty Git repository in /path/to/project/.git/
-   $ git status
-   # On branch master
-   #
-   # Initial commit
-   #
-   # Untracked files:
-   #   (use "git add <file>..." to include in what will be committed)
-   #
-   #	main.c
-   nothing added to commit but untracked files present (use "git add" to track)
-   $ git add main.c
-   $ git status
-   # On branch master
-   #
-   # Initial commit
-   #
-   # Changes to be committed:
-   #   (use "git rm --cached <file>..." to unstage)
-   #
-   #	new file:   main.c
-   #
-   $ git commit -m "First commit"
-   [master (root-commit) 3d18efe] First commit
-    1 file changed, 11 insertions(+)
-    create mode 100644 main.c
-   $ git log
-   commit 3d18efe4df441ebe7eb2b8d0b78832a3861dc05f
-   Author: Benoît Legat <benoit.legat@gmail.com>
-   Date:   Sun Aug 25 15:32:42 2013 +0200
-
-       First commit
-
-Modifions maintenant le programme pour qu'il prenne la valeur de
-:math:`n` dans ``argv``.
-Si on compile le programme après modification, et qu'on exécute avec
-en argument :math:`10` puis :math:`9.75`, on obtient ce qui suit
-
-.. code-block:: bash
-
-   $ gcc main.c
-   $ ./a.out 10
-   \sum_{i=1}^{10} i = 55
-   $ ./a.out 9.75
-   $ echo $?
-   1
-
-On peut maintenant voir avec `git-status(1)`_ que le fichier ``main.c``
-a été modifié
-
-.. code-block:: bash
-
-   $ git status
-   # On branch master
-   # Changes not staged for commit:
-   #   (use "git add <file>..." to update what will be committed)
-   #   (use "git checkout -- <file>..." to discard changes in working directory)
-   #
-   #	modified:   main.c
-   #
-   no changes added to commit (use "git add" and/or "git commit -a")
+  $ git status
+  # On branch master
+  # Changes not staged for commit:
+  #   (use "git add <file>..." to update what will be committed)
+  #   (use "git checkout -- <file>..." to discard changes in working directory)
+  #
+  #	modified:   main.c
+  #
+  no changes added to commit (use "git add" and/or "git commit -a")
 
 Avec `git-diff(1)`_, on peut voir quelles sont les lignes qui ont été
 retirées (elles commencent par un ``-``) et celles qui ont été ajoutées
@@ -317,18 +220,75 @@ retirées (elles commencent par un ``-``) et celles qui ont été ajoutées
         sum += i;
       }
 
-Ajoutons ``main.c`` aux modifications à mettre dans le prochain commit puis
-créons ce commit
+Si les modifications nous conviennent, il suffit ensuite d'ajouter les fichiers
+modifiés au commit, avec la commande `git-add(1)`_:
 
 .. code-block:: bash
 
-   $ git add main.c
-   $ git commit -m "Read n from argv"
-   [master 56ce59c] Read n from argv
-    1 file changed, 6 insertions(+), 1 deletion(-)
+  $ git add main.c
 
-On peut maintenant voir le nouveau commit dans l'historique affiché par
-`git-log(1)`_
+Il est également possible d'ajouter d'un coup tous les fichiers modifiés au commit
+en utilisant l'option ``--all`` de `git-add(1)`_:
+
+.. code-block:: bash
+
+  $ git add --all
+
+Le commit a été crée, il faut maintenant le sauvegarder, puis le publier sur le remote.
+
+Sauvegarde du commit
+####################
+
+Une fois que le commit a été crée, il faut le sauvegarder,
+pour indiquer au repository qu'on est passé à une nouvelle version.
+Pour ce faire, on utilise la commande `git-commit(1)`_:
+
+.. code-block:: bash
+
+  $ git commit
+
+Cette commande va ouvrir un éditeur de texte pour indiquer un message
+décrivant le commit.
+Par défaut, l'éditeur est `vim(1)`_.
+Il s'agit d'un éditeur en ligne de commande, puissant mais très compliqué à utiliser pour les débutants.
+Il est possible de modifier l'éditeur par défaut en utilisant la commande `git-config(1)`_,
+déjà mentionnée plus haut.
+Un autre éditeur en ligne de commande, plus simple d'utilisation, est `nano(1)`_.
+Pour choisir `nano(1)`_ comme éditeur par défaut, il suffit d'exécuter la commande suivante:
+
+.. code-block:: bash
+
+  $ git config --global core.editor nano
+
+Cependant, ouvrir un éditeur de texte à chaque commit peut vite devenir laborieux.
+En utilisant l'option ``-m`` de `git-commit(1)`_, il est possible de spécifier le message
+décrivant le commit directement lors de l'appel à la commande `git-commit(1)`_:
+
+.. code-block:: bash
+
+  $ git commit -m "Commit message"
+  [master 56ce59c] Commit message
+   1 file changed, 6 insertions(+), 1 deletion(-)
+
+Parmi les options de `git-commit(1)`_, il existe aussi l'option ``-a`` qui peut s'avérer très utile.
+Cette option permet d'ajouter directement, lors de l'appel à `git-commit(1)`_,
+toutes les modifications qui auraient été apportées à des fichiers
+**déjà enregistrés dans le repository**.
+Si de nouveaux fichiers ont été créés, l'option ``-a`` ne les prendra pas en compte,
+et il faudra alors passer par la commande `git-add(1)`_.
+
+Il est finalement possible de combiner les options ``-m`` et ``-a``, en utilisant l'option ``-am``.
+Cette option permet donc, en une seule commande, d'ajouter toutes les modifications
+apportées aux fichiers déjà suivis, et de préciser le message du commit, de la façon suivante:
+
+.. code-block:: bash
+
+  $ git commit -am "Commit message"
+  [master 56ce59c] Commit message
+   1 file changed, 6 insertions(+), 1 deletion(-)
+
+Il est alors possible de voir le nouveau commit dans l'historique du repository,
+en utilisant la commande `git-log(1)`_:
 
 .. code-block:: bash
 
@@ -337,7 +297,7 @@ On peut maintenant voir le nouveau commit dans l'historique affiché par
    Author: Benoît Legat <benoit.legat@gmail.com>
    Date:   Sun Aug 25 15:37:51 2013 +0200
 
-       Read n from argv
+       Commit message
 
    commit 3d18efe4df441ebe7eb2b8d0b78832a3861dc05f
    Author: Benoît Legat <benoit.legat@gmail.com>
@@ -345,266 +305,105 @@ On peut maintenant voir le nouveau commit dans l'historique affiché par
 
        First commit
 
-On va maintenant s'occuper d'un *segmentation fault* qui arrive
-quand il n'y a pas d'argument.
+Une fois que le commit a été enregistré, il reste à le publier sur le remote,
+pour que tous les développeurs du projet y aient accès.
+
+Publication du commit sur le remote
+###################################
+
+Pour que tous les développeurs soient en mesure de voir les dernières modifications
+qui auraient été apportées en local, il faut que chaque développeur,
+après avoir créé et enregistré un commit, le publie sur le remote,
+qui est accessible par tous les développeurs via l'Internet.
+Pour ce faire, on utilise la commande `git-push(1)`_:
 
 .. code-block:: bash
 
-   $ gcc main.c
-   $ ./a.out
-   Segmentation fault (core dumped)
-
-Pour cela, on va simplement vérifier la valeur de ``argc`` et utiliser :math:`42` comme
-valeur par défaut.
-`git-diff(1)`_ nous permet de voir les changements qu'on a fait
-
-.. code-block:: diff
-
-   $ git diff
-   diff --git a/main.c b/main.c
-   index a9e4c4a..e906ea1 100644
-   --- a/main.c
-   +++ b/main.c
-   @@ -2,11 +2,13 @@
-    #include <stdlib.h>
-
-    int main (int argc, char *argv[]) {
-   -  long int sum = 0, i, n;
-   +  long int sum = 0, i, n = 42;
-      char *end = NULL;
-   -  n = strtol(argv[1], &end, 10);
-   -  if (*end != '\0') {
-   -    return EXIT_FAILURE;
-   +  if (argc > 1) {
-   +    n = strtol(argv[1], &end, 10);
-   +    if (*end != '\0') {
-   +      return EXIT_FAILURE;
-   +    }
-      }
-      for (i = 1; i <= n; i++) {
-        sum += i;
-
-On va maintenant committer ces changement
-dans un commit au commentaire *Fix SIGSEV*
-
-.. code-block:: bash
-
-   $ git add main.c
-   $ git commit -m "Fix SIGSEV"
-   [master 7a26c63] Fix SIGSEV
-    1 file changed, 6 insertions(+), 4 deletions(-)
-   $ git log
-   commit 7a26c6338c38614ce1c4ff00ac0a6895b57f15cb
-   Author: Benoît Legat <benoit.legat@gmail.com>
-   Date:   Sun Aug 25 15:39:49 2013 +0200
-
-       Fix SIGSEV
-
-   commit 56ce59c54726399c18b3f87ee23a45cf0d7f015d
-   Author: Benoît Legat <benoit.legat@gmail.com>
-   Date:   Sun Aug 25 15:37:51 2013 +0200
-
-       Read n from argv
-
-   commit 3d18efe4df441ebe7eb2b8d0b78832a3861dc05f
-   Author: Benoît Legat <benoit.legat@gmail.com>
-   Date:   Sun Aug 25 15:32:42 2013 +0200
-
-       First commit
-
-Travailler à plusieurs sur un même projet
-#########################################
-
-`git(1)`_ est déjà un outil très pratique à utiliser seul mais c'est quand
-on l'utilise pour se partager du code qu'il devient vraiment indispensable.
-On se partage le code par l'intermédiaire de *remotes*.
-Ce sont en pratique des serveurs auxquels on peut avoir l'accès lecture et/ou
-écriture.
-On va traiter ici le cas où deux développeurs, Alice et Bob,
-ont l'accès lecture et écriture.
-
-Alice va créer le projet avec
-
-.. code-block:: bash
-
-   $ git init
-   Initialized empty Git repository in /path/to/project/.git/
-
-puis elle créera une *remote*, c'est à dire un autre dépôt `git(1)`_ que celui
-qu'ils ont en local, avec lequel ils vont pouvoir synchroniser leur
-historique.
-Supposons qu'ils aient un projet *projectname* sur GitHub.
-Vous pouvez créer le *remote* comme suit
-
-.. code-block:: bash
-
-   $ git remote add https://github.com/alice/projectname.git
-
-Ensuite, vous pourrez obtenir les modifications de l'historique du *remote*
-avec ``git pull origin master``
-et ajouter vos modifications avec ``git push origin master``.
-
-Si vous exécutez ``git pull origin master``, que vous faites quelques
-commits et puis que vous essayer de mettre *origin* à jour avec
-``git push origin master``,
-il faut qu'aucun autre développeur n'ait poussé de modification entre temps.
-S'il en a poussé, `git(1)`_ ne saura pas effectuer votre *push*.
-Il vous faudra alors faire un *pull*.
-`git(1)`_ tentera alors de fusionner vos changements avec ceux d'*origin*.
-Si ces derniers sont à une même ligne d'un même fichier, il vous demandera
-de résoudre le conflit vous-même.
-Il est important pour cela que vous ayez committé vos changements avant
-le *pull* sinon `git(1)`_ l'abandonnera car il ne sait que fusionner des commits.
-C'est à dire que ce qu'il y a dans le *git directory*,
-pas ce qu'il y a dans le *working directory* ni dans la *staging area*.
-
-Prenons un exemple où Bob *push* en premier puis Alice doit résoudre
-un conflit.
-Alice commence avec le fichier ``main.c`` suivant
-
-.. code-block:: c
-
-   #include <stdio.h>
-   #include <stdlib.h>
-
-   int main (int argc, char *argv[]) {
-   }
-
-Elle fait le premier commit du projet
-
-.. code-block:: bash
-
-   $ git add main.c
-   $ git commit -m "Initial commit"
-   [master (root-commit) 80507e3] Initial commit
-    1 file changed, 5 insertions(+)
-    create mode 100644 main.c
-
-et va maintenant le *pusher* sur le serveur
-
-.. code-block:: bash
-
-   $ git push origin master
-   Counting objects: 3, done.
-   Delta compression using up to 4 threads.
-   Compressing objects: 100% (2/2), done.
-   Writing objects: 100% (3/3), 282 bytes, done.
-   Total 3 (delta 0), reused 0 (delta 0)
-   To https://github.com/alice/projectname.git
-   * [new branch]      master -> master
-
-Bob clone alors le projet pour en avoir une copie en local
-ainsi que tout l'historique et la remote *origin* déjà configurée
-
-.. code-block:: bash
-
-   $ git clone https://github.com/alice/projectname.git
-   Cloning into 'projectname'...
-   remote: Counting objects: 3, done.
-   remote: Compressing objects: 100% (2/2), done.
-   remote: Total 3 (delta 0), reused 3 (delta 0)
-   Unpacking objects: 100% (3/3), done.
-   $ git remote -v
-   origin	https://github.com/alice/projectname.git (fetch)
-   origin	https://github.com/alice/projectname.git (push)
-
-Ensuite, il ajoute ses modifications
-
-.. code-block:: diff
-
-   $ git diff
-   diff --git a/main.c b/main.c
-   index bf17640..0b0672a 100644
-   --- a/main.c
-   +++ b/main.c
-   @@ -2,4 +2,5 @@
-    #include <stdlib.h>
-
-    int main (int argc, char *argv[]) {
-   +  return 0;
-    }
-
-et les commit
-
-.. code-block:: bash
-
-   $ git add main.c
-   $ git commit -m "Add a return statement"
-   [master 205842a] Add a return statement
-    1 file changed, 1 insertion(+)
-
-et les push sur le serveur
-
-.. code-block:: bash
-
-   $ git push origin master
+   $ git push
    Counting objects: 5, done.
    Delta compression using up to 4 threads.
    Compressing objects: 100% (2/2), done.
    Writing objects: 100% (3/3), 291 bytes, done.
    Total 3 (delta 1), reused 0 (delta 0)
-   To https://github.com/alice/projectname.git
+   To github.com:user/projectname.git
       80507e3..205842a  master -> master
 
-Pendant ce temps là, Alice ne se doute de rien et
-fait ses propres modifications
+De cette manière, chaque développeur qui voudrait à son tour apporter des modifications au projet,
+peut appliquer les mêmes étapes, et le remote contiendra toujours la dernière version du code.
+En résumé, les étapes sont:
 
-.. code-block:: diff
+  * ``git pull``
+  * Modification du code
+  * ``git add``
+  * ``git commit``
+  * ``git push``
 
-   $ git diff
-   diff --git a/main.c b/main.c
-   index bf17640..407cd8a 100644
-   --- a/main.c
-   +++ b/main.c
-   @@ -2,4 +2,5 @@
-    #include <stdlib.h>
 
-    int main (int argc, char *argv[]) {
-   +  return EXIT_SUCCESS;
-    }
+Résolution de conflits
+######################
 
-puis les commit
-
-.. code-block:: bash
-
-   $ git add main.c
-   $ git commit -m "Add missing return statement"
-   [master 73c6a3a] Add missing return statement
-    1 file changed, 1 insertion(+)
-
-puis essaie de les pusher
+Lorsque plusieurs développeurs travaillent sur un même projet, il est possible qu'il
+apportent des modifications au code en même temps.
+Dans ce cas, pour le second développeur voulant *push* ses modifications,
+le *push* sera rejeté:
 
 .. code-block:: bash
 
-   $ git push origin master
-   To https://github.com/alice/projectname.git
+   $ git push
+   To github.com:user/projectname.git
     ! [rejected]        master -> master (non-fast-forward)
-   error: failed to push some refs to 'https://github.com/alice/projectname.git'
+   error: failed to push some refs to 'github.com:user/projectname.git'
    hint: Updates were rejected because the tip of your current branch is behind
    hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
    hint: before pushing again.
    hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
-mais `git(1)`_ lui fait bien comprendre que ce n'est pas possible.
-En faisant le *pull*, on voit que `git(1)`_ fait de son mieux pour
-fusionner les changements mais qu'il préfère nous laisser
-choisir quelle ligne est la bonne
+Cela est dû a fait que le remote a été modifié entre temps par un autre développeur,
+et donc que le dernier commit n'est pas le même sur le repository local et le remote.
+
+Pour régler ce problème, on commence par faire un ``git pull``.
+Deux cas de figure peuvent alors apparaître.
+Le premier cas, le plus simple, arrive lorsque les deux développeurs ont modifié des fichiers différents.
+Dans ce cas, le ``pull`` va réussir à fusionner les deux versions du repository,
+et produire un *merge* (une fusion).
+Un éditeur de texte s'ouvrira pour indiquer un message relatif au merge,
+et une fois ce message écrit, le *merge* sera effectué:
 
 .. code-block:: bash
 
-   $ git pull origin master
+  $ git pull
+  remote: Enumerating objects: 4, done.
+  remote: Counting objects: 100% (4/4), done.
+  remote: Total 4 (delta 3), reused 4 (delta 3), pack-reused 0
+  Unpacking objects: 100% (4/4), done.
+  From github.com:user/projectname
+     4d38eb9..617618b  master     -> origin/master
+  Merge made by the 'recursive' strategy.
+   main.c | 3 +++
+   1 file changed, 3 insertions(+)
+
+Il ne reste plus qu'à faire un ``git push`` pour que le *merge* soit
+publié sur le remote.
+
+Le deuxième cas possible arrive lorsque les deux développeurs ont modifié le même fichier
+(par exemple ``main.c``).
+Dans ce cas, le ``git pull`` n'arrivera pas à *merge* automatiquement:
+
+.. code-block:: bash
+
+   $ git pull
    remote: Counting objects: 5, done.
    remote: Compressing objects: 100% (1/1), done.
    remote: Total 3 (delta 1), reused 3 (delta 1)
    Unpacking objects: 100% (3/3), done.
-   From https://github.com/alice/projectname
+   From github.com:user/projectname
       80507e3..205842a  master     -> origin/master
    Auto-merging main.c
    CONFLICT (content): Merge conflict in main.c
    Automatic merge failed; fix conflicts and then commit the result.
 
-Il marque dans ``main.c`` la ligne en conflit et ce qu'elle vaut
-dans les deux commits
+`git(1)`_ marque alors dans le fichier ``main.c`` la ligne en conflit et ce qu'elle vaut
+dans les deux commits:
 
 .. code-block:: c
 
@@ -619,8 +418,10 @@ dans les deux commits
    >>>>>>> 205842aa400e4b95413ff0ed21cfb1b090a9ef28
    }
 
-On peut retrouver les fichiers en conflits dans
-``Unmerged paths``
+La ligne située entre le marqueur ``HEAD`` et la ligne de séparation
+est la version présente en local,
+tandis que la ligne située après la ligne de séparation est celle présente sur le remote.
+Il est possible de retrouver quels sont les fichiers en conflit en utilisant `git-status(1)`_:
 
 .. code-block:: bash
 
@@ -636,8 +437,8 @@ On peut retrouver les fichiers en conflits dans
    #
    no changes added to commit (use "git add" and/or "git commit -a")
 
-Il nous suffit alors d'éditer le fichier pour lui donner le contenu
-de la fusion
+Il suffit alors d'éditer le fichier en question, et de ne garder que le contenu voulu
+dans le fichier:
 
 .. code-block:: c
 
@@ -648,1046 +449,209 @@ de la fusion
      return EXIT_SUCCESS;
    }
 
-puis de le committer
+Il faut ensuite commit et push les modifications pour sauvegarder la fusion:
 
 .. code-block:: bash
 
-   $ git add main.c
-   $ git commit
-   [master eede1c8] Merge branch 'master' of https://github.com/alice/projectname
+  $ git commit -am "Merge conflict"
+  [master eede1c8] Merge conflict
+  $ git push
+  Counting objects: 8, done.
+  Delta compression using up to 4 threads.
+  Compressing objects: 100% (3/3), done.
+  Writing objects: 100% (4/4), 478 bytes, done.
+  Total 4 (delta 2), reused 0 (delta 0)
+  To github.com:user/projectname.git
+     205842a..eede1c8  master -> master
 
-On peut alors mettre le serveur à jour
+Le conflit sera alors résolu, et la dernière version du code sera disponible sur le remote.
 
-.. code-block:: bash
-
-   $ git push origin master
-   Counting objects: 8, done.
-   Delta compression using up to 4 threads.
-   Compressing objects: 100% (3/3), done.
-   Writing objects: 100% (4/4), 478 bytes, done.
-   Total 4 (delta 2), reused 0 (delta 0)
-   To https://github.com/alice/projectname.git
-      205842a..eede1c8  master -> master
-
-Paul peut alors récupérer les changements avec
-
-.. code-block:: bash
-
-   $ git pull origin master
-   remote: Counting objects: 8, done.
-   remote: Compressing objects: 100% (1/1), done.
-   remote: Total 4 (delta 2), reused 4 (delta 2)
-   Unpacking objects: 100% (4/4), done.
-   From https://github.com/alice/projectname
-      205842a..eede1c8  master     -> origin/master
-   Updating 205842a..eede1c8
-   Fast-forward
-    main.c | 2 +-
-    1 file changed, 1 insertion(+), 1 deletion(-)
-
-La plupart des fusions ne demande pas d'intervention manuelle mais
-dans les cas comme celui-ci,
-`git(1)`_ n'a pas d'autre choix que de nous demander notre avis.
-
-Contribuer au syllabus
-######################
-
-Dans le cas du syllabus, vous n'avez pas l'accès écriture.
-La manière dont GitHub fonctionne pour régler cela c'est que vous *forkez* le
-projet principal.
-C'est à dire que vous en faites un copie indépendante à votre nom.
-À celle là vous avez l'accès écriture.
-Vous allez ensuite soumettre vos changements sur celle là puis les
-proposer à travers l'interface de GitHub qu'on appelle *Pull request*.
-Conventionnellement, on appelle la *remote* du dépôt principal *upstream*
-et la votre *origin*.
-
-Commencez donc par vous connecter sur GitHub, allez à
-l'`adresse du code du syllabus
-<https://github.com/obonaventure/SystemesInformatiques/>`_ et cliquez
-sur *Fork*.
-
-Vous pouvez maintenant obtenir le code du syllabus avec la commande
-`git-clone(1)`_
-(remplacez ``username`` par votre nom d'utilisateur sur GitHub)
-
-.. code-block:: bash
-
-   $ git clone https://github.com/username/SystemesInformatiques.git
-
-Vous pouvez alors faire les changements que vous désirez puis les committer
-comme expliqué à la section précédente.
-Il est utile de garder le code à jour avec *upstream*.
-Pour cela, il faut commencer par ajouter la remote
-
-.. code-block:: bash
-
-   $ git remote add upstream https://github.com/obonaventure/SystemesInformatiques.git
-
-À chaque fois que vous voudrez vous mettre à jour, utilisez `git-pull(1)`_
-
-.. code-block:: bash
-
-   $ git pull upstream master
-
-Une fois vos changements committés, vous pouvez les ajouter à *origin* avec
-`git-push(1)`_
-
-.. code-block:: bash
-
-   $ git push origin master
-
-Votre amélioration devrait normalement être visible via
-`https://github.com/obonaventure/SystemesInformatiques/network <https://github.com/obonaventure/SystemesInformatiques/network>`_.
-Vous pouvez maintenant aller sur GitHub à la page de votre fork et
-cliquer sur *Pull Requests* puis *New pull request* et expliquer
-vos changements.
-
-Si plus tard vous voulez encore modifier le syllabus,
-il vous suffira de mettre à jour le code en local
-
-.. code-block:: bash
-
-   $ git pull upstream master
-
-committer vos changements, les ajouter à *origin*
-
-.. code-block:: bash
-
-   $ git push origin master
-
-puis faire un nouveau pull request.
 
 Utilisation non-linéaire de Git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`git(1)`_ peut créer un historique non-linéaire semblable à celui ci-dessous.
-C'est un exemple un peu exagéré de non-linéarité mais il est
-pédagogiquement intéressant.
+La puissance de `git(1)`_ vient du fait qu'il est possible de créer des historiques
+non-linéaires, plus complexes que l'historique linéaire simple décrit jusqu'à présent.
+Pour cela, on utilise le concept de *branches*,
+qui représentent différentes modifications en parallèle du code source.
 
-Cet historique forme un graphe orienté,
-c'est à dire que les arêtes ont une direction.
+Branches
+########
 
-Les noeuds sont de 3 types,
- - en bleu, on a les commits, c'est comme un snapshot, c'est une
-   description complète de l'état de tous les fichiers pris en
-   charge par `git(1)`_ à un moment donné.
-   Ces commits sont
+Un repository `git(1)`_ est divisé en *branches*, qui représentent des évolutions
+différentes en parallèle du repository.
+Chaque commit est appliqué sur une seule branche.
+De cette manière, les branches sont une bonne manière de développer de nouvelles
+fonctionnalités, sans compromettre une version fonctionnelle du code.
 
-    - soit construits comme la version suivante d'un autre commit
-      dans lequel cas il y a une seul arête partant du noeud,
-    - soit construits comme la fusion de deux commits
-      dans lequel cas il y a deux arêtes partant du noeud.
+Lors de l'utilisation linéaire de `git(1)`_ décrite ci-dessus, toutes les modifications
+apportées au code se faisaient sur une seule branche, la branche ``master``.
+Il s'agit de la branche de base, sur laquelle toutes les modifications sont apportées,
+si on ne créé pas explicitement de nouvelle branche.
+De base, l'historique d'un repository est donc le suivant:
 
-   Ils sont référés par un hash unique dont le début est affiché
-   sur la première ligne dans l'image ci-dessous
-   et non par un nombre
-   comme pour beaucoup d'autres systèmes de gestion de code
-   partagé.
-   Ils ont aussi un commentaire qui est affiché sur la deuxième ligne,
-   une description (optionnelle), un auteur et une date;
- - en rouge, on a les branches, le nom est un peu trompeur car
-   c'est juste un pointeur vers un commit.
-   On pourrait tout à fait avoir un graphe non-linéaire sans
-   utiliser de branches,
-   c'est juste plus facile de référer les commits par le nom
-   d'une branche qui y réfère plutôt que par un hash sans signification;
- - en vert, ce sont les tags, un tag est comme une branche qui
-   ne bouge pas, c'est à dire qu'il réfère toujours vers le même
-   commit.
-   C'est utile par exemple pour spécifier des versions d'un projet.
- - en jaune, on a ``HEAD``, c'est un pointeur vers la branche active.
+  .. figure:: ./figures/git/branch_init.png
+    :align: center
 
-.. figure:: figures/graph.png
-   :align: center
+    Historique initial d'un repository
 
-   Exemple d'historique.
+Les commits sont représetés en bleu, et les branches en rouge.
+L'indication ``HEAD`` représente l'état actuel du repository sur la copie locale.
 
-Manipulation de l'historique à travers les commandes Git
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Pour initialiser un dépôt `git(1)`_,
-il suffit d'utiliser la commande `git-init(1)`_
+Pour créer une nouvelle branche, on utilise la commande `git-branch(1)`_,
+en spécifiant le nom de la nouvelle branche. On peut aussi utiliser cette commande
+sans argument pour montrer toutes les branches existantes,
+avec un symbole ``*`` pour indiquer la branche active (donc là où est situé le marqueur ``HEAD``):
 
 .. code-block:: bash
 
-   $ git init
-   Initialized empty Git repository in /path/to/project/.git/
+  $ git branch branch_1
+  $ git branch
+    branch_1
+  * master
 
-À ce moment, l'historique est vide.
+L'historique est désormais le suivant:
 
-Staging area
-############
+  .. figure:: ./figures/git/branch_1.png
+    :align: center
 
-Commençons par définir les 4 statuts qu'un fichier peut avoir
- - il peut être non-traqué par `git(1)`_, c'est à dire qu'il n'est
-   ni dans le *git directory*, ni dans la *staging area*.
-   C'est un fichier que le autres développeurs peuvent ne même pas être
-   au courant que vous l'avez dans votre *working directory*.
-   C'est souvent le cas des fichiers qui sont générés automatiquement,
-   et dont leur changement n'a donc aucun intérêt à être suivit.
-   Dans le cas d'un projet en C,
-   on aura les fichiers résultant de la compilation comme les fichiers objets
-   ``*.o``;
- - il peut être non-modifié, c'est à dire que son état dans le
-   *working directory* est le même que celui dans le *git directory* au
-   commit actif (référencé par la branche active,
-   celle référencée par ``HEAD``) ainsi que celui dans la *staging area*
-   s'il y est;
- - il peut être modifié, c'est à dire que sont état est différent dans le
-   *working directory* que celui dans le *git directory* au commit actif
-   ainsi que celui dans la *staging area* si il y est.
- - il peut être *staged*, c'est à dire qu'il est dans la *staging area*
+    Historique après création de ``branch_1``
 
-Par exemple, prenons un fichier non-modifié.
-Après des modifications, il a le statut modifié.
-Si on le place dans la *staging area*, il acquière le statut *staged*.
-Si on le modifie à nouveau, il aura le statut modifié mais
-son état avec uniquement les premières modifications aura le statut *staged*.
-
-Pour obtenir l'information sur le statut de tous les fichiers,
-utilisez `git-status(1)`_
+Pour supprimer une branche, on utilise la commande `git-branch(1)`_,
+avec l'option ``-d``, et en spécifiant le nom de la branche à supprimer:
 
 .. code-block:: bash
 
-   $ git status
-   # On branch master
-   # Changes to be committed:
-   #   (use "git reset HEAD <file>..." to unstage)
-   #
-   #	modified:   main.c
-   #	new file:   file.c
-   #
-   # Changes not staged for commit:
-   #   (use "git add <file>..." to update what will be committed)
-   #   (use "git checkout -- <file>..." to discard changes in working directory)
-   #
-   #    modified:   main.c
-   #	modified:   Makefile
-   #
-   # Untracked files:
-   #   (use "git add <file>..." to include in what will be committed)
-   #
-   #	main.o
-   #	file.o
-   #	a.out
+  $ git branch -d branch_1
+  $ git branch
+  * master
 
-Dans la partie ``Changes to be committed``,
-on a les fichiers au statut *staged*.
-Dans la partie ``Changes not staged for commit``,
-on a les fichiers au statut modifié.
-Les fichiers au statut non-modifié ne sont pas affichés et ceux non-suivis
-sont dans la partie ``Untracked files`` sauf si on a spécifiquement demandé
-de les ignorer dans le fichier ``.gitignore``.
-En effet, on peut s'imaginer que dans un gros projet, la partie
-``Untracked files`` peut devenir assez imposante et on ne sait plus
-distinguer les fichiers qu'il faut penser à ajouter de ceux qu'il faut
-ignorer une fois de plus.
-
-Lorsque `git(1)`_ voit un fichier ``.gitignore`` dans un dossier,
-il en prend compte pour tous ses fichiers ainsi que tous les fichiers des
-sous-dossiers.
-La syntaxe est très simple, on spécifie un fichier par ligne,
-on utilise un ``*`` pour spécifier n'importe
-quelle chaîne de caractères, les commentaires commencent par un ``#``
-comme en Bash et si la ligne commence par un ``!``,
-on demande de ne pas ignorer ce fichier à l'intérieur du dossier même
-si un ``.gitignore`` d'un dossier parent dit le contraire.
-Dans notre exemple, ``.gitignore`` aura le contenu suivant
+La création d'une branche ne change pas la branche active,
+ce qui signifie que les modifications apportées au code le seront toujours sur la branche ``master``.
+Pour changer de branche active, il faut utiliser la commande `git-checkout(1)`_:
 
 .. code-block:: bash
 
-   # Object files
-   *.o
-   # Executable
-   a.out
-
-Pour faire passer un fichier du statut modifié au statut *staged*,
-il faut utiliser `git-add(1)`_.
-Lorsque l'on lui donne en argument un fichier modifié, elle ajoute sa version
-avec toutes les modifications dans la *staging area*.
-Si on lui donne un dossier,
-elle ajoute tous les fichiers au statut modifié ou
-au statut non-traqué qui ne sont pas ignoré par `git(1)`_.
-
-.. code-block:: bash
-
-   $ git add .
-
-On peut aussi donner l'option ``-p`` à `git-add(1)`_,
-`git(1)`_ demandera alors pour chaque bloc de modification s'il faut le prendre
-en compte puis ajoutera dans la *staging area* un fichier avec toutes
-ces modifications.
-C'est très utile si on a fait différents changements dans un fichier mais
-qu'on ne veut pas tout committer ou qu'on veut les séparer en différents
-commits parce qu'ils font des choses différentes.
-Par exemple, si j'ai un fichier ``main.c`` dans lequel j'ai rajouté
-un ``return EXIT_SUCCESS;`` et un commentaire en début de fichier
-mais que je n'ai envie que de faire passer le ``return EXIT_SUCCESS;``
-dans la *staging area*, il me suffit de faire
-
-.. code-block:: diff
-
-   $ git add -p main.c
-   diff --git a/main.c b/main.c
-   index 7402a78..8381ce0 100644
-   --- a/main.c
-   +++ b/main.c
-   @@ -1,3 +1,7 @@
-   +/*
-   + * Print 'Hello world!'
-   + */
-   +
-    // includes
-    #include <stdio.h>
-    #include <stdlib.h>
-   Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]? n
-   @@ -5,4 +9,5 @@
-    // main function
-    int main () {
-      printf("Hello world!\n");
-   +  return EXIT_SUCCESS;
-    }
-   Stage this hunk [y,n,q,a,d,/,K,g,e,?]? y
-
-On peut aussi faire retirer des fichier de la *staging area* avec la commande
-`git-reset(1)`_.
-``git reset`` les retire tous,
-``git reset main.c`` retire uniquement ``main.c`` et on a à nouveau
-l'option ``-p`` pour ne sélectionner qu'une partie.
-Par exemple, si dans l'exemple précédent j'avais mis ``main.c`` entièrement
-dans la *staging area* mais que je veux comme précédemment uniquement
-mettre le ``return EXIT_SUCCESS;``, je peux soit faire ``git reset main.c``
-et puis faire ``git add -p main.c`` comme tout à l'heure, soit faire
-
-.. code-block:: diff
-
-   $ git reset -p main.c
-   diff --git a/main.c b/main.c
-   index 7402a78..8381ce0 100644
-   --- a/main.c
-   +++ b/main.c
-   @@ -1,3 +1,7 @@
-   +/*
-   + * Print 'Hello world!'
-   + */
-   +
-    // includes
-    #include <stdio.h>
-    #include <stdlib.h>
-   Unstage this hunk [y,n,q,a,d,/,j,J,g,e,?]? y
-   @@ -5,4 +9,5 @@
-    // main function
-    int main () {
-      printf("Hello world!\n");
-   +  return EXIT_SUCCESS;
-    }
-   Unstage this hunk [y,n,q,a,d,/,K,g,e,?]? n
-
-Avant d'utiliser `git-add(1)`_ et `git-reset(1)`_,
-il est utile de vérifier plus précisément ce qu'on a changé dans
-les fichiers que `git-status(1)`_ nous dit qu'on a modifié.
-C'est une des utilités de la commande `git-diff(1)`_.
-Par défaut, elle calcule les changements entre le *working directory*
-et la *staging area*, mais on peut aussi lui demander de regarder les
-changements entre deux commits.
-Si on ne lui dit rien, elle donne les changements de tous les fichiers mais
-on peut lui demander de se limiter à un fichier ou à un dossier spécifique.
-Dans notre exemple,
-
-.. code-block:: diff
-
-   $ git diff main.c
-   diff --git a/main.c b/main.c
-   index 07e26bf..8381ce0 100644
-   --- a/main.c
-   +++ b/main.c
-   @@ -1,3 +1,7 @@
-   +/*
-   + * Print 'Hello world!'
-   + */
-   +
-    // includes
-    #include <stdio.h>
-    #include <stdlib.h>
-
-On peut aussi lui demander de générer un patch,
-c'est à dire un fichier qui contient les informations nécessaires pour
-appliquer ce changement chez un autre développeur.
-Ce n'est pas la manière la plus pratique de se partager les changements
-comme on verra avec les *remotes* mais c'est utilisé.
-
-Commit
-######
-
-Voyons à présent comment committer
-les fichiers présents dans la *staging area*.
-Comme vu précédemment,
-il y a toujours un commit actif,
-c'est comparativement à ce dernier que `git(1)`_ détermine si un fichier est
-modifié ou pas.
-
-Quand on choisit de committer ce qu'il y a dans la *staging area*,
-un nouveau commit est créé avec le même état que le précédent plus les
-modifications des fichiers au statut *staged*.
-Ce nouveau commit a une référence vers le commit précédent.
-La branche active change alors de référence et pointe alors vers le nouveau
-commit.
-Aucune autre branche ne bouge, même celle qui référençait l'ancien commit.
-On peut retenir qu'*il n'y a toujours que la branche active qui est modifée*.
-
-Dans notre exemple,
-l'historique était comme l'image ci-dessous
-
-.. figure:: figures/hello_without_return.png
-   :align: center
-
-   Historique avant le commit
-
-
-.. code-block:: bash
-
-   $ git commit -m "Add return"
-   [master 6e2f599] Add return
-    1 file changed, 1 insertion(+)
-
-Après le commit, il est comme l'image ci-dessous.
-On voit que la branche active a avancé alors que les autres n'ont pas bougé.
-
-.. figure:: figures/hello_with_return.png
-   :align: center
-
-   Historique après le commit
-
-Lorsque l'on exécute ``gcc main.c`` un fichier ``a.out`` est généré.
-Il est inutile de suivre ses changements à travers `git(1)`_ car ses modifications
-ne sont que l'image des modifications de ``main.c``.
-De plus, ce n'est pas un fichier texte donc `git(1)`_ ne verra pas ce qui
-a changé, il fera comme si tout ``a.out`` avait changé.
-
-.. code-block:: bash
-
-   $ echo "a.out" > .gitignore
-   $ git status
-   # On branch master
-   # Changes not staged for commit:
-   #   (use "git add <file>..." to update what will be committed)
-   #   (use "git checkout -- <file>..." to discard changes in working directory)
-   #
-   #	modified:   main.c
-   #
-   # Untracked files:
-   #   (use "git add <file>..." to include in what will be committed)
-   #
-   #	.gitignore
-   no changes added to commit (use "git add" and/or "git commit -a")
-   $ git add .gitignore
-   $ git commit -m "Add .gitignore"
-   [master b14855e] Add .gitignore
-    1 file changed, 1 insertion(+)
-    create mode 100644 .gitignore
-
-.. figure:: figures/hello_with_gitignore.png
-   :align: center
-
-   Historique l'ajout de .gitignore
-
-Souvent, on a envie de committer tous les fichiers au statut *modifié*.
-Si on fait ``git add .``, on ajoutera aussi tous les fichiers non-traqués
-qui ne sont pas ignorés, c'est à dire ceux affichés par ``git status``
-en dessous de ``Untracked files``.
-Si ça pose problème, on peut utiliser l'option ``-a`` de `git-commit(1)`_
-qui inclut tous les fichiers au statut *modifié* en plus de ceux dans la
-*staging area* pour le commit.
-On verra des exemples d'utilisation par après.
-
-Branching
-~~~~~~~~~
-
-Quand on exécute ``git init``, une branche au nom de ``master`` est créée.
-Beaucoup de petits projets se contentent de cette branche et n'en font pas
-d'autre mais c'est passer à côté d'un des aspects les plus pratiques de `git(1)`_.
-
-Une utilisation classique des branches sont les *feature branches*.
-C'est à dire qu'on a la branche principale ``master`` qui contient un code
-de toutes les fonctionnalités terminées.
-Quand on essaie d'ajouter une
-fonctionnalité (*feature* en anglais), on crée une nouvelle branche qu'on
-ne fusionne avec ``master`` que lorsque le code est terminé.
-Ça permet de pouvoir implémenter plusieurs fonctionnalités en parallèle sans
-être gêné par l'instabilité du code créé par les fonctionnalités
-en développement.
-Ceci est encore plus vrai quand on travaille à plusieurs sur un même code
-et sur les même fonctionnalités.
-
-Par exemple, supposons que vous soyez à 2 à travailler sur un projet.
-L'un travaille sur une fonctionnalité, l'autre sur une autre.
-À la base, le code sans ces deux fonctionnalités marchait mais comme
-vous êtes en train d'en implémenter une nouvelle chacun, le code ne marche
-chez aucun des deux développeurs.
-
-Créer une branche
-#################
-
-.. spelling::
-
-   pid
-
-Pour créer une branche, on utilise la commande `git-branch(1)`_.
-`git-branch(1)`_ sert aussi à montrer la liste des branches avec
-le caractère ``*`` devant la branche active.
-
-Par exemple, supposons qu'on veuille ajouter à notre exemple la possibilité
-de changer le message un caractère plus universel pour que le programme soit
-utilisable pour tout citoyen de l'univers.
-Mais qu'on veut aussi ajouter un aspect pratique en rajoutant le `pid`
-du processus et du processus parent.
-
-On commencera par créer deux *feature branches*, ``pid`` et ``universal``.
-On supprime la branche ``hello`` qui servait juste à montrer qu'elle ne bougeait
-pas quand on committait car ce n'était pas la branche active.
-
-.. code-block:: bash
-
-   $ git branch
-     hello
-   * master
-   $ git branch pid
-   $ git branch universal
-   $ git branch -d hello
-   Deleted branch hello (was 76c1677).
-   $ git branch
-   * master
-     pid
-     universal
-
-L'historique ressemble maintenant à la figure suivante.
-On voit que `git-branch(1)`_ ne modifie pas la branche active.
-
-.. figure:: figures/hello_branches.png
-   :align: center
-
-   Historique après la création de ``pid`` et ``universal`` et
-   la suppression de ``hello``
-
-On va d'ailleurs finalement committer notre commentaire en début de fichier
-dans ``master``. On obtient alors la figure suivante
-
-.. code-block:: bash
-
-   $ git s
-   # On branch master
-   # Changes not staged for commit:
-   #   (use "git add <file>..." to update what will be committed)
-   #   (use "git checkout -- <file>..." to discard changes in working directory)
-   #
-   #	modified:   main.c
-   #
-   no changes added to commit (use "git add" and/or "git commit -a")
-   $ git commit -a -m "Add intro"
-   [master c1f2163] Add intro
-    1 file changed, 4 insertions(+)
-
-.. figure:: figures/hello_intro.png
-   :align: center
-
-   Historique après avoir ajouté un commentaire d'introduction
-
-Changer la branche active
-#########################
-
-On va maintenant voir comment changer la branche active,
-c'est à dire la branche vers laquelle ``HEAD`` pointe.
-Pour faire cela, on utilise `git-checkout(1)`_.
-
-.. code-block:: bash
-
-   $ git checkout pid
-   Switched to branch 'pid'
-   $ git branch
-     master
-   * pid
-     universal
-
-`git-checkout(1)`_ ne fait pas que changer la branche active, il modifie
-aussi le *working directory* pour refléter le commit référencé par la nouvelle
-branche active.
-Après le *checkout*, le contenu de ``main.c`` vaut
-
-.. code-block:: c
-
-   // includes
-   #include <stdio.h>
-   #include <stdlib.h>
-
-   // main function
-   int main () {
-     printf("Hello world!\n");
-     return EXIT_SUCCESS;
-   }
-
-S'il y a des fichiers modifiés au moment du `git-checkout(1)`_,
-`git(1)`_ va faire du mieux qu'il peut pour changer de branche en gardant
-vos modifications mais si le fichier modifié est justement un fichier
-qui diffère entre l'ancienne branche active et la nouvelle branche active,
-`git(1)`_ va abandonner le changement de branche car mettre ce fichier à
-la version de la nouvelle branche écraserait les modifications.
-
-Les changements doivent alors soit être committés,
-soit sauvegardés par `git-stash(1)`_ (détaillé plus loin),
-soit abandonnés.
-Pour abandonner des changements et revenir à la version du commit référencé
-par la branche active, on utilise aussi `git-checkout(1)`_.
-Avec `git(1)`_, pas mal de commandes ont de multiples usages.
-
-Dans notre exemple, si on change ``main.c``, cela pose problème car il
-diffère entre ``master`` et ``pid`` mais
-si on change ``.gitignore``, ça n'en pose pas.
-Il nous montre d'ailleurs que ``.gitignore`` a des modifications et qu'il
-les a laissées lorsqu'on exécute ``git checkout master``
-
-.. code-block:: bash
-
-   $ echo "42" >> main.c
-   $ echo "42" >> .gitignore
-   $ git checkout master
-   error: Your local changes to the following files would be overwritten by checkout:
-       main.c
-   Please, commit your changes or stash them before you can switch branches.
-   Aborting
-   $ git checkout main.c
-   $ git checkout master
-   M	.gitignore
-   Switched to branch 'master'
-   $ git checkout .gitignore # Retirons ce "42", c'était juste pour l'exemple
+  $ git checkout branch_1
+  Switched to branch 'branch_1'
+  $ git branch
+  * branch_1
+    master
+
+Avec cette commande, le pointeur ``HEAD`` a été modifié, et pointe maintenant vers la branche ``branch_1``.
+Désormais, les modifications seront bien apportées sur la branche ``branch_1``.
+
+Attention, lorsqu'on travaille sur une branche autre que ``master``, les simples commandes
+``git push`` ou ``git pull`` ne fonctionneront pas.
+A la place, il faut utiliser les commandes suivantes:
+  * ``git push origin branch``
+  * ``git pull origin branch``
+Ces commandes fonctionnent également avec la branche ``master``, en remplaçant le nom
+de la branche par ``master``.
 
 Fusionner des branches
 ######################
 
-Quand on fusionne deux branches,
-le rôle de chaque branche n'est pas le même.
-Il y a la branche active et la branche qu'on veut fusionner.
-Par la règle *il n'y a toujours que la branche active qui est modifée*,
-on sait que la branche qu'on veut fusionner ne va pas bouger.
-Le but de la fusion, c'est de déplacer la branche active vers un commit
-contenant les modifications faites par le commit référencé par la branche
-active ainsi que celles faites par celui référencé par la branche qu'on veut
-fusionner.
-Par "modification", j'entends, les modifications faites depuis le premier
-commit parent commun entre les deux commits en question.
-Deux cas peuvent se présenter
+En général, on utilise les branches pour développer de nouvelles fonctionnalités
+sans risquer de compromettre la base fonctionnelle du code.
+Lorsque la fonctionnalité est finie et est fonctionnelle,
+on veut pouvoir fusionner la branche de base (``master``) avec la branche utilisée
+pour développer la fonctionnalité (soit ``branch``),
+en appliquant un *merge*.
+Pour ce faire, il y a deux possibilités:
+  * Utiliser l'interface web de la plateforme (GitLab ou GitHub).
+    Cette possibilité est la plus simple.
+  * Utiliser la ligne de commande.
 
- - soit ce commit parent est le commit référencé par la branche active,
-   dans lequel cas, on dira que la fusion est *fast-forward*.
-   `git(1)`_ fera alors simplement la branche active pointer vers le commit
-   référencé par la branche qu'on veut fusionner;
- - soit ce commit parent est le commit référencé par la branche qu'on veut
-   fusionner, dans lequel cas, `git(1)`_ ne fera rien car le commit référencé
-   par la branche active contient déjà les modifications de l'autre puisque
-   c'est un de ses commits parents;
- - soit ce commit est différent des deux commits en question.
-   Dans ce cas, `git(1)`_ créera un commit ayant deux parents, les deux commits
-   en questions et tentera de fusionner toutes les modifications depuis
-   le commit parent commun.
-   Bien entendu, plus ce commit commun est loin, plus il y aura de modification
-   et plus ce sera difficile.
-   C'est pourquoi on conseille de souvent fusionner la branche principale
-   pour éviter que la fusion de la *feature branch* soit trop compliquée
-   lorsque la fonctionnalité sera terminée.
+Fusionner des branches depuis l'interface web
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   Là encore, il y a deux cas
+La première possibilité est très simple.
+Un exemple sera donné ici avec GitLab, et est très similaire avec GitHub.
+Tout d'abord, depuis la page du repository, aller sur la page "*Merge requests*"
+("*Pull requests*" sur GitHub):
 
-    - soit `git(1)`_ arrive à tout fusionner, c'est à dire que les modifications
-      sont soit dans des fichiers différents, soit à des endroits bien
-      distincts d'un même fichier;
-    - soit il n'y arrive pas. Il fusionnera alors le plus possible lui-même
-      et marquera dans le fichier les confits à gérer à la main.
-      Il faudra alors ouvrir le fichier, les corriger puis indiquer à `git(1)`_
-      qu'il peut terminer la fusion.
-      En peut aussi dire qu'on abandonne la fusion et `git(1)`_ retire tout
-      ce qu'il a fait pour la fusion.
+.. figure:: ./figures/git/merge_web/1.png
+  :align: center
+  :scale: 100
 
-   Dans les deux cas, si on abandonne pas, `git(1)`_ créera ce commit
-   de fusion et fera pointer la branche active vers ce dernier.
+  Menu du repository sur GitLab
 
-Il est important d'insister à nouveau sur le fait que
-la branche non-active n'a pas été modifiée par la fusion.
-Par contre si on la rend active et
-qu'on demande de la fusionner avec l'ancienne branche active,
-ce sera nécessairement une fusion *fast-forward*.
+Créez une nouvelle *merge/pull request*.
+Il faut ensuite choisir les branches *source* et *cible* (*target*).
+La branche source sera celle avec la nouvelle fonctionnalité,
+dans notre cas la branche ``branch``, tandis que la branche *cible*
+sera la branche de base, dans notre cas la branche ``master``.
 
-`git-merge(1)`_ s'occupe de fusionner les branches
-(fusionner se dit *merge* en anglais),
-on lui donne en argument la branche à fusionner et la branche active est
-bien entendu celle référencée par ``HEAD`` qui a été définie par
-les appels à `git-checkout(1)`_.
+.. figure:: ./figures/git/merge_web/2.png
+  :align: center
+  :scale: 100
 
-Dans notre exemple, on peut faire avancer ``pid`` et ``universal`` au niveau
-de ``master`` avec une fusion *fast-forward*.
+  Sélection des branches *source* et *cible*
 
-.. code-block:: bash
+Il est possible d'inclure une description à la *merge request*,
+et de configurer plusieurs options, comme la personne qui doit s'occuper de la *merge request*,
+ou le fait que la branche source sera supprimée ou pas après la fusion.
+Une fois la *merge request* créée, s'il n'y a pas de conflit,
+les branches peuvent être fusionnées automatiquement:
 
-   $ git checkout pid
-   Switched to branch 'pid'
-   $ git merge master
-   Updating b14855e..c1f2163
-   Fast-forward
-    main.c | 4 ++++
-    1 file changed, 4 insertions(+)
-   $ git checkout universal
-   Switched to branch 'universal'
-   $ git merge master
-   Updating b14855e..c1f2163
-   Fast-forward
-    main.c | 4 ++++
-    1 file changed, 4 insertions(+)
+.. figure:: ./figures/git/merge_web/3.png
+  :align: center
+  :scale: 100
 
-On a alors la figure suivante
+  Fusion automatique
 
-.. figure:: figures/hello_2ff.png
-   :align: center
+Si les mêmes fichiers ont été modifiés sur les deux branches, il y a conflit,
+et il est donc impossible de fusionner les branches automatiquement:
 
-   Historique après avoir mis ``pid`` et ``universal`` à jour
+.. figure:: ./figures/git/merge_web/4.png
+  :align: center
+  :scale: 100
 
-Commençons maintenant à développer notre compatibilité
-avec le reste de l'univers.
-On va rajouter une option ``--alien`` qui transforme le ``Hello world!``
-en ``Hello universe!``
+  Conflits lors de la fusion
 
-.. code-block:: diff
+Ces conflits peuvent être résolus directement depuis l'interface web,
+ou en fusionnant les branches localement, puis en réglant les conflits
+comme expliqué précédemment.
 
-   $ git diff
-   diff --git a/main.c b/main.c
-   index 8381ce0..8ccfa11 100644
-   --- a/main.c
-   +++ b/main.c
-   @@ -5,9 +5,14 @@
-    // includes
-    #include <stdio.h>
-    #include <stdlib.h>
-   +#include <string.h>
+Fusionner des branches localement
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    // main function
-   -int main () {
-   -  printf("Hello world!\n");
-   +int main (int argc, char *argv[]) {
-   +  if (strncmp(argv[1], "--alien", 8) == 0) {
-   +    printf("Hello universe!\n");
-   +  } else {
-   +    printf("Hello world!\n");
-   +  }
-      return EXIT_SUCCESS;
-    }
-
-Mettons tous les changements des fichiers traqués avec ``-a``
+Il est également possible de fusionner des branches localement,
+en utilisant la ligne de commande.
+Pour cela, on va utiliser la commande `git-merge(1)`_, depuis la branche cible (``master``),
+pour la fusionner avec la branche source (``branch``).
+Si il n'y a pas de conflit, la fusion est automatique:
 
 .. code-block:: bash
 
-   $ git commit -a -m "Make it universal"
-   [universal 6c743f6] Make it universal
-    1 file changed, 7 insertions(+), 1 deletion(-)
+  $ git merge branch
+  Updating 1f939f3..62cf363
+  Fast-forward
+   branch.txt | 2 +-
+   1 file changed, 1 insertion(+), 1 deletion(-)
 
-Ce qui donne l'historique suivant
-
-.. figure:: figures/hello_make_universal.png
-   :align: center
-
-   Historique après avoir committé ``Make it universal``
-
-On va maintenant ajouter un ``Makefile`` qui compile puis exécute le programme
-lorsqu'on écrit ``make``.
-Comme un ``Makefile`` exécute la première règle, il suffit de mettre la règle
-qui exécute en premier
-
-.. code-block:: makefile
-
-   run: a.out
-           ./a.out
-   a.out: main.c
-           gcc main.c
-
-Ainsi, à chaque fois qu'on exécute la commande ``make``, la règle ``run``
-sera exécutée mais avant, ses dépendances donc ``a.out`` sera exécutée
-si la date de modification de ``main.c``
-est plus récente que celle de ``a.out``.
-Committons cela
+Si les mêmes fichiers ont été modifiés sur les deux branches, il y a conflit,
+et il faut donc résoudre ces conflits comme expliqué précédemment.
+Ici, il y a conflit sur le fichier ``branch.txt``:
 
 .. code-block:: bash
 
-   $ git checkout master
-   Switched to branch 'master'
-   $ git status
-   # On branch master
-   # Untracked files:
-   #   (use "git add <file>..." to include in what will be committed)
-   #
-   #	Makefile
-   nothing added to commit but untracked files present (use "git add" to track)
-   $ git add Makefile
-   $ git commit -m "Add Makefile"
-   [master c35a8c3] Add Makefile
-    1 file changed, 5 insertions(+)
-    create mode 100644 Makefile
+  $ git merge branch
+  Auto-merging branch.txt
+  CONFLICT (content): Merge conflict in branch.txt
+  Automatic merge failed; fix conflicts and then commit the result.
 
-.. figure:: figures/hello_makefile.png
-   :align: center
+Le fichier ``branch.txt`` a donc été marqué pour la résolution:
 
-   Historique après avoir committé ``Add Makefile``
+.. code-block:: text
 
-On voit ici que pour ``pid``,
-fusionner ``master`` est *fast-forward* et pas pour *universal*.
-C'est ce qu'on va vérifier
+  <<<<<<< HEAD
+  Test 1
+  =======
+  Test 2
+  >>>>>>> branch
 
-.. code-block:: bash
-
-   $ git checkout universal
-   Switched to branch 'universal'
-   $ git merge master
-   Merge made by the 'recursive' strategy.
-    Makefile | 5 +++++
-    1 file changed, 5 insertions(+)
-    create mode 100644 Makefile
-
-On voit que `git(1)`_ a su faire la fusion sans notre aide sans problème
-car tous les changements étaient dans le ``Makefile`` qui n'existait pas
-pour ``universal``
-
-.. figure:: figures/hello_universal_makefile.png
-   :align: center
-
-   Historique après avoir fusionné ``master`` dans ``universal``
-
-.. code-block:: bash
-
-   $ git checkout pid
-   Switched to branch 'pid'
-   $ git merge master
-   Updating c1f2163..c35a8c3
-   Fast-forward
-    Makefile | 5 +++++
-    1 file changed, 5 insertions(+)
-    create mode 100644 Makefile
-
-`git(1)`_ nous confirme que c'est *fast-forward*
-
-.. figure:: figures/hello_pid_makefile.png
-   :align: center
-
-   Historique après avoir fusionné ``master`` dans ``pid``
-
-Tant qu'on est sur la branche ``pid``,
-implémentons la fonctionnalité comme suit
-
-.. code-block:: diff
-
-   $ git diff
-   diff --git a/main.c b/main.c
-   index 8381ce0..b9043af 100644
-   --- a/main.c
-   +++ b/main.c
-   @@ -5,9 +5,11 @@
-    // includes
-    #include <stdio.h>
-    #include <stdlib.h>
-   +#include <unistd.h>
-
-    // main function
-    int main () {
-   +  printf("pid: %u, ppid: %u\n", getpid(), getppid());
-      printf("Hello world!\n");
-      return EXIT_SUCCESS;
-    }
-
-et committons la
-
-.. code-block:: bash
-
-   $ git commit -a -m "Add pid/ppid info"
-   [pid eda36d7] Add pid/ppid info
-    1 file changed, 2 insertions(+)
-
-.. figure:: figures/hello_ppid.png
-   :align: center
-
-   Historique après avoir implémenté ``pid``
-
-On peut maintenant fusionner ``pid`` dans master et la supprimer car on
-en a plus besoin
-
-.. code-block:: bash
-
-   $ git checkout master
-   Switched to branch 'master'
-   $ git merge pid
-   Updating c35a8c3..eda36d7
-   Fast-forward
-    main.c | 2 ++
-    1 file changed, 2 insertions(+)
-   $ git branch -d pid
-   Deleted branch pid (was eda36d7).
-
-.. figure:: figures/hello_dpid.png
-   :align: center
-
-   Historique après avoir fusionné et supprimé ``pid``
-
-Retournons sur notre branche ``universal`` et essayons notre ``Makefile``
-
-.. code-block:: bash
-
-   $ git checkout universal
-   Switched to branch 'universal'
-   $ make
-   gcc main.c
-   ./a.out
-   make: *** [run] Segmentation fault (core dumped)
-
-Les deux premières lignes sont simplement les commandes que `make(1)`_ exécute.
-La troisième est plus inquiétante.
-Elle nous avertit que le programme a été terminé par le signal ``SIGSEV``.
-C'est dû au fait qu'on ne vérifie pas que ``argv`` ait au moins 2 éléments
-avant d'essayer accéder au deuxième élément.
-
-.. code-block:: diff
-
-   $ git diff
-   diff --git a/main.c b/main.c
-   index 8ccfa11..f90b795 100644
-   --- a/main.c
-   +++ b/main.c
-   @@ -9,7 +9,7 @@
-
-    // main function
-    int main (int argc, char *argv[]) {
-   -  if (strncmp(argv[1], "--alien", 8) == 0) {
-   +  if (argc > 1 && strncmp(argv[1], "--alien", 8) == 0) {
-        printf("Hello universe!\n");
-      } else {
-        printf("Hello world!\n");
-
-Ça marche maintenant sans *Segmentation fault*
-
-.. code-block:: bash
-
-   $ make
-   gcc main.c
-   $ ./a.out
-   Hello world!
-   $ ./a.out --alien
-   Hello universe!
-   $ git commit -a -m "Fix SIGSEV without args"
-   [universal 6fd2e9b] Fix SIGSEV without args
-    1 file changed, 1 insertion(+), 1 deletion(-)
-
-.. figure:: figures/hello_fix.png
-   :align: center
-
-   Historique après avoir réparé le ``Segmentation fault``
-
-``universal`` est maintenant prêt à être fusionnée.
-
-.. code-block:: bash
-
-   $ git checkout master
-   Switched to branch 'master'
-   $ git merge universal
-   Auto-merging main.c
-   CONFLICT (content): Merge conflict in main.c
-   Automatic merge failed; fix conflicts and then commit the result.
-
-Les conflits sont marqués dans ``main.c``
-
-.. code-block:: c
-
-   /*
-    * Print 'Hello world!'
-    */
-
-   // includes
-   #include <stdio.h>
-   #include <stdlib.h>
-   <<<<<<< HEAD
-   #include <unistd.h>
-
-   // main function
-   int main () {
-     printf("pid: %u, ppid: %u\n", getpid(), getppid());
-     printf("Hello world!\n");
-   =======
-   #include <string.h>
-
-   // main function
-   int main (int argc, char *argv[]) {
-     if (argc > 1 && strncmp(argv[1], "--alien", 8) == 0) {
-       printf("Hello universe!\n");
-     } else {
-       printf("Hello world!\n");
-     }
-   >>>>>>> universal
-     return EXIT_SUCCESS;
-   }
-
-Il nous faut maintenant éditer ``main.c`` pour résoudre le conflit.
-Il n'y a un conflit à un seul endroit du fichier mais le conflit est assez
-large, `git(1)`_ nous montre ce qu'il y a pour ``HEAD`` c'est à dire
-la branche active ``master`` et ce qu'il y a pour ``universal``.
-On va devoir prendre un peu des deux.
-
-Si on fait `git-diff(1)`_ par la suite, `git(1)`_ met en début de ligne un
-``+`` ou un ``-`` en premier caractère
-si c'est une ligne qui vient de la branche qu'on veut fusionner,
-en deuxième caractère si ça vient de la branche active et en premier et
-deuxième caractère si ça vient d'aucune des deux pour le ``+``.
-
-.. code-block:: diff
-
-   $ git diff
-   diff --cc main.c
-   index b9043af,f90b795..0000000
-   --- a/main.c
-   +++ b/main.c
-   @@@ -5,11 -5,14 +5,17 @@@
-     // includes
-     #include <stdio.h>
-     #include <stdlib.h>
-    +#include <unistd.h>
-   + #include <string.h>
-
-     // main function
-   - int main () {
-   + int main (int argc, char *argv[]) {
-    +  printf("pid: %u, ppid: %u\n", getpid(), getppid());
-   -   printf("Hello world!\n");
-   ++
-   +   if (argc > 1 && strncmp(argv[1], "--alien", 8) == 0) {
-   +     printf("Hello universe!\n");
-   +   } else {
-   +     printf("Hello world!\n");
-   +   }
-       return EXIT_SUCCESS;
-     }
-
-Il n'y a pas besoin de spécifier de commentaire pour une fusion car
-`git(1)`_ en génère un automatiquement
-
-.. code-block:: bash
-
-   $ git commit -a
-   [master 0dd6cd7] Merge branch 'universal'
-
-.. figure:: figures/hello_merge_universal.png
-   :align: center
-
-   Historique après avoir fusionné la branche ``universal``
-
-On voit que la branche ``universal`` est restée à sa place car ce n'était
-pas la branche active.
-On peut d'ailleurs maintenant la supprimer
-
-.. code-block:: bash
-
-   $ git branch -d
-   Deleted branch universal (was 6fd2e9b).
 
 Autres commandes utiles
 ~~~~~~~~~~~~~~~~~~~~~~~

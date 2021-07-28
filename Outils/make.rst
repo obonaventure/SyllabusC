@@ -11,7 +11,8 @@
    tabulées
    arobase
    indentent
-   
+   shell
+
 .. _make:
 
 Introduction aux Makefiles
@@ -29,6 +30,10 @@ Un Makefile est composé d'un ensemble de règles de la forme:
             [command]
 
 Chaque règle commence par une ligne de dépendance qui définit une ou plusieurs cibles (``target``) suivies par le caractère ``:`` et éventuellement une liste de composants (``components``) dont dépend la cible. Une cible ou un composant peut être un fichier ou un simple label.
+Chacune des commandes (``command``) est simplement une ligne de commande shell. Les commandes seront exécutées dans l'ordre de la cible du Makefile.
+Les commandes peuvent donc être n'importe quelle ligne de commande shell,
+mais les Makefiles sont en général utilisés pour automatiser la compilation de projets informatiques,
+et dans ce cas les lignes de commandes s'occuperont de la compilation (par exemple avec la commande ```gcc``).
 
 Il est important de se rendre compte que l'espacement derrière les ``command``
 doit impérativement commencer par une *tabulation*.
@@ -52,6 +57,8 @@ Le fichier suivant reprend un exemple de règle où la cible et le composant son
             echo "Salut, " > text.txt
             cat name.txt >> text.txt
 
+Pour exécuter les commandes fournies dans un Makefile, il suffit d'appeler la commande shell ``make``
+dans le dossier où se situe le Makefile.
 Lorsque ``make`` est exécuté en utilisant ce Makefile, on obtient:
 
     .. code-block:: console
@@ -70,12 +77,18 @@ Comme ``text.txt`` dépend de ``name.txt``, il faut que ce dernier soit défini 
         Salut,
         Tintin
 
-Lorsqu'une dépendance change, ``make`` le détecte et ré-exécute les commandes associées à la cible. Dans le cas suivant, le fichier ``name.txt`` est modifié, ce qui force une nouvelle génération du fichier ``text.txt``.
+Si les fichiers de dépendance n'ont pas été modifiés, une prochaine exécution de la commande ``make`` ne fera rien, comme montré ci-dessous.
+Puisque les Makefiles sont en général utiliser pour compiler des projets, cela permet de ne pas recompiler un projet qui n'aurait pas été modifié.
 
     .. code-block:: console
 
         $ make
         make: `text.txt' is up to date.
+
+Lorsqu'une dépendance change, ``make`` le détecte et ré-exécute les commandes associées à la cible. Dans le cas suivant, le fichier ``name.txt`` est modifié, ce qui force une nouvelle génération du fichier ``text.txt``.
+
+    .. code-block:: console
+
         $ echo Milou > name.txt
         $ make
         echo "Salut, " > text.txt
@@ -93,12 +106,64 @@ Comme spécifié précédemment, les Makefiles sont principalement utilisés pou
 
 Ce Makefile permettra de générer un binaire ``test`` à chaque fois que le fichier source aura changé.
 
+Les cibles (targets)
+~~~~~~~~~~~~~~~~~~~~
+
+.. sectionauthor:: François De Keersmaeker <francois.dekeersmaeker@student.uclouvain.be>
+
+Comme indiqué ci-dessus, une règle d'un Makefile commence par une **cible** ou **target**.
+Cette cible peut indiquer le nom du fichier qui sera créé par la règle,
+ou simplement un nom simple pour la règle.
+
+Soit un fichier Makefile contenant 2 règles:
+
+    .. code-block:: make
+
+        target1:
+            echo "Target 1"
+
+        target2:
+            echo "Target 2"
+
+En utilisant la commande ``make`` sans préciser de cible, c'est la première cible du Makefile qui est exécutée:
+
+    .. code-block:: console
+
+        $ make
+        echo "Target 1"
+        Target 1
+
+Il est également possible de préciser quelle cible exécuter, en donnant la cible en argument lorsqu'on appelle ``make``:
+
+    .. code-block:: console
+
+        $ make target1
+        echo "Target 1"
+        Target 1
+        $ make target2
+        echo "Target 2"
+        Target 2
+
 Les variables
 ~~~~~~~~~~~~~
 
+Les fichiers ``Makefile`` permettent d'utiliser des variables,
+qui permettent de stocker potentiellement n'importe quelle valeur.
+Ces variables peuvent être de deux types différents:
+  * Les **variables personnalisées**, définies par l'utilisateur, et qui peuvent prendre n'importe quelle valeur.
+  * Les **variables automatiques**, qui sont des raccourcis pour des valeurs déjà présentes dans le fichier.
+Les deux types de variable seront présentés ci-après.
+
+Variables personnalisées
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. sectionauthor:: Alexis Nootens <alexis.nootens@student.uclouvain.be>
 
-Il est possible d'utiliser des variables dans un fichier Makefile. Celles-ci sont généralement définies au début du fichier, une par ligne comme :
+Les variables personnalisées permettent d'associer un nom à potentiellement n'importe quelle valeur.
+Elles permettent de faciliter l'évolution du fichier,
+car si une valeur doit changer, on peut se contenter de modifier la variable associée,
+au lieu de devoir modifier toutes les règles.
+Celles-ci sont généralement définies au début du fichier, une par ligne comme :
 
     .. code-block:: make
 
@@ -140,6 +205,47 @@ Il existe six différentes manières d'assigner une valeur à une variable. Nous
 - La quatrième permet d'ajouter une valeur à une autre déjà déclarée.
 
 Une description détaillée de ces méthodes d'assignation et des deux autres restantes se trouve à l'adresse suivante `<http://www.gnu.org/software/make/manual/make.html#Setting>`_
+
+Variables automatiques
+^^^^^^^^^^^^^^^^^^^^^^
+
+Les variables automatiques sont des raccourcis, propres à la syntaxe des fichiers ``Makefile``,
+qui permettent d'exprimer succinctement des valeurs déjà présentes dans le fichier.
+Elles sont utilisées dans les commandes formant les différentes règles.
+Elles sont en général formées de deux caractères spéciaux, le premier étant toujours ``$``.
+Les plus utilisées seront présentées dans cette section.
+
+La variable ``$@`` référence le nom de la cible.
+Par exemple, pour compiler un exécutable ``prog``, on peut utiliser la règle suivante:
+
+.. code-block:: make
+
+  prog: src.c
+    gcc -o $@ src.c
+
+
+La variable ``$<`` référence le nom de la première dépendance.
+Par exemple, pour compiler un exécutable ``prog``, on peut utiliser la règle suivante:
+
+.. code-block:: make
+
+  prog: src.c
+    gcc -o prog $<
+
+
+La variable ``$^`` référence la liste des dépendances.
+Par exemple, pour compiler un exécutable ``prog`` basé sur deux fichiers objets, on peut utiliser la règle suivante:
+
+.. code-block:: make
+
+  prog: src_1.o src_2.o
+    gcc -o prog $^
+
+
+D'autres variables existent, mais sont moins utilisées en pratique.
+Plus d'informations sont disponibles à l'adresse suivante:
+`<https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html>`_.
+
 
 Les conditions
 ~~~~~~~~~~~~~~
@@ -217,6 +323,30 @@ Cela est aussi pratique pour forcer une nouvelle compilation.
 Compléments
 ~~~~~~~~~~~
 
+Cette section propose quelques compléments, utiles pour la création de fichiers
+``Makefile`` plus complexes.
+
+Règles d'inférence
+^^^^^^^^^^^^^^^^^^
+
+Il est possible de définir des règles génériques, qui fonctionneront pour tous
+les fichiers qui correspondent à un *pattern*.
+Le pattern est alors exprimé avec le caractère ``%``.
+Par exemple, pour compiler tous les fichiers sources, possédant l'extension ``.c``,
+en fichiers objets correspondant, on peut utiliser la règle suivante:
+
+.. code-block:: make
+
+    %.o: %.c
+        gcc -o $@ -c $^
+
+Remarquez que cette règle utilise les **variables automatiques**,
+décrites plus haut.
+
+
+Commentaires
+^^^^^^^^^^^^
+
 Afin de rendre vos Makefiles plus lisibles, vous pouvez y insérer des commentaires en plaçant un croisillon en début de ligne.
 Cette syntaxe est semblable au script shell.
 
@@ -226,6 +356,10 @@ Cette syntaxe est semblable au script shell.
         # plusieurs lignes
         build:
             gcc -o foo foo.c # commentaire en fin de ligne
+
+
+Commandes silencieuses
+^^^^^^^^^^^^^^^^^^^^^^
 
 Corriger les erreurs de vos Makefiles peut sembler difficile lorsque vous êtes baignés dans un flux d'instructions. Vous pouvez néanmoins régler leur verbosité.
 Il est possible de rendre silencieuse une commande en plaçant une arobase devant. Ceci indique juste à Make de ne pas imprimer la ligne de commande. La sortie

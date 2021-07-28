@@ -6,7 +6,7 @@ Source
 ======
 
 
-L'ensemble des sources de ce site web et des notes du cours de systèmes informatiques sont disponibles depuis  https://github.com/obonaventure/SystemesInformatiques 
+L'ensemble des sources de ce site web et des notes du cours de systèmes informatiques sont disponibles depuis  https://github.com/obonaventure/SyllabusC 
 
 Le site web a été écrit en restructured text en utilisant l'outil tinkerer.
 

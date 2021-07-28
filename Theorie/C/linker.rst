@@ -112,7 +112,10 @@ Il existe d'autres fonctions de la librairie standard qui utilisent des pointeur
 De grands programmes en C
 -------------------------
 
-Lorsque l'on développe de grands programmes en C, il est préférable de découper le programme en modules. Chaque module contient des fonctions qui traitent d'un même type de problème et sont fortement couplées. A titre d'exemple, un module ``stack`` pourrait regrouper différentes fonctions de manipulation d'une pile. Un autre module pourrait regrouper les fonctions relatives au dialogue avec l'utilisateur, un autre les fonctions de gestion des fichiers, ...
+Dès que le programme que l'on développe en C est un programme non trivial d'une certaine taille,
+il est préférable de découper le programme en modules.
+Chaque module contient des fonctions qui traitent d'un même type de problème et sont fortement couplées. A titre d'exemple, un module ``stack`` pourrait regrouper différentes fonctions de manipulation d'une pile. Un autre module pourrait regrouper les fonctions relatives au dialogue avec l'utilisateur, un autre les fonctions de gestion des fichiers, etc.
+Ces modules peuvent en quelque sorte être comparés aux classes d'un programme Java.
 
 Pour comprendre l'utilisation de ces modules, considérons d'abord un programme trivial composé de deux modules. Le premier module est celui qui contient la fonction ``main``. Tout programme C doit contenir une fonction ``main`` pour pouvoir être exécuté. C'est en général l'interface avec l'utilisateur. Le second module contient une fonction générique qui est utilisée par le module principal.
 
@@ -120,11 +123,12 @@ Pour comprendre l'utilisation de ces modules, considérons d'abord un programme 
    :encoding: utf-8
    :language: c
 
-Un module d'un programme C est en général décomposé en deux parties. Tout d'abord, le fichier :term:`fichier header` contient les définitions de certaines constantes et les signatures des fonctions exportées par ce module. Ce fichier est en quelque sorte un résumé du module, ou plus précisément de son interface externe. Il doit être inclus dans tout fichier qui utilise les fonctions du module correspondant. Dans un tel fichier :term:`fichier header`, on retrouve généralement trois types d'informations :
+Un module d'un programme C est en général décomposé en deux parties. Tout d'abord, le fichier :term:`fichier header` contient les définitions de certaines constantes et les signatures des fonctions exportées par ce module. Ce fichier est en quelque sorte un résumé du module, ou plus précisément de son interface externe. Il doit être inclus dans tout fichier qui utilise les fonctions du module correspondant. Dans un tel fichier :term:`fichier header`, on retrouve généralement trois types d'informations:
 
- - les signatures des fonctions qui sont définies dans le module. En général, seules les fonctions qui sont destinées à être utilisées par des modules extérieures sont reprises dans le :term:`fichier header`
- - les constantes qui sont utilisées à l'intérieur du module et doivent être visibles en dehors de celui-ci, notamment par les modules qui utilisent les fonctions du module. Ces constantes peuvent être définies en utilisant des directives ``#define`` du préprocesseur
- - les variables globales qui sont utilisées par les fonctions du module et doivent être accessibles en dehors de celui-ci
+  - Les signatures des fonctions qui sont définies dans le module. En général, seules les fonctions qui sont destinées à être utilisées par des modules extérieurs sont reprises dans le :term:`fichier header`,
+    c'est-à-dire que les fonctions utilisées uniquement pour des opérations internes ne sont pas présentes.
+  - Les constantes qui sont utilisées à l'intérieur du module et doivent être visibles en dehors de celui-ci, notamment par les modules qui utilisent les fonctions du module. Ces constantes peuvent être définies en utilisant des directives ``#define`` du préprocesseur
+  - Les variables globales qui sont utilisées par les fonctions du module et doivent être accessibles en dehors de celui-ci
 
 .. literalinclude:: /C/S5-src/min.h
    :encoding: utf-8
@@ -133,6 +137,14 @@ Un module d'un programme C est en général décomposé en deux parties. Tout d'
 .. note:: Un :term:`fichier header` ne doit être inclus qu'une seule fois
 
  L'exemple de :term:`fichier header` ci-dessus illustre une convention courante dans l'écriture de ces fichiers. Parfois, il est nécessaire d'inclure un :term:`fichier header` dans un autre fichier header. Suite à cela, il est possible que les mêmes définitions d'un :term:`fichier header` soient incluses deux fois ou plus dans le même module. Cela peut causer des erreurs de compilation qui risquent de perturber certains programmeurs. Une règle de bonne pratique pour éviter ce problème est d'inclure le contenu du :term:`fichier header` de façon conditionnelle comme présenté ci-dessus. Une constante, dans ce cas ``_MIN_H_``, est définie pour le :term:`fichier header` concerné. Cette constante est définie dans la première ligne effective du :term:`fichier header`. Celui-ci n'est inclus dans un module que si cette constante n'a pas été préalablement définie. Si cette constante est connue par le préprocesseur, cela indique qu'un autre :term:`fichier header` a déjà inclus les définitions de ce fichier et qu'elles ne doivent pas être incluses une seconde fois.
+
+La seconde partie d'un module est son :term:`fichier source`,
+qui contient l'implémentation en C des fonctions définies dans le :term:`fichier header` correspondant,
+ainsi que toute variable ou fonction supplémentaire,
+qui ne sont donc pas visibles sur l'interface externe.
+Le :term:`fichier source` contient donc le code C correspondant à l'interface externe.
+Un :term:`fichier source` doit contenir une directive ``#include`` pour inclure le :term:`fichier header`
+correspondant, et porte également le même nom, avec l'extension ``.c``.
 
 .. literalinclude:: /C/S5-src/min.c
    :encoding: utf-8
@@ -242,6 +254,3 @@ A titre d'exemple, le programme ci-dessous utilise `strerror(3)`_ pour afficher 
 
 
 .. [#frestrict] ``restrict`` est également parfois utilisé pour indiquer des contraintes sur les pointeurs passés en argument à une fonction [Walls2006]_.
-
-
-

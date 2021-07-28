@@ -12,10 +12,10 @@ Syllabus C : Outils
    pull-requests
    pull
    requests
- 
+
 .. only:: html
 
-    Ce site web contient la partie théorique du support du cours `Projet P3 - LEPL1503 <https://uclouvain.be/cours-2019-lepl1503>`_ donné aux `étudiants ingénieurs et informaticiens <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <https://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à proposer leurs améliorations en soumettant des pull-requests via https://github.com/UCL-INGI/SyllabusC .
+    Ce site web contient la partie théorique du support du cours `Projet P3 - LEPL1503 <https://uclouvain.be/cours-2021-lepl1503>`_ donné aux `étudiants ingénieurs et informaticiens <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <https://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à proposer leurs améliorations en soumettant des pull-requests via https://github.com/obonaventure/SyllabusC.
 
 
 
@@ -23,7 +23,9 @@ Syllabus C : Outils
    :maxdepth: 2
 
    intro-outils
+   linux
    git
+   jenkins
    make
    ssh
    cunit

@@ -16,4 +16,4 @@ La version HTML est préférable car elle contient de nombreux liens vers les pa
 
 
 
-Les étudiants sont invités à améliorer cette section en soumettant des patches via https://github.com/obonaventure/SystemesInformatiques 
+Les étudiants sont invités à améliorer cette section en soumettant des patches via https://github.com/obonaventure/SyllabusC 

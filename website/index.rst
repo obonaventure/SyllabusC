@@ -6,7 +6,7 @@
 Langage C
 =========
 
-Ce site web contient les supports du cours `LEPL1503 <https://uclouvain.be/cours-2019-lepl1503>`_ donné aux `étudiants ingénieurs et informaticiens <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/UCL-INGI/SyllabusC
+Ce site web contient les supports du cours `LEPL1503 <https://uclouvain.be/cours-2021-lepl1503>`_ donné aux `étudiants ingénieurs et informaticiens <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/UCL-INGI/SyllabusC
 
 Ce syllabus est un sous-ensemble du syllabus du cours de `Systèmes informatiques <https://sites.uclouvain.be/SystInfo>`_
     

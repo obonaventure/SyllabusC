@@ -10,7 +10,7 @@ Systèmes informatiques : Outils
 
 .. only:: html
 
-    Ce site web contient l'annexe relative au raspberry pi pour le cours `LEPL1503 <http://www.uclouvain.be/cours-2015-LSINF1252.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/obonaventure/SystemesInformatiques 
+    Ce site web contient l'annexe relative au raspberry pi pour le cours `LEPL1503 <http://www.uclouvain.be/cours-2021-LEPL1503.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/obonaventure/SyllabusC
 
 .. La version HTML est la préférable car elle contient des liens hypertextes vers les pages de manuel Linux qui font partie de la matière. D'autres formats sont possibles pour ceux qui veulent lire le document hors ligne :
 
