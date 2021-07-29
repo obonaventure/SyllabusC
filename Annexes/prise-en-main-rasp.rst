@@ -1,5 +1,5 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2019 by Charles-Henry Bertrand Van Ouytsel and Sébastien Strebelle.
+.. Copyright |copy| 2021 by Charles-Henry Bertrand Van Ouytsel and Sébastien Strebelle.
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 

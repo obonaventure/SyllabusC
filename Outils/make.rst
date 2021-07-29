@@ -150,8 +150,10 @@ Les variables
 Les fichiers ``Makefile`` permettent d'utiliser des variables,
 qui permettent de stocker potentiellement n'importe quelle valeur.
 Ces variables peuvent être de deux types différents:
+
   * Les **variables personnalisées**, définies par l'utilisateur, et qui peuvent prendre n'importe quelle valeur.
   * Les **variables automatiques**, qui sont des raccourcis pour des valeurs déjà présentes dans le fichier.
+  
 Les deux types de variable seront présentés ci-après.
 
 Variables personnalisées

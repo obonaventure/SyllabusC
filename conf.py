@@ -57,7 +57,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'LEPL1503 : Introduction au langage C'
-copyright = u'2013, 2019, O. Bonaventure, G. Detal, C. Paasch'
+copyright = u'2013, 2021, O. Bonaventure, G. Detal, C. Paasch'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

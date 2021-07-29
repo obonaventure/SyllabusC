@@ -1,5 +1,5 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012, 2019 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. _utilisateurs:
@@ -30,7 +30,7 @@ Les systèmes Unix supportent différents mécanismes d'authentification. Le plu
    username
    inode
    inodes
-   
+
 Lorsqu'un utilisateur se connecte sur un système Unix, il fournit son nom d'utilisateur ou `username`. Ce nom d'utilisateur est une chaîne de caractères qui est facile à mémoriser par l'utilisateur. D'un point de vue implémentation, un système d'exploitation préfère manipuler des nombres plutôt que des chaînes de caractères. Unix associe à chaque utilisateur un identifiant qui est stocké sous la forme d'un nombre entier positif. La table de correspondance entre l'identifiant d'utilisateur et le nom d'utilisateur est le fichier `/etc/passwd`. Ce fichier texte, comme la grande majorité des fichiers de configuration d'un système Unix, comprend pour chaque utilisateur l'information suivante :
 
  - nom d'utilisateur (`username`)
@@ -190,26 +190,26 @@ Les fonctions de manipulation des répertoires méritent que l'on s'y attarde un
 		       char           d_name[256]; /* filename */
 		   };
 
-           
+
 	.. spelling::
 
 	   l'inode
 	   métadonnée
-	   
+
 Cette structure comprend le numéro de l'inode, c'est-à-dire la métadonnée qui contient les informations relatives au fichier/répertoire, la position de l'entrée ``dirent`` qui suite, la longueur de l'entrée, son type et le nom de l'entrée dans le répertoire. Chaque appel à `readdir(3)`_ retourne un pointeur vers une structure de ce type.
 
 
 L'extrait de code ci-dessous permet de lister tous les fichiers présents dans le répertoire ``name``.
 
 
-.. literalinclude:: /Fichiers/src/readdir.c
+.. literalinclude:: ./src/readdir.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
 
-		
-		
+
+
 La lecture d'un répertoire avec `readdir(3)`_ commence au début de ce répertoire. A chaque appel à `readdir(3)`_, le programme appelant récupère un pointeur vers une zone mémoire contenant une structure ``dirent`` avec l'entrée suivante du répertoire ou ``NULL`` lorsque la fin du répertoire est atteinte. Si une fonction doit relire à nouveau un répertoire, cela peut se faire en utilisant `seekdir(3)`_ ou `rewinddir(3)`_.
 
 
@@ -349,7 +349,7 @@ Ces deux appels systèmes prennent trois arguments. Le premier est le `descripte
 
 Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'écrire des séquences contiguës d'octets. Lorsque l'on écrit ou lit des chaînes de caractères dans lesquels chaque caractère est représenté sous la forme d'un byte, il est possible d'utiliser `read(2)`_ et `write(2)`_ pour lire et écrire d'autres types de données que des octets comme le montre l'exemple ci-dessous.
 
-.. literalinclude:: /Fichiers/src/read.c
+.. literalinclude:: ./src/read.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -357,7 +357,7 @@ Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'
 
 Lors de son exécution, ce programme affiche la sortie ci-dessous.
 
-.. literalinclude:: /Fichiers/src/read.out
+.. literalinclude:: ./src/read.out
    :encoding: utf-8
    :language: console
 
@@ -444,7 +444,7 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
 Fichiers mappés en mémoire
 --------------------------
 
-Lorsqu'un processus Unix veut lire ou écrire des données dans un fichier, il utilise en général les appels systèmes `open(2)`_, `read(2)`_, `write(2)`_ et `close(2)`_ directement ou à travers une librairie de plus haut niveau comme la libraire d'entrées/sorties standard. Ce n'est pas la seule façon pour accéder à des données sur un dispositif de stockage. Grâce à la mémoire virtuelle, il est possible de placer le contenu d'un fichier ou d'une partie de fichier dans une zone de la mémoire du processus. Cette opération peut être effectuée en utilisant l'appel système `mmap(2)`_. Cet appel système permet de rendre un fichier accessibles directement dans la mémoire du processus. 
+Lorsqu'un processus Unix veut lire ou écrire des données dans un fichier, il utilise en général les appels systèmes `open(2)`_, `read(2)`_, `write(2)`_ et `close(2)`_ directement ou à travers une librairie de plus haut niveau comme la libraire d'entrées/sorties standard. Ce n'est pas la seule façon pour accéder à des données sur un dispositif de stockage. Grâce à la mémoire virtuelle, il est possible de placer le contenu d'un fichier ou d'une partie de fichier dans une zone de la mémoire du processus. Cette opération peut être effectuée en utilisant l'appel système `mmap(2)`_. Cet appel système permet de rendre un fichier accessibles directement dans la mémoire du processus.
 
 
 
@@ -470,7 +470,7 @@ Ces drapeaux peuvent être combinés avec une disjonction logique. Le quatrième
 .. spelling::
 
    mapping
-   
+
 Ces deux drapeaux peuvent dans certains cas particuliers être combinés avec d'autres drapeaux définis dans la page de manuel de `mmap(2)`_.
 
 Lorsque `mmap(2)`_ réussit, il retourne l'adresse du début de la zone mappée en mémoire. En cas d'erreur, la constante ``MAP_FAILED`` est retournée et ``errno`` est mis à jour en conséquence.
@@ -494,13 +494,13 @@ Lorsqu'un processus a fini d'utiliser un fichier mappé en mémoire, il doit d'a
 
 A titre d'exemple d'utilisation de `mmap(2)`_ et `munmap(2)`_, le programme ci-dessous implémente l'équivalent de la commande `cp(1)`_. Il prend comme arguments deux noms de fichiers et copie le contenu du premier dans le second. La copie se fait en mappant le premier fichier entièrement en mémoire et en utilisant la fonction `memcpy(3)`_ pour réaliser la copie. Cette solution fonctionne avec de petits fichiers. Avec de gros fichiers, elle n'est pas très efficace car tout le fichier doit être mappé en mémoire.
 
-.. literalinclude:: /MemoireVirtuelle/src/cp2.c
+.. literalinclude:: ../MemoireVirtuelle/src/cp2.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
 
- 
+
 
 .. rubric:: Footnotes
 

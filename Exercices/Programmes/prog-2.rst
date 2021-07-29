@@ -23,13 +23,13 @@ Questions INGINIOUS
 
 #. Ecrivez le corps de la fonction `swap2 <https://inginious.info.ucl.ac.be/course/LEPL1503/s2_swap2int>`_ permettant d'échanger les valeurs stockées dans deux variables de type entier. Faites de même lorsque les arguments de cette fonction sont des structures contenant des fractions : https://inginious.info.ucl.ac.be/course/LEPL1503/s2_swap2int
 
-.. #. La libraire `string(3)`_ implémente un grand nombre de fonctions de manipulation des strings qui vous serons utile lors de différents projets de programmation. 
+.. #. La libraire `string(3)`_ implémente un grand nombre de fonctions de manipulation des strings qui vous serons utile lors de différents projets de programmation.
 
         * `strlen(3)`_
         * `strcat(3)`_
         * `strcasecmp(3)`_
 
-   
+
    Ecrivez le code implémentant ces trois fonctions. Pour cela, créez un fichier ``string.c`` contenant la définition des fonctions et un fichier ``string.h`` avec les `déclarations <http://en.wikipedia.org/wiki/Declaration_(computer_programming)>`_ des fonctions. Vous devez aussi fournir un Makefile (cfr :ref:`outils:make`) qui permet de recompiler facilement votre programme en tapant ``make``. Pensez à implémenter quelques tests pour vos fonctions dans la fonction ``main`` et n'incluez pas l'exécutable dans l'archive. Pour la réalisation de ces tests, utilisez une librairie de tests unitaires telle que `CUnit <http://cunit.sourceforge.net>`_
 
    Lorsque vous considérez que votre programme est correct, testez son bon fonctionnement via l'exercice correspondant sur inginious : https://inginious.info.ucl.ac.be/course/LEPL1503/mini-projet-string
@@ -49,7 +49,7 @@ Questions INGINIOUS
 Questions de discussion
 -----------------------
 
-.. only:: staff 
+.. only:: staff
 
    #. La zone mémoire utilisée diffère d'un type primitif à un autre. Ecrivez un code qui permet d'afficher le nombre de bytes utilisés sur un système 64 bits (une machine des salles) et une machine 32 bits (sirius, voir section :ref:`outils:ssh`) pour représenter un ``int``, ``long``, ``void *``, ``char *``, ``size_t`` et ``uint64_t``. Expliquez les différences.
 
@@ -80,9 +80,9 @@ Questions de discussion
 
 #. Soit ``char *ptr = "Test"``. Itérez sur ce pointeur et affichez avec `printf(3)`_ la valeur et l'adresse mémoire où se trouve stocké chaque caractère de deux façons différentes. Regardez la manpage de `printf(3)`_ pour savoir comment afficher la valeur d'un pointeur.
 
-#. Lorsque l'on veut améliorer les performances d'un programme, il est utile de pouvoir mesurer précisément son temps d'exécution. La commande `time(1posix)`_ permet d'effectuer cette mesure depuis la ligne de commande. Parfois, on souhaite mesurer le temps de calcul une partie critique d'un code. Une façon simple pour obtenir cette mesure est d'utiliser `gettimeofday(2)`_ comme dans l'exemple ci-dessous (:download:`/Programmes/s2_perf.c`).
+#. Lorsque l'on veut améliorer les performances d'un programme, il est utile de pouvoir mesurer précisément son temps d'exécution. La commande `time(1posix)`_ permet d'effectuer cette mesure depuis la ligne de commande. Parfois, on souhaite mesurer le temps de calcul une partie critique d'un code. Une façon simple pour obtenir cette mesure est d'utiliser `gettimeofday(2)`_ comme dans l'exemple ci-dessous (:download:`./s2_perf.c`).
 
-        .. literalinclude:: /Programmes/s2_perf.c
+        .. literalinclude:: ./s2_perf.c
                 :encoding: utf-8
                 :language: c
 

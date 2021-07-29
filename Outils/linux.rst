@@ -19,6 +19,7 @@ chacune avec un niveau différent de compromis entre facilité d'installation
 et confort d'utilisation.
 Ces 4 possibilités sont les suivantes, depuis la plus simple d'installation
 (mais la moins confortable d'utilisation) à la plus complexe:
+
   * Accéder à l'image d'une machine des salles informatiques de l'université depuis le navigateur.
   * Utiliser Windows Subsystem for Linux
   * Installer une machine virtuelle Linux

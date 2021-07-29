@@ -25,7 +25,7 @@ Pour être capable d'utiliser les signaux à bon escient, il est important de bi
 
 Il existe deux types de signaux.
 
- - Un :term:`signal synchrone` est un :term:`signal` qui a été directement causé par l'exécution d'une instruction du processus. Un exemple typique de :term:`signal synchrone` est le signal ``SIGFPE`` qui est généré par le système d'exploitation lorsqu'un processus provoque une exception lors du calcul d'expressions mathématiques. C'est le cas notamment lors d'une division par zéro. La sortie ci-dessous illustre ce qu'il se produit lors de l'exécution du programme :download:`/Fichiers/src/sigfpe.c`.
+ - Un :term:`signal synchrone` est un :term:`signal` qui a été directement causé par l'exécution d'une instruction du processus. Un exemple typique de :term:`signal synchrone` est le signal ``SIGFPE`` qui est généré par le système d'exploitation lorsqu'un processus provoque une exception lors du calcul d'expressions mathématiques. C'est le cas notamment lors d'une division par zéro. La sortie ci-dessous illustre ce qu'il se produit lors de l'exécution du programme :download:`./src/sigfpe.c`.
 
    .. code-block:: console
 
@@ -98,7 +98,7 @@ Le premier argument de l'appel système `signal(2)`_ est généralement spécifi
 
 L'exemple ci-dessous est un programme simple qui compte le nombre de signaux ``SIGUSR1`` et ``SIGUSR2`` qu'il reçoit et se termine dès qu'il a reçu cinq signaux.
 
-.. literalinclude:: /Fichiers/src/sigusr.c
+.. literalinclude:: ./src/sigusr.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -143,20 +143,20 @@ La plupart des variantes de Unix, y compris Linux, utilisent la seconde stratég
 
 Pour illustrer ce problème, considérons le programme ci-dessous qui compte simplement le nombre de signaux ``SIGUSR1`` reçus.
 
-.. literalinclude:: /Fichiers/src/sigusrcount.c
+.. literalinclude:: ./src/sigusrcount.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
 
-Depuis un shell, il est possible d'envoyer plusieurs fois le signal ``SIGUSR1`` rapidement avec le script :download:`/Fichiers/src/nkill.sh`. Ce script prend deux arguments : le nombre de signaux à envoyer et le processus destination.
+Depuis un shell, il est possible d'envoyer plusieurs fois le signal ``SIGUSR1`` rapidement avec le script :download:`./src/nkill.sh`. Ce script prend deux arguments : le nombre de signaux à envoyer et le processus destination.
 
-.. literalinclude:: /Fichiers/src/nkill.sh
+.. literalinclude:: ./src/nkill.sh
    :encoding: utf-8
    :language: console
 
 
-La sortie ci-dessous présente une exécution de ce script avec le processus :download:`/Fichiers/src/sigusrcount.c` en tâche de fond.
+La sortie ci-dessous présente une exécution de ce script avec le processus :download:`./src/sigusrcount.c` en tâche de fond.
 
 .. code-block:: console
 
@@ -185,7 +185,7 @@ Traitement de signaux synchrones
 Le programme ci-dessous prend en arguments en ligne de commande une séquence d'entiers et divise la valeur ``1252`` par chaque entier passé en argument. Il enregistre la fonction ``sigfpe_handler`` comme fonction de traitement du signal ``SIGFPE``.
 
 
-.. literalinclude:: /Fichiers/src/sigfpe2.c
+.. literalinclude:: ./src/sigfpe2.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -247,7 +247,7 @@ La fonction `setjmp(3)`_ est équivalente à la déclaration d'une étiquette. E
 
 Le programme ci-dessous illustre l'utilisation de `setjmp(3)`_ et `longjmp(3)`_.
 
-.. literalinclude:: /Fichiers/src/longjmp.c
+.. literalinclude:: ./src/longjmp.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -255,7 +255,7 @@ Le programme ci-dessous illustre l'utilisation de `setjmp(3)`_ et `longjmp(3)`_.
 
 Le programme débute en exécutant la fonction ``f``. Dans cette exécution, la fonction `setjmp(3)`_ retourne la valeur ``0``. Ensuite, la fonction ``main`` appelle la fonction ``g`` qui elle exécute ``longjmp(label,1)``. Cela provoque un retour à la fonction ``f`` à l'endroit de l'exécution de ``setjmp(label)`` qui cette fois-ci va retourner la valeur ``1``. Lors de son exécution, le programme ci-dessus affiche :
 
-.. literalinclude:: /Fichiers/src/longjmp.out
+.. literalinclude:: ./src/longjmp.out
    :encoding: utf-8
    :language: console
 
@@ -263,7 +263,7 @@ Avec les fonctions `setjmp(3)`_ et `longjmp(3)`_, il est presque possible d'impl
 
 Le programme ci-dessous présente l'utilisation de `sigsetjmp(3)`_ et `siglongjmp(3)`_.
 
-.. literalinclude:: /Fichiers/src/sigfpe3.c
+.. literalinclude:: ./src/sigfpe3.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -297,7 +297,7 @@ Temporisateurs
 
 Parfois il est nécessaire dans un programme de limiter le temps d'attente pour réaliser une opération. Un exemple simple est lorsqu'un programme attend l'entrée d'un paramètre via l'entrée standard mais peut remplacer ce paramètre par une valeur par défaut si celui-ci n'est pas entré endéans quelques secondes. Lorsqu'un programme attend une information via l'entrée standard, il exécute l'appel système `read(2)`_ directement ou via des fonctions de la librairie comme `fgets(3)`_ ou `getchar(3)`_. Par défaut, celui-ci est bloquant, cela signifie qu'il ne se terminera que lorsqu'une donnée aura été lue. Si `read(2)`_ est utilisé seul, il n'est pas possible de borner le temps d'attente du programme et d'interrompre l'appel à `read(2)`_ après quelques secondes. Pour obtenir ce résultat, une possibilité est d'utiliser un signal. En effet, `read(2)`_ est un appel système lent qui peut être interrompu par la réception d'un signal. Il y a plusieurs façons de demander qu'un signal soit généré après un certain temps. Le plus général est `setitimer(2)`_. Cet appel système permet de générer un signal ``SIGALRM`` après un certain temps ou périodiquement. L'appel système `alarm(3posix)`_ est plus ancien mais plus simple à utiliser que `setitimer(2)`_. Nous l'utilisons afin d'illustrer comment un signal peut permettre de limiter la durée d'attente d'un appel système.
 
-.. literalinclude:: /Fichiers/src/alarm.c
+.. literalinclude:: ./src/alarm.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -308,7 +308,7 @@ Ce programme utilise `alarm(3posix)`_ pour limiter la durée d'un appel système
 Lors de son exécution, ce programme affiche la sortie suivante.
 
 
-.. literalinclude:: /Fichiers/src/alarm.out
+.. literalinclude:: ./src/alarm.out
    :encoding: utf-8
    :language: console
 
@@ -316,7 +316,7 @@ En essayant le programme ci-dessus, on pourrait conclure qu'il fonctionne parfai
 
 Pour éviter ce problème, il faut empêcher l'exécution de `read(2)`_ si le signal ``SIGALRM`` a déjà été reçu. Cela peut se réaliser en utilisant `sigsetjmp(3)`_ pour définir une étiquette avant l'exécution du bloc contenant l'appel à `alarm(3posix)`_ et l'appel à `read(2)`_. Si le signal n'est pas reçu, l'appel à `read(2)`_ s'effectue normalement. Si par contre le signal ``SIGALRM`` est reçu entre l'appel à `alarm(3posix)`_ et l'appel à `read(2)`_, alors l'exécution de `siglongjmp(3)`_ dans ``sig_handler`` empêchera l'exécution de l'appel système `read(2)`_ ce qui est bien le comportement attendu.
 
-.. literalinclude:: /Fichiers/src/alarm2.c
+.. literalinclude:: ./src/alarm2.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -356,7 +356,7 @@ A titre d'exemple, considérons un exemple simple d'utilisation de sémaphores n
 
 Le programme ci-dessous illustre le processus qui s'exécute en premier.
 
-.. literalinclude:: /Fichiers/src/process-sem-before.c
+.. literalinclude:: ./src/process-sem-before.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -365,7 +365,7 @@ Le programme ci-dessous illustre le processus qui s'exécute en premier.
 
 Ce processus commence par utiliser `sem_open(3)`_ pour créer un sémaphore qui porte le nom ``lsinf1252`` et est initialisé à zéro puis se met en veille pendant vingt secondes. Ensuite il exécute la fonction ``before`` qui se termine par l'exécution de ``sem_post(semaphore)``. Cet appel a pour résultat de libérer le second processus dont le code est présenté ci-dessous :
 
-.. literalinclude:: /Fichiers/src/process-sem-after.c
+.. literalinclude:: ./src/process-sem-after.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA

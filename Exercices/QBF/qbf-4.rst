@@ -5,7 +5,7 @@ Question de bilan final
 
 Considérez le programme suivant.
 
-	.. literalinclude:: src/s4_qbf.c
+	.. literalinclude:: ../Programmes/src/s4_qbf.c
                 :encoding: utf-8
                 :language: c
 

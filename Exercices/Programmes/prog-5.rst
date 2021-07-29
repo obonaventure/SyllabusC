@@ -44,7 +44,7 @@ Exercices
 
      pas besoin de parler du sticky bit sauf si les étudiants l'abordent
 
-.. only:: staff 
+.. only:: staff
 
    5. La commande `lsof(8)`_ permet de lister les fichiers ouverts par un processus. A votre avis, comment cette commande fonctionne-t-elle ?
 
@@ -102,7 +102,7 @@ Exercices
 
      A forcer l'écriture des données sur le disque
 
-8. Le programme :download:`/Programmes/src/writeperf.c` permet de tester les performances des écritures sur un système de fichiers. Compilez-le et exécutez le avec différents tailles de buffers passés à `write(2)`_. Mesurez le temps d'exécution avec la commande `time(1posix)`_ et comparez le temps qu'il faut pour écrire 100MB en blocs de 1 MB ou en blocs de 1 KB. Faites de même en activant la synchronisation avec le paramètre ``-s``.
+8. Le programme :download:`./src/writeperf.c` permet de tester les performances des écritures sur un système de fichiers. Compilez-le et exécutez le avec différents tailles de buffers passés à `write(2)`_. Mesurez le temps d'exécution avec la commande `time(1posix)`_ et comparez le temps qu'il faut pour écrire 100MB en blocs de 1 MB ou en blocs de 1 KB. Faites de même en activant la synchronisation avec le paramètre ``-s``.
 
   .. only:: staff
 

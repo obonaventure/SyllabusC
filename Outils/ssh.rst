@@ -98,7 +98,7 @@ Pour ce faire, il suffit de suivre les étapes suivantes:
 
 A titre d'exemple, voici la page permettant d'ajouter une clé SSH sur GitLab:
 
-.. figure:: ./figures/ssh-git.png
+.. figure:: ./figures/ssh/ssh-git.png
    :align: center
    :scale: 50
 

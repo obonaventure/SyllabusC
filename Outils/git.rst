@@ -544,8 +544,10 @@ Désormais, les modifications seront bien apportées sur la branche ``branch_1``
 Attention, lorsqu'on travaille sur une branche autre que ``master``, les simples commandes
 ``git push`` ou ``git pull`` ne fonctionneront pas.
 A la place, il faut utiliser les commandes suivantes:
+
   * ``git push origin branch``
   * ``git pull origin branch``
+
 Ces commandes fonctionnent également avec la branche ``master``, en remplaçant le nom
 de la branche par ``master``.
 
@@ -559,6 +561,7 @@ on veut pouvoir fusionner la branche de base (``master``) avec la branche utilis
 pour développer la fonctionnalité (soit ``branch``),
 en appliquant un *merge*.
 Pour ce faire, il y a deux possibilités:
+
   * Utiliser l'interface web de la plateforme (GitLab ou GitHub).
     Cette possibilité est la plus simple.
   * Utiliser la ligne de commande.

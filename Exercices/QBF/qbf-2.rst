@@ -14,7 +14,7 @@ Questions de bilan final
 
 #. Considérez le programme suivant.
 
-        .. literalinclude:: /Programmes/s2_qbf.c
+        .. literalinclude:: ../Programmes/s2_qbf.c
                 :encoding: utf-8
                 :language: c
 

@@ -13,8 +13,8 @@ Questions à choix multiples
 Question 1. Structure et allocation de mémoire avec `malloc(3)`_
 ----------------------------------------------------------------
 
-Dans le langage C, l'allocation de zone mémoire se fait souvent avec `malloc(3)`_ 
-Pour une structure chainée définie comme suit : 
+Dans le langage C, l'allocation de zone mémoire se fait souvent avec `malloc(3)`_
+Pour une structure chainée définie comme suit :
 
 .. code-block:: c
 
@@ -84,7 +84,7 @@ Pour une structure chainée définie comme suit :
 Question 2. Allocation et libération de mémoire sur une structure chainée
 -------------------------------------------------------------------------
 
-Pour une structure chainée définie comme suit : 
+Pour une structure chainée définie comme suit :
 
 .. code-block:: c
 
@@ -93,8 +93,8 @@ Pour une structure chainée définie comme suit :
       int value;
       struct list *next;
     };
-    
-    
+
+
 .. question:: allocLib
    :nb_prop: 3
    :nb_pos: 1
@@ -102,10 +102,10 @@ Pour une structure chainée définie comme suit :
    Un seul parmi les fragments de code ci-dessous est correct. Lequel ?
 
    .. positive::
-      
+
       .. code-block:: c
-      
-      
+
+
          int main (int argc, char *argv[]) {
 
            struct list *node1 = (struct list *) malloc (sizeof (struct list));
@@ -141,9 +141,9 @@ Pour une structure chainée définie comme suit :
 
 
    .. positive::
-   
+
       .. code-block:: c
-    
+
 
          int main (int argc, char *argv[]) {
 
@@ -157,7 +157,7 @@ Pour une structure chainée définie comme suit :
            // deuxieme noeud de la liste
            if (node2 == NULL)
              return (EXIT_FAILURE);
-  
+
            node1->value = 2;
            node2->value = 5;
            node2->next = NULL;
@@ -173,17 +173,17 @@ Pour une structure chainée définie comme suit :
                n = NULL;
              }
              // liberation de la memoire allouee
-  
+
            return (EXIT_SUCCESS);
-         }  
+         }
 
 
 
    .. negative::
-   
+
       .. code-block:: c
-      
-      
+
+
          int main (int argc, char *argv[]) {
 
            struct list *node1 = (struct list *) malloc (sizeof (struct list));
@@ -191,7 +191,7 @@ Pour une structure chainée définie comme suit :
            if (node1 == NULL)
              return (EXIT_FAILURE);
 
-   
+
           struct list *node2 = (struct list *) malloc (sizeof (struct list));
            // deuxieme noeud de la liste
            if (node2 == NULL)
@@ -209,7 +209,7 @@ Pour une structure chainée définie comme suit :
            // liberation de la memoire allouee
 
            return (EXIT_SUCCESS);
- 
+
          }
 
 
@@ -217,7 +217,7 @@ Pour une structure chainée définie comme suit :
       .. comment:: La mémoire n'est pas bien libérée. L'appel à `free(3)`_ ne va libérer que la mémoire associée au premier noeud de la liste.
 
    .. negative::
-   
+
       .. code-block:: c
 
 
@@ -259,9 +259,9 @@ Pour une structure chainée définie comme suit :
       .. comment:: la mémoire n'est pas bien libérée. La boucle while se termine quand ``node->next`` vaut NULL et donc, la mémoire allouée pour le dernier élément de la liste ne sera pas libérée.
 
    .. negative::
-   
+
       .. code-block:: c
-   
+
 
          int main (int argc, char *argv[]) {
 
@@ -293,7 +293,7 @@ Pour une structure chainée définie comme suit :
       .. comment:: les valeurs de retour des pointeurs alloués avec `malloc(3)`_ n'ont pas été vérifiées.
 
    .. negative::
-   
+
       .. code-block:: c
 
 
@@ -337,8 +337,8 @@ Pour une structure chainée définie comme suit :
 
 
 
-.. include:: ../../../links.rst
-.. include:: ../../../man_links.rst
-.. include:: ../../../incl_links.rst
+.. include:: ./links.rst
+.. include:: ./man_links.rst
+.. include:: ./incl_links.rst
 
 

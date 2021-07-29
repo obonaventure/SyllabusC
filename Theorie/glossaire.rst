@@ -1,5 +1,5 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012, 2019 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
@@ -11,7 +11,7 @@ Glossaire
    :sorted:
 
    CPU
-    Central Processing Unit
+    Central Processing Unit. Voir :term:`microprocesseur`.
 
    C
     Langage de programmation permettant d'interagir facilement avec le matériel.
@@ -41,9 +41,6 @@ Glossaire
    microprocesseur
    processeur
     Unité centrale de l'ordinateur qui exécute les instructions en langage machine et interagit avec la mémoire.
-
-   CPU
-    Central Processing Unit. Voir :term:`microprocesseur`
 
    stdin
     Entrée standard sur un système Unix (par défaut le clavier)

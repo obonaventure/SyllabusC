@@ -6,7 +6,6 @@
   builds
   GitLab
 
-.. _jenkins:
 
 Jenkins
 -------
@@ -46,7 +45,9 @@ Création du projet sur Jenkins
 # Dans *Ce qui déclenche le build*, cocher *Build when a change is pushed to GitLab*. **Noter quelque part le web hook URL précisé juste à côté**.
 # Un cadre s'ouvre, cliquer sur le bouton *Avancé*. En dessous du champ *Secret token* se trouve un bouton *Generate*. **Générer un token et le noter aussi**.
 # Dans *Build*, ajouter une étape *Exécuter un script shell*. Y introduire :
+
   .. code-block:: bash
+
     #!/bin/bash
 
     exit 0
@@ -74,16 +75,20 @@ Projet d'exemple pour Jenkins
 Nous vous fournissons un projet donnant un exemple plus complet de configuration d'un projet Gitlab avec Jenkins. Il est disponible à l'adresse suivante : https://forge.uclouvain.be/alegay/jenkinslepl1503/. Le projet contient les fichiers suivants :
 
 * ``ex-lepl1503.c``: un fichier C qui contient:
+
   * ``int maxi(int, int)``: une fonction qui calcule le maximum entre deux entiers
   * ``void test_maxi(void)``: un test correct (oui le maximum entre 0 et 2 est bien 2)
   * ``void test_maxifailed(void)``: un test incorrect (non le maximum entre 0 et 2 n'est pas 0!)
   * ``void erreurmalloc(void)``: une fonction qui fait une assignation à une case mémoire non allouée
   * Une procédure main qui :
+
     * définit une suite de tests CUnit basée sur ``test_maxi`` et ``test_maxifailed``. Pour plus de détails sur CUnit, reportez-vous à la section dédiée.
     * appelle la fonction ``erreurmalloc``.
+
 * Un fichier ``Makefile`` qui comprend plusieurs règles. Pour plus de détails sur la conception du makefile, reportez-vous à la section dédiée.
 
 Voici quelques exemples d'utilisation du projet :
+
 * ``make`` : compile le programme avec l'option -lcunit et appelle les outils *valgrind* et *cppcheck*. Les résultats sont sauvés dans des fichiers xml.
 * ``make clean`` : efface l'exécutable et les .xml.
 

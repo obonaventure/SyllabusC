@@ -12,7 +12,7 @@ Pour cette dernière semaine consacrée à l'apprentissage du langage C, nous vo
  - https://inginious.info.ucl.ac.be/course/LEPL1503/s6_protect_variable
  - https://inginious.info.ucl.ac.be/course/LEPL1503/s6_do_my_work
  - https://inginious.info.ucl.ac.be/course/LEPL1503/s6_shared_ressource
-   
+
 
 Exercices
 =========
@@ -23,7 +23,7 @@ Exercices
 
    .. only:: staff
 
-       Parceque la valeur du sémaphore doit être modifiée par la fonction ou la queue associée au sémaphore
+       Parce que la valeur du sémaphore doit être modifiée par la fonction ou la queue associée au sémaphore
 
 
 #. Dans quels cas la fonction `sem_init(3)`_ risque-t-elle de retourner une erreur ?

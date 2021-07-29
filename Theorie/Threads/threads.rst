@@ -66,8 +66,8 @@ Cette progression continue des performances en MIPS a été possible grâce à l
 
 
 
-La notion de thread d'exécution est très importante dans un système informatique. Elle permet non seulement de comprendre comme un ordinateur équipé d'un seul microprocesseur peut exécuter plusieurs programmes simultanément, mais aussi comment des programmes peuvent profiter des nouveaux processeurs capables d'exécuter plusieurs threads simultanément. 
-.. Pour comprendre cette notion, il est intéressant de revenir à nouveau sur l'exécution d'une fonction en langage assembleur. 
+La notion de thread d'exécution est très importante dans un système informatique. Elle permet non seulement de comprendre comme un ordinateur équipé d'un seul microprocesseur peut exécuter plusieurs programmes simultanément, mais aussi comment des programmes peuvent profiter des nouveaux processeurs capables d'exécuter plusieurs threads simultanément.
+.. Pour comprendre cette notion, il est intéressant de revenir à nouveau sur l'exécution d'une fonction en langage assembleur.
 Considérons la fonction ``f`` :
 
  .. code-block:: c
@@ -82,7 +82,7 @@ Considérons la fonction ``f`` :
     return m;
   }
 
-  
+
 ..
 	En assembleur, cette fonction se traduit en :
 
@@ -115,7 +115,7 @@ Considérons la fonction ``f`` :
 
 		.. il faut non seulement qu'il implémente chacune de ces instructions, mais également qu'il puisse accéder :
 
-		
+
 
 Pour qu'un processeur puisse exécuter cette séquence d'instructions, il faut qu'il puisse accéder :
 
@@ -123,12 +123,12 @@ Pour qu'un processeur puisse exécuter cette séquence d'instructions, il faut q
  - à la mémoire contenant les données manipulées par cette séquence d'instruction. Pour rappel, cette mémoire est divisée en plusieurs parties :
 
     - la zone contenant les variables globales
-    - le tas 
+    - le tas
     - la pile
 
 
  - aux registres, des zones de mémoire très rapide (mais peu nombreuses) se trouvant sur le processeur qui permettent de stocker entre autres : l'adresse de l'instruction à exécuter, des résultats intermédiaires obtenus durant l'exécution d'un instruction ou encore des informations sur la pile.
-   
+
 .. et plus particulièrement, il doit accéder :
 ..
     - aux registres de données pour stocker les résultats de chacune des instructions
@@ -194,7 +194,7 @@ Le premier argument de `pthread_join(3)`_ est la structure ``pthread_t`` corresp
 
 L'exemple ci-dessous illustre une utilisation simple des fonctions `pthread_create(3)`_, `pthread_join(3)`_ et `pthread_exit(3)`_.
 
-.. literalinclude:: /Threads/S5-src/pthread.c
+.. literalinclude:: ./S5-src/pthread.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -203,7 +203,7 @@ Dans ce programme, la fonction ``main`` lance deux threads. Le premier exécute 
 
 Afin d'illustrer la possibilité de passer des arguments à un thread et d'en récupérer la valeur de retour, considérons l'exemple ci-dessous.
 
-.. literalinclude:: /Threads/S5-src/pthread-neg.c
+.. literalinclude:: ./S5-src/pthread-neg.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA

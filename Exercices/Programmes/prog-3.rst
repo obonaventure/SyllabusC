@@ -4,7 +4,7 @@
 
 Questions INGINIOUS
 -------------------
-   
+
 #. Le premier exercice INGINIOUS porte sur le heap et le stack : https://inginious.info.ucl.ac.be/course/LEPL1503/s3_stack_vs_heap
 
 #. La question suivante porte sur les déclarations de types de données : https://inginious.info.ucl.ac.be/course/LEPL1503/s3_types
@@ -73,8 +73,8 @@ Questions complémentaires
    l'implémentation
    réimplémenter
 
-   
-#. Un étudiant a fait l'implémentation d'un sous-ensemble des fonctions définies dans string.h, mais il rencontre quelques problèmes avec son code :download:`/Programmes/src/string.c`. Utilisez `gdb`_ pour corriger son code. Utilisez le flag ``-g`` de ``gcc`` pour ajouter les informations de debug dans votre programme. Pour rappel, voici quelques commandes importantes de `gdb` :
+
+#. Un étudiant a fait l'implémentation d'un sous-ensemble des fonctions définies dans string.h, mais il rencontre quelques problèmes avec son code :download:`./src/string.c`. Utilisez `gdb`_ pour corriger son code. Utilisez le flag ``-g`` de ``gcc`` pour ajouter les informations de debug dans votre programme. Pour rappel, voici quelques commandes importantes de `gdb` :
 
    - ``run [ARGS]`` permet de lancer l'exécution du programme avec les arguments ARGS si spécifiés.
    - ``break string.c:9`` met un point d'arrêt à la ligne 9 du fichier string.c
@@ -93,7 +93,7 @@ Questions complémentaires
    Implémentez ces fonctions sans jamais utiliser la notation des tableaux en C (``[`` et ``]``).
 
 
-		  .. literalinclude:: /Programmes/src/vector.c
+		  .. literalinclude:: ./src/vector.c
 		     :encoding: utf-8
 		     :language: c
 		     :start-after: ///AAA
@@ -112,7 +112,7 @@ Questions complémentaires
 
 		.. only:: staff
 
-		   #. Dans la fonction ``push`` du programme de manipulation d'un pile :download:`/../Theorie/C/S3-src/stack.c`, faut-il remplacer l'appel à `malloc(3)`_ par un appel à `calloc(3)`_
+		   #. Dans la fonction ``push`` du programme de manipulation d'un pile :download:`../../Theorie/C/S3-src/stack.c`, faut-il remplacer l'appel à `malloc(3)`_ par un appel à `calloc(3)`_
 
 			    .. note::
 
@@ -120,7 +120,7 @@ Questions complémentaires
 
 		.. only:: staff
 
-		    #.  Le prototype de la fonction ``push`` du programme de manipulation d'une pile :download:`/../Theorie/C/S3-src/stack.c`,  est ``void push(struct fraction_t *)``. Serait-il possible d'écrire une function push ayant comme prototype ``void push(struct fraction_t)`` ? Qu'est-ce qui changerait dans ce cas ?
+		    #.  Le prototype de la fonction ``push`` du programme de manipulation d'une pile :download:`../../Theorie/C/S3-src/stack.c`,  est ``void push(struct fraction_t *)``. Serait-il possible d'écrire une function push ayant comme prototype ``void push(struct fraction_t)`` ? Qu'est-ce qui changerait dans ce cas ?
 
 			    .. note::
 
@@ -128,7 +128,7 @@ Questions complémentaires
 
 		.. only:: staff
 
-		   #. Les fonctions ``push`` et ``pop`` définies dans l'exemple de manipulation d'une pile :download:`/../Theorie/C/S3-src/stack.c` utilisent une pile qui est définie par un pointeur qui est une variable globale. Est-il possible de réécrire ces fonctions de façon à ce qu'elles prennent comme argument un pointeur vers la pile ? Leurs prototypes deviendraient :
+		   #. Les fonctions ``push`` et ``pop`` définies dans l'exemple de manipulation d'une pile :download:`../../Theorie/C/S3-src/stack.c` utilisent une pile qui est définie par un pointeur qui est une variable globale. Est-il possible de réécrire ces fonctions de façon à ce qu'elles prennent comme argument un pointeur vers la pile ? Leurs prototypes deviendraient :
 
 		      - ``void push(struct node_t *, struct fraction_t *);``
 		      - ``struct fraction_t * pop(struct node_t *);``
