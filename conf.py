@@ -109,7 +109,7 @@ rst_epilog = """
 """
 
 # Intersphinx
-intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SystInfo/notes/Theorie/html/', None), 'outils': ('https://sites.uclouvain.be/SystInfo/notes/Outils/html/', None), 'exercices': ('https://sites.uclouvain.be/SystInfo/notes/Exercices/html/', None)}
+intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SyllabusC/notes/Theorie/html/', None), 'outils': ('https://sites.uclouvain.be/SyllabusC/notes/Outils/html/', None), 'exercices': ('https://sites.uclouvain.be/SyllabusC/notes/Exercices/html/', None)}
 
 
 # -- Options for HTML output ---------------------------------------------------
@@ -277,7 +277,7 @@ texinfo_documents = [
 epub_title = u'LEPL1503 : Introduction au langage C'
 epub_author = u'O. Bonaventure, G. Detal, C. Paasch'
 epub_publisher = u'O. Bonaventure, G. Detal, C. Paasch'
-epub_copyright = u'2013, 2019, O. Bonaventure, G. Detal, C. Paasch'
+epub_copyright = u'2013, 2021, O. Bonaventure, G. Detal, C. Paasch'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.

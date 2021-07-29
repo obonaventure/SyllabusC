@@ -153,6 +153,10 @@ Glossaire
    fichier header
     Fichier contenant des signatures de fonctions, des déclarations de types de données, des variables globales, permettant d'utiliser une librairie ou un API.
 
+   fichier source
+    Fichier contenant l'implémentation des fonctions définies dans le :term:`fichier header` correspondant,
+    ainsi que de potentielles autres variables ou fonctions utiles.
+
    segmentation fault
     Erreur à l'exécution causée par un accès à une adresse mémoire non-autorisée pour le programme.
 
@@ -196,8 +200,8 @@ Glossaire
 
    segment de données
     Partie de la mémoire comprenant les segments des données initialisées et non-initialisées
-    
-    
+
+
    segment des données initialisées
     Partie de la mémoire d'un programme contenant les données initialisées dans le code source du programme ainsi que les chaînes de caractères.
 
@@ -269,7 +273,7 @@ Glossaire
     Fichier décrivant la façon dont `make(1)`_ doit compiler un programme.
 
    fichier
-    Une séquence composée d'un nombre entier d'octets stockée sur un dispositif de stockage. Un fichier est identifié par son nom et sa position dans l'arborescence du système de fichiers. 
+    Une séquence composée d'un nombre entier d'octets stockée sur un dispositif de stockage. Un fichier est identifié par son nom et sa position dans l'arborescence du système de fichiers.
 
    fichier objet
     Fichier résultat de la compilation d'une partie de programme. Ce fichier contient les instructions en langage machine à exécuter ainsi que les informations relatives aux différents symboles (variables, fonctions, ...) qui y sont définis.
@@ -296,9 +300,9 @@ Glossaire
     Million d'instructions par seconde
 
    benchmark
-    Ensemble de programmes permettant d'évaluer les performances d'un système informatique. 
+    Ensemble de programmes permettant d'évaluer les performances d'un système informatique.
 
-   multi-threadé    
+   multi-threadé
    multi-coeurs
     Processeur contenant plusieurs unités permettant d'exécuter simultanément des instructions de programmes différents.
 
@@ -314,11 +318,11 @@ Glossaire
 
    sûreté
    safety
-    Propriété d'un programme informatique. Dans le problème de l'exclusion mutuelle, une propriété de sûreté est que deux threads ne seront jamais dans la même section critique. 
+    Propriété d'un programme informatique. Dans le problème de l'exclusion mutuelle, une propriété de sûreté est que deux threads ne seront jamais dans la même section critique.
 
    liveness
    vivacité
-    Propriété d'un programme informatique. Dans le problème de l'exclusion mutuelle, une propriété de vivacité est qu'un thread qui souhaite entrer en section critique finira par y accéder. 
+    Propriété d'un programme informatique. Dans le problème de l'exclusion mutuelle, une propriété de vivacité est qu'un thread qui souhaite entrer en section critique finira par y accéder.
 
    multitâche
    multitasking
@@ -334,7 +338,7 @@ Glossaire
     Signal extérieur (horloge, opération d'entrée/sortie, ...) qui force le processeur à arrêter l'exécution du programme en cours pour exécuter une routine du système d'exploitation et traiter l'interruption.
 
    scheduler
-    Ordonnanceur. Algorithme utilisé par le noyau du système d'exploitation pour sélectionner le prochain programme à exécuter après une interruption d'horloge ou un appel système bloquant. 
+    Ordonnanceur. Algorithme utilisé par le noyau du système d'exploitation pour sélectionner le prochain programme à exécuter après une interruption d'horloge ou un appel système bloquant.
 
    round-robin
     Voir https://fr.wikipedia.org/wiki/Round-robin_(informatique)
@@ -343,7 +347,7 @@ Glossaire
     Voir https://en.wikipedia.org/wiki/Deadlock#Livelock
 
    opération atomique
-    Opération ne pouvant être interrompue. 
+    Opération ne pouvant être interrompue.
 
    deadlock
     Voir https://en.wikipedia.org/wiki/Deadlock
@@ -373,19 +377,19 @@ Glossaire
    shared library
    librairie dynamique
    librairie partagée
-    Lorsqu'un librairie est dynamiquement liée à un programme exécutable, le code de celui-ci ne contient pas les instructions de la librairie, mais celle-ci est automatiquement chargée lors de chaque exécution du programme. Cela permet d'avoir une seule copie de chaque librairie. C'est la solution utilisée par défaut sous Linux. 
+    Lorsqu'un librairie est dynamiquement liée à un programme exécutable, le code de celui-ci ne contient pas les instructions de la librairie, mais celle-ci est automatiquement chargée lors de chaque exécution du programme. Cela permet d'avoir une seule copie de chaque librairie. C'est la solution utilisée par défaut sous Linux.
 
    descripteur de fichier
-    Identifiant (entier) retourné par le noyau du système d'exploitation lors de l'ouverture d'un fichier par l'appel système `open(2)`_. 
+    Identifiant (entier) retourné par le noyau du système d'exploitation lors de l'ouverture d'un fichier par l'appel système `open(2)`_.
 
    répertoire
     Branche de l'arborescence du système de fichiers. Un répertoire contient un ou plusieurs fichiers.
 
    répertoire courant
-    Répertoire dans lequel l'appel système `open(2)`_ cherchera à ouvrir les fichiers do  
+    Répertoire dans lequel l'appel système `open(2)`_ cherchera à ouvrir les fichiers do
 
    offset pointer
-    Position de la tête de lecture associée à un fichier ouvert. 
+    Position de la tête de lecture associée à un fichier ouvert.
 
    little endian
     Ordre dans lequel les octets correspondants à des mots de plusieurs octets sont stockés en mémoire. Voir https://fr.wikipedia.org/wiki/Boutisme#Little_endian
@@ -394,7 +398,7 @@ Glossaire
     Ordre dans lequel les octets correspondants à des mots de plusieurs octets sont stockés en mémoire. Voir https://fr.wikipedia.org/wiki/Boutisme#Little_endian
 
    lien symbolique
-    Unix supporte deux types de liens. Les liens durs créés par `ln(1)`_ et les liens symboliques créés par `ln(1)`_ avec l'argument ``-s``. 
+    Unix supporte deux types de liens. Les liens durs créés par `ln(1)`_ et les liens symboliques créés par `ln(1)`_ avec l'argument ``-s``.
 
    appel système lent
     Un appel système lent est un appel système qui peut attendre un temps indéfini pour se terminer. Par exemple, l'appel `read(2)`_ sur l'entrée standard ne retournera de résultat que lorsque l'utilisateur aura pressé une touche sur le clavier.
@@ -408,8 +412,8 @@ Glossaire
     Racine de l'arborescence des fichiers mais aussi utilisateur ayant les privilèges les plus élevés sur un ordinateur utilisant Unix.
 
    userid
-    Identifiant d'utilisateur. Sous Unix, un entier unique est associé à chaque utilisateur. 
-    
+    Identifiant d'utilisateur. Sous Unix, un entier unique est associé à chaque utilisateur.
+
    Unicode
     Norme d'encodage de caractères supportant l'ensemble des langues écrites, voir notamment https://en.wikipedia.org/wiki/Unicode
 
@@ -422,8 +426,8 @@ Glossaire
 
    principe de localité
     principe de fonctionnement de la mémoire indiquant que lorsqu'un programme accède à une adresse à un temps t, il accédera encore à des adresses proches dans les prochains instants
-    
-    
+
+
 .. spelling::
 
    proc
@@ -516,4 +520,4 @@ Glossaire
    threadé
 
 
-   
+
