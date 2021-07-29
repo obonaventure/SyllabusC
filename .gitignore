@@ -6,6 +6,3 @@ _build
 web/
 #Info on vagrant image
 .vagrant
-
-# Ignore container script (not used)
-container_script.sh
