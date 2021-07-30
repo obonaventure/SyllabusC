@@ -3,19 +3,19 @@
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
-######################
-Systèmes informatiques
-######################
+###################
+LEPL1503 - Projet 3
+###################
 
 
 .. only:: html
 
- Ce site web contient le support du cours `SINF1252 <http://www.uclouvain.be/cours-2015-LSINF1252.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/obonaventure/SyllabusC .
+ Ce site web contient le support du cours `LEPL1503 - Projet 3 <https://uclouvain.be/cours-2021-LEPL1503.html>`_ donné aux `étudiants ingénieurs et informaticiens <https://uclouvain.be/fr/instituts-recherche/icteam/ingi/etudes-en-informatique.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/obonaventure/SyllabusC.
 
  La version HTML est la préférable car elle contient des liens hypertextes vers les pages de manuel Linux qui font partie de la matière. D'autres formats sont possibles pour ceux qui veulent lire le document hors ligne :
 
-        - :download:`distrib/SINF1252.epub` en format epub lisible sur tablettes style iPad ou Galaxy Tab
-        - :download:`distrib/SINF1252.pdf` en format pdf pour lecture via les logiciels Adobe ou pour impression
+        - :download:`format epub <./_build/epub/LEPL1503IntroductionaulangageC.epub>`  lisible sur tablettes style iPad ou Galaxy Tab
+        - :download:`format pdf <./_build/latexpdf/LEPL1503IntroductionaulangageC.pdf>`  pour lecture via les logiciels Adobe ou pour impression
 
 
 
@@ -61,6 +61,17 @@ Fichiers
 
    Theorie/Fichiers/fichiers
 ..   Theorie/Fichiers/fichiers-signaux
+
+
+*********
+Exercices
+*********
+
+.. toctree::
+  :maxdepth: 2
+
+  Exercices/intro
+  Exercices/bib
 
 
 ******

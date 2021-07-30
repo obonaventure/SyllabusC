@@ -11,19 +11,19 @@ Deux sortes d'exercices INGINIOUS vous sont proposés durant cette semaine. Les 
  - https://inginious.info.ucl.ac.be/course/LEPL1503/s4_cmp_func
  - https://inginious.info.ucl.ac.be/course/LEPL1503/s4_linked_structs
  - https://inginious.info.ucl.ac.be/course/LEPL1503/s4_advanced_queue
- - https://inginious.info.ucl.ac.be/course/LEPL1503/s4_order_relation_linked_list 
+ - https://inginious.info.ucl.ac.be/course/LEPL1503/s4_order_relation_linked_list
 
 
 Lorsque l'on écrit des programmes en C ou dans un autre langage, il est important de tester
 le bon fonctionnement de toutes les fonctions du programme pour éviter des erreurs et autres
-bugs difficiles à corriger. L'idéal est de commencer par écrire les tests qui valident le bon 
+bugs difficiles à corriger. L'idéal est de commencer par écrire les tests qui valident le bon
 fonctionnement de chaque fonction *avant* d'écrire cette fonction. Plusieurs librairies peuvent vous
-aider à écrire de tels tests. CUnit (:ref:`outils:ref_cunit`) est l'une d'entre elles. 
+aider à écrire de tels tests. CUnit (:ref:`outils:cunit`) est l'une d'entre elles. 
 Prenez le temps de lire le chapitre
 qui lui est consacré dans le syllabus.
 
 Pour démontrer votre bonne utilisation de `make(1)`_ et CUnit, reprenez le programme que vous
-avez écrit pour l'exercice `test <https://inginious.info.ucl.ac.be/course/LEPL1503/commandetest>`_ 
+avez écrit pour l'exercice `test <https://inginious.info.ucl.ac.be/course/LEPL1503/commandetest>`_
 ,
 divisez-le en plusieurs fichiers, ajoutez-y des tests unitaires pour chaque fonction et
 utilisez `make(1)`_ pour automatiser le tout. Si vous voulez allez plus loin, essayez d'utiliser

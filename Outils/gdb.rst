@@ -14,8 +14,8 @@
    contrario
    cliquer
    cliquez
-   
-.. _gdb-ref:
+
+.. _outils:gdb:
 
 GDB
 ===
@@ -153,7 +153,7 @@ Premier programme
 	Puisque le problème vient du calcul arithmétique, placez un break sur cette ligne pour pouvoir observer à chaque itération les variables. ``break 9`` puis ``commands`` qui permet d'automatiser des commandes. Nous rajouterons comme commandes :
 
         .. code-block:: none
-                        
+
 		* ``echo i : ``
 		* ``print i``
 		* ``echo b : ``

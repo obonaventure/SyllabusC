@@ -2,7 +2,7 @@
 .. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
-.. _utilisateurs:
+.. _theorie:utilisateurs:
 
 
 Gestion des utilisateurs
@@ -58,7 +58,7 @@ Unix associe à chaque processus un identifiant d'utilisateur. Cet identifiant e
 En pratique, il est parfois utile d'associer des droits d'accès à des groupes d'utilisateurs plutôt qu'à un utilisateur particulier. Par exemple, un département universitaire peut avoir un groupe correspondant à tous les étudiants et un autre aux membres du staff pour leur donner des permissions différentes. Un utilisateur peut appartenir à un groupe principal et plusieurs groupes secondaires. Le groupe principal est spécifié dans le fichier `passwd(5)`_  tandis que le fichier ``/etc/group`` décrit dans `group(5)`_ contient les groupes secondaires.
 
 
-.. _fichiers:
+.. _theorie:fichiers:
 
 Systèmes de fichiers
 ====================

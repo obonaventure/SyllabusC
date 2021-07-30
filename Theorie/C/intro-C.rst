@@ -2,8 +2,8 @@
 .. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
-.. _introductionC:
-   
+.. _theorie:introductionC:
+
 Le langage C
 ============
 
@@ -208,7 +208,7 @@ Toutes les tables de caractères placent les chiffres ``0`` à ``9`` à des posi
 
    Kernighan
    Ritchie
-  
+
 Il existe de nombreux livres consacrés au langage C. La référence la plus classique est [KernighanRitchie1998]_, mais certains éléments commencent à dater. Un tutoriel intéressant a été publié par Brian Kernighan [Kernighan]_. [King2008]_ propose une présentation plus moderne du langage C.
 
 .. rubric:: Footnotes

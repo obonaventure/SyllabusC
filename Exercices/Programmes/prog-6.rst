@@ -215,7 +215,7 @@ Exercices
 
 
 
-#. L'outil ``helgrind`` (décrit dans la section :ref:`outils:helgrind-ref`) permet de trouver des deadlocks ou autres problèmes. Exécutez-le sur le petit programme suivant :download:`./src/pthread-philo.c` et analysez ce qu'il affiche.
+#. L'outil ``helgrind`` (décrit dans la section :ref:`outils:helgrind`) permet de trouver des deadlocks ou autres problèmes. Exécutez-le sur le petit programme suivant :download:`./src/pthread-philo.c` et analysez ce qu'il affiche.
 
 
 Mini-projet: Mesure de performance

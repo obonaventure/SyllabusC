@@ -3,7 +3,7 @@
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
-.. _coordinationthreads:
+.. _theorie:coordinationthreads:
 
 Les sémaphores
 ==============

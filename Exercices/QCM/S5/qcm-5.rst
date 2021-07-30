@@ -17,11 +17,11 @@ Cinquième Semaine
 
 Cette semaine porte sur deux modules de théorie. Le premier est la fin du chapitre consacré aux bases du langage C :
 
- - :ref:`complementsC`
+ - :ref:`theorie:complementsC`
 
 Le second est le début du chapitre consacré aux systèmes multiprocesseurs et l'utilisation de threads en particulier :
 
- - :ref:`thread`
+ - :ref:`theorie:threads`
 
 Question 1. Pointeurs en assembleur
 -----------------------------------

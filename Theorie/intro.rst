@@ -2,8 +2,8 @@
 .. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <http://perso.uclouvain.be/olivier.bonaventure>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
-.. _introduction:
-   
+.. _theorie:introduction:
+
 Introduction
 ============
 
@@ -75,7 +75,7 @@ Possédant les mêmes composants que décrits ci-dessus, ils fonctionnent de la 
    pi
    nano
 
-   
+
 Unix
 ----
 

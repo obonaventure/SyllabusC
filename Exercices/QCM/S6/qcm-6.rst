@@ -17,13 +17,11 @@ Sixième Semaine
 
 Cette semaine porte sur la communication et la synchronisation entre threads. Plus précisément, la matière est décrite dans les deux sections suivantes :
 
+  - :ref:`theorie:complementsC`
+  - :ref:`theorie:threads`
 
-.. - :ref:`complementsC`
-
-- `Communication entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html>`_
-- `Coordination entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html#coordination-entre-threads>`_
-
-.. - :ref:`thread`
+.. - `Communication entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html>`_
+.. - `Coordination entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html#coordination-entre-threads>`_
 
 Question 1. Algorithme de Peterson
 ----------------------------------

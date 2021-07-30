@@ -6,6 +6,7 @@
   builds
   GitLab
 
+.. _outils:jenkins:
 
 Jenkins
 -------

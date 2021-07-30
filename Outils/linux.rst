@@ -2,7 +2,7 @@
 .. Copyright |copy| 2021 by François De Keersmaeker
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
-.. _linux:
+.. _outils:linux:
 
 Disposer d'une machine Linux
 ----------------------------

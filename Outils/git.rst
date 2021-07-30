@@ -44,7 +44,7 @@
    cliquez
    cliquer
 
-.. _git-ref:
+.. _outils:git:
 
 Git
 ---

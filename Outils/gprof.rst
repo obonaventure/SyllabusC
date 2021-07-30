@@ -5,8 +5,8 @@
 .. spelling::
 
    Profiling
-   
-.. _gprof:
+
+.. _outils:gprof:
 
 Profiling de code
 -----------------
