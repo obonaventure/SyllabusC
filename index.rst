@@ -3,9 +3,9 @@
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
-###################
-LEPL1503 - Projet 3
-###################
+#####################################
+Syllabus du cours LEPL1503 - Projet 3
+#####################################
 
 
 .. only:: html
@@ -19,10 +19,11 @@ LEPL1503 - Projet 3
 
 
 
-*******
+-------
 Théorie
-*******
+-------
 
+Cette partie du syllabus présente la théorie du cours.
 
 Introduction
 *************
@@ -63,9 +64,11 @@ Fichiers
 ..   Theorie/Fichiers/fichiers-signaux
 
 
-*********
+---------
 Exercices
-*********
+---------
+
+Cette partie du syllabus présente les exercices pour les premières semaines du cours.
 
 .. toctree::
   :maxdepth: 2
@@ -74,15 +77,19 @@ Exercices
   Exercices/bib
 
 
-******
+------
 Outils
-******
+------
+
+Cete partie du syllabus présente divers outils qui s'avéreront utile lors de votre projet.
 
 .. toctree::
    :maxdepth: 2
 
    Outils/intro-outils
+   Outils/linux
    Outils/git
+   Outils/jenkins
    Outils/make
    Outils/ssh
    Outils/cunit
@@ -93,9 +100,9 @@ Outils
    Outils/shell
    Outils/gcc
 
-*******
+-------
 Annexes
-*******
+-------
 
 .. toctree::
    :maxdepth: 2

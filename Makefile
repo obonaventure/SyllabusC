@@ -158,4 +158,4 @@ qcm:
 projets:
 	@for dir in Projets/P*; do [ -e $${dir}/Makefile ] && make -C $${dir}; true; done
 
-lepl1503: qcm projets html epub
+lepl1503: qcm projets epub latexpdf html

@@ -47,7 +47,7 @@ Connectez-vous en indiquant votre **adresse email UCLouvain**, et votre mot de p
 
 .. figure:: ./figures/linux/uds/uds_connection.png
   :align: center
-  :scale: 100
+  :scale: 75
 
   Page de connexion d'UDS
 
@@ -55,7 +55,7 @@ Ensuite, sélectionnez la machine Didac-ingi (pas Didac-Générique !):
 
 .. figure:: ./figures/linux/uds/uds_choice.png
   :align: center
-  :scale: 100
+  :scale: 50
 
   Choix de la machine UDS
 
@@ -64,7 +64,7 @@ et votre mot de passe:
 
 .. figure:: ./figures/linux/uds/uds_connection_vm.png
   :align: center
-  :scale: 100
+  :scale: 75
 
   Connexion à la machine UDS
 
@@ -72,7 +72,7 @@ Vous avez désormais accès à une machine Linux (pour être plus précis, Fedor
 
 .. figure:: ./figures/linux/uds/uds_fedora.png
   :align: center
-  :scale: 100
+  :scale: 50
 
   Machine Linux (Fedora) depuis le navigateur
 
@@ -90,9 +90,9 @@ Vous avez désormais accès à une machine Linux (pour être plus précis, Fedor
 
   .. figure:: ./figures/linux/uds/uds_oasis.png
     :align: center
-    :scale: 100
+    :scale: 60
 
-    Dossier ``oasis``
+    Dossier ``oasis`` sur la machine UDS
 
 
 Utiliser Windows Subsystem for Linux
@@ -131,7 +131,7 @@ Depuis le Windows Store, rechercher "Ubuntu", et l'installer.
 
 .. figure:: ./figures/linux/wsl/store.png
   :align: center
-  :scale: 100
+  :scale: 50
 
   Application "Ubuntu" depuis le Windows Store
 
@@ -145,26 +145,26 @@ les commandes de gestion des dossiers et de compilation de programmes C.
 
 .. note:: Accéder aux fichiers de Windows depuis WSL
 
-Lorsqu'on utilise WSL, il n'y a pas d'interface graphique pour, par exemple,
-utiliser un éditeur de texte tel que Atom pour coder.
-On peut cependant produire les fichiers textes nécessaires depuis Windows directement,
-puis y accéder depuis WSL pour la compilation et l'exécution.
-Or, puisque WSL possède son propre système de fichiers Linux,
-il faut donc creuser un peu pour retrouver les fichiers Windows.
-Les disques Windows sont accessibles depuis le dossier ``/mnt``, suivi de la lettre du disque.
-Par exemple, le disque C est accessible depuis ``/mnt/c``.
-Depuis ces disques, vous pouvez retrouver tous les fichiers disponibles sur Windows.
-Pour plus de facilité, il est conseillé de créer un raccourci depuis le dossier d'accueil de WSL
-vers les dossiers Windows désirés.
-Pour ce faire, on utilise la commande `ln(1)`_:
+    Lorsqu'on utilise WSL, il n'y a pas d'interface graphique pour, par exemple,
+    utiliser un éditeur de texte tel que Atom pour coder.
+    On peut cependant produire les fichiers textes nécessaires depuis Windows directement,
+    puis y accéder depuis WSL pour la compilation et l'exécution.
+    Or, puisque WSL possède son propre système de fichiers Linux,
+    il faut donc creuser un peu pour retrouver les fichiers Windows.
+    Les disques Windows sont accessibles depuis le dossier ``/mnt``, suivi de la lettre du disque.
+    Par exemple, le disque C est accessible depuis ``/mnt/c``.
+    Depuis ces disques, vous pouvez retrouver tous les fichiers disponibles sur Windows.
+    Pour plus de facilité, il est conseillé de créer un raccourci depuis le dossier d'accueil de WSL
+    vers les dossiers Windows désirés.
+    Pour ce faire, on utilise la commande `ln(1)`_:
 
-.. code-block:: bash
+    .. code-block:: bash
 
-  $ ln -s TARGET_FILE LINK_NAME
+      $ ln -s TARGET_FILE LINK_NAME
 
-Dans ce cas, ``TARGET_FILE`` sera le fichier ou dossier Windows voulu (accessible à partir de ``/mnt``),
-et ``LINK_NAME`` sera l'emplacement voulu du raccourci (pour le mettre sur le dossier d'accueil
-de WSL, ce sera ``~/target_file``).
+    Dans ce cas, ``TARGET_FILE`` sera le fichier ou dossier Windows voulu (accessible à partir de ``/mnt``),
+    et ``LINK_NAME`` sera l'emplacement voulu du raccourci (pour le mettre sur le dossier d'accueil
+    de WSL, ce sera ``~/target_file``).
 
 
 Machine virtuelle Linux
@@ -208,7 +208,7 @@ La procédure d'importation prend un certain temps, patience !
 
 .. figure:: ./figures/linux/vm/install_vm.png
   :align: center
-  :scale: 100
+  :scale: 75
 
   Importation d'une VM dans VirtualBox
 

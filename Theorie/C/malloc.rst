@@ -334,7 +334,7 @@ Le programme ci-dessous illustre brièvement l'utilisation de `getenv(3)`_, `uns
    :start-after: ///AAA
 
 
-La pile (ou stack)
+La pile (ou *stack*)
 ------------------
 
 La :term:`pile` ou :term:`stack` en anglais est la dernière zone de mémoire utilisée par un processus. C'est une zone très importante car c'est dans cette zone que le processus va stocker l'ensemble des variables locales mais également les valeurs de retour de toutes les fonctions qui sont appelées. Cette zone est gérée comme une pile, d'où son nom. Pour comprendre son fonctionnement, nous utiliserons le programme :download:`./S3-src/fact.c` qui permet de calculer une factorielle de façon récursive.

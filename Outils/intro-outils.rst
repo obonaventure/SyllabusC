@@ -17,7 +17,7 @@ Outre des compétences théoriques qui sont abordées dans d'autres parties de c
    pull
    requests
 
-Editeurs
+Éditeurs
 ========
 
 De nombreux éditeurs sont utilisables pour manipuler efficacement du code source en langage C. Chaque étudiant doit choisir l'éditeur qui lui convient le mieux. En voici quelques uns :

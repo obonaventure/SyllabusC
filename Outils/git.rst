@@ -588,7 +588,7 @@ sera la branche de base, dans notre cas la branche ``master``.
 
 .. figure:: ./figures/git/merge_web/2.png
   :align: center
-  :scale: 100
+  :scale: 75
 
   Sélection des branches *source* et *cible*
 
@@ -600,7 +600,7 @@ les branches peuvent être fusionnées automatiquement:
 
 .. figure:: ./figures/git/merge_web/3.png
   :align: center
-  :scale: 100
+  :scale: 75
 
   Fusion automatique
 
@@ -609,7 +609,7 @@ et il est donc impossible de fusionner les branches automatiquement:
 
 .. figure:: ./figures/git/merge_web/4.png
   :align: center
-  :scale: 100
+  :scale: 75
 
   Conflits lors de la fusion
 
@@ -658,6 +658,9 @@ Le fichier ``branch.txt`` a donc été marqué pour la résolution:
 
 Autres commandes utiles
 ~~~~~~~~~~~~~~~~~~~~~~~
+
+Cette section présente d'autres commandes plus avancées de `git(1)`_,
+qui peuvent s'avérer utile.
 
 Afficher l'historique
 #####################

@@ -32,20 +32,21 @@ et éviter les bugs et la perte de fonctionnalité.
 
 Création du projet sur Jenkins
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Se connecter sur https://jenkins.student.info.ucl.ac.be et cliquer sur le bouton *S'identifier*.
-# S'identifier à l'aide du compte UCLouvain.
-# Une fois connecté, dans le menu à gauche, cliquer sur *Nouveau Item*.
-# Saisir le nom du projet, choisir *Construire un projet free-style*, et cliquer sur *OK*.
-# Le menu de configuration s'ouvre. Cocher la case *Activer la sécurité basée projet*.
-# Ajouter les membres du projet a l'aide de leur Jenkins User ID, visible sur leur profil Jenkins.
-# Donner tous les droits aux membres du groupe (cocher toutes les cases). Attention à ne pas donner tous les droits aux anonymes !
-# Dans le menu déroulant *GitLab Connection*, choisir *Forge UCLouvain*.
-# Dans *Gestion de code source*, choisir l'option *Git*.
-# Récupérer l'URL du dépôt git sur GitLab, avec l'option *Clone with SSH*.
-# Indiquer l'URL du dépôt git récupérée à l'étape précédente, et choisir *git (SSH key - jenkins\_ingi - forge.uclouvain.be)* comme identifiant.
-# Dans *Ce qui déclenche le build*, cocher *Build when a change is pushed to GitLab*. **Noter quelque part le web hook URL précisé juste à côté**.
-# Un cadre s'ouvre, cliquer sur le bouton *Avancé*. En dessous du champ *Secret token* se trouve un bouton *Generate*. **Générer un token et le noter aussi**.
-# Dans *Build*, ajouter une étape *Exécuter un script shell*. Y introduire :
+
+* Se connecter sur https://jenkins.student.info.ucl.ac.be et cliquer sur le bouton *S'identifier*.
+* S'identifier à l'aide du compte UCLouvain.
+* Une fois connecté, dans le menu à gauche, cliquer sur *Nouveau Item*.
+* Saisir le nom du projet, choisir *Construire un projet free-style*, et cliquer sur *OK*.
+* Le menu de configuration s'ouvre. Cocher la case *Activer la sécurité basée projet*.
+* Ajouter les membres du projet a l'aide de leur Jenkins User ID, visible sur leur profil Jenkins.
+* Donner tous les droits aux membres du groupe (cocher toutes les cases). Attention à ne pas donner tous les droits aux anonymes !
+* Dans le menu déroulant *GitLab Connection*, choisir *Forge UCLouvain*.
+* Dans *Gestion de code source*, choisir l'option *Git*.
+* Récupérer l'URL du dépôt git sur GitLab, avec l'option *Clone with SSH*.
+* Indiquer l'URL du dépôt git récupérée à l'étape précédente, et choisir *git (SSH key - jenkins\_ingi - forge.uclouvain.be)* comme identifiant.
+* Dans *Ce qui déclenche le build*, cocher *Build when a change is pushed to GitLab*. **Noter quelque part le web hook URL précisé juste à côté**.
+* Un cadre s'ouvre, cliquer sur le bouton *Avancé*. En dessous du champ *Secret token* se trouve un bouton *Generate*. **Générer un token et le noter aussi**.
+* Dans *Build*, ajouter une étape *Exécuter un script shell*. Y introduire :
 
   .. code-block:: bash
 
@@ -53,21 +54,23 @@ Création du projet sur Jenkins
 
     exit 0
 
-# Dans *Actions à la suite du build*, ajouter une action *Publish build status to GitLab*.
-# Cliquer sur *Sauver* pour construire le projet.
+* Dans *Actions à la suite du build*, ajouter une action *Publish build status to GitLab*.
+* Cliquer sur *Sauver* pour construire le projet.
 
 Déclenchement automatique des builds
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Sur GitLab, dans la vue du projet, aller dans le menu *Settings* => *Webhooks*
-# Copier le *web hook URL* ainsi que le *Secret token* mis de côté au point précédent. Cocher *Push events* et finalement cliquer sur *Add webhook*.
+
+* Sur GitLab, dans la vue du projet, aller dans le menu *Settings* => *Webhooks*
+* Copier le *web hook URL* ainsi que le *Secret token* mis de côté au point précédent. Cocher *Push events* et finalement cliquer sur *Add webhook*.
 
 Au prochain commit, un build sera déclenché automatiquement. Comme le script shell retourne 0, le build passera tout le temps. Si le lien est fonctionnel, une pastille verte s'affichera à côté de la description du commit dans GitLab.
 
 Modifier le script sur Jenkins
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Sur Jenkins, dans la vue du projet cliquer sur le menu *Configurer*
-# Aller jusqu'à la section *Build* et modifier le script shell
-# Rajouter les commandes nécessaires à l'exécution des tests de votre projet (``make tests`` par exemple)
+
+* Sur Jenkins, dans la vue du projet cliquer sur le menu *Configurer*
+* Aller jusqu'à la section *Build* et modifier le script shell
+* Rajouter les commandes nécessaires à l'exécution des tests de votre projet (``make tests`` par exemple)
 
 Si le code ne passe pas tous les tests, la valeur de retour de la commande sera différente de 0 et le build sera marqué comme *Failed*, une pastille rouge apparaîtra dans Gitlab.
 

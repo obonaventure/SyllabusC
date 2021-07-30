@@ -35,10 +35,9 @@ Face à la faiblesse au niveau sécurité de l'authentification par mot de passe
 
 L'authentification par clé consiste en un premier temps à générer une paire de clés et son mot de passe:
 
-        * la ``clé publique`` que l'on exporte vers chaque hôte sur lequel on veut se connecter
-        * la ``clé privée`` que l'on garde précieusement sur notre ordinateur, et qui sert à prouver à l'hôte notre identité
-					**Attention: ne jamais dévoiler sa clé privée !**
-        * le ``mot de passe`` permet de sécuriser sa clé privée
+    * La *clé publique* que l'on exporte vers chaque hôte sur lequel on veut se connecter.
+    * La *clé privée* que l'on garde précieusement sur notre ordinateur, et qui sert à prouver à l'hôte notre identité. **Attention: ne jamais dévoiler sa clé privée !**
+    * Le *mot de passe* permet de sécuriser sa clé privée.
 
 Le mot de passe ne servant à rien sans les clé et vice versa, on devine aisément que le niveau de sécurité d'une telle connexion est largement accru par rapport à une simple authentification par mot de passe.
 
@@ -129,7 +128,7 @@ Nous pouvons aussi utiliser `rsync <http://linux.about.com/library/cmd/blcmdl1_r
 
       rsync -avz [hostname]:src/bar /data/tmp
 
-Maintenant tous les fichiers de la machine hôte, dans le dossier ``src/bar`` vont être copiés vers le répertoire local ``/data/tmp``
+Maintenant tous les fichiers de la machine hôte, dans le dossier ``src/bar`` vont être copiés vers le répertoire local ``/data/tmp``.
 
 
 .. spelling::
