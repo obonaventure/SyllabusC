@@ -22,11 +22,15 @@ import sys, os
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
-
+sys.path.append(os.path.abspath('./Exercices/mcq/'))
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx', 'sphinxcontrib.spelling' ]
+extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx', 'mcq', 'sphinxcontrib.spelling' ]
 
+# mcq
+mcq_nb_prop=3
+mcq_upload_url='http://inginious.info.ucl.ac.be'
+mcq_inginious_url='http://inginious.info.ucl.ac.be/cnp3'
 
 #spelling
 spelling_lang='fr'
@@ -145,7 +149,7 @@ html_title = u'Langage C'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['_static', './Exercices/mcq/static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -189,7 +193,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'SINF1252doc'
+htmlhelp_basename = 'LEPL1503doc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
