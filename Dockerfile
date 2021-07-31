@@ -1,5 +1,5 @@
 # Base image: sphinx with latex
-FROM sphinxdoc/sphinx-latexpdf
+FROM sphinxdoc/sphinx
 
 # Install or update packages
 RUN apt-get update
