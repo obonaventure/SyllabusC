@@ -6,7 +6,7 @@
 .. _theorie:declarations:
 
 Déclarations
-=============
+============
 
 Durant les chapitres précédents, nous avons principalement utilisé des variables locales. Celles-ci sont déclarées à l'intérieur des fonctions où elles sont utilisées. La façon dont les variables sont déclarées est importante dans un programme écrit en langage C. Dans cette section nous nous concentrerons sur des programmes C qui sont écrits sous la forme d'un seul fichier source. Nous verrons plus tard comment découper un programme en plusieurs modules qui sont répartis dans des fichiers différents et comment les variables peuvent y être déclarées.
 
@@ -335,7 +335,7 @@ Le programme ci-dessous illustre brièvement l'utilisation de `getenv(3)`_, `uns
 
 
 La pile (ou *stack*)
-------------------
+--------------------
 
 La :term:`pile` ou :term:`stack` en anglais est la dernière zone de mémoire utilisée par un processus. C'est une zone très importante car c'est dans cette zone que le processus va stocker l'ensemble des variables locales mais également les valeurs de retour de toutes les fonctions qui sont appelées. Cette zone est gérée comme une pile, d'où son nom. Pour comprendre son fonctionnement, nous utiliserons le programme :download:`./S3-src/fact.c` qui permet de calculer une factorielle de façon récursive.
 
