@@ -1,2 +1,2 @@
-sphinx>=2.0.0
+sphinx>=1.0.0
 sphinxcontrib-spelling

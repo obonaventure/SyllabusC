@@ -4,7 +4,6 @@
 from docutils import nodes
 from docutils.parsers.rst import Directive
 from sphinx.errors import SphinxError
-from sphinx.util import logging
 import os, sys, copy, hashlib, random
 
 __version__ = '0.1'
@@ -12,7 +11,6 @@ __version__ = '0.1'
 question_number = 0
 alternative_number = 0
 language = 'en'
-logger = logging.getLogger(__name__)
 
 translations = {
 	'fr': {
@@ -238,27 +236,27 @@ def add_dependencies(app):
 	else:
 		app.config.latex_elements['preamble'] = preamble
 
-	app.add_js_file('jquery-shuffle.js')
-	app.add_js_file('rst-form.js')
-	app.add_css_file('ext.css')
+	app.add_javascript('jquery-shuffle.js')
+	app.add_javascript('rst-form.js')
+	app.add_stylesheet('ext.css')
 
 def validate_question_options(app, node):
 	if node.nb_pos < 1:
-		logger.warning('The number of positive answers to display must be greater than 0.')
+		app.warn('The number of positive answers to display must be greater than 0.')
 		node.nb_pos = 1
 	if node.nb_prop < node.nb_pos:
-		logger.warning('The number of propositions to display in a question ('+str(node.nb_prop)+') must be greater or equal than the number of positive answers ('+str(node.nb_pos)+') to display.')
+		app.warn('The number of propositions to display in a question ('+str(node.nb_prop)+') must be greater or equal than the number of positive answers ('+str(node.nb_pos)+') to display.')
 		nb_prop = app.config.mcq_nb_prop
 		if nb_prop < node.nb_pos:
-			node.nb_prop = sys.maxsize
+			node.nb_prop = sys.maxint
 		else:
 			node.nb_prop = nb_prop
 	if node.nb_prop == node.nb_pos:
-		logger.warning('The number of positive answers shouldn\'t be the same as the number of propositions. It\'s like giving the answer.')
+		app.warn('The number of positive answers shouldn\'t be the same as the number of propositions. It\'s like giving the answer.')
 
 def validate_nb_rows(app, nb_rows):
 	if nb_rows < 1:
-		logger.warning('The number of rows in a textbox must be greater than 0.')
+		app.warn('The number of rows in a textbox must be greater than 0.')
 		return 1
 	return nb_rows
 
@@ -311,7 +309,7 @@ def verify_questions(app, doctree):
 			if positive_count < node.nb_pos:
 				raise StructureError('A "question" directive must have at least the given number of "positive" directives children.')
 			if negative_count < 1:
-				logger.warning('Not giving any negative proposition in a question is the same as giving the answer.')
+				app.warn('Not giving any negative proposition in a question is the same as giving the answer.')
 
 def count_children(node):
 	query_count, positive_count, negative_count, textbox_count = 0, 0, 0, 0

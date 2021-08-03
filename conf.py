@@ -246,7 +246,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'sinf1252', u'SINF1252',
+    ('index', 'lepl1503', u'LEPL1503',
      [u'O. Bonaventure, G. Detal, C. Paasch'], 1)
 ]
 
@@ -260,8 +260,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'SINF1252', u'SINF1252 : Systèmes informatiques',
-   u'O. Bonaventure, G. Detal, C. Paasch', 'SINF1252', 'One line description of project.',
+  ('index', 'LEPL1503', u'LEPL1503 : Projet 3',
+   u'O. Bonaventure, G. Detal, C. Paasch', 'LEPL1503', 'One line description of project.',
    'Miscellaneous'),
 ]
 
