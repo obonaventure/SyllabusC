@@ -11,14 +11,14 @@ IMAGE_ID=""
 sudo rm -rf _build/
 
 # If the container still exists, remove it
-LINE=$(docker ps -a | grep $CONTAINER)
+LINE=$(sudo docker ps -a | grep $CONTAINER)
 if [ ! -z "$LINE" ]
 then
-  docker rm -f $CONTAINER
+  sudo docker rm -f $CONTAINER
 fi
 
 # If old image exists, remove it
-LINE=$(docker images | grep $CONTAINER)
+LINE=$(sudo docker images | grep $CONTAINER)
 if [ ! -z "$LINE" ]
 then
   # Old image still exists
@@ -33,11 +33,11 @@ then
     i=$((i+1))
   done
   # Remove the old image
-  docker rmi $IMAGE_ID
+  sudo docker rmi $IMAGE_ID
 fi
 
 # Build container image
-docker build -t $CONTAINER .
+sudo docker build -t $CONTAINER .
 
 # Get compilation option from command line argument
 CMD=""
@@ -48,4 +48,4 @@ esac
 echo $CMD
 
 # Run container with command
-docker run --rm --name $CONTAINER -i -t -v $(pwd):/syllabus $CONTAINER $CMD
+sudo docker run --rm --name $CONTAINER -i -t -v $(pwd):/syllabus $CONTAINER $CMD

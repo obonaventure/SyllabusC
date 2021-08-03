@@ -1,4 +1,4 @@
-Systèmes Informatiques
+LEPL1503 - Projet 3
 ======================
 
 [![Build Status](https://travis-ci.com/obonaventure/SyllabusC.svg?branch=master)](https://travis-ci.com/obonaventure/SyllabusC)
@@ -21,9 +21,29 @@ qui sont des environnements virtuels encapsulés, semblables à des machines vir
 très légères. Pour installer [Docker](https://www.docker.com), suivez les instructions
 reprises sur leur [page d'installation](https://docs.docker.com/engine/install/).
 
-Vous êtes maintenant en mesure de compiler le projet sous différents formats (consultez le [Makefile](./Makefile) pour plus d'informations). Vous pouvez notamment le compiler au format HTML avec `make html`, au format epub avec `make epub` ou encore au format PDF avec `make latexpdf` pour créer les fichiers LaTeX à compiler à l'aide de pdflatex. Le projet compilé est alors accessible dans le répertoire `_build/nom_du_format`.
+La configuration reprise dans le [Dockerfile](./Dockerfile) permet de créer un container
+contenant tous les packages nécessaires à la compilation du syllabus.
+Pour faciliter encore plus sa création, un [script bash](./deploy.sh)
+est fourni.
+Pour déployer le container, il suffit d'exécuter le script
+(**Attention**: l'utilisateur exécutant le script doit avoir les droits ``sudo``).
+Les arguments de ligne de commande donnés au script définisse quel sera le comportement
+du container une fois crée:
 
-Finalement, lorsque que vous avez terminé de travailler sur le projet, vous pouvez exécuter la commande `vagrant destroy` pour supprimer toutes les traces de la machine virtuelle précédemment créée.
+- Si aucun argument n'est donné, un terminal ``root`` sera ouvert sur le container.
+Depuis ce terminal, il est possible de lancer la compilation du syllabus en un certain format, avec la commande ``make``.
+Les formats les plus courants sont les suivants:
+    - ``make html`` lance la compilation en HTML, pour former le site internet du syllabus
+    - ``make epub`` lance la compilation en epub, format adapté à la lecture sur tablette
+
+
+- Il est également possible de donner directement l'argument du format au script,
+par exemple ``./deploy html``, pour que le container effectue automatiquement la compilation
+au format désiré, puis soit supprimé.
+
+Les fichiers étant partagés entre le container et la machine hôte, les fichiers
+compilés seront automatiquement placés dans le dossier `_build/nom_du_format`
+à la racine du repository.
 
 Intégration continue
 --------------------
