@@ -23,31 +23,26 @@ reprises sur leur [page d'installation](https://docs.docker.com/engine/install/)
 
 La configuration reprise dans le [Dockerfile](./Dockerfile) permet de créer un container
 contenant tous les packages nécessaires à la compilation du syllabus.
-Pour faciliter encore plus sa création, un [script bash](./build.sh)
-est fourni.
-Pour déployer le container, il suffit d'exécuter le script
+Pour faciliter encore plus sa création, un [script bash](./build.sh) est fourni.
+Pour déployer le container, il suffit d'exécuter le script avec la commande
+`./build.sh`
 (**Attention**: l'utilisateur exécutant le script doit avoir les droits `sudo`).
-Les arguments de ligne de commande donnés au script définisse quel sera le comportement
-du container une fois crée:
+L'argument de ligne de commande donnés au script sera passé
+à la commande `make` à l'intérieur du container, et
+définit donc quelle compilation aura lieu dans le container.
+Les arguments les plus utiles sont les suivants:
 
-- Si aucun argument n'est donné, un terminal `root` sera ouvert sur le container.
-Depuis ce terminal, il est possible de lancer la compilation du syllabus en un certain format, avec la commande `make`.
-Les formats les plus courants sont les suivants:
-    - `make html` lance la compilation en HTML, pour former le site internet du syllabus,
+    - `html` lance la compilation en HTML, pour former le site internet du syllabus,
     contenant les parties *Théorie*, *Exercices*, et *Outils*.
-    - `make epub` lance la compilation en EPUB, format adapté à la lecture sur tablette. **Remarque**: seule les parties *Théorie* et *Outils* possèdent
+    - `epub` lance la compilation en EPUB, format adapté à la lecture sur tablette. **Remarque**: seule les parties *Théorie* et *Outils* possèdent
     une version EPUB.
-    - `make latexpdf` lance la compilation en LaTeX,
+    - `latexpdf` lance la compilation en LaTeX,
     puis produit une version PDF du syllabus à partir des fichiers LaTeX. **Remarque**:
     seule la partie *Théorie* possède une version LaTeX.
-    - `make lepl1503` lance la compilation complète du syllabus,
+    - `lepl1503` lance la compilation complète du syllabus,
     dans les formats HTML, EPUB, et LaTeX - PDF. **Remarque**:
     cette cible de compilation étant la première, elle se lancera également si
-    aucun argument n'est donné à la commande `make`.
-
-- Il est également possible de donner directement l'argument du format au script,
-par exemple `./build.sh lepl1503`, pour que le container effectue automatiquement la compilation
-au format désiré, puis soit supprimé.
+    aucun argument n'est donné.
 
 Les fichiers étant partagés entre le container et la machine hôte, les fichiers
 compilés seront automatiquement placés dans le dossier `web/notes`

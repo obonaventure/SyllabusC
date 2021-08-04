@@ -76,15 +76,29 @@ En outre, vous devrez aussi lire les sections de la partie Outils qui sont relat
 Quatrième semaine
 -----------------
 
-Durant les dernières semaines, vous avez appris les bases de l'écriture de fonctions en C. L'objectif de cette semaine est de vous amener à être capable d'écrire des programmes comprenant plusieurs fonctions. La matière couverte cette semaine correspond aux sections :
+Durant les dernières semaines, vous avez appris les bases de l'écriture de fonctions en C.
+L'objectif de cette semaine est de vous amener à être capable d'écrire des programmes
+comprenant plusieurs fonctions. La matière couverte cette semaine correspond aux sections :
 
  - `Compléments de C <../../Theorie/html/C/linker.html>`_
 
+Trois exercices supplémentaires sont disponibles sur INGInious
+pour tester votre compréhension de cette section:
+
+    - https://inginious.info.ucl.ac.be/course/LEPL1503/modules_qcm_1
+    - https://inginious.info.ucl.ac.be/course/LEPL1503/modules_qcm_2
+    - https://inginious.info.ucl.ac.be/course/LEPL1503/modules_output
 
 En outre, vous devrez aussi lire les sections de la partie Outils qui sont relatives à
 
  - `Introduction aux Makefiles <../../Outils/html/make.html>`_
  - `CUnit: libraire de tests <../../Outils/html/cunit.html>`_
+
+Deux exercices supplémentaires sont disponibles sur INGInious
+pour tester votre compréhension des Makefiles:
+
+    - https://inginious.info.ucl.ac.be/course/LEPL1503/makefile
+    - https://inginious.info.ucl.ac.be/course/LEPL1503/modules_makefile
 
 
 .. toctree::

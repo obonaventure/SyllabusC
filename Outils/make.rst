@@ -18,7 +18,9 @@
 Introduction aux Makefiles
 --------------------------
 
-Les Makefiles sont des fichiers utilisés par le programme `make(1)`_ afin d'automatiser un ensemble d'actions permettant la génération de fichiers, la plupart du temps résultant d'une compilation.
+Les Makefiles sont des fichiers utilisés par le programme `make(1)`_
+afin d'automatiser un ensemble d'actions permettant la génération de fichiers,
+la plupart du temps résultant d'une compilation.
 
 Un Makefile est composé d'un ensemble de règles de la forme:
 
