@@ -12,4 +12,4 @@ La `version HTML <http://sites.uclouvain.be/SyllabusC/notes/Theorie/>`_ est la p
 
         - `format epub <http://sites.uclouvain.be/SyllabusC/distrib/LEPL1503IntroductionaulangageC.epub>`_ lisible sur tablettes style iPad ou Galaxy Tab
 
-..        - `format pdf <http://sites.uclouvain.be/SystInfo/distrib/SINF1252-Theorie.pdf>`_ pour lecture via les logiciels Adobe ou pour impression
+        - `format pdf <http://sites.uclouvain.be/SystInfo/distrib/SINF1252-Theorie.pdf>`_ pour lecture via les logiciels Adobe ou pour impression

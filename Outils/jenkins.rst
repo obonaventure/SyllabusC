@@ -23,8 +23,8 @@ et donc exécuter les commandes à chaque commit.
 Les commandes en question peuvent être de différents types:
 
 - Lancer une suite de tests unitaires CUnit.
-- Utiliser `valgrind(1)`_ pour détecter les fuites de mémoire (voir a section dédiée pour plus d'informations).
-- Utiliser `cppcheck(1)`_ pour analyser le code et détecter de potentiels bugs.
+- Utiliser `valgrind(1)`_ pour détecter les fuites de mémoire (voir la section dédiée pour plus d'informations).
+- Utiliser `cppcheck <http://cppcheck.sourceforge.net/>`_ pour analyser le code et détecter de potentiels bugs.
 
 La suite de ce document détaille comment inclure `Jenkins <https://www.jenkins.io/>`_
 à un projet GitLab, pour profiter de l'automatisation des tests à chaque commit,

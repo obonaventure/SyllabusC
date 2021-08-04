@@ -29,8 +29,8 @@ $(function() {
         $('.comment').not('.preproc').hide();
         $('.checkmark').remove();
         $('.result').remove();
-        $('li.false input:checked').parent().prepend('<img class="checkmark" src="images/false.png" style="display: none;"></img>');
-        $('li.correct input:checked').parent().prepend('<img class="checkmark" src="images/correct.png" style="display: none;"></img>');
+        $('li.false input:checked').parent().prepend('<img class="checkmark" src="../_static/false.png" style="display: none;"></img>');
+        $('li.correct input:checked').parent().prepend('<img class="checkmark" src="../_static/false.png" style="display: none;"></img>');
         $('.checkmark').show();
         $('input:checked').parent().children('.comment').show('slow');
         $('#checker').append('<div class="result">Votre score est de ' +

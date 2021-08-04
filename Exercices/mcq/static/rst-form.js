@@ -58,8 +58,8 @@ function compute_score() {
     var nb_pos_checked = $(this).children('.positive').children('input:checked').length;
     var nb_neg_checked = $(this).children('.negative').children('input:checked').length;
     // for sphinx
-    var pos_img = '<img class="checkmark" src="'+DOCUMENTATION_OPTIONS.URL_ROOT+'/_static/true.png" />';
-    var neg_img = '<img class="checkmark" src="'+DOCUMENTATION_OPTIONS.URL_ROOT+'/_static/false.png" />';
+    var pos_img = '<img class="checkmark" src="../_static/true.png" />';
+    var neg_img = '<img class="checkmark" src="../_static/false.png" />';
     var scored = false;
     if (nb_neg_checked == 0 && nb_pos_checked == nb_pos) {
         scored = true;

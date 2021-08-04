@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# SINF1252 documentation build configuration file, created by
+# LEPL1503 documentation build configuration file, created by
 # sphinx-quickstart on Tue Jan  3 16:17:09 2012.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -22,18 +22,19 @@ import sys, os
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
-sys.path.append(os.path.abspath('mcq'))
+sys.path.append(os.path.abspath('./Exercices/mcq/'))
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-
 extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx', 'mcq', 'sphinxcontrib.spelling' ]
 
-
 # mcq
-
 mcq_nb_prop=3
 mcq_upload_url='http://inginious.info.ucl.ac.be'
 mcq_inginious_url='http://inginious.info.ucl.ac.be/cnp3'
+
+#spelling
+spelling_lang='fr'
+spelling_word_list_filename='../dict.txt'
 
 # ucomment
 #sys.path.append(os.path.abspath(os.getcwd()))
@@ -59,8 +60,8 @@ source_encoding = 'utf-8'
 master_doc = 'index'
 
 # General information about the project.
-project = u'LEPL1503 : Exercices '
-copyright = u'2012-2021, O. Bonaventure, G. Detal, C. Paasch'
+project = u'LEPL1503 : Introduction au langage C'
+copyright = u'2013, 2021, O. Bonaventure, G. Detal, C. Paasch'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -83,13 +84,7 @@ language = 'fr'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', '.#*', '*/.#*', 'QCM/*', 'QBF/*', '._*' ]
-
-rst_prolog = """
-.. include:: /links.rst
-.. include:: /man_links.rst
-.. include:: /incl_links.rst
-"""
+exclude_patterns = ['_build/**', '.#*', '**/.#**', 'Exercices/QCM/**', "**.BASE.**", "**.REMOTE.**", "**.LOCAL.**", "**.BACKUP.**", "MemoireVirtuelle/**", "Assembleur/**", "Fichiers/fichiers-signaux.rst", "Threads/processus.rst" ]
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -111,13 +106,15 @@ pygments_style = 'sphinx'
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
+rst_epilog = """
+.. include:: /links.rst
+.. include:: /man_links.rst
+.. include:: /incl_links.rst
+"""
+
 # Intersphinx
-intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SyllabusC/notes/Theorie/', None), 'outils': ('https://sites.uclouvain.be/SyllabusC/notes/Outils/', None), 'exercices': ('https://sites.uclouvain.be/SyllabusC/notes/Exercices/', None)}
+intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SyllabusC/notes/Theorie/html/', None), 'outils': ('https://sites.uclouvain.be/SyllabusC/notes/Outils/html/', None), 'exercices': ('https://sites.uclouvain.be/SyllabusC/notes/Exercices/html/', None)}
 
-# -- Options for Spelling extension ------------------------------------------
-
-spelling_lang='fr'
-spelling_word_list_filename='../dict.txt'
 
 # -- Options for HTML output ---------------------------------------------------
 
@@ -135,7 +132,7 @@ html_theme = 'haiku'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = u'LEPL1503: Exercices'
+html_title = u'Langage C'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -152,7 +149,7 @@ html_title = u'LEPL1503: Exercices'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static', 'mcq/static']
+html_static_path = ['_static', './Exercices/mcq/static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -210,12 +207,16 @@ latex_elements = {
 
 # Additional stuff for the LaTeX preamble.
 #'preamble': '',
+    'preamble': '''
+    \\hypersetup{unicode=true}
+    '''
+# See https://tex.stackexchange.com/questions/120002/how-to-modify-the-default-latex-package-parameters-of-sphinx
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'LEPL1503Ex.tex', u'LEPL1503Ex',
+  ('index', 'LEPL1503.tex', u'LEPL1503 : Introduction au langage C',
    u'O. Bonaventure, G. Detal, C. Paasch', 'manual'),
 ]
 
@@ -259,8 +260,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'LEPL1503', u'LEPL1503',
-   u'O. Bonaventure, G. Detal, C. Paasch', 'SINF1252', 'One line description of project.',
+  ('index', 'LEPL1503', u'LEPL1503 : Projet 3',
+   u'O. Bonaventure, G. Detal, C. Paasch', 'LEPL1503', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -277,10 +278,10 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'LEPL1503: Exercices'
+epub_title = u'LEPL1503 : Introduction au langage C'
 epub_author = u'O. Bonaventure, G. Detal, C. Paasch'
-epub_publisher = u'UCLouvain'
-epub_copyright = u'2013-2021, O. Bonaventure, G. Detal, C. Paasch'
+epub_publisher = u'O. Bonaventure, G. Detal, C. Paasch'
+epub_copyright = u'2013, 2021, O. Bonaventure, G. Detal, C. Paasch'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
@@ -322,3 +323,5 @@ epub_copyright = u'2013-2021, O. Bonaventure, G. Detal, C. Paasch'
 #	print "Build as staff member"
 #except:
 #	print "Build as student"
+
+mathjax_path="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"

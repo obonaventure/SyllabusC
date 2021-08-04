@@ -35,7 +35,7 @@ Depuis ce terminal, il est possible de lancer la compilation du syllabus en un c
 Les formats les plus courants sont les suivants:
     - ``make html`` lance la compilation en HTML, pour former le site internet du syllabus,
     contenant les parties *Théorie*, *Exercices*, et *Outils*.
-    - ``make epub`` lance la compilation en EPUB, format adapté à la lecture sur tablette. **Remarque**: seule les parties *Théorie* et *Exercices* possèdent
+    - ``make epub`` lance la compilation en EPUB, format adapté à la lecture sur tablette. **Remarque**: seule les parties *Théorie* et *Outils* possèdent
     une version EPUB.
     - ``make latexpdf`` lance la compilation en LaTeX,
     puis produit une version PDF du syllabus à partir des fichiers LaTeX. **Remarque**:
@@ -48,7 +48,7 @@ par exemple ``./deploy lepl1503``, pour que le container effectue automatiquemen
 au format désiré, puis soit supprimé.
 
 Les fichiers étant partagés entre le container et la machine hôte, les fichiers
-compilés seront automatiquement placés dans le dossier `_build/nom_du_format`
+compilés seront automatiquement placés dans le dossier `web/notes`
 à la racine du repository.
 
 Intégration continue
