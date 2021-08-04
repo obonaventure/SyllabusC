@@ -28,16 +28,16 @@ Syllabus C : Outils
 
    intro-outils
    linux
-   git
-   jenkins
-   make
-   ssh
-   cunit
-   processus
-   valgrind
-   gdb
-   gprof
    shell
+   processus
    gcc
+   gdb
+   valgrind
+   make
+   cunit
+   git
+   ssh
+   jenkins
+   gprof
    bib
 

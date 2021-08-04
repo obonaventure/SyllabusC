@@ -22,15 +22,19 @@ Le shell est un outil très puissant. Il permet d'effectuer de nombreuses opéra
    métadonnées
    désarchive
 
-.. note:: Astuce : utilisez la complétion
+.. note:: Astuces pour utiliser le shell rapidement
 
- Lors de la frappe d'un nom de fichier, d'un chemin d'accès ou même d'une commande tapez sur la touche ``<tab>`` pour "compléter" le mot que vous écrivez. Si rien ne se passe tapez deux fois <tab> pour obtenir la liste des possibilités.
+ Lors de la frappe d'un nom de fichier, d'un chemin d'accès ou même d'une commande tapez sur la touche ``<tab>`` pour "compléter" le mot que vous écrivez.
+ Cela vous évite de devoir écrire les noms des commandes ou des fichiers en entier à chaque fois.
+ Si rien ne se passe tapez deux fois <tab> pour obtenir la liste des possibilités.
+ 
+ De plus, vous pouvez accéder à l'historique des commandes en utilisant la flèche du haut.
 
 .. note:: Chemin absolu et relatif
 
  Pour écrire la position d'un fichier (son chemin), il y a deux manières de faire :
 
-	* Le chemin absolu : il fait référence au chemin qu'il faut parcourir dans le système de fichier en démarrant de la racine, représenté par le caractère ``/``.
+	* Le chemin absolu : il fait référence au chemin qu'il faut parcourir dans le système de fichier en démarrant de la racine, représentée par le caractère ``/``.
 
 	* Le chemin relatif: il fait référence au chemin à parcourir depuis le dossier courant.
 
