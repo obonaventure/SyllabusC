@@ -32,17 +32,17 @@ L'argument de ligne de commande donnés au script sera passé
 définit donc quelle compilation aura lieu dans le container.
 Les arguments les plus utiles sont les suivants:
 
-    - `html` lance la compilation en HTML, pour former le site internet du syllabus,
-    contenant les parties *Théorie*, *Exercices*, et *Outils*.
-    - `epub` lance la compilation en EPUB, format adapté à la lecture sur tablette. **Remarque**: seule les parties *Théorie* et *Outils* possèdent
-    une version EPUB.
-    - `latexpdf` lance la compilation en LaTeX,
-    puis produit une version PDF du syllabus à partir des fichiers LaTeX. **Remarque**:
-    seule la partie *Théorie* possède une version LaTeX.
-    - `lepl1503` lance la compilation complète du syllabus,
-    dans les formats HTML, EPUB, et LaTeX - PDF. **Remarque**:
-    cette cible de compilation étant la première, elle se lancera également si
-    aucun argument n'est donné.
+- `html` lance la compilation en HTML, pour former le site internet du syllabus,
+contenant les parties *Théorie*, *Exercices*, et *Outils*.
+- `epub` lance la compilation en EPUB, format adapté à la lecture sur tablette. **Remarque**: seule les parties *Théorie* et *Outils* possèdent
+une version EPUB.
+- `latexpdf` lance la compilation en LaTeX,
+puis produit une version PDF du syllabus à partir des fichiers LaTeX. **Remarque**:
+seule la partie *Théorie* possède une version LaTeX.
+- `lepl1503` lance la compilation complète du syllabus,
+dans les formats HTML, EPUB, et LaTeX - PDF. **Remarque**:
+cette cible de compilation étant la première, elle se lancera également si
+aucun argument n'est donné.
 
 Les fichiers étant partagés entre le container et la machine hôte, les fichiers
 compilés seront automatiquement placés dans le dossier `web/notes`
