@@ -33,12 +33,18 @@ du container une fois crée:
 - Si aucun argument n'est donné, un terminal ``root`` sera ouvert sur le container.
 Depuis ce terminal, il est possible de lancer la compilation du syllabus en un certain format, avec la commande ``make``.
 Les formats les plus courants sont les suivants:
-    - ``make html`` lance la compilation en HTML, pour former le site internet du syllabus
-    - ``make epub`` lance la compilation en epub, format adapté à la lecture sur tablette
-
+    - ``make html`` lance la compilation en HTML, pour former le site internet du syllabus,
+    contenant les parties *Théorie*, *Exercices*, et *Outils*.
+    - ``make epub`` lance la compilation en EPUB, format adapté à la lecture sur tablette. **Remarque**: seule les parties *Théorie* et *Exercices* possèdent
+    une version EPUB.
+    - ``make latexpdf`` lance la compilation en LaTeX,
+    puis produit une version PDF du syllabus à partir des fichiers LaTeX. **Remarque**:
+    seule la partie *Théorie* possède une version LaTeX.
+    - ``make lepl1503`` lance la compilation complète du syllabus,
+    dans les formats HTML, EPUB, et LaTeX - PDF.
 
 - Il est également possible de donner directement l'argument du format au script,
-par exemple ``./deploy html``, pour que le container effectue automatiquement la compilation
+par exemple ``./deploy lepl1503``, pour que le container effectue automatiquement la compilation
 au format désiré, puis soit supprimé.
 
 Les fichiers étant partagés entre le container et la machine hôte, les fichiers

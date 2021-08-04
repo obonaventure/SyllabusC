@@ -1,8 +1,13 @@
-# Ignore all _build directories
+# Compiled files
 _build
+web/
+
 # Ignore all files ending with ~
 *~
 *.o
-web/
-#Info on vagrant image
+
+# Info on vagrant image
 .vagrant
+
+# Development script
+rebuild.sh
