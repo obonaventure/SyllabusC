@@ -13,7 +13,7 @@ https://creativecommons.org/licenses/by-sa/3.0/fr/
 Compilation
 -----------
 
-Les notes sont écrites en [reStructuredText](http://docutils.sourceforge.net/rst.html) et peuvent être transformées en un document au format HTML, epub ou PDF en utilisant le logiciel [sphinx](https://sphinx-doc.org). Pour faciliter cette compilation, une configuration [Docker](https://www.docker.com/) est reprise dans le fichier [Dockerfile](./Dockerfile)
+Les notes sont écrites en [reStructuredText](http://docutils.sourceforge.net/rst.html) et peuvent être transformées en un document au format HTML, EPUB ou PDF en utilisant le logiciel [Sphinx](https://sphinx-doc.org) (**Attention**: la version 1.7.1 de [Sphinx](https://sphinx-doc.org) est utilisée, prendre une version plus récente peut empêcher la compilation LaTeX de fonctionner). Pour faciliter cette compilation, une configuration [Docker](https://www.docker.com/) est reprise dans le fichier [Dockerfile](./Dockerfile)
 se trouvant à la racine du repository.
 
 [Docker](https://www.docker.com) est un logiciel fonctionnant sur Linux, Windows et MacOS, qui permet d'automatiser et de faciliter la création de "containers",
