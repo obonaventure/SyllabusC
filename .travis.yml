@@ -1,12 +1,18 @@
+# Travis CI configuration file
+
+dist: focal  # Ubuntu 20.04
+services:
+    - docker  # Need docker for containers
 before_install:
- - sudo apt-get install hunspell hunspell-fr
- - sudo apt-get install cppcheck
- - sudo apt-get install enchant
+    - sudo apt-get install hunspell hunspell-fr
+    - sudo apt-get install cppcheck
+    - sudo apt-get install enchant
 install:
- - pip3 install -U sphinx
- - pip3 install sphinxcontrib.spelling
+    - pip3 install sphinx==1.7.1
+    - pip3 install sphinxcontrib.spelling==4.2.1
 language: python
 python:
-  - "3.6"
+    - "3.9"
+
 # command to run tests
 script: bash travis.sh

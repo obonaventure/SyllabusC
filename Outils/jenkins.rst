@@ -2,9 +2,19 @@
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. spelling::
-  build
-  builds
-  GitLab
+    Jenkins
+    jenkins
+    build
+    builds
+    GitLab
+    git
+    makefile
+    lcunit
+    xml
+    rice
+    cppcheck
+    Legay
+    rices
 
 .. _outils:jenkins:
 
@@ -72,11 +82,11 @@ Modifier le script sur Jenkins
 * Aller jusqu'à la section *Build* et modifier le script shell
 * Rajouter les commandes nécessaires à l'exécution des tests de votre projet (``make tests`` par exemple)
 
-Si le code ne passe pas tous les tests, la valeur de retour de la commande sera différente de 0 et le build sera marqué comme *Failed*, une pastille rouge apparaîtra dans Gitlab.
+Si le code ne passe pas tous les tests, la valeur de retour de la commande sera différente de 0 et le build sera marqué comme *Failed*, une pastille rouge apparaîtra dans GitLab.
 
 Projet d'exemple pour Jenkins
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Nous vous fournissons un projet donnant un exemple plus complet de configuration d'un projet Gitlab avec Jenkins. Il est disponible à l'adresse suivante : https://forge.uclouvain.be/alegay/jenkinslepl1503/. Le projet contient les fichiers suivants :
+Nous vous fournissons un projet donnant un exemple plus complet de configuration d'un projet GitLab avec Jenkins. Il est disponible à l'adresse suivante : https://forge.uclouvain.be/alegay/jenkinslepl1503/. Le projet contient les fichiers suivants :
 
 * ``ex-lepl1503.c``: un fichier C qui contient:
 

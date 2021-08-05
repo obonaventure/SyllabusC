@@ -12,6 +12,8 @@
    arobase
    indentent
    shell
+   target
+   targets
 
 .. _outils:make:
 

@@ -2,6 +2,17 @@
 .. Copyright |copy| 2021 by François De Keersmaeker
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
+.. spelling::
+    Subsystem
+    boot
+    Didac
+    ingi
+    l'UCLouvain
+    Atom
+    Install
+    Party
+    d'Ubuntu
+
 .. _outils:linux:
 
 Disposer d'une machine Linux
@@ -243,5 +254,5 @@ Un tutoriel pour l'installation d'Ubuntu, qui est une des versions les plus popu
 est disponible à l'URL
 https://lecrabeinfo.net/installer-ubuntu-20-04-lts-le-guide-complet.html.
 Pour Fedora, la version de Linux disponible sur les machines des salles informatiques
-(et sur UDS, comme expliqué précedemment), un tutoriel est disponible à l'URL
+(et sur UDS, comme expliqué précédemment), un tutoriel est disponible à l'URL
 https://www.tecmint.com/install-fedora-with-windows-dual-boot/.

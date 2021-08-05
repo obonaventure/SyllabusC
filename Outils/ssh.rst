@@ -14,6 +14,9 @@ SSH
    intel
    sirius
    l'Internet
+   Secure
+   Shell
+   push
 
 `ssh(1)`_ (Secure Shell) est un outil qui permet de se connecter depuis l'Internet à la console d'une autre machine et donc d'y exécuter des commandes. Dans l'infrastructure INGI vous pouvez vous connecter via ssh aux différents machines des salles en utilisant votre login et mot de passe INGI. Pour savoir les noms de machines, visitez le `student-wiki <http://wiki.student.info.ucl.ac.be/Matériel/Matériel>`_.
 

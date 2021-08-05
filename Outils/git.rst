@@ -43,11 +43,15 @@
    Ruby
    cliquez
    cliquer
+   repository
+   ssh
+   merge
 
 .. _outils:git:
 
-Git
----
+Introduction à Git
+------------------
+
 .. sectionauthor:: Benoit Legat
 
 `git(1)`_ est un outil de **version control**, c'est-à-dire de gestion de code sous formes de versions.
@@ -495,7 +499,7 @@ De base, l'historique d'un repository est donc le suivant:
 
     Historique initial d'un repository
 
-Les commits sont représetés en bleu, et les branches en rouge.
+Les commits sont représentés en bleu, et les branches en rouge.
 L'indication ``HEAD`` représente l'état actuel du repository sur la copie locale.
 
 Pour créer une nouvelle branche, on utilise la commande `git-branch(1)`_,

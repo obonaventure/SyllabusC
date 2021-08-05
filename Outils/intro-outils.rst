@@ -16,6 +16,9 @@ Outre des compétences théoriques qui sont abordées dans d'autres parties de c
    pull-requests
    pull
    requests
+   control
+   Atom
+   Visual
 
 Éditeurs
 ========

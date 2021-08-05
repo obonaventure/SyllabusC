@@ -6,6 +6,9 @@
 
    tutorée
    tutorées
+   Makefiles
+   Makefile
+
 
 Exercices
 =========
@@ -119,7 +122,7 @@ La matière de cette semaine porte sur l'utilisation du système de fichiers. El
 
 En outre, vous devrez aussi lire les sections de la partie Outils qui sont relatives à
 
- - `Git <../../Outils/html/git.html>`_
+ - `Introduction à Git <../../Outils/html/git.html>`_
 
 `git(1)`_ sera très utilisé dans le cadre du projet. Après avoir lu l'explication sur `git(1)`_, vous êtes invités à testez vos connaissances via les exercices supplémentaires
 proposés sur la `page INGInious du cours <https://inginious.info.ucl.ac.be/course/LEPL1503>`_,
