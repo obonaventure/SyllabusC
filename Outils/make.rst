@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. spelling::
 
@@ -210,7 +210,7 @@ Il existe six différentes manières d'assigner une valeur à une variable. Nous
 - La troisième permet d'assigner une valeur à la variable uniquement si celle-ci n'en a pas encore.
 - La quatrième permet d'ajouter une valeur à une autre déjà déclarée.
 
-Une description détaillée de ces méthodes d'assignation et des deux autres restantes se trouve à l'adresse suivante `<http://www.gnu.org/software/make/manual/make.html#Setting>`_
+Une description détaillée de ces méthodes d'assignation et des deux autres restantes se trouve à l'adresse suivante `<https://www.gnu.org/software/make/manual/make.html#Setting>`_
 
 Variables automatiques
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -271,7 +271,7 @@ réaliser des opérations conditionnelles comme :
         endif
 
 Ici ``ifeq`` permet de tester un "si égal". Il existe aussi l'opération opposée ``ifneq`` pour "si non-égal". Remarquez que les conditions ne doivent pas être tabulées au risque d'obtenir une erreur
-de syntaxe incompréhensible. Les conditions peuvent avoir différentes syntaxes. Vous pouvez les trouver sur cette page http://www.gnu.org/software/make/manual/make.html#Conditional-Syntax
+de syntaxe incompréhensible. Les conditions peuvent avoir différentes syntaxes. Vous pouvez les trouver sur cette page https://www.gnu.org/software/make/manual/make.html#Conditional-Syntax
 
 Avec les sections précédentes et la suivante nous allons pouvoir nous aventurer dans la création de Makefiles plus complexes.
 On peut vouloir effectuer des compilations différentes suivant l'environnement de l'utilisateur comme son OS, son matériel ou juste son nom.

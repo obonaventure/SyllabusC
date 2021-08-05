@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. raw:: html
 
@@ -20,8 +20,8 @@ Cette semaine porte sur la communication et la synchronisation entre threads. Pl
   - :ref:`theorie:complementsC`
   - :ref:`theorie:threads`
 
-.. - `Communication entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html>`_
-.. - `Coordination entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html#coordination-entre-threads>`_
+.. - `Communication entre threads <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html>`_
+.. - `Coordination entre threads <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html#coordination-entre-threads>`_
 
 Question 1. Algorithme de Peterson
 ----------------------------------

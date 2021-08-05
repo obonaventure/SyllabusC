@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 Questions INGINIOUS
 -------------------
@@ -74,14 +74,14 @@ Questions complémentaires
    réimplémenter
 
 
-#. Un étudiant a fait l'implémentation d'un sous-ensemble des fonctions définies dans string.h, mais il rencontre quelques problèmes avec son code :download:`./src/string.c`. Utilisez `gdb`_ pour corriger son code. Utilisez le flag ``-g`` de ``gcc`` pour ajouter les informations de debug dans votre programme. Pour rappel, voici quelques commandes importantes de `gdb` :
+#. Un étudiant a fait l'implémentation d'un sous-ensemble des fonctions définies dans string.h, mais il rencontre quelques problèmes avec son code :download:`./src/string.c`. Utilisez `gdb <../../../Outils/html/gdb.html>`_ pour corriger son code. Utilisez le flag ``-g`` de ``gcc`` pour ajouter les informations de debug dans votre programme. Pour rappel, voici quelques commandes importantes de `gdb` :
 
    - ``run [ARGS]`` permet de lancer l'exécution du programme avec les arguments ARGS si spécifiés.
    - ``break string.c:9`` met un point d'arrêt à la ligne 9 du fichier string.c
    - ``next`` permet d'exécuter la ligne courante et de s'arrêter à la ligne suivante
    - ``print var`` affiche la valeur de la variable ``var``
    - ``backtrace`` affiche la pile d'appel des fonctions courantes
-   - ``quit`` quitte `gdb <http://sites.uclouvain.be/SystInfo/notes/Outils/html/gdb.html>`_
+   - ``quit`` quitte `gdb <../../../Outils/html/gdb.html>`_
 
 	 .. only:: staff
 

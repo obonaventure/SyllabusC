@@ -7,12 +7,12 @@ Pour le troisième projet, vous devrez choisir un appel système, analyser la fa
 
  https://github.com/blegat/benchmark.git
 
-Pour s'exécuter, ce programme nécessite une version récente de `gnuplot <http://www.gnuplot.info>`_ , un programme permettant d'afficher des données de façon graphique. Téléchargez les sources de ce programme et installez-le en faisant :
+Pour s'exécuter, ce programme nécessite une version récente de `gnuplot <https://www.gnuplot.info>`_ , un programme permettant d'afficher des données de façon graphique. Téléchargez les sources de ce programme et installez-le en faisant :
 
 .. code:: console
 
 
-   wget http://sourceforge.net/projects/gnuplot/files/gnuplot/4.6.5/gnuplot-4.6.5.tar.gz
+   wget https://sourceforge.net/projects/gnuplot/files/gnuplot/4.6.5/gnuplot-4.6.5.tar.gz
    tar xzvf gnuplot-4.6.5.tar.gz
    cd gnuplot-4.6.5
    ./configure

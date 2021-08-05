@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
 .. _theorie:declarations:
@@ -405,7 +405,7 @@ Lors de la compilation, `gcc(1)`_ affiche le :term:`warning` ``In function ‘du
 
 .. [#fvmem] Nous verrons ultérieurement que grâce à l'utilisation de la mémoire virtuelle, il est possible pour un processus d'utiliser des zones de mémoire qui ne sont pas contiguës.
 
-.. [#fothermalloc] Il existe différentes alternatives à l'utilisation de `malloc(3)`_ pour l'allocation de mémoire comme `Hoard <http://www.hoard.org/>`_ ou `gperftools <http://code.google.com/p/gperftools/>`_
+.. [#fothermalloc] Il existe différentes alternatives à l'utilisation de `malloc(3)`_ pour l'allocation de mémoire comme `Hoard <http://hoard.org/>`_ ou `gperftools <https://github.com/gperftools/gperftools>`_
 
 .. [#fenvbash] Il possible de lister les définitions actuelles des variables d'environnement via la commande `printenv(1)`_. Les interpréteurs de commande tels que `bash(1)`_ permettent de facilement modifier les valeurs de ces variables. La plupart d'entre elles sont initialisées par le système ou via les fichiers qui sont chargés automatiquement au démarrage de l'interpréteur comme ``/etc/profile`` qui contient les variables fixées par l'administrateur système ou le fichier ``.profile`` du répertoire d'accueil de l'utilisateur qui contient les variables d'environnement propres à cet utilisateur.
 

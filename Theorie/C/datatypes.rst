@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. _theorie:datatypes:
 
@@ -408,7 +408,7 @@ traitement qu'elle effectue dépend du type d'encodage qui a été
 défini via `setlocale(3)`_  (voir `locale(7)`_).
 
 
-.. see http://en.wikipedia.org/wiki/List_of_binary_codes
+.. see https://en.wikipedia.org/wiki/List_of_binary_codes
 
 Dans la suite de ce document, nous supposerons qu'un caractère
 est toujours représentable en utilisant le type ``char`` permettant de
@@ -754,7 +754,7 @@ Les types ``Entier`` et ``int`` peuvent être utilisés de façon interchangeabl
      :start-after: ///CCC
      :end-before: ///DDD
 
- Malheureusement, il y a un risque dans un grand programme que le développeur oublie que ces types de données correspondent à des pointeurs qui doivent être manipulés avec soin. Le `Linux kernel coding style <http://www.kernel.org/doc/Documentation/CodingStyle>`_ contient une discussion intéressante sur l'utilisation des ``typedef``.
+ Malheureusement, il y a un risque dans un grand programme que le développeur oublie que ces types de données correspondent à des pointeurs qui doivent être manipulés avec soin. Le `Linux kernel coding style <https://www.kernel.org/doc/Documentation/CodingStyle>`_ contient une discussion intéressante sur l'utilisation des ``typedef``.
 
 
 Les pointeurs sont fréquemment utilisés lors de la manipulation de structures. Lorsqu'un pointeur pointe vers une structure, il est utile de pouvoir accéder facilement aux éléments de la structure. Le langage C supporte deux notations pour représenter ces accès aux éléments d'une structure. La première notation est ``(*ptr).elem``  où ``ptr`` est un pointeur et ``elem`` l'identifiant d'un des éléments de la structure pointée par ``ptr``. Cette notation est en pratique assez peu utilisée. La notation la plus fréquente est ``ptr->elem`` dans laquelle ``ptr`` et ``->elem`` sont respectivement un pointeur et un identifiant d'élément. L'exemple ci-dessous illustre l'initialisation de deux fractions en utilisant ces notations.
@@ -1006,11 +1006,11 @@ Ces opérations de décalage permettent différentes manipulations de bits. À t
 
 .. [#fexposant] En pratique, le format binaire contient :math:`127+exp` en simple précision et non l'exposant `exp`. Ce choix facilite certaines comparaisons entre nombres représentés en virgule flottante. Une discussion détaillée de la représentation binaire des nombres en virgule flottante sort du cadre de ce cours dédié aux systèmes informatiques. Une bonne référence à ce sujet est [Goldberg1991]_.
 
-.. [#fexemple] Source : http://en.wikipedia.org/wiki/Single-precision_floating-point_format
+.. [#fexemple] Source : https://en.wikipedia.org/wiki/Single-precision_floating-point_format
 
-.. [#fstackjava] En pratique, l'espace mémoire accessible à un programme Java est limité par différents facteurs. Voir notamment le paramètre ``-Xm`` de la machine virtuelle Java http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/java.html
+.. [#fstackjava] En pratique, l'espace mémoire accessible à un programme Java est limité par différents facteurs. Voir notamment le paramètre ``-Xm`` de la machine virtuelle Java https://docs.oracle.com/javase/6/docs/technotes/tools/solaris/java.html
 
-.. [#ftimelibc] Une description plus détaillée des différentes possibilités de mesure du temps via les fonctions de la librairie standard est disponible dans le chapitre `21 <http://www.gnu.org/software/libc/manual/html_node/Date-and-Time.html>`_ du `manuel <http://www.gnu.org/software/libc/manual/html_node/Date-and-Time.html>`_ de la :term:`libc`.
+.. [#ftimelibc] Une description plus détaillée des différentes possibilités de mesure du temps via les fonctions de la librairie standard est disponible dans le chapitre `21 <https://www.gnu.org/software/libc/manual/html_node/Date-and-Time.html>`_ du `manuel <https://www.gnu.org/software/libc/manual/html_node/Date-and-Time.html>`_ de la :term:`libc`.
 
 .. [#fdirent] Voir notamment `fs(5)`_ pour des exemples relatifs aux systèmes de fichiers. Une analyse détaillée des systèmes de fichiers sort du cadre de ce cours.
 

@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. raw:: html
 
@@ -15,7 +15,7 @@
 Semaine 2 : Types de données
 ============================
 
-La matière couverte cette semaine la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html#les-expressions-de-manipulation-de-bits>`_
+La matière couverte cette semaine la section relative aux `types de données <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html#les-expressions-de-manipulation-de-bits>`_
 
 
 Question 1. Conversion de types
@@ -218,7 +218,7 @@ Parmi les affirmations suivantes relatives aux nombres signés en représentatio
      C'est la représentation de ``-26``
 
 
-.. http://www.binaryconvert.com/ pour des conversions sur le web
+.. https://www.binaryconvert.com/ pour des conversions sur le web
 
 
 

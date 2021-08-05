@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. _theorie:introductionC:
 
@@ -199,8 +199,7 @@ Toutes les tables de caractères placent les chiffres ``0`` à ``9`` à des posi
   Outre ces pages de manuel locales, il existe également de nombreux sites web où l'on peut accéder aux pages de manuels de différentes versions de Unix dont notamment :
 
    - les pages de manuel de `Debian GNU/Linux <http://manpages.debian.net/>`_
-   - les pages de manuel de `FreeBSD <http://www.freebsd.org/cgi/man.cgi>`_
-   - les pages de manuel de `MacOS <http://developer.apple.com/documentation/Darwin/Reference/ManPages/index.html>`_
+   - les pages de manuel de `FreeBSD <https://www.freebsd.org/cgi/man.cgi>`_
 
   Dans la version en-ligne de ces notes, toutes les références vers un programme Unix, un appel système ou une fonction de la librairie pointent vers la page de manuel Linux correspondante.
 

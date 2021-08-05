@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch, Grégory Detal et Maxime De Mol
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch, Grégory Detal et Maxime De Mol
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
 .. _outils:ssh:
@@ -18,7 +18,7 @@ SSH
    Shell
    push
 
-`ssh(1)`_ (Secure Shell) est un outil qui permet de se connecter depuis l'Internet à la console d'une autre machine et donc d'y exécuter des commandes. Dans l'infrastructure INGI vous pouvez vous connecter via ssh aux différents machines des salles en utilisant votre login et mot de passe INGI. Pour savoir les noms de machines, visitez le `student-wiki <http://wiki.student.info.ucl.ac.be/Matériel/Matériel>`_.
+`ssh(1)`_ (Secure Shell) est un outil qui permet de se connecter depuis l'Internet à la console d'une autre machine et donc d'y exécuter des commandes. Dans l'infrastructure INGI vous pouvez vous connecter via ssh aux différents machines des salles en utilisant votre login et mot de passe INGI. Pour savoir les noms de machines, visitez le `student-wiki <https://wiki.student.info.ucl.ac.be/Mat%C3%A9riel/Mat%C3%A9riel>`_.
 
 Depuis l'extérieur vous devez passer via ``studssh.info.ucl.ac.be`` pour ensuite pouvoir vous connecter sur les machines des salles.
 
@@ -29,7 +29,7 @@ Quelques exemples d'utilisation de `ssh(1)`_ qui vous seront utiles:
 	* ``ssh [username]@[hostname] [commande]``: Pour exécuter la commande sur la machine distante. Exemple: ``ssh myUserName@sirius.info.ucl.ac.be cc test.c -o test`` pour exécuter ``cc test.c -o test`` sur sirius.
 	* ``scp [local_file] [username]@[hostname]:[path]``: `scp(1)`_ permet de copier des fichiers locaux vers un répertoire distant (et l'inverse). Exemple: ``scp test.c myUserName@sirius.info.ucl.ac.be:INFO1252/projet_S2/`` copie test.c vers le dossier ``INFO1252/projet_S2/`` de la machine sirius.
 
-Le site `Getting started with SSH <http://www.ibm.com/developerworks/aix/library/au-sshsecurity/>`_ contient une bonne description de l'utilisation de ssh. Notamment l'`utilisation de ssh sur des machines UNIX/Linux <http://www.ibm.com/developerworks/aix/library/au-sshsecurity/#SSH_for_UNIX>`_. Si vous utilisez Windows, il existe des clients `ssh(1)`_ comme `putty <http://www.putty.org/>`_
+Le site `Getting started with SSH <https://developer.ibm.com/articles/au-sshsecurity/>`_ contient une bonne description de l'utilisation de ssh. Notamment l'utilisation de ssh sur des machines UNIX/Linux. Si vous utilisez Windows, il existe des clients `ssh(1)`_ comme `putty <https://www.putty.org/>`_
 
 Authentification par clé
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -113,19 +113,19 @@ et il ne faudra plus indiquer le nom d'utilisateur et le mot de passe à chaque 
 Synchronisation de fichiers entre ordinateurs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Quand nous avons besoin de synchroniser des fichiers entre 2 ordinateurs différents, Unix nous vient en aide avec l'utilitaire `rsync <http://linux.about.com/library/cmd/blcmdl1_rsync.htm>`_.
+Quand nous avons besoin de synchroniser des fichiers entre 2 ordinateurs différents, Unix nous vient en aide avec l'utilitaire `rsync <https://www.lifewire.com/copying-directories-with-rsync-3971105>`_.
 
-L'utilisation la plus basique de `rsync <http://linux.about.com/library/cmd/blcmdl1_rsync.htm>`_ est:
+L'utilisation la plus basique de `rsync <https://www.lifewire.com/copying-directories-with-rsync-3971105>`_ est:
 
     .. code-block:: console
 
       rsync *.c [hostname]:src/
 
-`rsync <http://linux.about.com/library/cmd/blcmdl1_rsync.htm>`_ va copier tout les fichiers qui correspondent au pattern ``*.c`` du répertoire courant vers le dossier ``src/`` sur la machine hôte. De plus, si certains ou tout les fichiers sont déjà présents chez l'hôte, `rsync <http://linux.about.com/library/cmd/blcmdl1_rsync.htm>`_ va procéder à une mise à jour différentielle de ces fichiers (seuls les changements sont transférés).
+`rsync <https://www.lifewire.com/copying-directories-with-rsync-3971105>`_ va copier tout les fichiers qui correspondent au pattern ``*.c`` du répertoire courant vers le dossier ``src/`` sur la machine hôte. De plus, si certains ou tout les fichiers sont déjà présents chez l'hôte, `rsync <https://www.lifewire.com/copying-directories-with-rsync-3971105>`_ va procéder à une mise à jour différentielle de ces fichiers (seuls les changements sont transférés).
 
 L'ajout du drapeau ``-avz`` permet de synchroniser les fichiers en mode archive. Cela veut dire que tous les liens, permissions, propriétaires, etc de ces fichiers seront préservés durant le transfert.
 
-Nous pouvons aussi utiliser `rsync <http://linux.about.com/library/cmd/blcmdl1_rsync.htm>`_ dans l'autre sens:
+Nous pouvons aussi utiliser `rsync <https://www.lifewire.com/copying-directories-with-rsync-3971105>`_ dans l'autre sens:
 
     .. code-block:: console
 

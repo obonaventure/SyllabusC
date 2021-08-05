@@ -306,3 +306,11 @@ epub_copyright = u'2012-2021, O. Bonaventure, G. Detal, C. Paasch, B. Legat, N. 
 #	print "Build as staff member"
 #except:
 #	print "Build as student"
+
+
+# -- Options for linkcheck builder ---------------------------------------------
+
+linkcheck_ignore = [
+    r'https://jenkins.student.info.ucl.ac.be/job/.*',
+    'https://wiki.student.info.ucl.ac.be/uploads/Mat%C3%A9riel/Mat%C3%A9riel/fedora32.ova'
+]

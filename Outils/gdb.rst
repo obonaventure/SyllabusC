@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012, 2020 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch, Grégory Detal et Nicolas Houtain
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012, 2020 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch, Grégory Detal et Nicolas Houtain
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. spelling::
 
@@ -208,8 +208,8 @@ Troisième programme
 
 Plus d'informations sur `gdb(1)`_ peuvent être trouvées sur:
 
-	* http://www.cprogramming.com/gdb.html
-	* http://www.ibm.com/developerworks/library/l-gdb/
+	* https://www.cprogramming.com/gdb.html
+	* https://developer.ibm.com/articles/l-gdb/
 	* https://www.rocq.inria.fr/secret/Anne.Canteaut/COURS_C/gdb.html
 
 
@@ -224,7 +224,7 @@ Débuggage des threads avec GDB
         * Lorsque les threads sont en pause, vous pouvez manuellement donner la main à un thread en faisant ``thread [thread_no]`` avec ``thread_no`` étant l'indice du thread comme indiqué par ``info threads``
 
 D'autres commandes pour utiliser `gdb(1)`_ avec les threads:
-        * http://sourceware.org/gdb/current/onlinedocs/gdb/Threads.html
+        * https://sourceware.org/gdb/current/onlinedocs/gdb/Threads.html
 
 
 .. rubric:: Footnotes

@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. spelling::
 
@@ -23,7 +23,7 @@ donc l'installer par vous-même. Le reste de cette section a pour but de vous
 aider dans l'installation de celle-ci.
 
 La première étape consiste à récupérer les sources de CUnit sur
-`<http://sourceforge.net/projects/cunit/files/>`_. Les sources se trouvent
+`<https://sourceforge.net/projects/cunit/files/>`_. Les sources se trouvent
 dans une archive ``CUnit-*-src.tar.bz2`` et la dernière version devrait se
 nommer ``CUnit-2.1-3-src.tar.bz2``. Une fois l'archive téléchargée, ouvrez un
 terminal et placez-vous dans le dossier où se trouve celle-ci. Exécutez:
@@ -32,7 +32,7 @@ terminal et placez-vous dans le dossier où se trouve celle-ci. Exécutez:
 
             $ tar xjvf CUnit-2.1.-3.tar.bz2
             $ cd CUnit-2.1-3
-	    $ ./bootstrap
+            $ ./bootstrap
             $ ./configure --prefix=$HOME/local
             $ make
             $ make install

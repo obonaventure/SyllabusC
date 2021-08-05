@@ -1,13 +1,13 @@
 /**
- * jQuery Shuffle (http://mktgdept.com/jquery-shuffle)
+ * jQuery Shuffle (https://mktgdept.com/jquery-shuffle)
  * A jQuery plugin for shuffling a set of elements
  *
  * v0.0.1 - 13 November 2009
  *
- * Copyright (c) 2009 Chad Smith (http://twitter.com/chadsmith)
+ * Copyright (c) 2009 Chad Smith (https://twitter.com/chadsmith)
  * Dual licensed under the MIT and GPL licenses.
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.opensource.org/licenses/gpl-license.php
+ * https://www.opensource.org/licenses/mit-license.php
+ * https://www.opensource.org/licenses/gpl-license.php
  *
  * Shuffle elements using: $(selector).shuffle() or $.shuffle(selector)
  *

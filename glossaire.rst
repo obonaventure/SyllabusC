@@ -400,7 +400,7 @@ Glossaire
 
     inode
        Structure de données contenant des informations (méta-données) relatives à un fichier sur certains systèmes de fichiers (Unix par exemple). Ces informations comportent notamment les permissions associées au fichier, l'utilisateur propriétaire du fichier, le groupe du propriétaire du fichier.
-       Pour plus d'informations, voir la section `Système de fichier <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Fichiers/fichiers.html#systemes-de-fichiers>`_ .
+       Pour plus d'informations, voir la section `Système de fichier <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/Fichiers/fichiers.html#systemes-de-fichiers>`_ .
 
     thread-safe
        Un programme est considéré thread-safe s'il fonctionne correctement lors d'une éxecution simultannée par plusieurs threads.En particulier, le programme doit satisfaire le besoin pour plusieurs threads d'accéder à la même donnée partagée entre eux et le besoin pour une donnée partagée entre threads d'être accessible par un seul thread à un moment donné. En C, on utilise notamment les :term:`mutex` ou d'autres types de locks pour résoudre ce genre de problème.

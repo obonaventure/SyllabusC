@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
 .. Copyright |copy| 2013 by Benoit Legat
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. spelling::
    kernel
@@ -70,7 +70,7 @@ Il est aussi utilisé pour la gestion des sources de ce document
 depuis https://github.com/obonaventure/SyllabusC.
 On l'utilise le plus souvent à l'aide de l'utilitaire `git(1)`_ mais il
 existe aussi des
-`applications graphiques <http://git-scm.com/downloads/guis>`_.
+`applications graphiques <https://git-scm.com/downloads/guis>`_.
 
 Le code source est sauvegardé dans un *dépôt*, ou *repository*, qui est simplement
 un dossier contenant le code, et auquel chaque développeur a accès.

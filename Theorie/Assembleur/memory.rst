@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. _theorie:ordinateurs:
 
@@ -744,10 +744,10 @@ Ce code illustre la complexité de supporter des appels récursifs en C et le co
 
 .. rubric:: Footnotes
 
-.. [#fintel] Pour une liste détaillée des processeurs de cette famille produits par intel_, voir notamment http://www.intel.com/pressroom/kits/quickreffam.htm D'autres fabricants produisent également des processeurs compatibles avec l'architecture [IA32]_.
+.. [#fintel] Pour une liste détaillée des processeurs de cette famille produits par intel_, voir notamment https://www.intel.com/pressroom/kits/quickreffam.htm D'autres fabricants produisent également des processeurs compatibles avec l'architecture [IA32]_.
 
 .. [#fmov] On parle de famille d'instructions car il existe de nombreuses instructions de déplacement en mémoire. Les plus simples sont suffixées par un caractère qui indique le type de données transféré. Ainsi, ``movb`` permet le transfert d'un byte tandis que ``movl`` permet le transfert d'un mot de 32 bits. Des détails sur ces instructions peuvent être obtenus dans [IA32]_
 
-.. [#fllvm] Cette traduction et la plupart des traductions utilisées dans ce chapitre ont été obtenues en utilisant l'interface `web de démo <http://llvm.org/demo/index.cgi>`_ du compilateur llvm_ qui a été configuré pour générer du code 32 bits sans optimisation. Quelques détails ont été supprimés du code assembleur pour le rendre plus compact.
+.. [#fllvm] Cette traduction et la plupart des traductions utilisées dans ce chapitre ont été obtenues en utilisant l'interface `web de démo <https://llvm.org/demo/index.cgi>`_ du compilateur llvm_ qui a été configuré pour générer du code 32 bits sans optimisation. Quelques détails ont été supprimés du code assembleur pour le rendre plus compact.
 
 

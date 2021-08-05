@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. spelling::
 
@@ -223,7 +223,7 @@ Question 4. Notation binaire
       .. comment:: C'est la représentation de ``-26``
 
 
-.. http://www.binaryconvert.com/ pour des conversions sur le web
+.. https://www.binaryconvert.com/ pour des conversions sur le web
 
 
 

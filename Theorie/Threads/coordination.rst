@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
 .. _theorie:coordinationthreads:
@@ -340,7 +340,7 @@ Ce problème affecte certaines fonctions de la librairie standard et plusieurs d
  }
 
 
-La fonction `strerror_r(3)`_ évite ce problème de tableau statique en utilisant trois arguments : le code d'erreur, un pointeur ``char *`` vers la zone devant stocker le message d'erreur et la taille de cette zone. Cela permet à `strerror_r(3)`_ d'utiliser une zone mémoire qui lui est passée par le thread qu'il appelle et garantit que chaque thread disposera de son message d'erreur. Voici une implémentation possible de `strerror_r(3)`_ [#fstrerror_r]_.
+La fonction `strerror_r(3)`_ évite ce problème de tableau statique en utilisant trois arguments : le code d'erreur, un pointeur ``char *`` vers la zone devant stocker le message d'erreur et la taille de cette zone. Cela permet à `strerror_r(3)`_ d'utiliser une zone mémoire qui lui est passée par le thread qu'il appelle et garantit que chaque thread disposera de son message d'erreur. Voici une implémentation possible de `strerror_r(3)`_.
 
 
 .. code-block:: c
@@ -369,8 +369,8 @@ Lorsque l'on intègre des fonctions provenant de la librairie standard ou d'une 
 .. [#fSysV] Les systèmes Unix supportent également des sémaphores dits `System V` du nom de la version de Unix dans laquelle ils ont été introduits. Dans ces notes, nous nous focalisons sur les sémaphores POSIX qui ont une API un peu plus simple que les es sémaphores `System V`. Les principales fonctions pour les sémaphores `System V` sont `semget(3posix)`_, `semctl(3posix)`_ et `semop(3posix)`_.
 
 
-.. [#fregister] Les premiers compilateurs C permettaient au programmeur de donner des indications au compilateur en faisant précéder les déclarations de certaines variables avec le qualificatif ``register`` [KernighanRitchie1998]_. Ce qualificatif indiquait que la variable était utilisée fréquemment et que le compilateur devrait en placer le contenu dans un registre. Les compilateurs actuels sont nettement plus performants et ils sont capables de détecter quelles sont les variables qu'il faut placer dans un registre. Il est inutile de chercher à influencer le compilateur en utilisant le qualificatif ``register``. Les compilateurs actuels, dont `gcc(1)`_ supportent de nombreuses `options <http://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html>`_ permettant d'optimiser les performances des programmes compilés. Certaines ont comme objectif d'accélérer l'exécution du programme, d'autres visent à réduire sa taille. Pour les programmes qui consomment beaucoup de temps CPU, il est utile d'activer l'optimisation du compilateur.
+.. [#fregister] Les premiers compilateurs C permettaient au programmeur de donner des indications au compilateur en faisant précéder les déclarations de certaines variables avec le qualificatif ``register`` [KernighanRitchie1998]_. Ce qualificatif indiquait que la variable était utilisée fréquemment et que le compilateur devrait en placer le contenu dans un registre. Les compilateurs actuels sont nettement plus performants et ils sont capables de détecter quelles sont les variables qu'il faut placer dans un registre. Il est inutile de chercher à influencer le compilateur en utilisant le qualificatif ``register``. Les compilateurs actuels, dont `gcc(1)`_ supportent de nombreuses `options <https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html>`_ permettant d'optimiser les performances des programmes compilés. Certaines ont comme objectif d'accélérer l'exécution du programme, d'autres visent à réduire sa taille. Pour les programmes qui consomment beaucoup de temps CPU, il est utile d'activer l'optimisation du compilateur.
 
-.. [#fstrerror] Cette implémentation est adaptée de http://opensource.apple.com/source/gcc/gcc-926/libiberty/strerror.c et est dans le domaine public.
+.. [#fstrerror] Cette implémentation est adaptée de https://opensource.apple.com/source/gcc/gcc-926/libiberty/strerror.c et est dans le domaine public.
 
-.. [#fstrerror_r] Cette implémentation est adaptée de https://www-asim.lip6.fr/trac/netbsdtsar/browser/vendor/netbsd/5/src/lib/libc/string/strerror_r.c?rev=2 et est `Copyright (c) 1988 Regents of the University of California.`
+.. .. [#fstrerror_r] Cette implémentation est adaptée de https://www-asim.lip6.fr/trac/netbsdtsar/browser/vendor/netbsd/5/src/lib/libc/string/strerror_r.c?rev=2 et est `Copyright (c) 1988 Regents of the University of California.`

@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. _theorie:utilisateurs:
 
@@ -514,7 +514,7 @@ A titre d'exemple d'utilisation de `mmap(2)`_ et `munmap(2)`_, le programme ci-d
 
 .. [#flimit] Il y a une limite maximale au nombre de fichiers qui peuvent être ouverts par un processus. Cette limite peut être récupérée avec l'appel système `getdtablesize(2)`_.
 
-.. [#fendianfig] Source : http://en.wikipedia.org/wiki/Endianness
+.. [#fendianfig] Source : https://en.wikipedia.org/wiki/Endianness
 
 .. [#ftaillepage] Il est possible d'obtenir la taille des pages utilisée sur un système via les appels `sysconf(3)`_ ou `getpagesize(2)`_
 

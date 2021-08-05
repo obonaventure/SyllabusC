@@ -2,18 +2,18 @@
 
 
 
-.. _intel : http://www.intel.com
-.. _python : http://www.python.org
-.. _perl : http://www.perl.org
-.. _Git : http://git-scm.com/
-.. _subversion : http://subversion.apache.org/
-.. _ISO-8859 : http://en.wikipedia.org/wiki/ISO/IEC_8859
-.. _Unicode: http://en.wikipedia.org/wiki/Unicode
-.. _Endianness: http://en.wikipedia.org/wiki/Endianness
-.. _llvm: http://llvm.org
+.. _intel : https://www.intel.fr/content/www/fr/fr/homepage.html
+.. _python : https://www.python.org
+.. _perl : https://www.perl.org
+.. _Git : https://git-scm.com/
+.. _subversion : https://subversion.apache.org/
+.. _ISO-8859 : https://en.wikipedia.org/wiki/ISO/IEC_8859
+.. _Unicode: https://en.wikipedia.org/wiki/Unicode
+.. _Endianness: https://en.wikipedia.org/wiki/Endianness
+.. _llvm: https://llvm.org
 
-.. .. |fsf| replace:: Free Software Foundation (FSF - http://www.fsf.org)
-.. .. |gnu| replace:: GNU is Not Unix (GNU - http://www.gnu.org)
+.. .. |fsf| replace:: Free Software Foundation (FSF - https://www.fsf.org)
+.. .. |gnu| replace:: GNU is Not Unix (GNU - https://www.gnu.org)
 
 
 

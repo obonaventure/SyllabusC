@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. _theorie:comthreads:
 
@@ -307,7 +307,7 @@ Pour montrer que la propriété de vivacité est bien respectée, il faut montre
 
 .. [#fpthreadc] Le programme complet est accessible via :download:`./S6-src/pthread.c`
 
-.. .. [#fframes] Il existe différents standards pour le nombre d'images par seconde en cinéma et en télévision. Les plus courants sont 24, 25 et 30 images par seconde. Voir http://en.wikipedia.org/wiki/Frame_rate
+.. .. [#fframes] Il existe différents standards pour le nombre d'images par seconde en cinéma et en télévision. Les plus courants sont 24, 25 et 30 images par seconde. Voir https://en.wikipedia.org/wiki/Frame_rate
 
 .. [#finterrupts] De nombreux processeurs supportent plusieurs signaux d'interruption différents. Dans le cadre de ce cours, nous nous limiterons à l'utilisation d'un seul signal de ce type.
 

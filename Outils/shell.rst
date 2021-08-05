@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
 .. Copyright |copy| 2012 by Nicolas Houtain for shell and Maxime De Mol for bash
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. _outils:shell:
 
@@ -27,7 +27,7 @@ Le shell est un outil très puissant. Il permet d'effectuer de nombreuses opéra
  Lors de la frappe d'un nom de fichier, d'un chemin d'accès ou même d'une commande tapez sur la touche ``<tab>`` pour "compléter" le mot que vous écrivez.
  Cela vous évite de devoir écrire les noms des commandes ou des fichiers en entier à chaque fois.
  Si rien ne se passe tapez deux fois <tab> pour obtenir la liste des possibilités.
- 
+
  De plus, vous pouvez accéder à l'historique des commandes en utilisant la flèche du haut.
 
 .. note:: Chemin absolu et relatif
@@ -782,9 +782,9 @@ Exemples :
       #un deuxième appel à jobs nous affiche une liste vide
 
 
-.. _`jobs(1)`: http://www.manpagez.com/man/1/jobs/
-.. _`bg(1)`: http://linux.die.net/man/1/bg
-.. _`fg(1)`: http://linux.die.net/man/1/fg
+.. _`jobs(1)`: https://www.manpagez.com/man/1/jobs/
+.. _`bg(1)`: https://linux.die.net/man/1/bg
+.. _`fg(1)`: https://linux.die.net/man/1/fg
 
 
 Commandes complexes
@@ -941,7 +941,7 @@ Appliquer des actions à un fichier
   		* -v : Définit une variable utilisée à l'intérieur du programme.
   		* -f : Les commandes sont lues à partir d'un fichier.
 
-Note : awk est une commande extrêmement puissante, elle permet d'effectuer une multitude d'opérations. Son utilisation est complexe et elle est bien détaillée sur ce site : http://www.shellunix.com/awk.html. Je vous encourage à le lire.
+Note : awk est une commande extrêmement puissante, elle permet d'effectuer une multitude d'opérations. Son utilisation est complexe et elle est bien détaillée sur ce site : https://www.shellunix.com/awk.html. Je vous encourage à le lire.
 
 
 Redirection nommée
@@ -978,7 +978,7 @@ Nous allons écrire un premier script bash pour présenter la manière général
       #!/bin/bash
       echo "Hello, 1252"
 
-Nous allons enregistrer ce texte sous le nom `hello.sh <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/hello.sh>`_, puis changer ses permissions pour le rendre exécutable.
+Nous allons enregistrer ce texte sous le nom `hello.sh <https://raw.githubusercontent.com/HappyRave/SystInfo1/master/valgrind/hello.sh>`_, puis changer ses permissions pour le rendre exécutable.
 
     .. code-block:: console
 
@@ -994,7 +994,7 @@ Après il ne reste plus qu'à l'exécuter et observer le résultat.
 Les variables
 ^^^^^^^^^^^^^
 
-Bash permet l'utilisation de variables dans les scripts. Il peut s'agir de simples variables ou de tableaux. Bash n'est pas un langage typé, les entiers ou les String n'existent pas, toutes les variables sont traitées de la même façon. Pour illustrer ceci nous allons écrire le script `variables.sh <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/variables.sh>`_
+Bash permet l'utilisation de variables dans les scripts. Il peut s'agir de simples variables ou de tableaux. Bash n'est pas un langage typé, les entiers ou les String n'existent pas, toutes les variables sont traitées de la même façon. Pour illustrer ceci nous allons écrire le script `variables.sh <https://raw.githubusercontent.com/HappyRave/SystInfo1/master/valgrind/variables.sh>`_
 
     .. code-block:: bash
 
@@ -1020,7 +1020,7 @@ Ce script produit comme résultat
       Hello,1252
       Hello,12 52
 
-Il est intéressant de visiter cette page : http://michel.mauny.net/sii/variables-shell.html
+.. Il est intéressant de visiter cette page : https://michel.mauny.net/sii/variables-shell.html
 
 Les structures de contrôle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1029,7 +1029,7 @@ Comme dans chaque langage de programmation, bash offre les structures de contrô
 
 Comme dit précédemment, il n'y a pas de type en bash, true et false n'existent pas. Les conditions que les boucles vont utiliser seront les valeurs renvoyées par l'exécution d'une commande. Un 0 renvoyé correspond à un true, tandis que tout le reste est considéré comme un false.
 
-Dans le but de tester ces boucles nous utiliserons un petit programme en C, `return.c <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/return.c>`_, qui va renvoyer la valeur qu'il reçoit en argument. Le script de test est `structures.sh <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/structures.sh>`_.
+Dans le but de tester ces boucles nous utiliserons un petit programme en C, `return.c <https://raw.githubusercontent.com/HappyRave/SystInfo1/master/valgrind/return.c>`_, qui va renvoyer la valeur qu'il reçoit en argument. Le script de test est `structures.sh <https://raw.githubusercontent.com/HappyRave/SystInfo1/master/valgrind/structures.sh>`_.
 
    .. code-block:: bash
 

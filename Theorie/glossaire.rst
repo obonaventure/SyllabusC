@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012, 2021 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
 *********
@@ -29,14 +29,14 @@ Glossaire
     Système d'exploitation développé initialement par AT&T Bell Labs.
 
    gcc
-    Compilateur pour la langage C développé par un groupe de volontaires qui est diffusé depuis http://gcc.gnu.org gcc est utilisé dans plusieurs systèmes d'exploitation de type Unix, comme MacOS, Linux ou FreeBSD. Il existe d'autres compilateurs C. Une liste non-exhaustive est maintenue sur http://en.wikipedia.org/wiki/List_of_compilers#C_compilers
+    Compilateur pour la langage C développé par un groupe de volontaires qui est diffusé depuis https://gcc.gnu.org gcc est utilisé dans plusieurs systèmes d'exploitation de type Unix, comme MacOS, Linux ou FreeBSD. Il existe d'autres compilateurs C. Une liste non-exhaustive est maintenue sur https://en.wikipedia.org/wiki/List_of_compilers#C_compilers
 
    llvm
-    Ensemble de compilateurs pour différents langages de programmation et différents processeurs développé par un groupe de volontaire. ``llvm`` est distribué depuis http://llvm.org/
+    Ensemble de compilateurs pour différents langages de programmation et différents processeurs développé par un groupe de volontaire. ``llvm`` est distribué depuis https://llvm.org/
 
    cpp
    préprocesseur
-    Le préprocesseur C est un programme de manipulation de texte sur base de macros qui est utilisé avec le compilateur. Le préprocesseur de :term:`gcc` est http://gcc.gnu.org/onlinedocs/cpp/
+    Le préprocesseur C est un programme de manipulation de texte sur base de macros qui est utilisé avec le compilateur. Le préprocesseur de :term:`gcc` est https://gcc.gnu.org/onlinedocs/cpp/
 
    microprocesseur
    processeur
@@ -74,22 +74,22 @@ Glossaire
     Variante de Unix développée à l'Université de Californie à Berkeley.
 
    FreeBSD
-    Variante de BSD Unix disponible depuis http://www.freebsd.org
+    Variante de BSD Unix disponible depuis https://www.freebsd.org
 
    OpenBSD
-    Variante de BSD Unix disponible depuis http://www.openbsd.org
+    Variante de BSD Unix disponible depuis https://www.openbsd.org
 
    MacOS
     Système d'exploitation développé par Apple Inc. comprenant de nombreux composantes provenant de :term:`FreeBSD`.
 
    Minix
-    Famille de noyaux de systèmes d'exploitation inspiré de :term:`Unix` développée notamment par :term:`Andrew Tanenbaum`. Voir http://www.minix3.org pour la dernière version de Minix.
+    Famille de noyaux de systèmes d'exploitation inspiré de :term:`Unix` développée notamment par :term:`Andrew Tanenbaum`. Voir https://www.minix3.org pour la dernière version de Minix.
 
    Linux
     Noyau de système d'exploitation compatible Unix développé initialement par Linus Torvalds.
 
    Solaris
-    Système d'exploitation compatible Unix développé par Sun Microsystems et repris par Oracle. La version open-source, OpenSolaris, est disponible depuis http://www.opensolaris.org
+    Système d'exploitation compatible Unix développé par Sun Microsystems et repris par Oracle.
 
    Application Programming Interface
    API
@@ -109,7 +109,7 @@ Glossaire
     Linus Torvalds est le créateur et le mainteneur principal du noyau :term:`Linux`.
 
    Aqua
-    Aqua est une interface graphique spécifique à :term:`MacOS`. Voir https://en.wikipedia.org/wiki/Aqua_(user_interface)
+    Aqua est une interface graphique spécifique à :term:`MacOS`. Voir `la page Wikipédia <https://en.wikipedia.org/wiki/Aqua_(user_interface)>`_.
 
    pipe
     Mécanisme de redirection des entrées-sorties permettant de relier la sortie standard d'un programme à l'entrée standard d'un autre pour créer des pipelines de traitement.
@@ -127,10 +127,10 @@ Glossaire
     Par convention, bit le plus à droite d'une séquence de n bits.
 
    simple précision
-    Représentation de nombre réels en virgule flottante (type ``float`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 32 bits.
+    Représentation de nombre réels en virgule flottante (type ``float`` en C). La norme `IEEE754 <https://fr.wikipedia.org/wiki/IEEE_754>`_ définit le format de ces nombres sur 32 bits.
 
    double précision
-    Représentation de nombre réels en virgule flottante (type ``double`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 64 bits.
+    Représentation de nombre réels en virgule flottante (type ``double`` en C). La norme `IEEE754 <https://fr.wikipedia.org/wiki/IEEE_754>`_ définit le format de ces nombres sur 64 bits.
 
    buffer overflow
     Erreur dans laquelle un programme informatique cherche à stocker plus de données en mémoire que la capacité de la zone réservée en mémoire. Donne généralement lieu à des problèmes, parfois graves, de sécurité. https://en.wikipedia.org/wiki/Buffer_overflow
@@ -174,10 +174,10 @@ Glossaire
     Opération binaire logique.
 
    libc
-    Librairie C standard. Contient de nombreuses fonctions utilisables par les programmes écrits en langage C et décrites dans la troisième section des pages de manuel. Linux utilise la librairie GNU `glibc <http://www.gnu.org/software/libc/manual/>`_ qui contient de nombreuses extensions par rapport à la libraire standard.
+    Librairie C standard. Contient de nombreuses fonctions utilisables par les programmes écrits en langage C et décrites dans la troisième section des pages de manuel. Linux utilise la librairie GNU `glibc <https://www.gnu.org/software/libc/manual/>`_ qui contient de nombreuses extensions par rapport à la libraire standard.
 
    FSF
-    Free Software Foundation, http://www.fsf.org
+    Free Software Foundation, https://www.fsf.org
 
    portée
     Zone d'un programme dans laquelle une variable est déclarée.
@@ -338,7 +338,7 @@ Glossaire
     Ordonnanceur. Algorithme utilisé par le noyau du système d'exploitation pour sélectionner le prochain programme à exécuter après une interruption d'horloge ou un appel système bloquant.
 
    round-robin
-    Voir https://fr.wikipedia.org/wiki/Round-robin_(informatique)
+    Voir `Round-robin sur Wikipédia <https://fr.wikipedia.org/wiki/Round-robin_(informatique)>`_
 
    livelock
     Voir https://en.wikipedia.org/wiki/Deadlock#Livelock
@@ -389,10 +389,10 @@ Glossaire
     Position de la tête de lecture associée à un fichier ouvert.
 
    little endian
-    Ordre dans lequel les octets correspondants à des mots de plusieurs octets sont stockés en mémoire. Voir https://fr.wikipedia.org/wiki/Boutisme#Little_endian
+    Ordre dans lequel les octets correspondants à des mots de plusieurs octets sont stockés en mémoire. Voir https://fr.wikipedia.org/wiki/Boutisme#Petit-boutisme
 
    big endian
-    Ordre dans lequel les octets correspondants à des mots de plusieurs octets sont stockés en mémoire. Voir https://fr.wikipedia.org/wiki/Boutisme#Little_endian
+    Ordre dans lequel les octets correspondants à des mots de plusieurs octets sont stockés en mémoire. Voir https://fr.wikipedia.org/wiki/Boutisme#Gros-boutisme
 
    lien symbolique
     Unix supporte deux types de liens. Les liens durs créés par `ln(1)`_ et les liens symboliques créés par `ln(1)`_ avec l'argument ``-s``.

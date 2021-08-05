@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012,2020 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012,2020 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 Exercices
 =========
@@ -197,7 +197,7 @@ que vous aviez réalisé en Java.
                 $ if ! ./false; then echo "false fonctionne"; fi
                 false fonctionne
 
-   Le shell `bash(1)`_ permet aussi de faire des ``else``. Trouvez comment faire en regardant ce `lien <http://tldp.org/LDP/abs/html/tests.html>`_.
+   Le shell `bash(1)`_ permet aussi de faire des ``else``. Trouvez comment faire en regardant ce `lien <https://tldp.org/LDP/abs/html/tests.html>`_.
    
         .. only:: staff
 

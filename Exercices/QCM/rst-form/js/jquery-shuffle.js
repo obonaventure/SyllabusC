@@ -5,10 +5,10 @@
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://yelotofu.com/labs/jquery/snippets/shuffle/
+ * https://yelotofu.com/labs/jquery/snippets/shuffle/
  *
  * Shuffles an array or the children of a element container.
- * This uses the Fisher-Yates shuffle algorithm <http://jsfromhell.com/array/shuffle [v1.0]>
+ * This uses the Fisher-Yates shuffle algorithm <https://jsfromhell.com/array/shuffle [v1.0]>
  */
 
 (function($){

@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012, 2020 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch, Grégory Detal et Maxime De Mol
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012, 2020 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch, Grégory Detal et Maxime De Mol
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. _outils:valgrind:
 
@@ -12,7 +12,7 @@ Plusieurs outils en informatique peuvent vous aider à localiser des bugs dans v
  * `valgrind(1)`_ vous permet de détecter des erreurs liés à la gestion de la mémoire (`malloc(3)`_, `free(3)`_,...)
  * `gdb(1)`_ permet de voir ce qui se passe "à l'intérieur" de votre programme et comment les variables évoluent.
 
-Le site http://www.cprogramming.com/debugging/ vous donne des techniques de débuggage plus détaillées et explique `valgrind(1)`_ et `gdb(1)`_ plus en détails.
+Le site https://www.cprogramming.com/debugging/ vous donne des techniques de débuggage plus détaillées et explique `valgrind(1)`_ et `gdb(1)`_ plus en détails.
 
 Valgrind permet de détecter des erreurs liées à la gestion de la mémoire dans vos programmes. Pour utiliser valgrind, lancez la commande `valgrind(1)`_ avec votre exécutable comme argument:
 
@@ -41,8 +41,8 @@ Parmi les erreurs que valgrind est capable de détecter nous avons:
 
 On vous encourage à lancer `valgrind(1)`_ sur votre projet pour vérifier que vous n'avez pas introduit de memory-leaks sans le vouloir. `valgrind(1)`_ ne remplace pas une écriture attentive du code mais peut permettre de détecter rapidement certaines erreurs courantes. Vous trouverez plus de détails sur les liens suivants:
 
-	* http://www.cprogramming.com/debugging/valgrind.html
-	* http://valgrind.org
+	* https://www.cprogramming.com/debugging/valgrind.html
+	* https://valgrind.org
 
 Les bases de ``valgrind``
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -248,4 +248,4 @@ Détecter les deadlocks avec ``valgrind``
                 ==24314==    by 0x512E89C: clone (clone.S:112)
 
 Plus d'informations sur:
-        * http://valgrind.org/docs/manual/hg-manual.html
+        * https://valgrind.org/docs/manual/hg-manual.html

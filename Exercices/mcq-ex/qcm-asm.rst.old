@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
 Questions à choix multiples 
@@ -10,8 +10,8 @@ Questions à choix multiples
 
 Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
 
- - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`_
- - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`_
+ - `Organisation des ordinateurs <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`_
+ - `Etude de cas : IA32 <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`_
 
 Question 1. Instruction ``mov``
 -------------------------------

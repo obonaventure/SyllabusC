@@ -33,4 +33,4 @@ int main(int argc, char *argv[]) {
   return(EXIT_SUCCESS);
 }
 
-// inspiré de http://stackoverflow.com/questions/111928/is-there-a-printf-converter-to-print-in-binary-format
+// inspiré de https://stackoverflow.com/questions/111928/is-there-a-printf-converter-to-print-in-binary-format

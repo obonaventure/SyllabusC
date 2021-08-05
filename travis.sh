@@ -5,20 +5,20 @@
 # This script is run into the syllabus container.
 
 # Exit on error
-set -e
+#set -e
 
 
 #####################
 # CHECK COMPILATION #
 #####################
-echo "**** FULL COMPILATION - LATEXPDF, EPUB, HTML ****"
+echo -e "\n**** FULL COMPILATION - LATEXPDF, EPUB, HTML ****\n"
 make
 
 
 ##################
 # CHECK SPELLING #
 ##################
-echo "**** SPELLING CHECK ****"
+echo -e "\n**** SPELLING CHECK ****\n"
 
 # Sphinx flags used here, not in with `make` compilation:
 #  -n   Run in nit-picky mode. Currently, this generates warnings for all missing references.
@@ -27,19 +27,44 @@ echo "**** SPELLING CHECK ****"
 
 # Theorie
 cd Theorie
-echo "**** Theorie ****"
-sphinx-build -nWT -b spelling . /tmp
+echo -e "\n**** Theorie ****\n"
+sphinx-build -n -b spelling . /tmp
 
 # Outils
 cd ../Outils
-echo "**** Outils ****"
-sphinx-build -nWT -b spelling . /tmp
+echo -e "\n**** Outils ****\n"
+sphinx-build -n -b spelling . /tmp
 
 # Exercices
 cd ../Exercices
-echo "**** Exercices ****"
-sphinx-build -nWT -b spelling . /tmp
+echo -e "\n**** Exercices ****\n"
+sphinx-build -n -b spelling . /tmp
 
+
+###############
+# CHECK LINKS #
+###############
+echo -e "\n**** LINKS CHECK ****\n"
+
+# Sphinx flags used here, not in with `make` compilation:
+#  -n   Run in nit-picky mode. Currently, this generates warnings for all missing references.
+#  -W   Turn warnings into errors. This means that the build stops at the first warning and sphinx-build exits with exit status 1.
+#  -T   output full traceback
+
+# Theorie
+cd ../Theorie
+echo -e "\n**** Theorie ****\n"
+sphinx-build -n -b linkcheck . /tmp
+
+# Outils
+cd ../Outils
+echo -e "\n**** Outils ****\n"
+sphinx-build -n -b linkcheck . /tmp
+
+# Exercices
+cd ../Exercices
+echo -e "\n**** Exercices ****\n"
+sphinx-build -n -b linkcheck . /tmp
 
 
 # End of script

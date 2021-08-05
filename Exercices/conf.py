@@ -32,8 +32,8 @@ extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax', 's
 # mcq
 
 mcq_nb_prop=3
-mcq_upload_url='http://inginious.info.ucl.ac.be'
-mcq_inginious_url='http://inginious.info.ucl.ac.be/cnp3'
+mcq_upload_url='https://inginious.info.ucl.ac.be'
+mcq_inginious_url='https://inginious.info.ucl.ac.be/cnp3'
 
 # ucomment
 #sys.path.append(os.path.abspath(os.getcwd()))

@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
 .. Copyright |copy| 2013 by Benoit Legat
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. spelling::
    kernel
@@ -59,7 +59,7 @@ Il est aussi utilisé pour la gestion des sources de ce document
 depuis https://github.com/obonaventure/SyllabusC.
 On l'utilise le plus souvent à l'aide de l'utilitaire `git(1)`_ mais il
 existe aussi des
-`applications graphiques <http://git-scm.com/downloads/guis>`_.
+`applications graphiques <https://git-scm.com/downloads/guis>`_.
 
 Les différentes versions sont enregistrées dans des commits qui sont
 liées au commit constituant la version précédente.  On sait ainsi
@@ -96,7 +96,7 @@ Il est parfois critiqué pour sa complexité mais c'est surtout dû au fait
 qu'il a une façon assez différente de fonctionner des autres.
 
 .. FIXME je dis "historique" ou "arborescence" ? sur le wikipedia
-   français, ils disent "arborescence :/ (http://fr.wikipedia.org/wiki/Git)
+   français, ils disent "arborescence :/ (https://fr.wikipedia.org/wiki/Git)
    Pour svn, historique est le bon terme mais pour Git...
    Je dis "dépôt" ou "repository" ?
 

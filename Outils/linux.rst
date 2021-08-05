@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
 .. Copyright |copy| 2021 by François De Keersmaeker
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. spelling::
     Subsystem
@@ -209,8 +209,8 @@ Nous fournissons l'image des machines Fedora disponibles en salles informatiques
 qui peut être installée sur VirtualBox.
 Cette image est la même que celle accessible via UDS, comme décrit plus tôt.
 Elle peut être téléchargée avec le lien suivant:
-https://wiki.student.info.ucl.ac.be/uploads/Mat%c3%a9riel/Mat%c3%a9riel/fedora32.ova
-(Attention, le fichier fait plus de 5 GB !).
+https://wiki.student.info.ucl.ac.be/uploads/Mat%C3%A9riel/Mat%C3%A9riel/fedora32.ova
+(**Attention**, le fichier fait plus de 5 GB !).
 Une fois téléchargée, il suffit de double-cliquer sur le fichier,
 et VirtualBox ouvrira le fichier pour l'installation.
 Sur la fenêtre s'étant ouverte, les paramètres de base peuvent être laissés.

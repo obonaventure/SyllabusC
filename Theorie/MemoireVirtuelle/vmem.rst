@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. _theorie:vmem:
 
@@ -657,9 +657,9 @@ La sortie ci-dessous présente le contenu de ``/proc/PID/maps`` lors de l'exécu
 
 .. [#fmmu] En pratique, les adresses sur le disque dur ne sont pas stockées dans le :term:`MMU` mais dans une table maintenue par le système d'exploitation. C'est le noyau qui est responsable des transferts entre le dispositif de stockage et la mémoire RAM.
 
-.. [#fintel] Source : http://www.intel.com/content/www/us/en/solid-state-drives/ssd-320-specification.html
+.. [#fintel] Source : https://www.intel.com/content/www/us/en/solid-state-drives/ssd-320-specification.html
 
-.. [#fseagate] Source : http://www.seagate.com/staticfiles/support/disc/manuals/desktop/Barracuda%207200.11/100507013e.pdf
+.. [#fseagate] Source : https://www.seagate.com/staticfiles/support/disc/manuals/desktop/Barracuda%207200.11/100507013e.pdf
 
 .. [#fentree] Une entrée de la table de pages occupe généralement 32 ou 64 bits suivant les architectures de processeurs.
 

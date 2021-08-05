@@ -1,6 +1,6 @@
 .. -*- coding: utf-8 -*-
-.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
-.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
+.. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. raw:: html
 
@@ -17,7 +17,7 @@ Huitième semaine
 
 La matière couverte cette semaine couvre les processus. Elle est décrite dans les sections suivantes des notes :
 
- - `Les processus <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/processus.html>`_
+ - `Les processus <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/processus.html>`_
 
 Question 1. `fork(2)`_
 -----------------------

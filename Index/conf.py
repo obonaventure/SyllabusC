@@ -290,7 +290,7 @@ texinfo_documents = [
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'theorie': ('http://sites.uclouvain.be/SystInfo/notes/Theorie/html/', None),
-                       'exercices': ('http://sites.uclouvain.be/SystInfo/notes/Exercices/html/', None),
-                       'outils': ('http://sites.uclouvain.be/SystInfo/notes/Outils/html/', None),
+intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SystInfo/notes/Theorie/html/', None),
+                       'exercices': ('https://sites.uclouvain.be/SystInfo/notes/Exercices/html/', None),
+                       'outils': ('https://sites.uclouvain.be/SystInfo/notes/Outils/html/', None),
                        }

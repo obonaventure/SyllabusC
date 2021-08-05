@@ -1,4 +1,4 @@
-/* Code from http://blog.mastykarz.nl/jquery-random-filter/ */
+/* Code from https://blog.mastykarz.nl/jquery-random-filter/ */
 
 jQuery.jQueryRandom = 0;
 jQuery.extend(jQuery.expr[":"],
