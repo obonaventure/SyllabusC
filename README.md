@@ -54,4 +54,13 @@ La page d'accueil du syllabus est le fichier
 Intégration continue
 --------------------
 
-Le syllabus utilise [Travis CI](https://travis-ci.com/) comme système d'intégration continue. Si vous soumettez une proposition de modification au syllabus, tout le syllabus sera recompilé pour vérifier si votre modification est correcte au niveau de la syntaxe et de l'orthographe. Pensez à mettre des commentaires dans vos pull-requests en expliquant la raison de vos modifications. Essayez également de regrouper vos modifications pour faciliter leur relecture avant une intégration. Vous pouvez accéder aux résultats des tests d'intégration continue via [https://travis-ci.com/obonaventure/SyllabusC](https://travis-ci.com/obonaventure/SyllabusC)
+Le syllabus utilise [Travis CI](https://travis-ci.com/) comme système d'intégration continue. Si vous soumettez une proposition de modification au syllabus, tout le syllabus sera recompilé pour vérifier si votre modification est correcte.
+Plus précisément, les vérifications suivantes sont effectuées:
+
+- La syllabus entier est compilé aux formats PDF (Théorie uniquement),
+EPUB (Théorie et Outils), et HTML (Théorie, Outils et Exercices) pour vérifier
+la cohérence des modifications apportées.
+- L'orthographe est vérifiée sur les 3 parties.
+- Les liens externes (URLs vers d'autres sites) sont vérifiés pour les 3 parties.
+
+Pensez à mettre des commentaires dans vos pull-requests en expliquant la raison de vos modifications. Essayez également de regrouper vos modifications pour faciliter leur relecture avant une intégration. Vous pouvez accéder aux résultats des tests d'intégration continue via [https://travis-ci.com/obonaventure/SyllabusC](https://travis-ci.com/obonaventure/SyllabusC).
