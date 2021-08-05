@@ -2,8 +2,9 @@
 
 # Bash script to be run by Travis CI,
 # when a commit is pushed to the repository.
+# This script is run into the syllabus container.
 
-# on error exit
+# Exit on error
 set -e
 
 

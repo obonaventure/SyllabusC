@@ -1,18 +1,16 @@
 # Travis CI configuration file
 
+# Configuration
 dist: focal  # Ubuntu 20.04
+language: bash
 services:
     - docker  # Need docker for containers
-before_install:
-    - sudo apt-get install hunspell hunspell-fr
-    - sudo apt-get install cppcheck
-    - sudo apt-get install enchant
-install:
-    - pip3 install sphinx==1.7.1
-    - pip3 install sphinxcontrib.spelling==4.2.1
-language: python
-python:
-    - "3.9"
 
-# command to run tests
-script: bash travis.sh
+# Build the container
+before_install:
+    - docker pull python:slim
+    - docker build -t syllabus .
+
+# Run tests in the container
+script:
+    - docker run --rm --name syllabus -i -t -v $(pwd):/syllabus syllabus ./travis.sh
