@@ -11,3 +11,6 @@ web/
 
 # Development script
 rebuild.sh
+
+# Log file for Travis build
+**/log.txt
