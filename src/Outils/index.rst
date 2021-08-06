@@ -20,7 +20,7 @@ Syllabus C : Outils
 
     La version HTML est la préférable car elle contient des liens hypertextes vers les pages de manuel Linux qui font partie de la matière. D'autres formats sont possibles pour ceux qui veulent lire le document hors ligne :
 
-        - :download:`format epub <../web/notes/Outils/epub/LEPL1503Projet3.epub>`  lisible sur tablettes style iPad ou Galaxy Tab
+        - :download:`format epub <../../web/notes/Outils/epub/LEPL1503Projet3.epub>`  lisible sur tablettes style iPad ou Galaxy Tab
 
 
 .. toctree::

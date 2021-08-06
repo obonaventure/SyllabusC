@@ -2,9 +2,14 @@
 .. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
+.. spelling::
+
+    October
+
 *************
 Bibliographie
 *************
+
 
 .. [ABS] Cooper, M., `Advanced Bash-Scripting Guide`, 2011, https://tldp.org/LDP/abs/html/
 
@@ -86,6 +91,8 @@ Bibliographie
 .. [Nemeth+2010] Nemeth, E., Hein, T., Snyder, G., Whaley, B., `Unix and Linux System Administration Handbook`, Prentice Hall, 2010, https://books.google.be/books?id=rgFIAnLjb1wC
 
 .. .. [Peterson1981] Peterson, G., `Myths about the mutual exclusion problem`, Inform. Process. Lett. 12 (3) (1981) 115-116
+
+.. [RFC20] Cerf, V., `ASCII format for Network Interchange`, RFC20, October 1969, https://datatracker.ietf.org/doc/html/rfc20.html
 
 .. [Stallings2011] Stallings, W., `Operating Systems : Internals and Design Principles`, Prentice Hall, 2011, http://williamstallings.com/OperatingSystems/index.html
 

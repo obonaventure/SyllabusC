@@ -356,13 +356,15 @@ bits.  Ensuite, des représentations sur six puis sept et huit bits
 ont été utilisées. Au début des années septante, le code de caractères
 ASCII sur ``7`` et ``8`` bits s'est imposé sur un grand nombre
 d'ordinateurs et a été utilisé comme standard pour de nombreuses
-applications et notamment sur Internet :rfc:`20`. La table de
+applications et notamment sur Internet [RFC20]_. La table de
 caractères ASCII définit une correspondance entre des séquences de
-bits et des caractères. :rfc:`20` contient la table des caractères
+bits et des caractères. [RFC20]_ contient la table des caractères
 ASCII représentés sur 7 bits. À titre d'exemple, le chiffre `0`
 correspond à l'octet `0b00110000` et le chiffre `9` à l'octet
 `0b00111001`. La lettre `a` correspond à l'octet `0b01100001` et la
-lettre `A` à l'octet `0b01000001`. De nombreux détails sur la table ASCII sont disponibles sur la page Wikipedia: https://en.wikipedia.org/wiki/ASCII
+lettre `A` à l'octet `0b01000001`.
+De nombreux détails sur la table ASCII sont disponibles sur la page Wikipedia:
+https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange
 
 Les inventeurs du C se sont appuyés sur la table ASCII et ont choisi
 de représenter un caractère en utilisant un octet. Cela correspond au

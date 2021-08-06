@@ -10,5 +10,5 @@ LEPL1503 : Outils
 
 La `version HTML <../../Outils/html/index.html>`_ est la préférable car elle contient des liens hypertextes vers les pages de manuel Linux qui font partie de la matière.
 
-        - :download:`format epub <../web/notes/Outils/epub/LEPL1503Projet3.epub>`  lisible sur tablettes style iPad ou Galaxy Tab
+        - :download:`format epub <../../web/notes/Outils/epub/LEPL1503Projet3.epub>`  lisible sur tablettes style iPad ou Galaxy Tab
 

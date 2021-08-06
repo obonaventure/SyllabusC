@@ -9,15 +9,20 @@ RETURN=0
 
 # If the file passed as argument indicates warnings,
 # switch the return value of the script to 1.
+# Then, delete the file.
 #   :param $1: file to check for warnings
 check_warnings () {
     if [[ $(grep WARNING $1) ]]; then
         RETURN=1
     fi
+    rm -f $1
 }
 
 # Exit on error
 set -e
+
+# Go to the source directory for compilation
+cd src
 
 
 #####################
@@ -84,5 +89,5 @@ check_warnings log.txt
 
 
 # End of script
-cd ../..
+cd ../../..
 exit $RETURN

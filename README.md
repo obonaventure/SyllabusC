@@ -13,7 +13,7 @@ https://creativecommons.org/licenses/by-sa/3.0/fr/
 Compilation
 -----------
 
-Les notes sont écrites en [reStructuredText](http://docutils.sourceforge.net/rst.html) et peuvent être transformées en un document au format HTML, EPUB ou PDF en utilisant le logiciel [Sphinx](https://sphinx-doc.org) (**Attention**: la version 1.7.1 de [Sphinx](https://sphinx-doc.org) est utilisée, prendre une version plus récente peut empêcher la compilation LaTeX de fonctionner). Pour faciliter cette compilation, une configuration [Docker](https://www.docker.com/) est reprise dans le fichier [Dockerfile](./Dockerfile)
+Les notes sont écrites en [reStructuredText](http://docutils.sourceforge.net/rst.html) et peuvent être transformées en un document au format HTML, EPUB ou PDF en utilisant le logiciel [Sphinx](https://sphinx-doc.org) (**Attention**: la version 1.7.1 de [Sphinx](https://sphinx-doc.org) est utilisée, prendre une version plus récente empêche la compilation LaTeX de fonctionner). Pour faciliter cette compilation, une configuration [Docker](https://www.docker.com/) est reprise dans le fichier [Dockerfile](./Dockerfile)
 se trouvant à la racine du repository.
 
 [Docker](https://www.docker.com) est un logiciel fonctionnant sur Linux, Windows et MacOS, qui permet d'automatiser et de faciliter la création de "containers",
@@ -34,8 +34,8 @@ Les arguments les plus utiles sont les suivants:
 
 - `html` lance la compilation en HTML, pour former le site internet du syllabus,
 contenant les parties *Théorie*, *Exercices*, et *Outils*.
-- `epub` lance la compilation en EPUB, format adapté à la lecture sur tablette. **Remarque**: seule les parties *Théorie* et *Outils* possèdent
-une version EPUB.
+- `epub` lance la compilation en EPUB, format adapté à la lecture sur tablette. **Remarque**:
+seule les parties *Théorie* et *Outils* possèdent une version EPUB.
 - `latexpdf` lance la compilation en LaTeX,
 puis produit une version PDF du syllabus à partir des fichiers LaTeX. **Remarque**:
 seule la partie *Théorie* possède une version LaTeX.
