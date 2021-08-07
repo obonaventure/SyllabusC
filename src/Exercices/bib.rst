@@ -14,6 +14,6 @@ Bibliographie
    Addison
    Wesley
 
-.. [KernighanRitchie1998] Kernighan, B., and Ritchie, D., `The C programming language, second edition`, Addison Wesley, 1998, https://cm.bell-labs.com/cm/cs/cbook/
-	  
+.. [KernighanRitchie1998] Kernighan, B., and Ritchie, D., `The C programming language, second edition`, Addison Wesley, 1998, https://fr.wikipedia.org/wiki/The_C_Programming_Language
+
 

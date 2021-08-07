@@ -71,9 +71,9 @@ Bibliographie
 
 .. [Kerrisk2010] Kerrisk, M., `The Linux Programming Interface`, No Starch Press, 2010, https://man7.org/tlpi/
 
-.. [Kernighan] Kernighan, B., `Programming in C - A Tutorial`, https://cm.bell-labs.com/cm/cs/who/dmr/ctut.pdf
+.. [Kernighan] Kernighan, B., `Programming in C - A Tutorial`, https://www.bell-labs.com/usr/dmr/www/ctut.pdf
 
-.. [KernighanRitchie1998] Kernighan, B., and Ritchie, D., `The C programming language, second edition`, Addison Wesley, 1998, https://cm.bell-labs.com/cm/cs/cbook/
+.. [KernighanRitchie1998] Kernighan, B., and Ritchie, D., `The C programming language, second edition`, Addison Wesley, 1998, https://fr.wikipedia.org/wiki/The_C_Programming_Language
 
 .. [King2008] King, K., `C programming : a modern approach`, W. W. Norton & company, 2008
 
