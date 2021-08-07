@@ -1,4 +1,4 @@
-travis_token: lqEjedw0Hd2Ai4Yyj7veXQ
+travis_token: [Paste your Travis token here]
 repository:
-    slug: fdekeers/SyllabusC
-    clone_url: git@github.com:fdekeers/SyllabusC.git
+    slug: obonaventure/SyllabusC
+    clone_url: https://github.com/obonaventure/SyllabusC.git

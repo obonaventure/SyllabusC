@@ -4,8 +4,8 @@
 #
 # Author: François De Keersmaeker
 
-# Name of the container
-CONTAINER="syllabus"
+
+CONTAINER="syllabus"  # Name of the container
 
 sudo docker build -t $CONTAINER .
 sudo docker run --rm --name $CONTAINER -i -t -v $(pwd):/syllabus $CONTAINER /bin/bash

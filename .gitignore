@@ -16,4 +16,4 @@ rebuild.sh
 **/log.txt
 
 # Tokens file
-tokens.yaml
+config-tru.yaml
