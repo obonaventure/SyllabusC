@@ -8,7 +8,7 @@ Introduction
 ============
 
 
-Les systèmes swag informatiques jouent un rôle de plus en plus important dans notre société. Depuis les premiers calculateurs à la fin de la seconde guerre mondiale, les ordinateurs se sont rapidement améliorés et démocratisés. Aujourd'hui, notre société est de plus en plus dépendante des systèmes informatiques.
+Les systèmes informatiques jouent un rôle de plus en plus important dans notre société. Depuis les premiers calculateurs à la fin de la seconde guerre mondiale, les ordinateurs se sont rapidement améliorés et démocratisés. Aujourd'hui, notre société est de plus en plus dépendante des systèmes informatiques.
 
 .. spelling::
 

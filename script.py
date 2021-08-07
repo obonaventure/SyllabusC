@@ -81,7 +81,7 @@ with open(yaml_file, 'r') as f:
 # Get Travis CLI token from config file
 travis_token = config["travis_token"]
 
-# Get repository slug from config file
+# Get repository slug from config file (replace '/' with HTML code for correct formatting)
 repo_slug = config["repository"]["slug"].replace("/", "%2F")
 
 # Build HTTP request to get builds info from Travis
@@ -98,7 +98,6 @@ for build in json["builds"]:
     if build["state"] == "passed":
         latest_build = build
         break
-
 
 ##########################################
 #              SECOND STAGE              #
@@ -118,5 +117,5 @@ subprocess.run(f"git checkout {commit_hash}", shell=True)  # Checkout latest pas
 ##############################
 
 # Build syllabus
-subprocess.run(f"make -C ./repo/src", shell=True)
+subprocess.run(f"make {target} -C ./repo/src", shell=True)
 shutil.move("./repo/web", "./web")
