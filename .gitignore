@@ -16,4 +16,4 @@ rebuild.sh
 **/log.txt
 
 # Config file
-config.yaml
+#config.yaml
