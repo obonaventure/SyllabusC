@@ -15,5 +15,5 @@ rebuild.sh
 # Log file for Travis build
 **/log.txt
 
-# Tokens file
-config-tru.yaml
+# Config file
+config.yaml
