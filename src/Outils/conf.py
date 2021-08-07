@@ -312,5 +312,6 @@ epub_copyright = u'2012-2021, O. Bonaventure, G. Detal, C. Paasch, B. Legat, N. 
 
 linkcheck_ignore = [
     r'https://jenkins.student.info.ucl.ac.be/job/.*',
-    'https://wiki.student.info.ucl.ac.be/uploads/Mat%C3%A9riel/Mat%C3%A9riel/fedora32.ova'
+    'https://wiki.student.info.ucl.ac.be/uploads/Mat%C3%A9riel/Mat%C3%A9riel/fedora32.ova',
+    r'https://www.cprogramming.com/.*'
 ]
