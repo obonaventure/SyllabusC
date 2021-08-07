@@ -7,12 +7,14 @@
 
 if [[ $# -eq 1 ]]
 then
-    travis login --pro --github-token $1
-    travis token --pro
+    travis login --pro --github-token $1 --skip-completion-check
+    travis token --pro --skip-completion-check
 else
+    echo
     echo "To login to Travis and generate a token, you first need" \
         "a GitHub token that will be used for login."
     echo "Please go to https://github.com/settings/tokens to generate a GitHub token."
     echo "You only need to give the 'repo' scope to the GitHub token."
     echo "Then, re-run this script with the GitHub token as first command line argument."
+    echo
 fi
