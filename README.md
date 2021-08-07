@@ -83,4 +83,7 @@ la syntaxe et la cohérence des modifications apportées.
 - L'orthographe est vérifiée sur les 3 parties.
 - Les liens externes (URLs vers d'autres sites) sont vérifiés pour les 3 parties.
 
+Vous pouvez vérifier en local si vos modifications passeront les tests,
+en exécutant le script [verify.sh](./verify.sh).
+
 Pensez à mettre des commentaires dans vos pull-requests en expliquant la raison de vos modifications. Essayez également de regrouper vos modifications pour faciliter leur relecture avant une intégration. Vous pouvez accéder aux résultats des tests d'intégration continue via [https://travis-ci.com/obonaventure/SyllabusC](https://travis-ci.com/obonaventure/SyllabusC).

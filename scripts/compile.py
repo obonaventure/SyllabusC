@@ -65,7 +65,7 @@ subprocess.run(f"git checkout {commit_hash}", shell=True)  # Go to latest passin
 ##############################
 
 # Build syllabus
-target = sys.argv[1] of len(sys.argv) > 1 else ""  # Argument, make target
+target = sys.argv[1] if len(sys.argv) > 1 else ""  # Argument, make target
 subprocess.run(f"make {target} -C src", shell=True)
 os.chdir("..")  # Go back to root folder
 shutil.move("repo/web", "web")  # Move compiled syllabus in root folder
