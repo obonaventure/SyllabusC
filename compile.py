@@ -63,7 +63,7 @@ If you have not already done it, please first run the get_token.sh script
 to get a Travis token, and copy this token to the config.yaml file,
 in the field "travis_token".
 Please also check, in the config.yaml file, the slug and clone URL of this repository.
-(Please use SSH to clone the repository, so that no username/password is asked.
+(Please use the HTTPS URL as clone URL.)
 """)
 
 # Read YAML config file
@@ -107,8 +107,9 @@ for build in json["builds"]:
 clone_url = config["repository"]["clone_url"]
 folder = "repo"  # Name of the folder where the repository will be cloned
 subprocess.run(f"git clone {clone_url} {folder}", shell=True)  # Clone repo
-commit_hash = latest_build["commit"]["sha"]
-subprocess.run(f"git checkout {commit_hash}", shell=True)  # Checkout latest passing commit
+os.chdir(folder)  # Go to cloned repo
+commit_hash = latest_build["commit"]["sha"]  # Identifier of the latest passing commit
+subprocess.run(f"git checkout {commit_hash}", shell=True)  # Go to latest passing commit
 
 
 ##############################
@@ -117,5 +118,6 @@ subprocess.run(f"git checkout {commit_hash}", shell=True)  # Checkout latest pas
 ##############################
 
 # Build syllabus
-subprocess.run(f"make {target} -C ./repo/src", shell=True)
-shutil.move("./repo/web", "./web")
+subprocess.run(f"make {target} -C src", shell=True)
+os.chdir("..")  # Go back to root folder
+shutil.move("repo/web", "web")  # Move compiled syllabus in root folder
