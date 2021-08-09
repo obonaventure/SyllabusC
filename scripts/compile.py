@@ -68,4 +68,6 @@ subprocess.run(f"git checkout {commit_hash}", shell=True)  # Go to latest passin
 target = sys.argv[1] if len(sys.argv) > 1 else ""  # Argument, make target
 subprocess.run(f"make {target} -C src", shell=True)
 os.chdir("..")  # Go back to root folder
+shutil.rmtree("web")  # Remove old version of syllabus
 shutil.move("repo/web", "web")  # Move compiled syllabus in root folder
+shutil.rmtree("repo")  # Remove repo folder
