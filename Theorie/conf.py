@@ -184,7 +184,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'LEPL1503.tex', 'LEPL1503 : Introduction au langage C',
+  ('index', 'LEPL1503Theorie.tex', 'LEPL1503 : Introduction au langage C',
    'O. Bonaventure, G. Detal, C. Paasch', 'manual'),
 ]
 
