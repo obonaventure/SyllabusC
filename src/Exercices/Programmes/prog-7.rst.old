@@ -1,0 +1,91 @@
+.. -*- coding: utf-8 -*-
+.. Copyright |copy| 2012, 2020 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
+
+Exercices Inginious
+===================
+
+
+Pour cette dernière semaine consacrée à l'apprentissage du langage C, nous vous avons préparé quatre exercices Inginious:
+
+ - https://inginious.info.ucl.ac.be/course/LEPL1503/s6_sort_my_points
+ - https://inginious.info.ucl.ac.be/course/LEPL1503/s6_protect_variable
+ - https://inginious.info.ucl.ac.be/course/LEPL1503/s6_do_my_work
+ - https://inginious.info.ucl.ac.be/course/LEPL1503/s6_shared_ressource
+
+
+Exercices
+=========
+
+
+#. Expliquez pourquoi la fonction `sem_wait(3)`_ doit prendre comme argument ``sem_t *``, un
+   pointeur vers une structure ``sem_t``, et non une structure ``sem_t``.
+
+   .. only:: staff
+
+       Parce que la valeur du sémaphore doit être modifiée par la fonction ou la queue associée au sémaphore
+
+
+#. Dans quels cas la fonction `sem_init(3)`_ risque-t-elle de retourner une erreur ?
+
+   .. only:: staff
+
+      valeur initiale trop grande
+
+
+
+
+#. Un étudiant propose d'implémenter le producteur du problème des producteurs-consommateurs comme ci-dessous :
+
+   .. code-block:: c
+
+      // Producteur
+      void producer(void)
+      {
+         int item;
+         while(true)
+         {
+            item=produce(item);
+            pthread_mutex_lock(&mutex);   // modification
+            sem_wait(&empty);             // modification
+            insert_item();
+            pthread_mutex_unlock(&mutex);
+            sem_post(&full);
+         }
+      }
+
+   Que pensez-vous de cette solution (en supposant que le consommateur continue à fonctionner comme indiqué dans les notes) ?
+
+   .. only:: staff
+
+      On a inversé les locks dans le producteur. Cela peut causer un deadlock puisque le producteur ayant pris mutex, si empty est bloquant, ce qui est le cas lorsque le buffer est vide, le producteur empêchera tout consommateur d'accéder au buffer et donc le système sera en deadlock
+
+#. Un étudiant propose d'implémenter le consommateur du problème des producteurs-consommateurs comme ci-dessous :
+
+   .. code-block:: c
+
+      // Consommateur
+      void consumer(void)
+      {
+        int item;
+        while(true)
+        {
+            sem_wait(&full);
+            pthread_mutex_lock(&mutex);
+            item=remove(item);
+            sem_post(&empty);             // modification
+            pthread_mutex_unlock(&mutex); // modification
+        }
+      }
+
+   Que pensez-vous de sa solution (en supposant que le producteur n'a pas été modifié) ?
+
+   .. only:: staff
+
+      L'ordre des unlock a changé. Ici, cela n'a pas d'impact sur la solution.
+
+
+#. Les mutex et les sémaphores peuvent être utilisés pour résoudre des problèmes d'exclusion mutuelle. Le programme :download:`/QCM/S7/src/pthread-mutex-perf.c` utilise des mutex. Modifiez-le pour utiliser des sémaphores à la place et comparez le coût en termes de performance entre les mutex et les sémaphores.
+
+.. #. Faites l'exercice sur les `producteurs/consommateurs <https://inginious.info.ucl.ac.be/course/LSINF1252/PC>`_ sur `INGInious <https://inginious.info.ucl.ac.be>`_.
+

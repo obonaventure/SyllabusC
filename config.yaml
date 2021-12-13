@@ -1,0 +1,4 @@
+travis_token: [Paste your Travis token here]
+repository:
+    slug: obonaventure/SyllabusC
+    clone_url: https://github.com/obonaventure/SyllabusC.git
