@@ -6,7 +6,7 @@
 # Author: François De Keersmaeker
 
 
-CONTAINER="syllabus"  # Name of the container
+CONTAINER="syllabus-setup"  # Name of the container
 
 # Build the container
 echo "Please wait while the container is built..."

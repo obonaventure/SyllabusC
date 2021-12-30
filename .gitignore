@@ -20,3 +20,6 @@ rebuild.sh
 
 # Config file
 config.yaml
+
+# IDE files and directories
+.idea
