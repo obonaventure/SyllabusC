@@ -40,7 +40,7 @@ headers = {
 json = requests.get(travis_url, headers=headers).json()
 
 # Get latest passing build from Travis response
-latest_build = ""
+latest_build = None
 for build in json["builds"]:
     if build["state"] == "passed":
         latest_build = build
@@ -55,8 +55,10 @@ clone_url = config["repository"]["clone_url"]
 folder = "repo"  # Name of the folder where the repository will be cloned
 subprocess.run(f"git clone {clone_url} {folder}", shell=True)  # Clone repo
 os.chdir(folder)  # Go to cloned repo
-commit_hash = latest_build["commit"]["sha"]  # Identifier of the latest passing commit
-subprocess.run(f"git checkout {commit_hash}", shell=True)  # Go to latest passing commit
+if latest_build is not None:
+    # Go to last passing commit if there exist one
+    commit_hash = latest_build["commit"]["sha"]  # Identifier of the latest passing commit
+    subprocess.run(f"git checkout {commit_hash}", shell=True)  # Go to latest passing commit
 
 
 ##############################
@@ -68,6 +70,6 @@ subprocess.run(f"git checkout {commit_hash}", shell=True)  # Go to latest passin
 target = sys.argv[1] if len(sys.argv) > 1 else ""  # Argument, make target
 subprocess.run(f"make {target} -C src", shell=True)
 os.chdir("..")  # Go back to root folder
-shutil.rmtree("web")  # Remove old version of syllabus
+shutil.rmtree("web", ignore_errors=True)  # Remove old version of syllabus
 shutil.move("repo/web", "web")  # Move compiled syllabus in root folder
 shutil.rmtree("repo")  # Remove repo folder
