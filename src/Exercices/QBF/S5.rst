@@ -1,0 +1,76 @@
+
+QBF Semaine 5
+
+
+Avec mmap, il est possible de sauver et de charger des structures
+dans un fichier. Durant cette semaine, vous avez notamment calculé la somme des entiers stockés dans un fichier. Ce fichier est équivalent à un tableau d'entiers.
+
+
+Vous avez également vu qu'il était possible de sauvegarder des Un premier exemple est la possibilité de sauvegarder des structures dans un fichier. Dans cette QBF, nous allons un peu plus loin dans la réflexion concernant l'utilisation de ces fichiers.
+
+Supposons qu'une matrice de l lignes et c colonnes est définie par la structure suivante :
+
+.. code-block:: c
+
+  struct matrix {
+   int l; // lignes
+   int c; // colonnes
+   double *val;  // l*c double
+   };
+
+Le pointeur val pointe vers une zone de l*c réels qui a été allouée sur le heap par malloc. On a choisi de gérer cette zone de mémoire ligne par ligne. C'est-à-dire que l'élément se trouvant à l'adresse pointée par val est l'élément (0,0) de la matrice, celui à val+1 est l'élément (0,1), ...
+
+Q1. Ecrivez une fonction C qui permet de sauver une telle matrice sur disque. Pour cela, vous devez non seulement sauver les données pointées par val, mais aussi les dimensions de la matrice. Faites cela en écrivant :
+ - d'abord le nombre de lignes (entier 32 bits)
+ - ensuite le nombre de colonnes (entier 32 bits)
+ - enfin les l*c réels qui composent la matrice.
+
+
+[Note aux tuteurs: faites écrire le code au tableau par les étudiants]
+
+Q2. Ecrivez ensuite le code de la fonction get dont les
+spécifications sont les suivantes :
+
+.. code-block:: c
+
+  /*
+   * filename : fichier créé par la fonction ci-dessus
+   * l indice de ligne de la matrice
+   * c indice de colonne de la matrice
+   * place dans d la valeur de l'élément en position l,c de la matrice
+   * retourne -1 en cas d'erreur, 0 sinon
+   */
+  int get(char *filename, double *d, int l, int c)
+
+
+[ Tuteur: discutez avec les étudiants les différents cas d'erreur - fichier non accessible, l et c invalides, et faites écrire le code au tableau]
+
+Q3. Pouvez-vous utiliser cette technique pour sauver la structure suivante :
+
+.. code-block:: c
+
+  struct etudiant {
+   char nom[40];
+   char programme[5];
+   double points;
+  }
+
+Tous les étudiants d'un cours sont repris dans un tableau de 433 éléments de cette structure. Comme faites-vous pour sauver ce tableau sur disque ?
+
+
+[Tuteur: A discuter oralement. La structure ayant une taille fixe en mémoire, il suffit de la sauver telle quelle sur disque. Notez que si on avait ``char *nom`` à la place de ``char nom[40]`` ce serait nettement plus compliqué à gérer.  Il faudrait que ``nom`` soit terminé par zéro et que l'on puisse gérer cela à la relecture, ce qui sort un peu du cadre de ce cours d'introduction ]
+
+Q4. De nombreux programmes utilisent des listes chaînées en mémoire. Supposons
+une liste dont le noeud est la structure suivante :
+
+.. code-block:: c
+
+  struct node {
+    int x;
+    int y;
+    struct node * next;
+  }
+
+Vous avez en mémoire une liste contenant une dizaine d'éléments, est-il possible de la stocker sur disque en sauvant le contenu de ces structures ?
+
+[ Tuteur: A discuter oralement, le but est que les étudiants comprennent qu'un pointeur est une adresse mémoire et que sauver sa valeur telle quelle sur le disque ne sert à rien et que donc il est difficile de sauver une structure chaînée sur un fichier et surtout de la recharger correctement après ]
