@@ -6,5 +6,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - run: sudo apt -y install python3-sphinx sphinxcontrib-spelling
+      - run: python3 -m venv /tmp/venv ; source /tmp/venv/bin/activate ; pip3 install sphinx sphinxcontrib-spelling
       - run: cd src ; make
