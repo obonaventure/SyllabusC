@@ -32,10 +32,11 @@ En outre, vous devrez aussi lire les sections de la partie Outils qui sont relat
 .. toctree::
    :maxdepth: 2
 
-   mcq-ex/qcm-1
+
    Programmes/prog-1
 
-
+.. mcq-ex/qcm-1
+   
 Deuxième semaine
 ----------------
 
@@ -50,9 +51,11 @@ En outre, vous devrez aussi lire les sections de la partie Outils qui sont relat
 .. toctree::
    :maxdepth: 2
 
-   mcq-ex/qcm-2
+
    Programmes/prog-2
 
+.. mcq-ex/qcm-2
+   
 
 Troisième semaine
 -----------------
@@ -72,10 +75,11 @@ En outre, vous devrez aussi lire les sections de la partie Outils qui sont relat
 .. toctree::
    :maxdepth: 2
 
-   mcq-ex/qcm-3
+
    Programmes/prog-3
 
-
+.. mcq-ex/qcm-3
+   
 Quatrième semaine
 -----------------
 
@@ -107,10 +111,11 @@ pour tester votre compréhension des Makefiles:
 .. toctree::
    :maxdepth: 2
 
-   mcq-ex/qcm-4
+
    Programmes/prog-4
 
-
+.. mcq-ex/qcm-4
+      
 Cinquième semaine
 -----------------
 
@@ -131,9 +136,10 @@ ainsi que sur le `cours INGInious sur Git <https://inginious.org/course/git>`_.
 .. toctree::
    :maxdepth: 2
 
-   mcq-ex/qcm-5
+
    Programmes/prog-5
 
+.. mcq-ex/qcm-5
 
 Sixième semaine
 ---------------
@@ -150,7 +156,7 @@ La matière couverte cette semaine correspond aux sections :
 .. toctree::
    :maxdepth: 2
 
-   mcq-ex/qcm-6
+
    Programmes/prog-6
 
-
+.. mcq-ex/qcm-6

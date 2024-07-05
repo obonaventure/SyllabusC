@@ -3,7 +3,7 @@
 
 # All possible Sphinx targets
 TARGETS=html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub \
-latex latexpdf text man texinfo info gettext changes linkcheck doctest
+latex latexpdf text man texinfo info gettext changes linkcheck doctest spelling
 
 .PHONY: $(TARGETS) lepl1503 lepl1503-latex lepl1503-epub lepl1503-html index clean
 
@@ -23,6 +23,7 @@ lepl1503-html:
 	make html -C Theorie
 	make html -C Outils
 	make html -C Exercices
+
 
 # Generic rule for all targets
 $(TARGETS):
