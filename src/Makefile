@@ -8,7 +8,9 @@ latex latexpdf text man texinfo info gettext changes linkcheck doctest
 .PHONY: $(TARGETS) lepl1503 lepl1503-latex lepl1503-epub lepl1503-html index clean
 
 # Full compilation, in LaTeX-PDF, EPUB and HTML
-lepl1503: lepl1503-latex lepl1503-epub lepl1503-html index
+lepl1503: lepl1503-html lepl1503-epub index
+
+# No latex lepl1503-latex 
 
 lepl1503-latex:
 	make latexpdf -C Theorie
@@ -34,4 +36,4 @@ index:
 
 # Delete compiled files
 clean:
-	sudo rm -rf web
+	rm -rf web

@@ -7,7 +7,7 @@
 Syllabus de Programmation en Langage C
 ######################################
 
-.. spelling::
+.. spelling:word-list::
 
    pull-requests
    pull
@@ -20,8 +20,8 @@ Syllabus de Programmation en Langage C
 
     La version HTML est la préférable car elle contient des liens hypertextes vers les pages de manuel Linux qui font partie de la matière. D'autres formats sont possibles pour ceux qui veulent lire le document hors ligne :
 
-        - :download:`format epub <../../web/notes/Theorie/epub/LEPL1503IntroductionaulangageC.epub>`  lisible sur tablettes style iPad ou Galaxy Tab
-        - :download:`format pdf <../../web/notes/Theorie/latex/LEPL1503.pdf>`  pour lecture via les logiciels Adobe ou pour impression
+        - :download:`format epub <../web/distrib/LEPL1503IntroductionaulangageC.epub>`  lisible sur tablettes style iPad ou Galaxy Tab
+        - :download:`format pdf <../web/distrib/latex/LEPL1503Theorie.pdf>`  pour lecture via les logiciels Adobe ou pour impression
 
 
 

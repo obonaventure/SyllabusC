@@ -425,7 +425,7 @@ Glossaire
     principe de fonctionnement de la mémoire indiquant que lorsqu'un programme accède à une adresse à un temps t, il accédera encore à des adresses proches dans les prochains instants
 
 
-.. spelling::
+.. spelling:word-list::
 
    proc
    Tanenbaum

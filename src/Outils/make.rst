@@ -2,7 +2,7 @@
 .. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
-.. spelling::
+.. spelling:word-list::
 
    Makefile
    Makefiles
@@ -194,7 +194,7 @@ Vous pouvez donc très bien utiliser la variable ``$(HOME)`` indiquant le réper
 
 Il existe six différentes manières d'assigner une valeur à une variable. Nous ne nous intéresserons qu'à quatre d'entre elles.
 
-.. spelling::
+.. spelling:word-list::
 
    value
 

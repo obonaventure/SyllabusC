@@ -6,7 +6,7 @@
 Bibliographie
 *************
 
-.. spelling::
+.. spelling:word-list::
 
    Kernighan
    and

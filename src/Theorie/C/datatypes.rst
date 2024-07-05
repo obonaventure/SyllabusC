@@ -821,7 +821,7 @@ Les fonctions peuvent évidemment recevoir également des tableaux comme argumen
    :start-after: ///AAA
    :end-before: ///BBB
 
-.. spelling::
+.. spelling:word-list::
 
    ième
 
@@ -932,7 +932,7 @@ A     B      A XOR B
 1     1	     0
 ===   ===    ============
 
-.. spelling::
+.. spelling:word-list::
 
    De Morgan
 
@@ -964,7 +964,7 @@ En pratique, les opérations logiques sont utiles pour effectuer des manipulatio
    :start-after: ///CCC
    :end-before: ///DDD
 
-.. spelling::
+.. spelling:word-list::
 
    Vernam
 
@@ -1016,7 +1016,7 @@ Ces opérations de décalage permettent différentes manipulations de bits. À t
 
 .. [#fdirent] Voir notamment `fs(5)`_ pour des exemples relatifs aux systèmes de fichiers. Une analyse détaillée des systèmes de fichiers sort du cadre de ce cours.
 
-.. spelling::
+.. spelling:word-list::
 
    IP
 

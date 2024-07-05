@@ -7,7 +7,7 @@ Introduction
 
 Outre des compétences théoriques qui sont abordées dans d'autres parties de ce document, la maîtrise d'une système informatique implique également une excellente connaissance des outils informatiques qui sont inclus dans ce système. Cette connaissance se construit bien entendu en utilisant activement ces logiciels. Cette section comprend les informations de bases sur quelques logiciels importants qui sont utilisés dans le cadre du cours. Elle est volontairement réduite car de nombreux logiciels pourraient faire l'objet de livres complets. Les étudiants sont invités à proposer des améliorations à cette section sous la forme de pull-requests via https://github.com/obonaventure/SyllabusC.
 
-.. spelling::
+.. spelling:word-list::
 
    Editeurs
    emacs
@@ -61,6 +61,6 @@ Le compilateur C utilisé dans de nombreuses distributions Linux est `gcc(1)`_. 
 Il existe des alternatives à `gcc(1)`_ comme llvm_ que nous utiliserons lorsque nous analyserons le code assembleur généré par un compilateur C. Les variantes commerciales de Unix utilisent généralement des compilateurs propriétaires, dont par exemple `Oracle Studio <https://www.oracle.com/application-development/technologies/developerstudio.html>`_ ou la `suite de compilateurs <https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html>`_ développée par intel_.
 
 
-.. spelling::
+.. spelling:word-list::
 
    Git

@@ -109,6 +109,10 @@ pygments_style = 'sphinx'
 # Intersphinx
 intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SyllabusC/notes/Theorie/', None), 'outils': ('https://sites.uclouvain.be/SyllabusC/notes/Outils/', None), 'exercices': ('https://sites.uclouvain.be/SyllabusC/notes/Exercices/', None)}
 
+
+suppress_warnings = ["epub.unknown_project_files"]
+
+
 # -- Options for Spelling extension ------------------------------------------
 
 spelling_lang='fr'

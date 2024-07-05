@@ -68,20 +68,20 @@ Questions complémentaires
 
 					L'adresse de ``global`` ne change pas, car elle fait partie du segment texte du programme. Les autres sont soit sur la pile (stack), ou sur le tas (heap).
 
-.. spelling::
+.. spelling:word-list::
 
    l'implémentation
    réimplémenter
 
 
-#. Un étudiant a fait l'implémentation d'un sous-ensemble des fonctions définies dans string.h, mais il rencontre quelques problèmes avec son code :download:`./src/string.c`. Utilisez `gdb <../../../Outils/html/gdb.html>`_ pour corriger son code. Utilisez le flag ``-g`` de ``gcc`` pour ajouter les informations de debug dans votre programme. Pour rappel, voici quelques commandes importantes de `gdb` :
+#. Un étudiant a fait l'implémentation d'un sous-ensemble des fonctions définies dans string.h, mais il rencontre quelques problèmes avec son code :download:`./src/string.c`. Utilisez `gdb <../../../Outils/gdb.html>`_ pour corriger son code. Utilisez le flag ``-g`` de ``gcc`` pour ajouter les informations de debug dans votre programme. Pour rappel, voici quelques commandes importantes de `gdb` :
 
    - ``run [ARGS]`` permet de lancer l'exécution du programme avec les arguments ARGS si spécifiés.
    - ``break string.c:9`` met un point d'arrêt à la ligne 9 du fichier string.c
    - ``next`` permet d'exécuter la ligne courante et de s'arrêter à la ligne suivante
    - ``print var`` affiche la valeur de la variable ``var``
    - ``backtrace`` affiche la pile d'appel des fonctions courantes
-   - ``quit`` quitte `gdb <../../../Outils/html/gdb.html>`_
+   - ``quit`` quitte `gdb <../../../Outils/gdb.html>`_
 
 	 .. only:: staff
 

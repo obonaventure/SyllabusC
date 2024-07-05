@@ -1,7 +1,7 @@
 .. -*- coding: utf-8 -*-
 .. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
-.. spelling::
+.. spelling:word-list::
     Jenkins
     jenkins
     build

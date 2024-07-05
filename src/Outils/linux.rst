@@ -2,7 +2,7 @@
 .. Copyright |copy| 2021 by François De Keersmaeker
 .. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
-.. spelling::
+.. spelling:word-list::
     Subsystem
     boot
     Didac

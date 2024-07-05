@@ -15,7 +15,7 @@ Le problème de la coordination entre threads est un problème majeur. Outre les
 
 Tout comme pour les :term:`mutex`, la queue associée à un sémaphore permet de bloquer les threads qui sont en attente d'une modification de la valeur du sémaphore.
 
-.. spelling::
+.. spelling:word-list::
 
    décrémentée
    s'implémenter
@@ -197,7 +197,7 @@ Le consommateur quant à lui essaie d'abord de prendre le sémaphore ``full``. S
 
 De nombreux programmes découpés en threads fonctionnent avec un ensemble de producteurs et un ensemble de consommateurs.
 
-.. spelling::
+.. spelling:word-list::
 
    Solaris
 
@@ -279,7 +279,7 @@ Pour avoir une variable accessible depuis toutes les fonctions d'un thread, il f
 
 Il faut noter que la fonction `pthread_key_create(3posix)`_ associe en pratique le pointeur ``NULL`` à la clé qui a été créée dans chaque thread. Le thread qui veut utiliser la variable correspondant à cette clé doit réserver la zone mémoire correspondante. Cela se fait en général en utilisant `malloc(3)`_ puis en appelant la fonction `pthread_setspecific(3posix)`_. Celle-ci prend deux arguments. Le premier est une clé de type ``pthread_key_t`` qui a été préalablement créée. Le second est un pointeur (de type ``void *``) vers la zone mémoire correspondant à la variable spécifique. Une fois que le lien entre la clé et le pointeur a été fait, la fonction `pthread_getspecific(3posix)`_ peut être utilisée pour récupérer le pointeur depuis n'importe quelle fonction du thread. L'implémentation des fonctions `pthread_setspecific(3posix)`_ et `pthread_getspecific(3posix)`_ garantit que chaque thread aura sa variable qui lui est propre.
 
-.. spelling::
+.. spelling:word-list::
 
    L'implémentation
 
@@ -293,7 +293,7 @@ L'exemple ci-dessous illustre l'utilisation de cette API. Elle est nettement plu
 
 En pratique, on préférera évidemment d'utiliser le qualificatif ``__thread`` plutôt que d'utiliser une API explicite lorsque c'est possible. Cependant, il ne faut pas oublier que lorsque ce qualificatif est utilisé, le compilateur doit introduire dans le programme du code permettant de faire le même genre d'opérations que les fonctions explicites de la librairie.
 
-.. spelling::
+.. spelling:word-list::
 
    thread-safe
 

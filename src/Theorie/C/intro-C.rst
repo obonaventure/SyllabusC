@@ -204,7 +204,7 @@ Toutes les tables de caractères placent les chiffres ``0`` à ``9`` à des posi
 
   Dans la version en-ligne de ces notes, toutes les références vers un programme Unix, un appel système ou une fonction de la librairie pointent vers la page de manuel Linux correspondante.
 
-.. spelling::
+.. spelling:word-list::
 
    Kernighan
    Ritchie
@@ -220,7 +220,7 @@ Il existe de nombreux livres consacrés au langage C. La référence la plus cla
 
 .. [#fmain] Il est également possible d'utiliser dans un programme C une fonction ``main`` qui ne prend pas d'argument. Sa signature sera alors ``int main (void)``.
 
-.. spelling::
+.. spelling:word-list::
 
    Darwin
    MacOS

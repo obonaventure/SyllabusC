@@ -13,7 +13,7 @@ Dans le cadre de ce cours nous utiliserons l'interpréteur `bash(1)`_. Cet exéc
 
 Le shell est un outil très puissant. Il permet d'effectuer de nombreuses opérations qui peuvent difficilement être réalisées manuellement ou via une interface graphique.
 
-.. spelling::
+.. spelling:word-list::
 
    tab
    regex
@@ -44,7 +44,7 @@ Expressions régulières
 
 Avant de commencer à voir les commandes utiles avec le shell, il est important de définir ce qu'est une expression régulière (`regex(3)`). Les expressions régulières caractérisent des chaînes de caractères et elles sont utiles pour de nombreuses commandes. Nous l'utiliserons notamment pour faire une recherche dans un fichier.
 
-.. spelling::
+.. spelling:word-list::
 
    er
 
@@ -99,7 +99,7 @@ La commande `ls(1)`_ permet de connaître l'ensemble des fichiers et répertoire
     * ``-d`` : 	Ne liste pas le contenu d'un répertoire : si `rep` est un répertoire, ``ls -l`` `rep` listera le contenu du répertoire `rep`, alors que ``ls -ld`` `rep` listera la description du répertoire
     * ``-l`` : 	Description complète du contenu d'un répertoire (une ligne par fichier)
 
-.. spelling::
+.. spelling:word-list::
 
    filename
 
@@ -117,7 +117,7 @@ Avec l'option ``-l``, le premier caractère de la ligne indique le type du fichi
 Manipulation de fichiers
 ------------------------
 
-.. spelling::
+.. spelling:word-list::
 
    irf
    opt
@@ -138,7 +138,7 @@ Créer et détruire
 Visualiser
 ^^^^^^^^^^
 
-.. spelling::
+.. spelling:word-list::
 
    vET
    vE
@@ -320,7 +320,7 @@ Extraction de données
 
 Obtenir des informations
 ^^^^^^^^^^^^^^^^^^^^^^^^
-.. spelling::
+.. spelling:word-list::
 
    src
    dst
@@ -371,7 +371,7 @@ Déplacer ou renommer
 Rechercher
 ^^^^^^^^^^
 
-.. spelling::
+.. spelling:word-list::
 
    rep
    group
@@ -603,7 +603,7 @@ Gestion des processus
 `kill(1)`_ pid			supprime le processus spécifié. Si malgré la commande, le processus n'est pas détruit, essayez kill -9 pid.
 
 
-.. spelling::
+.. spelling:word-list::
 
    pid
    cmd
@@ -689,7 +689,7 @@ Informations générales
 Informations système
 ^^^^^^^^^^^^^^^^^^^^
 
-.. spelling::
+.. spelling:word-list::
 
    node
    prog

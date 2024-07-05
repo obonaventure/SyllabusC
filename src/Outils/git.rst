@@ -2,7 +2,7 @@
 .. Copyright |copy| 2013 by Benoit Legat
 .. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
-.. spelling::
+.. spelling:word-list::
    kernel
    commits
    fork
@@ -1341,7 +1341,7 @@ compilations, le même résultat qu’avant :
 À nouveau, n’oubliez pas d’utiliser ``git bisect reset`` avant de continuer à
 travailler sur le dépôt.
 
-.. spelling::
+.. spelling:word-list::
 
    mruby
    Makefile

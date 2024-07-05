@@ -2,7 +2,7 @@
 .. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
-.. spelling::
+.. spelling:word-list::
 
    tutorée
    tutorées
@@ -21,13 +21,13 @@ Première semaine
 
 La matière couverte cette semaine correspond aux sections :
 
- - `Introduction <../../Theorie/html/intro.html>`_
- - `Le langage C <../../Theorie/html/C/intro-C.html>`_
+ - `Introduction <https://sites.uclouvain.be/SyllabusC/notes/Theorie/intro.html>`_
+ - `Le langage C <https://sites.uclouvain.be/SyllabusC/notes/Theorie/C/intro-C.html>`_
 
 En outre, vous devrez aussi lire les sections de la partie Outils qui sont relatives à
 
- - `Shell <../../Outils/html/shell.html>`_
- - `Gestion des processus <../../Outils/html/processus.html>`_
+ - `Shell <https://sites.uclouvain.be/SyllabusC/notes/Outils/shell.html>`_
+ - `Gestion des processus <https://sites.uclouvain.be/SyllabusC/notes/Outils/processus.html>`_
 
 .. toctree::
    :maxdepth: 2
@@ -41,11 +41,11 @@ Deuxième semaine
 
 La matière couverte cette semaine correspond aux sections :
 
- - `Types de données <../../Theorie/html/C/datatypes.html>`_ (la section relative aux manipulations de bits est pour information, elle ne sera pas couverte dans le cadre de ce cours)
+ - `Types de données <https://sites.uclouvain.be/SyllabusC/notes/Theorie/C/datatypes.html>`_ (la section relative aux manipulations de bits est pour information, elle ne sera pas couverte dans le cadre de ce cours)
 
 En outre, vous devrez aussi lire les sections de la partie Outils qui sont relatives à
 
- - `GCC <../../Outils/html/gcc.html>`_
+ - `GCC <https://sites.uclouvain.be/SyllabusC/notes/Outils/gcc.html>`_
 
 .. toctree::
    :maxdepth: 2
@@ -59,14 +59,14 @@ Troisième semaine
 
 La matière couverte cette semaine correspond aux sections :
 
-  - `Déclarations <../../Theorie/html/C/malloc.html#declarations>`_
-  - `Unions et énumérations <../../Theorie/html/C/malloc.html#unions-et-enumerations>`_
-  - `Organisation de la mémoire <../../Theorie/html/C/malloc.html#organisation-de-la-memoire>`_
+  - `Déclarations <https://sites.uclouvain.be/SyllabusC/notes/Theorie/C/malloc.html#declarations>`_
+  - `Unions et énumérations <https://sites.uclouvain.be/SyllabusC/notes/Theorie/C/malloc.html#unions-et-enumerations>`_
+  - `Organisation de la mémoire <https://sites.uclouvain.be/SyllabusC/notes/Theorie/C/malloc.html#organisation-de-la-memoire>`_
 
 En outre, vous devrez aussi lire les sections de la partie Outils qui sont relatives à
 
-  - `GDB <../../Outils/html/gdb.html>`_
-  - `Valgrind <../../Outils/html/valgrind.html>`_
+  - `GDB <https://sites.uclouvain.be/SyllabusC/notes/Outils/gdb.html>`_
+  - `Valgrind <https://sites.uclouvain.be/SyllabusC/notes/Outils/valgrind.html>`_
 
 
 .. toctree::
@@ -83,7 +83,7 @@ Durant les dernières semaines, vous avez appris les bases de l'écriture de fon
 L'objectif de cette semaine est de vous amener à être capable d'écrire des programmes
 comprenant plusieurs fonctions. La matière couverte cette semaine correspond aux sections :
 
- - `Compléments de C <../../Theorie/html/C/linker.html>`_
+ - `Compléments de C <https://sites.uclouvain.be/SyllabusC/notes/Theorie/C/linker.html>`_
 
 Trois exercices supplémentaires sont disponibles sur INGInious
 pour tester votre compréhension de cette section:
@@ -94,8 +94,8 @@ pour tester votre compréhension de cette section:
 
 En outre, vous devrez aussi lire les sections de la partie Outils qui sont relatives à
 
- - `Introduction aux Makefiles <../../Outils/html/make.html>`_
- - `CUnit: libraire de tests <../../Outils/html/cunit.html>`_
+ - `Introduction aux Makefiles <https://sites.uclouvain.be/SyllabusC/notes/Outils/make.html>`_
+ - `CUnit: libraire de tests <https://sites.uclouvain.be/SyllabusC/notes/Outils/cunit.html>`_
 
 Deux exercices supplémentaires sont disponibles sur INGInious
 pour tester votre compréhension des Makefiles:
@@ -117,12 +117,12 @@ Cinquième semaine
 
 La matière de cette semaine porte sur l'utilisation du système de fichiers. Elle est décrite dans les sections  :
 
- - `Gestion des utilisateurs <../../Theorie/html/Fichiers/fichiers.html#gestion-des-utilisateurs>`_
- - `Systèmes de fichiers <../../Theorie/html/Fichiers/fichiers.html#systemes-de-fichiers>`_
+ - `Gestion des utilisateurs <https://sites.uclouvain.be/SyllabusC/notes/Theorie/Fichiers/fichiers.html#gestion-des-utilisateurs>`_
+ - `Systèmes de fichiers <https://sites.uclouvain.be/SyllabusC/notes/Theorie/Fichiers/fichiers.html#systemes-de-fichiers>`_
 
 En outre, vous devrez aussi lire les sections de la partie Outils qui sont relatives à
 
- - `Introduction à Git <../../Outils/html/git.html>`_
+ - `Introduction à Git <https://sites.uclouvain.be/SyllabusC/notes/Outils/git.html>`_
 
 `git(1)`_ sera très utilisé dans le cadre du projet. Après avoir lu l'explication sur `git(1)`_, vous êtes invités à testez vos connaissances via les exercices supplémentaires
 proposés sur la `page INGInious du cours <https://inginious.info.ucl.ac.be/course/LEPL1503>`_,
@@ -141,10 +141,10 @@ Sixième semaine
 La matière couverte cette semaine correspond aux sections :
 
 
- - `Utilisation de plusieurs threads <../../Theorie/html/Threads/threads.html>`_
- - `Communication entre threads <../../Theorie/html/Threads/threads2.html#communication-entre-threads>`_
- - `Coordination entre threads <../../Theorie/html/Threads/threads2.html#coordination-entre-threads>`_
- - `Les sémaphores <../../Theorie/html/Threads/coordination.html>`_
+ - `Utilisation de plusieurs threads <https://sites.uclouvain.be/SyllabusC/notes/Theorie/Threads/threads.html>`_
+ - `Communication entre threads <https://sites.uclouvain.be/SyllabusC/notes/Theorie/Threads/threads2.html#communication-entre-threads>`_
+ - `Coordination entre threads <https://sites.uclouvain.be/SyllabusC/notes/Theorie/Threads/threads2.html#coordination-entre-threads>`_
+ - `Les sémaphores <https://sites.uclouvain.be/SyllabusC/notes/Theorie/Threads/coordination.html>`_
 
 
 .. toctree::

@@ -131,7 +131,7 @@ Exercices
 	 return 0;
 	}
 
-.. spelling::
+.. spelling:word-list::
 
    d'affilée
 
@@ -215,7 +215,7 @@ Exercices
 
 
 
-#. L'outil ``helgrind`` (décrit dans la section `Détecter les deadlocks avec valgrind <../../../Outils/html/valgrind.html#detecter-les-deadlocks-avec-valgrind>`_) permet de trouver des deadlocks ou autres problèmes. Exécutez-le sur le petit programme suivant :download:`./src/pthread-philo.c` et analysez ce qu'il affiche.
+#. L'outil ``helgrind`` (décrit dans la section `Détecter les deadlocks avec valgrind <../../../Outils/valgrind.html#detecter-les-deadlocks-avec-valgrind>`_) permet de trouver des deadlocks ou autres problèmes. Exécutez-le sur le petit programme suivant :download:`./src/pthread-philo.c` et analysez ce qu'il affiche.
 
 
 Mini-projet: Mesure de performance

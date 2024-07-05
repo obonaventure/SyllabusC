@@ -22,8 +22,8 @@ import sys, os
 # -- Project information -----------------------------------------------------
 
 
-extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx', 'sphinxcontrib.spelling' ]
-
+#extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx', 'sphinxcontrib.spelling' ]
+extensions = ['sphinxcontrib.spelling' ]
 project = 'Syllabus C'
 copyright = '2021, Olivier Bonaventure, Gregory Detal, Christoph Paasch'
 author = 'Olivier Bonaventure, Gregory Detal, Christoph Paasch'
@@ -157,6 +157,9 @@ html_show_sourcelink = True
 
 # Intersphinx
 intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SyllabusC/notes/Theorie/', None), 'outils': ('https://sites.uclouvain.be/SyllabusC/notes/Outils/', None), 'exercices': ('https://sites.uclouvain.be/SyllabusC/notes/Exercices/', None)}
+
+
+suppress_warnings = ["epub.unknown_project_files"]
 
 
 # -- Options for Spelling extension ------------------------------------------

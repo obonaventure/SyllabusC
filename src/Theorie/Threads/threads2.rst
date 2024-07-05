@@ -120,7 +120,7 @@ Coordination entre threads
 L'utilisation de plusieurs threads dans un programme fonctionnant sur un seul ou plusieurs processeurs nécessite l'utilisation de mécanismes de coordination entre ces threads. Ces mécanismes ont comme objectif d'éviter que deux threads ne puissent modifier ou tester de façon non coordonnée la même zone de la mémoire.
 
 
-.. spelling::
+.. spelling:word-list::
 
    Dijkstra
 
@@ -144,7 +144,7 @@ La troisième contrainte implique que la terminaison ou le crash d'un des thread
 
 La quatrième contrainte est un peu plus subtile mais tout aussi importante. Toute solution au problème de l'exclusion mutuelle contient nécessairement un mécanisme qui permet de bloquer l'exécution d'un thread pendant qu'un autre exécute sa section critique. Il est important qu'un thread puisse accéder à sa section critique si il le souhaite. C'est un exemple de propriété de :term:`vivacité` (:term:`liveness` en anglais). Une propriété de :term:`vivacité` est une propriété qui ne peut pas être éternellement invalidée. Dans notre exemple, un thread ne pourra jamais être empêché d'accéder à sa section critique.
 
-.. spelling::
+.. spelling:word-list::
 
    monoprocesseur
    monoprocesseurs
@@ -180,7 +180,7 @@ Ces interactions entre les threads et le système d'exploitation sont importante
 
 Lorsqu'un thread est créé avec la fonction `pthread_create(3)`_, il est placé dans l'état `Ready`. Dans cet état, les instructions du thread ne s'exécutent sur aucun processeur mais il est prêt à être exécuté dès qu'un processeur se libérera. Le deuxième état pour un thread est l'état `Running`. Dans cet état, le thread est exécuté sur un des processeurs du système. Le dernier état est l'état `Blocked`. Un thread est dans l'état `Blocked` lorsqu'il a exécuté un appel système bloquant et que le système d'exploitation attend l'information permettant de retourner le résultat de l'appel système. Pendant ce temps, les instructions du thread ne s'exécutent sur aucun processeur.
 
-.. spelling::
+.. spelling:word-list::
 
    ordonnanceur
    scheduler

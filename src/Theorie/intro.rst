@@ -10,7 +10,7 @@ Introduction
 
 Les systèmes informatiques jouent un rôle de plus en plus important dans notre société. Depuis les premiers calculateurs à la fin de la seconde guerre mondiale, les ordinateurs se sont rapidement améliorés et démocratisés. Aujourd'hui, notre société est de plus en plus dépendante des systèmes informatiques.
 
-.. spelling::
+.. spelling:word-list::
 
    Von Neumann
    binary
@@ -60,7 +60,7 @@ Les systèmes informatiques peuvent prendre différentes formes, allant de minus
 Les :term:`raspberry pi` sont un exemple d'un système embarqué. Il s'agit de nano-ordinateurs, de la taille d'une carte de crédit.
 Possédant les mêmes composants que décrits ci-dessus, ils fonctionnent de la même façon que des systèmes plus imposants comme les ordinateurs personnels que l'on utilise au quotidien, seulement avec moins de ressources.
 
-.. spelling::
+.. spelling:word-list::
 
    API
    l'API
@@ -99,7 +99,7 @@ Un système Unix est composé de trois grands types de logiciels :
  - De nombreuses librairies qui facilitent l'écriture et le développement d'applications
  - De nombreux programmes utilitaires simples qui permettent de résoudre un grand nombre de problèmes courants. Certains de ces utilitaires sont chargés automatiquement lors du démarrage de la machine. La plupart sont exécutés uniquement à la demande des utilisateurs.
 
-.. spelling::
+.. spelling:word-list::
 
    API
    programmatiques
@@ -125,7 +125,7 @@ Dans le cadre de ce cours, nous aurons l'occasion de voir en détails de nombreu
 
 Pour vous permettre de mettre vos apprentissages en pratique, vous recevrez durant le quadrimestre un `raspberry pi <https://www.raspberrypi.org/>`_. Il est possible d'installer différents systèmes d'exploitation sur celui-ci. Nous utiliserons `raspbian <https://www.raspberrypi.org/software/operating-systems/>`_  qui est lui aussi une variante de Unix.
 
-.. spelling::
+.. spelling:word-list::
 
    raspbian
 
@@ -168,7 +168,7 @@ Lorsqu'un utilisateur se connecte à un système Unix, en direct ou à travers u
 .. literalinclude:: src/exemple.out
         :language: console
 
-.. spelling::
+.. spelling:word-list::
 
    supercalculateurs
    quadrimestre

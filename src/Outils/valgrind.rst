@@ -16,7 +16,7 @@ Le site https://www.cprogramming.com/debugging/ vous donne des techniques de dé
 
 Valgrind permet de détecter des erreurs liées à la gestion de la mémoire dans vos programmes. Pour utiliser valgrind, lancez la commande `valgrind(1)`_ avec votre exécutable comme argument:
 
-.. spelling::
+.. spelling:word-list::
 
    ième
    memory

@@ -11,7 +11,7 @@ Utilisation de plusieurs threads
 
 Les performances des microprocesseurs se sont continuellement améliorées depuis les années 1960s. Cette amélioration a été possible grâce aux progrès constants de la micro-électronique qui a permis d'assembler des microprocesseurs contenant de plus en plus de transistors sur une surface de  plus en plus réduite. La figure [#ftransistors]_ ci-dessous illustre bien cette évolution puisqu'elle représente le nombre de transistors par microprocesseur en fonction du temps.
 
-.. spelling::
+.. spelling:word-list::
 
    Moore
    intel
@@ -38,7 +38,7 @@ Malheureusement, vers 2005 cette croissance continue s'est arrêtée. La barriè
 
 Si pendant longtemps la fréquence d'horloge d'un microprocesseur a été une bonne heuristique pour prédire les performances du microprocesseur, ce n'est pas un indicateur parfait de performance. Certains processeurs exécutent une instruction durant chaque cycle d'horloge. D'autres processeurs prennent quelques cycles d'horloge pour exécuter chaque instruction et enfin certains processeurs sont capables d'exécuter plusieurs instructions durant chaque cycle d'horloge.
 
-.. spelling::
+.. spelling:word-list::
 
    d'Instructions
 
@@ -50,7 +50,7 @@ Une autre façon de mesurer les performances d'un microprocesseur est de comptab
 
    Evolution des performances des microprocesseurs en MIPS
 
-.. spelling::
+.. spelling:word-list::
 
    Evaluation
    benchmark
@@ -136,7 +136,7 @@ Pour qu'un processeur puisse exécuter cette séquence d'instructions, il faut q
     - au registre ``%eip`` qui contient l'adresse de l'instruction en cours d'exécution
     - au registre ``eflags`` qui contient l'ensemble des drapeaux
 
-.. spelling::
+.. spelling:word-list::
 
    multithreadé
 

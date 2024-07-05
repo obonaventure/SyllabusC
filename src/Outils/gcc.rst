@@ -71,7 +71,7 @@ Différentes options peuvent être utilisé avec gcc :
 Notons que les trois premières options ne présentent pas d'intérêt pour ce cours.
 
 
-.. spelling::
+.. spelling:word-list::
 
    help
 

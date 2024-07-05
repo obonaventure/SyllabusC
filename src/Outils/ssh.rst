@@ -8,7 +8,7 @@
 SSH
 ---
 
-.. spelling::
+.. spelling:word-list::
 
    ssh
    intel
@@ -134,6 +134,6 @@ Nous pouvons aussi utiliser `rsync <https://www.lifewire.com/copying-directories
 Maintenant tous les fichiers de la machine hôte, dans le dossier ``src/bar`` vont être copiés vers le répertoire local ``/data/tmp``.
 
 
-.. spelling::
+.. spelling:word-list::
 
    src

@@ -8,7 +8,7 @@
 Gestion des utilisateurs
 ========================
 
-.. spelling::
+.. spelling:word-list::
 
    multi
 
@@ -25,7 +25,7 @@ Aujourd'hui, la plupart des systèmes informatiques demandent une authentificati
 Les systèmes Unix supportent différents mécanismes d'authentification. Le plus simple et le plus utilisé est l'authentification par mot de passe. Chaque utilisateur est identifié par un nom d'utilisateur et il doit prouver son identité en tapant son mot de passe au démarrage de toute session sur le système. En pratique, une session peut s'établir localement sur l'ordinateur via son interface graphique par exemple ou à distance en faisant tourner un serveur tel que `sshd(8)`_ sur le système Unix et en permettant aux utilisateurs de s'y connecter via Internet en utilisant un client `ssh(1)`_. Dans les deux cas, le système d'exploitation lance un processus `login(1)`_ qui permet de vérifier le nom d'utilisateur et le mot de passe fourni par l'utilisateur. Si le mot de passe correspond à celui qui est stocké sur le système, l'utilisateur est authentifié et son shell peut démarrer. Sinon, l'accès au système est refusé.
 
 
-.. spelling::
+.. spelling:word-list::
 
    username
    inode
@@ -191,7 +191,7 @@ Les fonctions de manipulation des répertoires méritent que l'on s'y attarde un
 		   };
 
 
-	.. spelling::
+	.. spelling:word-list::
 
 	   l'inode
 	   métadonnée
@@ -431,7 +431,7 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
 
  Dans certains cas il est utile de pouvoir dupliquer un descripteur de fichier. C'est possible avec les appels systèmes `dup(2)`_ et `dup2(2)`_. L'appel système `dup(2)`_ prend comme argument un descripteur de fichier et retourne le plus petit descripteur de fichier libre. Lorsqu'un descripteur de fichier a été dupliqué avec `dup(2)`_ les deux descripteurs de fichiers partagent le même :term:`offset pointer` et les mêmes modes d'accès au fichier.
 
-.. spelling::
+.. spelling:word-list::
 
    mappé
    mappés
@@ -467,7 +467,7 @@ Ces drapeaux peuvent être combinés avec une disjonction logique. Le quatrième
  - ``MAP_PRIVATE``. Dans ce cas, le fichier est mappé dans chaque processus, mais si un processus modifie une page, cette modification n'est pas répercutée aux autres processus qui ont mappé le même fichier.
  - ``MAP_SHARED``. Dans ce cas, plusieurs processus peuvent accéder et modifier la page qui est mappée en mémoire. Lorsqu'un processus modifie le contenu d'une page, la modification est visible aux autres processus. Par contre, le fichier qui est mappé en mémoire n'est modifié que lorsque le noyau du système d'exploitation décide d'écrire les données modifiées sur le dispositif de stockage. Ces écritures dépendent de nombreux facteurs, dont la charge du système. Si un processus veut être sûr des écritures sur disque des modifications qu'il a fait à un fichier mappé un mémoire, il doit exécuter l'appel système `msync(2)`_ ou supprimer le mapping via `munmap(2)`_.
 
-.. spelling::
+.. spelling:word-list::
 
    mapping
 

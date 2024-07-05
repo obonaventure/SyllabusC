@@ -18,7 +18,7 @@ Lorsque l'on écrit des programmes en C ou dans un autre langage, il est importa
 le bon fonctionnement de toutes les fonctions du programme pour éviter des erreurs et autres
 bugs difficiles à corriger. L'idéal est de commencer par écrire les tests qui valident le bon
 fonctionnement de chaque fonction *avant* d'écrire cette fonction. Plusieurs librairies peuvent vous
-aider à écrire de tels tests. `CUnit <../../../Outils/html/cunit.html>`_ est l'une d'entre elles.
+aider à écrire de tels tests. `CUnit <../../../Outils/cunit.html>`_ est l'une d'entre elles.
 Prenez le temps de lire le chapitre
 qui lui est consacré dans le syllabus.
 

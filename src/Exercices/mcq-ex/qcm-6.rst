@@ -6,7 +6,7 @@
 Questions à choix multiples 
 ===========================
 
-.. spelling::
+.. spelling:word-list::
 
    safe
    castée

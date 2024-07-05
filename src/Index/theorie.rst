@@ -12,4 +12,4 @@ La `version HTML <../../Theorie/html/index.html>`_ est la préférable car elle 
 
         - :download:`format epub <../../web/notes/Theorie/epub/LEPL1503IntroductionaulangageC.epub>`  lisible sur tablettes style iPad ou Galaxy Tab
 
-        - :download:`format pdf <../../web/notes/Theorie/latex/LEPL1503.pdf>`  pour lecture via les logiciels Adobe ou pour impression
+        - :download:`format pdf <../../web/notes/Theorie/latex/LEPL1503Theorie.pdf>`  pour lecture via les logiciels Adobe ou pour impression

@@ -7,7 +7,7 @@
 Syllabus C : Exercices
 ######################
 
-.. spelling::
+.. spelling:word-list::
 
    pull-requests
    pull

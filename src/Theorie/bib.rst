@@ -2,7 +2,7 @@
 .. Copyright |copy| 2012 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
-.. spelling::
+.. spelling:word-list:
 
     October
 
@@ -107,7 +107,7 @@ Bibliographie
 
 .. [Walls2006] Walls, D., `How to Use the restrict Qualifier in C`. Sun Microsystems, 2006, https://www.oracle.com/solaris/technologies/solaris10-cc-restrict.html
 
-.. spelling::
+.. spelling:word-list:
 
    Cooper
    Adelstein

@@ -213,7 +213,7 @@ En C, la plupart des processus allouent et libèrent de la mémoire en utilisant
 
 La fonction `malloc(3)`_ prend comme argument la taille (en bytes) de la zone mémoire à allouer. La signature de la fonction `malloc(3)`_ demande que cette taille soit de type ``size_t``, c'est-à-dire le type retourné par l'expression ``sizeof``. Il est important de toujours utiliser ``sizeof`` lors du calcul de la taille d'une zone mémoire à allouer. `malloc(3)`_ retourne normalement un pointeur de type ``(void *)``. Ce type de pointeur est le type par défaut pour représenter dans un programme C une zone mémoire qui ne pointe pas vers un type de données particulier. En pratique, un programme va généralement utiliser `malloc(3)`_ pour allouer de la mémoire pour stocker différents types de données et le pointeur retourné par `malloc(3)`_ sera `casté` dans un pointeur du bon type.
 
-.. spelling::
+.. spelling:word-list::
 
    typecast
 
@@ -387,7 +387,7 @@ Un étudiant pourrait vouloir éviter d'utiliser `malloc(3)`_ et écrire plutôt
    :start-after: ///BBB
    :end-before: ///CCC
 
-.. spelling::
+.. spelling:word-list::
 
    warning
 

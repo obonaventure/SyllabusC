@@ -2,7 +2,7 @@
 .. Copyright |copy| 2012, 2020 by `Olivier Bonaventure <https://inl.info.ucl.ac.be/obo>`_, Christoph Paasch, Grégory Detal et Nicolas Houtain
 .. Ce fichier est distribué sous une licence `creative commons <https://creativecommons.org/licenses/by-sa/3.0/>`_
 
-.. spelling::
+.. spelling:word-list::
 
    breakpoint
    Breakpoint
@@ -124,7 +124,7 @@ Pour arrêter la console de gdb, tapez ``quit``.
 Illustration avec des exemples
 ------------------------------
 
-.. spelling::
+.. spelling:word-list::
    calc
    factTmp
    tab

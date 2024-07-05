@@ -167,7 +167,7 @@ que vous aviez réalisé en Java.
                                 ``atoi`` = transforme une chaine de caractère en un entier.
                                 Le programme renvoi une segmentation fault lorsque l'on ne passe pas d'argument. Il faut donc utiliser ``argc`` pour tester que l'on a le bon nombre d'argument.
 
-.. spelling::
+.. spelling:word-list::
 
    Ecrivez
    
