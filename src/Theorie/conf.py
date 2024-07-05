@@ -15,15 +15,15 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-import sys, os
+# import sys, os
 
 
 
 # -- Project information -----------------------------------------------------
 
 
-#extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx', 'sphinxcontrib.spelling' ]
-extensions = ['sphinxcontrib.spelling' ]
+extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx', 'sphinxcontrib.spelling' ]
+
 project = 'Syllabus C'
 copyright = '2021, Olivier Bonaventure, Gregory Detal, Christoph Paasch'
 author = 'Olivier Bonaventure, Gregory Detal, Christoph Paasch'
@@ -156,7 +156,8 @@ html_show_sourcelink = True
 #html_show_copyright = True
 
 # Intersphinx
-intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SyllabusC/notes/Theorie/', None), 'outils': ('https://sites.uclouvain.be/SyllabusC/notes/Outils/', None), 'exercices': ('https://sites.uclouvain.be/SyllabusC/notes/Exercices/', None)}
+intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SyllabusC/notes/Theorie/', '../../web/notes/Theorie/html/objects.inv'),
+                       'outils': ('https://sites.uclouvain.be/SyllabusC/notes/Outils/', '../../web/notes/Outils/html/objects.inv'), 'exercices': ('https://sites.uclouvain.be/SyllabusC/notes/Exercices/', '../../web/notes/Exercices/html/objects.inv')}
 
 
 suppress_warnings = ["epub.unknown_project_files"]
