@@ -6,5 +6,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - run: sudo apt install hunspell-fr-classical ; python3 -m venv /tmp/venv ; source /tmp/venv/bin/activate ; pip3 install sphinx sphinxcontrib-spelling
+      - run: sudo apt install hunspell-fr-classical ; python3 -m venv /tmp/venv ; source /tmp/venv/bin/activate ; pip3 install sphinx sphinxcontrib-spelling ; pip3 install git+https://github.com/OpenWeek/interactive-syllabus
       - run: cd src ; source /tmp/venv/bin/activate ; make spelling ; make
