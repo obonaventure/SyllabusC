@@ -32,6 +32,7 @@ De nombreux éditeurs sont utilisables pour manipuler efficacement du code sourc
  - `Atom <https://atom.io/>`_ est un éditeur de texte facile d'utilisation et proposant de nombreuses extensions. Il a été développé par l'équipe de GitHub, et profite donc d'une interface simple pour le version control des projets en utilisant Git (voir la section consacrée à Git).
  - `Visual Studio Code <https://code.visualstudio.com/>`_ est un éditeur de texte proposant également de nombreuses extensions, et régulièrement utilisé dans l'entreprise. Il permet, entre autres, de profiter d'un terminal de commandes sur la même fenêtre que l'éditeur de texte.
  - `eclipse <https://www.eclipse.org>`_ est un environnement complet de développement écrit en Java pour supporter initialement ce langage. De nombreuses extensions à `eclipse <https://www.eclipse.org>`_ existent, dont `CDT <https://www.eclipse.org/cdt/>`_ qui permet la manipulation efficace de code source en langages C et C++.
+ - `CodeLobster <https://codelobster.com>`_ est un éditeur (IDE) PHP, HTML, CSS, JavaScript avec le support de Drupal CMS, Joomla CMS, Magento CMS, Smarty, Twig, WordPress, librairie JQuery et frameworks: CodeIgniter, CakePHP, Symfony, Yii, AngularJS, BackboneJS, MeteorJS, Laravel, Phalcon.
 
 Pour les débutants, les éditeurs conseillés sont Sublime Text pour sa simplicité, Atom pour son intégration de Git (qui sera largement utilisé lors du projet), ou Visual Studio Code pour sa popularité et son accès direct à un terminal.
 
