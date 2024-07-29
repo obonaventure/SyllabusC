@@ -274,6 +274,15 @@ Les appels systèmes `link(2)`_ et `unlink(2)`_ sont un peu particuliers et mér
 
 	Une description détaillée du fonctionnement de ces appels systèmes et fonctions de la librairie standard peut se trouver dans les livres de référence sur la programmation en C sous Unix [Kerrisk2010]_, [Mitchell+2001]_, [StevensRago2008]_.
 
+.. inginious:: semaine_5_1
+
+.. inginious:: semaine_5_2
+
+.. inginious:: semaine_5_3
+
+.. inginious:: semaine_5_4
+
+.. inginious:: semaine_5_5
 
 Utilisation des fichiers
 ------------------------

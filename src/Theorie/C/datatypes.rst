@@ -474,6 +474,14 @@ nombre de problèmes qui affectent la sécurité de nombreux
 logiciels. Ces problèmes sont connus sous la dénomination
 :term:`buffer overflow`. Nous aurons l'occasion d'y revenir plus tard.
 
+.. inginious:: semaine_2_1
+
+.. inginious:: semaine_2_2
+
+.. inginious:: semaine_2_3
+
+.. inginious:: semaine_2_4
+
 Les pointeurs
 -------------
 
@@ -681,6 +689,14 @@ Tout d'abord, l'initialisation du pointeur ``ptr_char`` a bien stocké dans ce p
 
 .. todo:: exemples
 
+.. inginious:: semaine_2_8
+
+.. inginious:: semaine_2_9
+
+.. inginious:: semaine_2_10
+
+.. inginious:: semaine_2_11
+
 
 Les structures
 --------------
@@ -882,6 +898,9 @@ Les fonctions ``initptr`` et ``equalptr`` utilisent toutes les deux des pointeur
    :start-after: ///GGG
    :end-before: ///HHH
 
+.. inginious:: semaine_2_12
+
+.. inginious:: semaine_2_13
 
 Les expressions de manipulation de bits
 ---------------------------------------
@@ -1002,6 +1021,11 @@ Ces opérations de décalage permettent différentes manipulations de bits. À t
    :start-after: ///EEE
    :end-before: ///FFF
 
+.. inginious:: semaine_2_5
+
+.. inginious:: semaine_2_6
+
+.. inginious:: semaine_2_7
 
 .. rubric:: Footnotes
 

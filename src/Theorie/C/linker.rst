@@ -107,6 +107,11 @@ Cette partie de code utilise la fonction `isdigit(3)`_ pour vérifier si les car
 
 Il existe d'autres fonctions de la librairie standard qui utilisent des pointeurs vers des pointeurs comme arguments dont notamment `strsep(3)`_ et `strtok_r(3)`_.
 
+.. inginious:: semaine_4_1
+
+.. inginious:: semaine_4_2
+
+.. inginious:: semaine_4_3
 
 
 De grands programmes en C
@@ -248,7 +253,7 @@ A titre d'exemple, le programme ci-dessous utilise `strerror(3)`_ pour afficher 
      fprintf(stderr,"Erreur : errno=%d %s\n",errno,strerror(errno));
    }
 
-
+.. inginious:: semaine_4_4
 
 .. rubric:: Footnotes
 
