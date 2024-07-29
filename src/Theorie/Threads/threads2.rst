@@ -300,6 +300,11 @@ Pour montrer que cette solution répond bien au problème de l'exclusion mutuell
 
 Pour montrer que la propriété de vivacité est bien respectée, il faut montrer qu'un thread ne sera pas empêché éternellement d'entrer dans sa section critique. Un thread peut être empêché d'entrer dans sa section critique en étant bloqué sur l'appel à `pthread_mutex_lock(3posix)`_. Comme chaque thread exécute `pthread_mutex_unlock(3posix)`_ dès qu'il sort de sa section critique, le thread en attente finira par être exécuté. Pour qu'un thread utilisant le code ci-dessus ne puisse jamais entrer en section critique, il faudrait qu'il y aie en permanence plusieurs threads en attente sur `pthread_mutex_unlock(3posix)`_ et que notre thread ne soit jamais sélectionné par le système lorsque le thread précédent termine sa section critique.
 
+.. inginious:: semaine_6_3
+
+.. inginious:: semaine_6_4
+
+.. inginious:: semaine_6_5
 
 .. rubric:: Footnotes
 

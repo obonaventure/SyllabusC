@@ -63,6 +63,10 @@ Les versions récentes de C [C99]_ permettent également de définir des variabl
 
 Il y a deux façons de définir des constantes dans les versions récentes de C [C99]_. La première est via la macro ``#define`` du préprocesseur. Cette macro permet de remplacer une chaîne de caractères (par exemple ``M_PI`` qui provient de `math.h`_) par un nombre ou une autre chaîne de caractères. Ce remplacement s'effectue avant la compilation. Dans le cas de ``M_PI`` ci-dessus, le préprocesseur remplace toute les occurrences de cette chaîne de caractères par la valeur numérique de :math:`\pi`. Lorsqu'une variable ``const`` est utilisée, la situation est un peu différente. Le préprocesseur n'intervient pas. Par contre, le compilateur réserve une zone mémoire pour la variable qui a été définie comme constante. Cela a deux avantages par rapport à l'utilisation de ``#define``. Premièrement, il est possible de définir comme constante n'importe quel type de données en C, y compris des structures ou des pointeurs alors qu'avec un ``#define`` on ne peut définir que des nombres ou des chaînes de caractères. Ensuite, comme une ``const`` est stockée en mémoire, il est possible d'obtenir son adresse et de l'examiner via un :term:`debugger`.
 
+.. inginious:: semaine_3_1
+
+.. inginious:: semaine_3_2
+
 .. _theorie:unions:
 
 Unions et énumérations
@@ -393,8 +397,16 @@ Un étudiant pourrait vouloir éviter d'utiliser `malloc(3)`_ et écrire plutôt
 
 Lors de la compilation, `gcc(1)`_ affiche le :term:`warning` ``In function ‘duplicate2’: warning: function returns address of local variable``. Ce warning indique que la ligne ``return str2;`` retourne l'adresse d'une variable locale qui n'est plus accessible à la fin de la fonction ``duplicate2``. En effet, l'utilisation de tableaux alloués dynamiquement sur la pile est équivalent à une utilisation implicite de `alloca(3)`_. La déclaration ``char str2[len];`` est équivalente à ``char *str2 =(char *)alloca(len*sizeof(char));`` et la zone mémoire allouée sur la pile pour ``str2`` est libérée lors de l'exécution de ``return str2;`` puisque toute mémoire allouée sur la pile est implicitement libérée à la fin de l'exécution de la fonction durant laquelle elle a été allouée. Donc, une fonction qui appelle ``duplicate2`` ne peut pas récupérer les données se trouvant dans la zone mémoire qui a été allouée par ``duplicate2``.
 
+.. inginious:: semaine_3_3
 
+.. inginious:: semaine_3_4
 
+.. inginious:: semaine_3_5
+
+.. inginious:: semaine_3_6
+
+.. inginious:: semaine_3_7
+   
 .. rubric:: Footnotes
 
 .. [#fpossible] Pour des raisons de performance, le compilateur C ne génère pas de code permettant de vérifier automatiquement qu'un accès via un pointeur pointe vers une zone de mémoire qui est libre. Il est donc parfois possible d'accéder à une zone mémoire qui a été libérée, mais le programme n'a aucune garantie sur la valeur qu'il y trouvera. Ce genre d'accès à des zones mémoires libérées doit bien entendu être complètement proscrit.

@@ -211,6 +211,13 @@ Toutes les tables de caractères placent les chiffres ``0`` à ``9`` à des posi
 
 Il existe de nombreux livres consacrés au langage C. La référence la plus classique est [KernighanRitchie1998]_, mais certains éléments commencent à dater. Un tutoriel intéressant a été publié par Brian Kernighan [Kernighan]_. [King2008]_ propose une présentation plus moderne du langage C.
 
+.. inginious:: semaine_1_3
+
+.. inginious:: semaine_1_4
+
+.. inginious:: semaine_1_5
+
+
 .. rubric:: Footnotes
 
 

@@ -227,6 +227,9 @@ Lors d'un appel à `pthread_create(3)`_, il est important de se rappeler que cet
 
 Concernant `pthread_join(3)`_, le code ci-dessus illustre la récupération du résultat via un pointeur vers un entier. Comme la fonction ``neg`` retourne un résultat de type ``void *`` elle doit nécessairement retourner un pointeur qui peut être casté vers un pointeur de type ``void *``. C'est ce que la fonction ``neg`` dans l'exemple réalise. Elle alloue une zone mémoire permettant de stocker un entier et place dans cette zone mémoire la valeur de retour de la fonction. Ce pointeur est ensuite casté en un pointeur de type ``void *`` avant d'appeler ``return``. Il faut noter que l'appel à `pthread_join(3)`_ ne se termine que lorsque le thread spécifié comme premier argument se termine. Si ce thread ne se termine pas pour n'importe quelle raison, l'appel à `pthread_join(3)`_ ne se terminera pas non plus.
 
+.. inginious:: semaine_6_1
+
+.. inginious:: semaine_6_2
 
 .. rubric:: Footnotes
 

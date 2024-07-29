@@ -197,6 +197,10 @@ Le consommateur quant à lui essaie d'abord de prendre le sémaphore ``full``. S
 
 De nombreux programmes découpés en threads fonctionnent avec un ensemble de producteurs et un ensemble de consommateurs.
 
+.. inginious:: semaine_6_6
+
+.. inginious:: semaine_6_7
+
 .. spelling:word-list::
 
    Solaris
@@ -363,6 +367,8 @@ La fonction `strerror_r(3)`_ évite ce problème de tableau statique en utilisan
     }
 
 Lorsque l'on intègre des fonctions provenant de la librairie standard ou d'une autre librairie dans un programme découpé en threads, il est important de vérifier que les fonctions utilisées sont bien :term:`thread-safe`. La page de manuel `pthreads(7)`_ liste les fonctions qui ne sont pas :term:`thread-safe` dans la librairie standard.
+
+.. inginious:: semaine_6_8
 
 .. rubric:: Footnotes
 
