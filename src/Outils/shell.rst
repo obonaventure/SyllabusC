@@ -959,6 +959,9 @@ Redirection nommée
 
 
 
+.. inginious:: semaine_1_1
+	
+.. inginious:: semaine_1_2
 
 .. _bash:
 
